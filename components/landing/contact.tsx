@@ -61,7 +61,7 @@ export function Contact() {
       if (formData.passengers) message += ` ${formData.passengers} passengers.`
     }
     
-    window.open(`https://wa.me/5492615555555?text=${encodeURIComponent(message)}`, "_blank")
+    window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   return (

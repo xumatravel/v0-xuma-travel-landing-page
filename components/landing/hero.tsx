@@ -9,7 +9,7 @@ export function Hero() {
   const { t } = useI18n()
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/5492615555555?text=Hello!%20I%20am%20interested%20in%20planning%20my%20Mendoza%20experience", "_blank")
+    window.open("https://wa.me/542604023087?text=Hello!%20I%20am%20interested%20in%20planning%20my%20Mendoza%20experience", "_blank")
   }
 
   const scrollToContact = () => {

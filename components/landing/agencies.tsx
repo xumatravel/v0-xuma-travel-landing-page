@@ -9,7 +9,7 @@ export function Agencies() {
   const benefits = tArray("b2b.benefits")
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/5492615555555?text=Hello!%20I%20am%20a%20travel%20agency%20interested%20in%20partnering%20with%20XUMA%20TRAVEL", "_blank")
+    window.open("https://wa.me/542604023087?text=Hello!%20I%20am%20a%20travel%20agency%20interested%20in%20partnering%20with%20XUMA%20TRAVEL", "_blank")
   }
 
   return (
