@@ -16,7 +16,8 @@ export function Contact() {
     email: "",
     phone: "",
     country: "",
-    date: "",
+    arrivalDate: "",
+    departureDate: "",
     passengers: "",
     interest: "",
     message: "",
@@ -35,7 +36,7 @@ export function Contact() {
     
     setTimeout(() => {
       setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", country: "", date: "", passengers: "", interest: "", message: "" })
+      setFormData({ name: "", email: "", phone: "", country: "", arrivalDate: "", departureDate: "", passengers: "", interest: "", message: "" })
     }, 3000)
   }
 
@@ -57,7 +58,10 @@ export function Contact() {
         message += ` I'm interested in ${interestMap[formData.interest] || formData.interest}.`
       }
       
-      if (formData.date) message += ` Travel date: ${formData.date}.`
+      if (formData.arrivalDate) {
+        message += ` Arrival: ${formData.arrivalDate}.`
+        if (formData.departureDate) message += ` Departure: ${formData.departureDate}.`
+      }
       if (formData.passengers) message += ` ${formData.passengers} passengers.`
     }
     
@@ -189,15 +193,16 @@ export function Contact() {
                     </FieldGroup>
                   </div>
 
-                  {/* Row 3: Travel Date + Passengers */}
+                  {/* Row 3: Arrival Date + Departure Date */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <Field>
-                        <FieldLabel className="text-white/80">{t("contact.form.date")}</FieldLabel>
+                        <FieldLabel className="text-white/80">{t("contact.form.arrivalDate")} *</FieldLabel>
                         <Input
                           type="date"
-                          value={formData.date}
-                          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                          value={formData.arrivalDate}
+                          onChange={(e) => setFormData({ ...formData, arrivalDate: e.target.value })}
+                          required
                           className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
                         />
                       </Field>
@@ -205,23 +210,36 @@ export function Contact() {
 
                     <FieldGroup>
                       <Field>
-                        <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
-                        <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                            <SelectValue placeholder="1" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {Array.from({ length: 24 }, (_, i) => i + 1).map((num) => (
-                              <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                            ))}
-                            <SelectItem value="25+">25+</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FieldLabel className="text-white/80">{t("contact.form.departureDate")}</FieldLabel>
+                        <Input
+                          type="date"
+                          value={formData.departureDate}
+                          onChange={(e) => setFormData({ ...formData, departureDate: e.target.value })}
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
+                        />
                       </Field>
                     </FieldGroup>
                   </div>
 
-                  {/* Row 4: Interest */}
+                  {/* Row 4: Passengers */}
+                  <FieldGroup>
+                    <Field>
+                      <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
+                      <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
+                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectValue placeholder="1" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.from({ length: 24 }, (_, i) => i + 1).map((num) => (
+                            <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                          ))}
+                          <SelectItem value="25+">25+</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                  </FieldGroup>
+
+                  {/* Row 5: Interest */}
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.interest")} *</FieldLabel>
@@ -239,7 +257,7 @@ export function Contact() {
                     </Field>
                   </FieldGroup>
 
-                  {/* Row 5: Message */}
+                  {/* Row 6: Message */}
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.message")}</FieldLabel>
