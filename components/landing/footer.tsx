@@ -83,11 +83,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@xumatravel.com"
+                  href="mailto:info@xuma.com.ar"
                   className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
                 >
                   <Mail className="w-4 h-4 text-[#6B7D5C]" />
-                  hello@xumatravel.com
+                  info@xuma.com.ar
                 </a>
               </li>
               <li>
