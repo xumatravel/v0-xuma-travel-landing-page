@@ -30,12 +30,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Planifica tu experiencia",
 
     // Hero
-    "hero.headline": "Viajes Premium y Transfers a Las Leñas — Todo en Un Solo Lugar",
-    "hero.subheadline": "Integramos transporte, logística y experiencias en Mendoza para agencias y viajeros internacionales.",
+    "hero.headline": "Viajes Premium en Mendoza — Ski, Vino y Experiencias Todo en Uno",
+    "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
     "hero.trust1": "30+ años de experiencia (empresa familiar)",
     "hero.trust2": "Proveedor oficial de transporte al Valle de Las Leñas",
-    "hero.cta.primary": "Planifica tu experiencia completa",
-    "hero.cta.secondary": "Habla con nosotros",
+    "hero.cta.primary": "Recibí tu propuesta en minutos",
+    "hero.cta.secondary": "Hablar por WhatsApp",
 
     // What We Really Do
     "whatWeDo.title": "Lo Que Realmente Hacemos",
@@ -60,8 +60,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.experience.features": ["Tours de bodegas", "Alta montaña", "Gastronomía", "Guías expertos"],
     
     "products.transfers.title": "Transfers Premium",
-    "products.transfers.subtitle": "PUNTO DE ENTRADA",
-    "products.transfers.description": "Aeropuerto / bodegas / Las Leñas. Tu puerta de entrada a Mendoza.",
+    "products.transfers.subtitle": "TU PUERTA DE ENTRADA",
+    "products.transfers.description": "Tu puerta de entrada a una experiencia completa en Mendoza.",
     "products.transfers.features": ["Vehículos premium", "Conductores bilingües", "Puntualidad garantizada", "Servicio puerta a puerta"],
 
     "products.note": "Los transfers son tu punto de entrada, no el destino final.",
@@ -89,7 +89,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // B2B Section
     "b2b.title": "Para Agencias de Viaje",
-    "b2b.subtitle": "Tu socio local de confianza en Mendoza",
+    "b2b.subtitle": "Nos convertimos en tu equipo local en Mendoza",
     "b2b.description": "Trabajamos con agencias de todo el mundo para ofrecer servicios receptivos de primera clase.",
     "b2b.benefits": [
       "Respuesta rápida y eficiente",
@@ -117,20 +117,44 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Contact
     "contact.title": "Planifica tu Experiencia en Mendoza",
-    "contact.subtitle": "Contáctanos y diseñaremos el viaje perfecto para ti",
+    "contact.subtitle": "Recibí tu propuesta en minutos por WhatsApp",
     "contact.form.name": "Nombre completo",
     "contact.form.email": "Email",
     "contact.form.phone": "Teléfono (WhatsApp)",
+    "contact.form.country": "País",
+    "contact.form.date": "Fecha estimada de viaje",
+    "contact.form.passengers": "Cantidad de pasajeros",
     "contact.form.interest": "Me interesa...",
-    "contact.form.interest.ski": "Paquetes de Ski",
-    "contact.form.interest.experience": "Experiencia Mendoza",
+    "contact.form.interest.ski": "Ski en Las Leñas",
+    "contact.form.interest.experience": "Experiencia Mendoza (vino + montaña)",
     "contact.form.interest.transfer": "Solo Transfer",
     "contact.form.interest.agency": "Soy Agencia de Viajes",
-    "contact.form.message": "Mensaje",
+    "contact.form.message": "Detalles adicionales",
     "contact.form.submit": "Enviar consulta",
-    "contact.whatsapp.title": "Prefiere WhatsApp?",
-    "contact.whatsapp.description": "Respuesta inmediata en horario comercial",
-    "contact.whatsapp.cta": "Chatea con nosotros",
+    "contact.whatsapp.title": "Respuesta Inmediata",
+    "contact.whatsapp.description": "Recibí tu propuesta en minutos por WhatsApp",
+    "contact.whatsapp.cta": "Chatear ahora",
+
+    // Testimonials
+    "testimonials.title": "Lo Que Dicen Nuestros Clientes",
+    "testimonials.subtitle": "+5000 pasajeros por temporada",
+    "testimonials.items": [
+      {
+        "text": "Excelente servicio. Nos coordinaron todo el viaje a Las Leñas sin ningún problema. 100% recomendado.",
+        "author": "María González",
+        "role": "Viajera desde Brasil"
+      },
+      {
+        "text": "Trabajamos con XUMA hace 3 temporadas. Son nuestro equipo local en Mendoza, siempre confiables.",
+        "author": "Carlos Pereira",
+        "role": "Agencia de Viajes - São Paulo"
+      },
+      {
+        "text": "La atención personalizada marca la diferencia. Saben exactamente lo que necesitamos.",
+        "author": "Ana Rodríguez",
+        "role": "Tour Operator - Chile"
+      }
+    ],
 
     // About
     "about.title": "Sobre XUMA TRAVEL",
@@ -183,12 +207,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Planeje sua experiência",
 
     // Hero
-    "hero.headline": "Viagens Premium e Transfers para Las Leñas — Tudo em Um Só Lugar",
-    "hero.subheadline": "Integramos transporte, logística e experiências em Mendoza para agências e viajantes internacionais.",
+    "hero.headline": "Viagens Premium em Mendoza — Ski, Vinho e Experiências Tudo em Um",
+    "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
     "hero.trust1": "30+ anos de experiência (empresa familiar)",
     "hero.trust2": "Fornecedor oficial de transporte para o Vale de Las Leñas",
-    "hero.cta.primary": "Planeje sua experiência completa",
-    "hero.cta.secondary": "Fale conosco",
+    "hero.cta.primary": "Receba sua proposta em minutos",
+    "hero.cta.secondary": "Falar no WhatsApp",
 
     // What We Really Do
     "whatWeDo.title": "O Que Realmente Fazemos",
@@ -213,8 +237,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.experience.features": ["Tours de vinícolas", "Alta montanha", "Gastronomia", "Guias experientes"],
     
     "products.transfers.title": "Transfers Premium",
-    "products.transfers.subtitle": "PONTO DE ENTRADA",
-    "products.transfers.description": "Aeroporto / vinícolas / Las Leñas. Sua porta de entrada para Mendoza.",
+    "products.transfers.subtitle": "SUA PORTA DE ENTRADA",
+    "products.transfers.description": "Sua porta de entrada para uma experiência completa em Mendoza.",
     "products.transfers.features": ["Veículos premium", "Motoristas bilíngues", "Pontualidade garantida", "Serviço porta a porta"],
 
     "products.note": "Os transfers são seu ponto de entrada, não o destino final.",
@@ -242,7 +266,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // B2B Section
     "b2b.title": "Para Agências de Viagem",
-    "b2b.subtitle": "Seu parceiro local de confiança em Mendoza",
+    "b2b.subtitle": "Somos sua equipe local em Mendoza",
     "b2b.description": "Trabalhamos com agências de todo o mundo para oferecer serviços receptivos de primeira classe.",
     "b2b.benefits": [
       "Resposta rápida e eficiente",
@@ -270,20 +294,44 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Contact
     "contact.title": "Planeje sua Experiência em Mendoza",
-    "contact.subtitle": "Entre em contato e desenharemos a viagem perfeita para você",
+    "contact.subtitle": "Receba sua proposta em minutos pelo WhatsApp",
     "contact.form.name": "Nome completo",
     "contact.form.email": "Email",
     "contact.form.phone": "Telefone (WhatsApp)",
+    "contact.form.country": "País",
+    "contact.form.date": "Data estimada da viagem",
+    "contact.form.passengers": "Quantidade de passageiros",
     "contact.form.interest": "Tenho interesse em...",
-    "contact.form.interest.ski": "Pacotes de Ski",
-    "contact.form.interest.experience": "Experiência Mendoza",
+    "contact.form.interest.ski": "Ski em Las Leñas",
+    "contact.form.interest.experience": "Experiência Mendoza (vinho + montanha)",
     "contact.form.interest.transfer": "Apenas Transfer",
     "contact.form.interest.agency": "Sou Agência de Viagem",
-    "contact.form.message": "Mensagem",
+    "contact.form.message": "Detalhes adicionais",
     "contact.form.submit": "Enviar consulta",
-    "contact.whatsapp.title": "Prefere WhatsApp?",
-    "contact.whatsapp.description": "Resposta imediata em horário comercial",
-    "contact.whatsapp.cta": "Converse conosco",
+    "contact.whatsapp.title": "Resposta Imediata",
+    "contact.whatsapp.description": "Receba sua proposta em minutos pelo WhatsApp",
+    "contact.whatsapp.cta": "Conversar agora",
+
+    // Testimonials
+    "testimonials.title": "O Que Nossos Clientes Dizem",
+    "testimonials.subtitle": "+5000 passageiros por temporada",
+    "testimonials.items": [
+      {
+        "text": "Serviço excelente. Coordenaram toda nossa viagem a Las Leñas sem nenhum problema. 100% recomendado.",
+        "author": "Maria González",
+        "role": "Viajante do Brasil"
+      },
+      {
+        "text": "Trabalhamos com a XUMA há 3 temporadas. São nossa equipe local em Mendoza, sempre confiáveis.",
+        "author": "Carlos Pereira",
+        "role": "Agência de Viagens - São Paulo"
+      },
+      {
+        "text": "O atendimento personalizado faz toda a diferença. Sabem exatamente o que precisamos.",
+        "author": "Ana Rodríguez",
+        "role": "Tour Operator - Chile"
+      }
+    ],
 
     // About
     "about.title": "Sobre a XUMA TRAVEL",
@@ -336,12 +384,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Plan your experience",
 
     // Hero
-    "hero.headline": "Premium Travel & Transfers to Las Leñas — All in One Place",
-    "hero.subheadline": "We integrate transportation, logistics, and experiences in Mendoza for agencies and international travelers.",
+    "hero.headline": "Premium Travel in Mendoza — Ski, Wine & Experiences All in One",
+    "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
     "hero.trust1": "30+ years of experience (family business)",
     "hero.trust2": "Official transportation provider to Valle de Las Leñas",
-    "hero.cta.primary": "Plan your full experience",
-    "hero.cta.secondary": "Talk to us",
+    "hero.cta.primary": "Get your proposal in minutes",
+    "hero.cta.secondary": "Chat on WhatsApp",
 
     // What We Really Do
     "whatWeDo.title": "What We Really Do",
@@ -366,8 +414,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.experience.features": ["Winery tours", "High mountain", "Gastronomy", "Expert guides"],
     
     "products.transfers.title": "Premium Transfers",
-    "products.transfers.subtitle": "ENTRY POINT",
-    "products.transfers.description": "Airport / wineries / Las Leñas. Your gateway to Mendoza.",
+    "products.transfers.subtitle": "YOUR GATEWAY",
+    "products.transfers.description": "Your gateway to a complete Mendoza experience.",
     "products.transfers.features": ["Premium vehicles", "Bilingual drivers", "Guaranteed punctuality", "Door-to-door service"],
 
     "products.note": "Transfers are your entry point, not the final destination.",
@@ -395,7 +443,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // B2B Section
     "b2b.title": "For Travel Agencies",
-    "b2b.subtitle": "Your trusted local partner in Mendoza",
+    "b2b.subtitle": "We become your local team in Mendoza",
     "b2b.description": "We work with agencies worldwide to deliver first-class receptive services.",
     "b2b.benefits": [
       "Fast and efficient response",
@@ -423,20 +471,44 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Contact
     "contact.title": "Plan Your Mendoza Experience",
-    "contact.subtitle": "Contact us and we'll design the perfect trip for you",
+    "contact.subtitle": "Get your proposal in minutes via WhatsApp",
     "contact.form.name": "Full name",
     "contact.form.email": "Email",
     "contact.form.phone": "Phone (WhatsApp)",
+    "contact.form.country": "Country",
+    "contact.form.date": "Estimated travel date",
+    "contact.form.passengers": "Number of passengers",
     "contact.form.interest": "I'm interested in...",
-    "contact.form.interest.ski": "Ski Packages",
-    "contact.form.interest.experience": "Mendoza Experience",
+    "contact.form.interest.ski": "Ski in Las Leñas",
+    "contact.form.interest.experience": "Mendoza Experience (wine + mountain)",
     "contact.form.interest.transfer": "Transfer Only",
     "contact.form.interest.agency": "I'm a Travel Agency",
-    "contact.form.message": "Message",
+    "contact.form.message": "Additional details",
     "contact.form.submit": "Send inquiry",
-    "contact.whatsapp.title": "Prefer WhatsApp?",
-    "contact.whatsapp.description": "Immediate response during business hours",
-    "contact.whatsapp.cta": "Chat with us",
+    "contact.whatsapp.title": "Immediate Response",
+    "contact.whatsapp.description": "Get your proposal in minutes via WhatsApp",
+    "contact.whatsapp.cta": "Chat now",
+
+    // Testimonials
+    "testimonials.title": "What Our Clients Say",
+    "testimonials.subtitle": "+5000 passengers per season",
+    "testimonials.items": [
+      {
+        "text": "Excellent service. They coordinated our entire trip to Las Leñas without any issues. 100% recommended.",
+        "author": "María González",
+        "role": "Traveler from Brazil"
+      },
+      {
+        "text": "We've worked with XUMA for 3 seasons. They're our local team in Mendoza, always reliable.",
+        "author": "Carlos Pereira",
+        "role": "Travel Agency - São Paulo"
+      },
+      {
+        "text": "The personalized attention makes all the difference. They know exactly what we need.",
+        "author": "Ana Rodríguez",
+        "role": "Tour Operator - Chile"
+      }
+    ],
 
     // About
     "about.title": "About XUMA TRAVEL",
