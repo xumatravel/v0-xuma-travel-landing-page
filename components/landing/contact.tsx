@@ -208,14 +208,13 @@ export function Contact() {
                         <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
                         <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
                           <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                            <SelectValue placeholder="1-2" />
+                            <SelectValue placeholder="1" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="1-2">1-2</SelectItem>
-                            <SelectItem value="3-4">3-4</SelectItem>
-                            <SelectItem value="5-8">5-8</SelectItem>
-                            <SelectItem value="9-15">9-15</SelectItem>
-                            <SelectItem value="16+">16+</SelectItem>
+                            {Array.from({ length: 24 }, (_, i) => i + 1).map((num) => (
+                              <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                            ))}
+                            <SelectItem value="25+">25+</SelectItem>
                           </SelectContent>
                         </Select>
                       </Field>
