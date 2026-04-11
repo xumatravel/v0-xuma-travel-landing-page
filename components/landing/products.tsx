@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
 import { Snowflake, Wine, Car, CheckCircle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -16,6 +17,7 @@ export function Products() {
       features: tArray("products.ski.features"),
       accent: "#6B7D5C",
       featured: true,
+      image: "/ski-resort.jpg",
     },
     {
       icon: Wine,
@@ -25,6 +27,7 @@ export function Products() {
       features: tArray("products.experience.features"),
       accent: "#5A1E2A",
       featured: false,
+      image: "/vineyard.jpg",
     },
     {
       icon: Car,
@@ -34,6 +37,7 @@ export function Products() {
       features: tArray("products.transfers.features"),
       accent: "#C8A96A",
       featured: false,
+      image: "/mountain-road.jpg",
     },
   ]
 
@@ -57,79 +61,83 @@ export function Products() {
           {products.map((product, index) => (
             <div
               key={index}
-              className={`relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 ${
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 group ${
                 product.featured
-                  ? "bg-[#0B0B0B] text-white shadow-2xl scale-105 z-10"
-                  : "bg-white text-[#0B0B0B] shadow-lg hover:shadow-xl"
+                  ? "shadow-2xl scale-105 z-10"
+                  : "shadow-lg hover:shadow-xl"
               }`}
             >
-              {product.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C8A96A] text-[#0B0B0B] text-xs font-bold px-4 py-1 rounded-full">
-                  {product.subtitle}
-                </div>
-              )}
-
-              <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
-                  product.featured ? "bg-white/10" : "bg-[#F8F6F3]"
-                }`}
-              >
-                <product.icon
-                  className="w-8 h-8"
-                  style={{ color: product.accent }}
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                <div className={`absolute inset-0 ${
+                  product.featured 
+                    ? "bg-gradient-to-b from-[#0B0B0B]/60 via-[#0B0B0B]/80 to-[#0B0B0B]/95"
+                    : "bg-gradient-to-b from-[#0B0B0B]/50 via-[#0B0B0B]/70 to-[#0B0B0B]/90"
+                }`} />
               </div>
 
-              {!product.featured && (
-                <span
-                  className="text-xs font-bold tracking-wider mb-2 block"
-                  style={{ color: product.accent }}
+              {/* Content */}
+              <div className="relative z-10 p-8 min-h-[500px] flex flex-col">
+                {product.featured && (
+                  <div className="absolute -top-0 left-1/2 -translate-x-1/2 bg-[#C8A96A] text-[#0B0B0B] text-xs font-bold px-4 py-1 rounded-b-lg">
+                    {product.subtitle}
+                  </div>
+                )}
+
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-white/10 backdrop-blur-sm"
                 >
-                  {product.subtitle}
-                </span>
-              )}
+                  <product.icon
+                    className="w-8 h-8"
+                    style={{ color: product.accent }}
+                  />
+                </div>
 
-              <h3 className="font-serif text-2xl font-bold mb-3">
-                {product.title}
-              </h3>
+                {!product.featured && (
+                  <span
+                    className="text-xs font-bold tracking-wider mb-2 block"
+                    style={{ color: product.accent }}
+                  >
+                    {product.subtitle}
+                  </span>
+                )}
 
-              <p
-                className={`mb-6 leading-relaxed ${
-                  product.featured ? "text-white/70" : "text-[#0B0B0B]/60"
-                }`}
-              >
-                {product.description}
-              </p>
+                <h3 className="font-serif text-2xl font-bold mb-3 text-white">
+                  {product.title}
+                </h3>
 
-              <ul className="space-y-3 mb-8">
-                {product.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <CheckCircle
-                      className="w-5 h-5 flex-shrink-0"
-                      style={{ color: product.accent }}
-                    />
-                    <span
-                      className={`text-sm ${
-                        product.featured ? "text-white/80" : "text-[#0B0B0B]/70"
-                      }`}
-                    >
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                <p className="mb-6 leading-relaxed text-white/70">
+                  {product.description}
+                </p>
 
-              <Button
-                onClick={scrollToContact}
-                className={`w-full group ${
-                  product.featured
-                    ? "bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white"
-                    : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
-                }`}
-              >
-                {t("hero.cta.secondary")}
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {product.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3">
+                      <CheckCircle
+                        className="w-5 h-5 flex-shrink-0"
+                        style={{ color: product.accent }}
+                      />
+                      <span className="text-sm text-white/80">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  onClick={scrollToContact}
+                  className="w-full group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
+                >
+                  {t("hero.cta.secondary")}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
             </div>
           ))}
         </div>

@@ -40,7 +40,7 @@ export function Footer() {
                 <Instagram className="w-5 h-5 text-white" />
               </a>
               <a
-                href="https://wa.me/5492615555555"
+                href="https://wa.me/542604023087"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#6B7D5C] transition-colors duration-300"
@@ -74,20 +74,20 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://wa.me/5492615555555"
+                  href="https://wa.me/542604023087"
                   className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
                 >
                   <MessageCircle className="w-4 h-4 text-[#6B7D5C]" />
-                  +54 9 261 555 5555
+                  +54 260 402 3087
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:hello@xumatravel.com"
+                  href="mailto:info@xuma.com.ar"
                   className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
                 >
                   <Mail className="w-4 h-4 text-[#6B7D5C]" />
-                  hello@xumatravel.com
+                  info@xuma.com.ar
                 </a>
               </li>
               <li>

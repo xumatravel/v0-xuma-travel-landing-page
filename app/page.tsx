@@ -7,6 +7,7 @@ import { LasLenas } from "@/components/landing/las-lenas"
 import { Upsell } from "@/components/landing/upsell"
 import { Agencies } from "@/components/landing/agencies"
 import { Brand } from "@/components/landing/brand"
+import { Testimonials } from "@/components/landing/testimonials"
 import { About } from "@/components/landing/about"
 import { Contact } from "@/components/landing/contact"
 import { FAQ } from "@/components/landing/faq"
@@ -25,6 +26,7 @@ export default function Home() {
       <Upsell />
       <Agencies />
       <Brand />
+      <Testimonials />
       <About />
       <Contact />
       <FAQ />
