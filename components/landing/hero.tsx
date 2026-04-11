@@ -18,16 +18,20 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0">
-        <Image
-          src="/hero-mountains.jpg"
-          alt="Andes Mountains - Las Leñas"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/70 via-[#0B0B0B]/50 to-[#0B0B0B]/80" />
+        <div className="absolute inset-0 scale-110 animate-slow-zoom">
+          <Image
+            src="/hero-mountains.jpg"
+            alt="Andes Mountains - Las Leñas"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        {/* Cinematic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/40 to-[#0B0B0B]/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/50 via-transparent to-[#0B0B0B]/50" />
       </div>
 
       {/* Content */}

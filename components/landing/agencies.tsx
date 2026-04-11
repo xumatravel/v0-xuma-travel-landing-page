@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, MessageCircle, ArrowRight } from "lucide-react"
@@ -13,8 +14,20 @@ export function Agencies() {
   }
 
   return (
-    <section id="agencies" className="py-20 md:py-28 bg-[#5A1E2A]">
-      <div className="container mx-auto px-6">
+    <section id="agencies" className="relative py-20 md:py-28 overflow-hidden">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <Image
+          src="/travel-planning.jpg"
+          alt="Travel Planning"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#5A1E2A]/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#5A1E2A] via-[#5A1E2A]/95 to-[#5A1E2A]/80" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
           <div>
@@ -42,7 +55,7 @@ export function Agencies() {
           </div>
 
           {/* Benefits */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10">
             <ul className="space-y-5">
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start gap-4">
