@@ -1,0 +1,114 @@
+import Link from "next/link"
+import { MessageCircle, Mail, MapPin, Instagram } from "lucide-react"
+
+const quickLinks = [
+  { href: "#services", label: "Services" },
+  { href: "#how-it-works", label: "How it Works" },
+  { href: "#agencies", label: "For Agencies" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#contact", label: "Contact" },
+]
+
+export function Footer() {
+  return (
+    <footer className="bg-[#0B0B0B] border-t border-white/10">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="inline-block mb-4">
+              <span className="font-serif text-2xl font-bold text-white tracking-tight">
+                XUMA<span className="text-[#C8A96A]">.</span>TRAVEL
+              </span>
+            </Link>
+            <p className="text-white/60 leading-relaxed max-w-md mb-6">
+              Premium transportation services in Mendoza, Argentina. Specializing in 
+              transfers to Las Leñas ski resort for travel agencies and individual travelers.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://instagram.com/xumatravel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#6B7D5C] transition-colors duration-300"
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </a>
+              <a
+                href="https://wa.me/5492615555555"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#6B7D5C] transition-colors duration-300"
+              >
+                <MessageCircle className="w-5 h-5 text-white" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-serif font-semibold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-serif font-semibold text-white mb-4">Contact</h3>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="https://wa.me/5492615555555"
+                  className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#6B7D5C]" />
+                  +54 9 261 555 5555
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@xumatravel.com"
+                  className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
+                >
+                  <Mail className="w-4 h-4 text-[#6B7D5C]" />
+                  hello@xumatravel.com
+                </a>
+              </li>
+              <li>
+                <span className="flex items-center gap-3 text-white/60 text-sm">
+                  <MapPin className="w-4 h-4 text-[#6B7D5C]" />
+                  Mendoza, Argentina
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/40 text-sm">
+            © {new Date().getFullYear()} XUMA TRAVEL. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-white/40 text-sm">
+            <Link href="#" className="hover:text-white transition-colors duration-200">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-white transition-colors duration-200">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
