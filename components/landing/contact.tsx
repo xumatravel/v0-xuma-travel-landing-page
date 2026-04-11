@@ -22,7 +22,8 @@ export function Contact() {
     interest: "",
     message: "",
   })
-  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   const buildWhatsAppMessage = () => {
     const interestMap: Record<string, string> = {
@@ -48,10 +49,45 @@ export function Contact() {
     return message
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const message = buildWhatsAppMessage()
-    window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+    setIsSubmitting(true)
+    setSubmitStatus("idle")
+
+    try {
+      // Send email
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        // Also open WhatsApp with the message
+        const message = buildWhatsAppMessage()
+        window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+        // Reset form after success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          country: "",
+          arrivalDate: "",
+          departureDate: "",
+          passengers: "",
+          interest: "",
+          message: "",
+        })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleWhatsApp = () => {
@@ -253,13 +289,31 @@ export function Contact() {
                     </Field>
                   </FieldGroup>
 
+                  {submitStatus === "success" && (
+                    <div className="bg-[#6B7D5C]/20 border border-[#6B7D5C]/40 rounded-lg p-3 text-center">
+                      <p className="text-[#6B7D5C] text-sm font-medium">Mensaje enviado correctamente</p>
+                    </div>
+                  )}
+                  {submitStatus === "error" && (
+                    <div className="bg-red-500/20 border border-red-500/40 rounded-lg p-3 text-center">
+                      <p className="text-red-400 text-sm font-medium">Error al enviar. Intenta de nuevo.</p>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6 disabled:opacity-50"
                   >
-                    <Send className="w-5 h-5 mr-2" />
-                    {t("contact.form.submit")}
+                    {isSubmitting ? (
+                      <>Enviando...</>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        {t("contact.form.submit")}
+                      </>
+                    )}
                   </Button>
                 </form>
             </div>
