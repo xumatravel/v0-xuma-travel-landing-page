@@ -167,7 +167,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "¿Qué incluyen los paquetes de ski?",
-        "answer": "Nuestros paquetes incluyen traslados desde Mendoza y San Rafael, alojamiento únicamente en Las Leñas, ski pass, y coordinación completa del viaje. Podemos personalizar cada paquete según tus necesidades."
+        "answer": "Nuestros paquetes incluyen traslados desde Mendoza y San Rafael, alojamiento en Las Leñas, ski pass, y coordinación completa del viaje. Podemos personalizar cada paquete según tus necesidades."
       },
       {
         "question": "¿Trabajan con agencias de viaje?",
@@ -344,7 +344,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "O que incluem os pacotes de ski?",
-        "answer": "Nossos pacotes incluem traslados desde Mendoza e San Rafael, hospedagem exclusivamente em Las Leñas, ski pass, e coordenação completa da viagem. Podemos personalizar cada pacote de acordo com suas necessidades."
+        "answer": "Nossos pacotes incluem traslados desde Mendoza e San Rafael, hospedagem em Las Leñas, ski pass, e coordenação completa da viagem. Podemos personalizar cada pacote de acordo com suas necessidades."
       },
       {
         "question": "Vocês trabalham com agências de viagem?",
@@ -521,7 +521,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "What do the ski packages include?",
-        "answer": "Our packages include transfers from Mendoza and San Rafael, accommodation exclusively in Las Leñas, ski pass, and complete trip coordination. We can customize each package to your needs."
+        "answer": "Our packages include transfers from Mendoza and San Rafael, accommodation in Las Leñas, ski pass, and complete trip coordination. We can customize each package to your needs."
       },
       {
         "question": "Do you work with travel agencies?",
