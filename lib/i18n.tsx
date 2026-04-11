@@ -167,7 +167,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "¿Qué incluyen los paquetes de ski?",
-        "answer": "Nuestros paquetes incluyen transfers premium desde Mendoza, alojamiento en el Valle de Las Leñas o San Rafael, ski pass, y coordinación completa del viaje. Podemos personalizar cada paquete según tus necesidades."
+        "answer": "Nuestros paquetes incluyen traslados desde Mendoza y San Rafael, alojamiento únicamente en Las Leñas, ski pass, y coordinación completa del viaje. Podemos personalizar cada paquete según tus necesidades."
       },
       {
         "question": "¿Trabajan con agencias de viaje?",
@@ -175,7 +175,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
       },
       {
         "question": "¿Cuánto dura el viaje a Las Leñas?",
-        "answer": "El viaje desde Mendoza capital dura aproximadamente 4.5-5 horas. Nuestros vehículos son cómodos y seguros, con conductores expertos en la ruta de montaña."
+        "answer": "Desde Mendoza a Las Leñas son entre 4 y 5 horas de viaje. Desde San Rafael a Las Leñas el viaje es más corto, entre 2:30 y 3 horas. Nuestros vehículos son cómodos y seguros, con conductores expertos en la ruta de montaña."
       },
       {
         "question": "¿Qué idiomas hablan?",
@@ -344,7 +344,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "O que incluem os pacotes de ski?",
-        "answer": "Nossos pacotes incluem transfers premium desde Mendoza, hospedagem no Vale de Las Leñas ou San Rafael, ski pass, e coordenação completa da viagem. Podemos personalizar cada pacote de acordo com suas necessidades."
+        "answer": "Nossos pacotes incluem traslados desde Mendoza e San Rafael, hospedagem exclusivamente em Las Leñas, ski pass, e coordenação completa da viagem. Podemos personalizar cada pacote de acordo com suas necessidades."
       },
       {
         "question": "Vocês trabalham com agências de viagem?",
@@ -352,7 +352,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
       },
       {
         "question": "Quanto tempo dura a viagem até Las Leñas?",
-        "answer": "A viagem desde a capital Mendoza dura aproximadamente 4,5-5 horas. Nossos veículos são confortáveis e seguros, com motoristas experientes na rota de montanha."
+        "answer": "De Mendoza a Las Leñas são entre 4 e 5 horas de viagem. De San Rafael a Las Leñas a viagem é mais curta, entre 2:30 e 3 horas. Nossos veículos são confortáveis e seguros, com motoristas experientes na rota de montanha."
       },
       {
         "question": "Que idiomas vocês falam?",
@@ -521,7 +521,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "faq.items": [
       {
         "question": "What do the ski packages include?",
-        "answer": "Our packages include premium transfers from Mendoza, lodging in Valle de Las Leñas or San Rafael, ski pass, and complete trip coordination. We can customize each package to your needs."
+        "answer": "Our packages include transfers from Mendoza and San Rafael, accommodation exclusively in Las Leñas, ski pass, and complete trip coordination. We can customize each package to your needs."
       },
       {
         "question": "Do you work with travel agencies?",
@@ -529,7 +529,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
       },
       {
         "question": "How long is the trip to Las Leñas?",
-        "answer": "The trip from Mendoza city takes approximately 4.5-5 hours. Our vehicles are comfortable and safe, with drivers experienced in mountain routes."
+        "answer": "From Mendoza to Las Leñas it takes between 4 and 5 hours. From San Rafael to Las Leñas the trip is shorter, between 2:30 and 3 hours. Our vehicles are comfortable and safe, with drivers experienced in mountain routes."
       },
       {
         "question": "What languages do you speak?",
