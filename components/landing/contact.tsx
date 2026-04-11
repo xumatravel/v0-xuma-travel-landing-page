@@ -38,7 +38,7 @@ export function Contact() {
     message += `*Email:* ${formData.email || "-"}\n`
     message += `*Teléfono:* ${formData.phone || "-"}\n`
     message += `*Fecha de llegada:* ${formData.arrivalDate || "-"}\n`
-    message += `*Fecha de salida:* ${formData.departureDate || "-"}\n`
+    message += `*Fecha de regreso:* ${formData.departureDate || "-"}\n`
     message += `*Pasajeros:* ${formData.passengers || "-"}\n`
     message += `*Interés:* ${interestMap[formData.interest] || formData.interest || "-"}\n`
     if (formData.message) {
