@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MessageCircle, Send, CheckCircle, Clock, Zap } from "lucide-react"
+import { MessageCircle, Send, Clock, Zap } from "lucide-react"
 
 export function Contact() {
   const { t } = useI18n()
@@ -16,52 +16,87 @@ export function Contact() {
     email: "",
     phone: "",
     country: "",
-    date: "",
+    arrivalDate: "",
+    departureDate: "",
     passengers: "",
     interest: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const buildWhatsAppMessage = () => {
+    const interestMap: Record<string, string> = {
+      ski: "Ski en Las Leñas",
+      experience: "Experiencia Mendoza (vino + montaña)",
+      transfer: "Transfers",
+      agency: "Soy Agencia de Viajes"
+    }
+
+    let message = `*Nueva Consulta XUMA TRAVEL*\n\n`
+    message += `*Nombre:* ${formData.name || "-"}\n`
+    message += `*País:* ${formData.country || "-"}\n`
+    message += `*Email:* ${formData.email || "-"}\n`
+    message += `*Teléfono:* ${formData.phone || "-"}\n`
+    message += `*Fecha de llegada:* ${formData.arrivalDate || "-"}\n`
+    message += `*Fecha de regreso:* ${formData.departureDate || "-"}\n`
+    message += `*Pasajeros:* ${formData.passengers || "-"}\n`
+    message += `*Interés:* ${interestMap[formData.interest] || formData.interest || "-"}\n`
+    if (formData.message) {
+      message += `*Mensaje:* ${formData.message}\n`
+    }
+
+    return message
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", country: "", date: "", passengers: "", interest: "", message: "" })
-    }, 3000)
+    setSubmitStatus("idle")
+
+    try {
+      // Send email
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        // Also open WhatsApp with the message
+        const message = buildWhatsAppMessage()
+        window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+        // Reset form after success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          country: "",
+          arrivalDate: "",
+          departureDate: "",
+          passengers: "",
+          interest: "",
+          message: "",
+        })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleWhatsApp = () => {
-    let message = "Hello! I'm interested in planning my Mendoza experience."
-    
-    if (formData.name) {
-      message = `Hello! I'm ${formData.name}`
-      if (formData.country) message += ` from ${formData.country}`
-      message += "."
-      
-      if (formData.interest) {
-        const interestMap: Record<string, string> = {
-          ski: "Ski in Las Leñas",
-          experience: "Mendoza Experience",
-          transfer: "transfers",
-          agency: "partnering as a travel agency"
-        }
-        message += ` I'm interested in ${interestMap[formData.interest] || formData.interest}.`
-      }
-      
-      if (formData.date) message += ` Travel date: ${formData.date}.`
-      if (formData.passengers) message += ` ${formData.passengers} passengers.`
+    if (formData.name || formData.interest || formData.arrivalDate) {
+      const message = buildWhatsAppMessage()
+      window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+    } else {
+      window.open("https://wa.me/542604023087?text=Hola!%20Estoy%20interesado%20en%20planificar%20mi%20experiencia%20en%20Mendoza", "_blank")
     }
-    
-    window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   return (
@@ -114,20 +149,7 @@ export function Contact() {
 
             {/* Smart Contact Form */}
             <div className="md:col-span-3 bg-white/5 backdrop-blur-sm rounded-2xl p-8">
-              {isSubmitted ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                  <div className="w-20 h-20 rounded-full bg-[#6B7D5C]/20 flex items-center justify-center mb-6">
-                    <CheckCircle className="w-10 h-10 text-[#6B7D5C]" />
-                  </div>
-                  <h3 className="font-serif font-bold text-white text-2xl mb-2">
-                    Message Sent!
-                  </h3>
-                  <p className="text-white/70">
-                    We&apos;ll get back to you within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Row 1: Name + Country */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <FieldGroup>
@@ -189,15 +211,16 @@ export function Contact() {
                     </FieldGroup>
                   </div>
 
-                  {/* Row 3: Travel Date + Passengers */}
+                  {/* Row 3: Arrival Date + Departure Date */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <Field>
-                        <FieldLabel className="text-white/80">{t("contact.form.date")}</FieldLabel>
+                        <FieldLabel className="text-white/80">{t("contact.form.arrivalDate")} *</FieldLabel>
                         <Input
                           type="date"
-                          value={formData.date}
-                          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                          value={formData.arrivalDate}
+                          onChange={(e) => setFormData({ ...formData, arrivalDate: e.target.value })}
+                          required
                           className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
                         />
                       </Field>
@@ -205,23 +228,36 @@ export function Contact() {
 
                     <FieldGroup>
                       <Field>
-                        <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
-                        <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                            <SelectValue placeholder="1" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {Array.from({ length: 24 }, (_, i) => i + 1).map((num) => (
-                              <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                            ))}
-                            <SelectItem value="25+">25+</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FieldLabel className="text-white/80">{t("contact.form.departureDate")}</FieldLabel>
+                        <Input
+                          type="date"
+                          value={formData.departureDate}
+                          onChange={(e) => setFormData({ ...formData, departureDate: e.target.value })}
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
+                        />
                       </Field>
                     </FieldGroup>
                   </div>
 
-                  {/* Row 4: Interest */}
+                  {/* Row 4: Passengers */}
+                  <FieldGroup>
+                    <Field>
+                      <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
+                      <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
+                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectValue placeholder="1" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.from({ length: 24 }, (_, i) => i + 1).map((num) => (
+                            <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                          ))}
+                          <SelectItem value="25+">25+</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                  </FieldGroup>
+
+                  {/* Row 5: Interest */}
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.interest")} *</FieldLabel>
@@ -239,7 +275,7 @@ export function Contact() {
                     </Field>
                   </FieldGroup>
 
-                  {/* Row 5: Message */}
+                  {/* Row 6: Message */}
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.message")}</FieldLabel>
@@ -253,14 +289,25 @@ export function Contact() {
                     </Field>
                   </FieldGroup>
 
+                  {submitStatus === "success" && (
+                    <div className="bg-[#6B7D5C]/20 border border-[#6B7D5C]/40 rounded-lg p-3 text-center">
+                      <p className="text-[#6B7D5C] text-sm font-medium">Mensaje enviado correctamente</p>
+                    </div>
+                  )}
+                  {submitStatus === "error" && (
+                    <div className="bg-red-500/20 border border-red-500/40 rounded-lg p-3 text-center">
+                      <p className="text-red-400 text-sm font-medium">Error al enviar. Intenta de nuevo.</p>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6"
+                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6 disabled:opacity-50"
                   >
                     {isSubmitting ? (
-                      "Sending..."
+                      <>Enviando...</>
                     ) : (
                       <>
                         <Send className="w-5 h-5 mr-2" />
@@ -269,7 +316,6 @@ export function Contact() {
                     )}
                   </Button>
                 </form>
-              )}
             </div>
           </div>
         </div>
