@@ -27,6 +27,7 @@ export function Hero() {
             fill
             className="object-cover"
             priority
+            loading="eager"
           />
         </div>
         {/* Cinematic gradient overlay */}
