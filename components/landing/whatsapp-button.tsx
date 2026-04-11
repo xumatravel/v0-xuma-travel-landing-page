@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react"
 
 export function WhatsAppButton() {
   const handleClick = () => {
-    window.open("https://wa.me/5492615555555?text=Hello!%20I%20am%20interested%20in%20booking%20a%20transfer%20to%20Las%20Leñas", "_blank")
+    window.open("https://wa.me/5492615555555?text=Hello!%20I%20am%20interested%20in%20planning%20my%20Mendoza%20experience", "_blank")
   }
 
   return (

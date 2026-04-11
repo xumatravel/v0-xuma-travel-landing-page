@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Providers } from '@/components/providers'
 import './globals.css'
 
 const montserrat = Montserrat({ 
@@ -16,14 +17,15 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'XUMA TRAVEL | Premium Transfers to Las Leñas - Mendoza, Argentina',
-  description: 'Reliable transportation from Mendoza to Las Leñas ski resort. Premium transfers for travel agencies and individual travelers. Door-to-door service, authorized vehicles, and personalized attention.',
-  keywords: 'Las Leñas transfers, Mendoza transportation, ski resort transfers, Argentina travel, premium transfers, travel agency partner',
+  title: 'XUMA TRAVEL | Premium Travel & Transfers to Las Leñas - Mendoza, Argentina',
+  description: 'Premium receptive operator in Mendoza. We integrate transportation, logistics, and travel experiences for agencies and international travelers. Ski packages, wine tours, and premium transfers.',
+  keywords: 'Las Leñas transfers, Mendoza travel, ski packages, wine tours, receptive operator Argentina, travel agency partner, premium transfers',
   openGraph: {
-    title: 'XUMA TRAVEL | Premium Transfers to Las Leñas',
-    description: 'Reliable transportation from Mendoza to Las Leñas ski resort.',
+    title: 'XUMA TRAVEL | Premium Travel & Transfers to Las Leñas',
+    description: 'Your premium receptive operator in Mendoza. Ski packages, wine tours, and transfers.',
     type: 'website',
-    locale: 'en_US',
+    locale: 'es_AR',
+    alternateLocale: ['pt_BR', 'en_US'],
   },
   icons: {
     icon: [
@@ -58,7 +60,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

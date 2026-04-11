@@ -1,13 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-
-const stats = [
-  { value: 5000, suffix: "+", label: "Passengers per season" },
-  { value: 12, suffix: "+", label: "Years of experience" },
-  { value: 98, suffix: "%", label: "Satisfaction rate" },
-  { value: 24, suffix: "/7", label: "Support available" },
-]
+import { useI18n } from "@/lib/i18n"
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0)
@@ -60,18 +54,18 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function Trust() {
-  return (
-    <section className="py-20 md:py-28 bg-[#F8F6F3]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Why trust us
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] text-balance">
-            Proven reliability, season after season
-          </h2>
-        </div>
+  const { t } = useI18n()
 
+  const stats = [
+    { value: 5000, suffix: "+", label: t("trust.passengers") },
+    { value: 30, suffix: "+", label: t("trust.years") },
+    { value: 99, suffix: "%", label: t("trust.satisfaction") },
+    { value: 24, suffix: "/7", label: t("trust.support") },
+  ]
+
+  return (
+    <section className="py-16 md:py-20 bg-[#F8F6F3]">
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
             <div
