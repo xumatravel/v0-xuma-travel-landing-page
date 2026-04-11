@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MessageCircle, Send, CheckCircle, Clock, Zap } from "lucide-react"
+import { MessageCircle, Send, Clock, Zap } from "lucide-react"
 
 export function Contact() {
   const { t } = useI18n()
@@ -22,50 +22,45 @@ export function Contact() {
     interest: "",
     message: "",
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const buildWhatsAppMessage = () => {
+    const interestMap: Record<string, string> = {
+      ski: "Ski en Las Leñas",
+      experience: "Experiencia Mendoza (vino + montaña)",
+      transfer: "Transfers",
+      agency: "Soy Agencia de Viajes"
+    }
+
+    let message = `*Nueva Consulta XUMA TRAVEL*\n\n`
+    message += `*Nombre:* ${formData.name || "-"}\n`
+    message += `*País:* ${formData.country || "-"}\n`
+    message += `*Email:* ${formData.email || "-"}\n`
+    message += `*Teléfono:* ${formData.phone || "-"}\n`
+    message += `*Fecha de llegada:* ${formData.arrivalDate || "-"}\n`
+    message += `*Fecha de salida:* ${formData.departureDate || "-"}\n`
+    message += `*Pasajeros:* ${formData.passengers || "-"}\n`
+    message += `*Interés:* ${interestMap[formData.interest] || formData.interest || "-"}\n`
+    if (formData.message) {
+      message += `*Mensaje:* ${formData.message}\n`
+    }
+
+    return message
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", country: "", arrivalDate: "", departureDate: "", passengers: "", interest: "", message: "" })
-    }, 3000)
+    const message = buildWhatsAppMessage()
+    window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   const handleWhatsApp = () => {
-    let message = "Hello! I'm interested in planning my Mendoza experience."
-    
-    if (formData.name) {
-      message = `Hello! I'm ${formData.name}`
-      if (formData.country) message += ` from ${formData.country}`
-      message += "."
-      
-      if (formData.interest) {
-        const interestMap: Record<string, string> = {
-          ski: "Ski in Las Leñas",
-          experience: "Mendoza Experience",
-          transfer: "transfers",
-          agency: "partnering as a travel agency"
-        }
-        message += ` I'm interested in ${interestMap[formData.interest] || formData.interest}.`
-      }
-      
-      if (formData.arrivalDate) {
-        message += ` Arrival: ${formData.arrivalDate}.`
-        if (formData.departureDate) message += ` Departure: ${formData.departureDate}.`
-      }
-      if (formData.passengers) message += ` ${formData.passengers} passengers.`
+    if (formData.name || formData.interest || formData.arrivalDate) {
+      const message = buildWhatsAppMessage()
+      window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+    } else {
+      window.open("https://wa.me/542604023087?text=Hola!%20Estoy%20interesado%20en%20planificar%20mi%20experiencia%20en%20Mendoza", "_blank")
     }
-    
-    window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   return (
@@ -118,20 +113,7 @@ export function Contact() {
 
             {/* Smart Contact Form */}
             <div className="md:col-span-3 bg-white/5 backdrop-blur-sm rounded-2xl p-8">
-              {isSubmitted ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                  <div className="w-20 h-20 rounded-full bg-[#6B7D5C]/20 flex items-center justify-center mb-6">
-                    <CheckCircle className="w-10 h-10 text-[#6B7D5C]" />
-                  </div>
-                  <h3 className="font-serif font-bold text-white text-2xl mb-2">
-                    Message Sent!
-                  </h3>
-                  <p className="text-white/70">
-                    We&apos;ll get back to you within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Row 1: Name + Country */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <FieldGroup>
@@ -274,20 +256,12 @@ export function Contact() {
                   <Button
                     type="submit"
                     size="lg"
-                    disabled={isSubmitting}
                     className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6"
                   >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-2" />
-                        {t("contact.form.submit")}
-                      </>
-                    )}
+                    <Send className="w-5 h-5 mr-2" />
+                    {t("contact.form.submit")}
                   </Button>
                 </form>
-              )}
             </div>
           </div>
         </div>
