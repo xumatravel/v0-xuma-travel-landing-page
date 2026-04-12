@@ -1,10 +1,14 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: Request) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured')
+      return NextResponse.json({ error: 'Email service is not configured' }, { status: 500 })
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY)
     const body = await request.json()
     const { name, email, phone, country, arrivalDate, departureDate, passengers, interest, message } = body
 
@@ -63,7 +67,7 @@ export async function POST(request: Request) {
     `
 
     const { data, error } = await resend.emails.send({
-      from: 'XUMA Travel <onboarding@resend.dev>',
+      from: 'XUMA Travel <noreply@xuma.com.ar>',
       to: ['info@xuma.com.ar'],
       subject: `Nueva Consulta Web: ${name || "Sin nombre"} - ${interestMap[interest] || "Consulta general"}`,
       html: emailContent,
@@ -71,8 +75,8 @@ export async function POST(request: Request) {
     })
 
     if (error) {
-      console.error('Error sending email:', error)
-      return NextResponse.json({ error: 'Error sending email' }, { status: 500 })
+      console.error('Error sending email:', JSON.stringify(error, null, 2))
+      return NextResponse.json({ error: error.message || 'Error sending email' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true, data })
