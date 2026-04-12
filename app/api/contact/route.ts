@@ -67,7 +67,7 @@ export async function POST(request: Request) {
     `
 
     const { data, error } = await resend.emails.send({
-      from: 'XUMA Travel <onboarding@resend.dev>',
+      from: 'XUMA Travel <noreply@xuma.com.ar>',
       to: ['info@xuma.com.ar'],
       subject: `Nueva Consulta Web: ${name || "Sin nombre"} - ${interestMap[interest] || "Consulta general"}`,
       html: emailContent,
