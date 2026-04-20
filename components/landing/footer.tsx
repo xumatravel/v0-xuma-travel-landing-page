@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
 import { MessageCircle, Mail, MapPin, Instagram } from "lucide-react"
+import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function Footer() {
   const { t } = useI18n()
@@ -40,7 +41,7 @@ export function Footer() {
                 <Instagram className="w-5 h-5 text-white" />
               </a>
               <a
-                href="https://wa.me/542604023087"
+                href={WHATSAPP_CONFIG.buildUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#6B7D5C] transition-colors duration-300"
@@ -74,7 +75,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://wa.me/542604023087"
+                  href={WHATSAPP_CONFIG.buildUrl()}
                   className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors duration-200"
                 >
                   <MessageCircle className="w-4 h-4 text-[#6B7D5C]" />
