@@ -4,12 +4,13 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, ArrowRight, Shield, Award } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
+import { openWhatsApp } from "@/lib/contact-config"
 
 export function Hero() {
   const { t } = useI18n()
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/542604023087?text=Hello!%20I%20am%20interested%20in%20planning%20my%20Mendoza%20experience", "_blank")
+    openWhatsApp()
   }
 
   const scrollToContact = () => {

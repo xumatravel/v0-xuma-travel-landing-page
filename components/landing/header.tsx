@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, MessageCircle, X } from "lucide-react"
 import Link from "next/link"
 import { useI18n, LanguageSwitcher } from "@/lib/i18n"
+import { openWhatsApp } from "@/lib/contact-config"
 
 export function Header() {
   const { t } = useI18n()
@@ -30,7 +31,7 @@ export function Header() {
   }, [])
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/542604023087?text=Hello!%20I%20am%20interested%20in%20planning%20my%20Mendoza%20experience", "_blank")
+    openWhatsApp()
   }
 
   return (

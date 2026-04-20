@@ -4,13 +4,15 @@ import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, MessageCircle, ArrowRight } from "lucide-react"
+import { getWhatsAppUrl, WHATSAPP_CONFIG } from "@/lib/contact-config"
 
 export function Agencies() {
   const { t, tArray } = useI18n()
   const benefits = tArray("b2b.benefits")
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/542604023087?text=Hello!%20I%20am%20a%20travel%20agency%20interested%20in%20partnering%20with%20XUMA%20TRAVEL", "_blank")
+    const agencyMessage = "Hola! Soy una agencia de viajes interesada en trabajar con XUMA TRAVEL"
+    window.open(getWhatsAppUrl(agencyMessage), "_blank")
   }
 
   return (
