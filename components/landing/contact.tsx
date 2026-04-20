@@ -1,17 +1,76 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MessageCircle, Send, Clock, Zap } from "lucide-react"
+import { MessageCircle, Send, Clock, Zap, CheckCircle2 } from "lucide-react"
+import { 
+  WHATSAPP_CONFIG, 
+  INTEGRATIONS_CONFIG, 
+  buildWhatsAppMessage as buildMessage,
+  prepareLeadData 
+} from "@/lib/config"
 
+// ============================================================================
+// TIPOS
+// ============================================================================
+interface FormData {
+  name: string
+  email: string
+  phone: string
+  country: string
+  arrivalDate: string
+  departureDate: string
+  passengers: string
+  interest: string
+  message: string
+}
+
+interface ValidationErrors {
+  [key: string]: string
+}
+
+/**
+ * Valida los campos del formulario
+ */
+function validateForm(formData: FormData): ValidationErrors {
+  const errors: ValidationErrors = {}
+  
+  if (!formData.name.trim()) {
+    errors.name = "El nombre es requerido"
+  }
+  
+  if (!formData.country.trim()) {
+    errors.country = "El país es requerido"
+  }
+  
+  if (!formData.email.trim()) {
+    errors.email = "El email es requerido"
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    errors.email = "Ingresa un email válido"
+  }
+  
+  if (!formData.arrivalDate) {
+    errors.arrivalDate = "La fecha de llegada es requerida"
+  }
+  
+  if (!formData.interest) {
+    errors.interest = "Selecciona tu interés"
+  }
+  
+  return errors
+}
+
+// ============================================================================
+// COMPONENTE PRINCIPAL
+// ============================================================================
 export function Contact() {
   const { t } = useI18n()
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -22,80 +81,107 @@ export function Contact() {
     interest: "",
     message: "",
   })
+  const [errors, setErrors] = useState<ValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
-  const buildWhatsAppMessage = () => {
-    const interestMap: Record<string, string> = {
-      ski: "Ski en Las Leñas",
-      experience: "Experiencia Mendoza (vino + montaña)",
-      transfer: "Transfers",
-      agency: "Soy Agencia de Viajes"
+  // Actualizar campo del formulario
+  const updateField = useCallback((field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    // Limpiar error del campo cuando el usuario empieza a escribir
+    if (errors[field]) {
+      setErrors(prev => {
+        const newErrors = { ...prev }
+        delete newErrors[field]
+        return newErrors
+      })
     }
+  }, [errors])
 
-    let message = `*Nueva Consulta XUMA TRAVEL*\n\n`
-    message += `*Nombre:* ${formData.name || "-"}\n`
-    message += `*País:* ${formData.country || "-"}\n`
-    message += `*Email:* ${formData.email || "-"}\n`
-    message += `*Teléfono:* ${formData.phone || "-"}\n`
-    message += `*Fecha de llegada:* ${formData.arrivalDate || "-"}\n`
-    message += `*Fecha de regreso:* ${formData.departureDate || "-"}\n`
-    message += `*Pasajeros:* ${formData.passengers || "-"}\n`
-    message += `*Interés:* ${interestMap[formData.interest] || formData.interest || "-"}\n`
-    if (formData.message) {
-      message += `*Mensaje:* ${formData.message}\n`
-    }
+  // Reset del formulario
+  const resetForm = useCallback(() => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      country: "",
+      arrivalDate: "",
+      departureDate: "",
+      passengers: "",
+      interest: "",
+      message: "",
+    })
+    setErrors({})
+  }, [])
 
-    return message
-  }
-
+  // Envio del formulario
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Validar formulario
+    const validationErrors = validateForm(formData)
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+    
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
     try {
-      // Send email
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitStatus("success")
-        // Also open WhatsApp with the message
-        const message = buildWhatsAppMessage()
-        window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
-        // Reset form after success
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          country: "",
-          arrivalDate: "",
-          departureDate: "",
-          passengers: "",
-          interest: "",
-          message: "",
+      // 1. PRIORIDAD: Abrir WhatsApp inmediatamente (nunca falla)
+      const message = buildMessage(formData)
+      WHATSAPP_CONFIG.open(message)
+      
+      // 2. BACKUP: Enviar email en segundo plano (no bloquea)
+      if (INTEGRATIONS_CONFIG.email.enabled) {
+        const leadData = prepareLeadData(formData)
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(leadData),
+        }).catch(() => {
+          // Silenciosamente fallar - WhatsApp ya fue enviado
         })
-      } else {
-        setSubmitStatus("error")
       }
+      
+      // 3. TODO: Google Sheets backup (futuro)
+      // if (INTEGRATIONS_CONFIG.googleSheets.enabled) {
+      //   await sendToGoogleSheets(leadData)
+      // }
+      
+      // 4. TODO: CRM sync (futuro)
+      // if (INTEGRATIONS_CONFIG.crm.enabled) {
+      //   await syncToCRM(leadData)
+      // }
+      
+      // Exito - WhatsApp se abrio correctamente
+      setSubmitStatus("success")
+      
+      // Reset formulario despues de un breve delay
+      setTimeout(() => {
+        resetForm()
+        setSubmitStatus("idle")
+      }, 3000)
+      
     } catch (error) {
       console.error("Error submitting form:", error)
-      setSubmitStatus("error")
+      // Incluso si hay error, intentar abrir WhatsApp como fallback
+      const message = buildMessage(formData)
+      WHATSAPP_CONFIG.open(message)
+      setSubmitStatus("success")
     } finally {
       setIsSubmitting(false)
     }
   }
 
+  // Boton de WhatsApp directo (sin formulario completo)
   const handleWhatsApp = () => {
     if (formData.name || formData.interest || formData.arrivalDate) {
-      const message = buildWhatsAppMessage()
-      window.open(`https://wa.me/542604023087?text=${encodeURIComponent(message)}`, "_blank")
+      const message = buildMessage(formData)
+      WHATSAPP_CONFIG.open(message)
     } else {
-      window.open("https://wa.me/542604023087?text=Hola!%20Estoy%20interesado%20en%20planificar%20mi%20experiencia%20en%20Mendoza", "_blank")
+      WHATSAPP_CONFIG.open()
     }
   }
 
@@ -159,10 +245,10 @@ export function Contact() {
                           type="text"
                           placeholder="John Doe"
                           value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          required
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40"
+                          onChange={(e) => updateField("name", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder:text-white/40 ${errors.name ? "border-red-400" : ""}`}
                         />
+                        {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                       </Field>
                     </FieldGroup>
 
@@ -173,10 +259,10 @@ export function Contact() {
                           type="text"
                           placeholder="Brazil"
                           value={formData.country}
-                          onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                          required
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40"
+                          onChange={(e) => updateField("country", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder:text-white/40 ${errors.country ? "border-red-400" : ""}`}
                         />
+                        {errors.country && <p className="text-red-400 text-xs mt-1">{errors.country}</p>}
                       </Field>
                     </FieldGroup>
                   </div>
@@ -190,10 +276,10 @@ export function Contact() {
                           type="email"
                           placeholder="john@example.com"
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          required
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40"
+                          onChange={(e) => updateField("email", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder:text-white/40 ${errors.email ? "border-red-400" : ""}`}
                         />
+                        {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                       </Field>
                     </FieldGroup>
 
@@ -204,7 +290,7 @@ export function Contact() {
                           type="tel"
                           placeholder="+54 9 261 555 5555"
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(e) => updateField("phone", e.target.value)}
                           className="bg-white/10 border-white/20 text-white placeholder:text-white/40"
                         />
                       </Field>
@@ -219,10 +305,10 @@ export function Contact() {
                         <Input
                           type="date"
                           value={formData.arrivalDate}
-                          onChange={(e) => setFormData({ ...formData, arrivalDate: e.target.value })}
-                          required
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
+                          onChange={(e) => updateField("arrivalDate", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark] ${errors.arrivalDate ? "border-red-400" : ""}`}
                         />
+                        {errors.arrivalDate && <p className="text-red-400 text-xs mt-1">{errors.arrivalDate}</p>}
                       </Field>
                     </FieldGroup>
 
@@ -232,7 +318,7 @@ export function Contact() {
                         <Input
                           type="date"
                           value={formData.departureDate}
-                          onChange={(e) => setFormData({ ...formData, departureDate: e.target.value })}
+                          onChange={(e) => updateField("departureDate", e.target.value)}
                           className="bg-white/10 border-white/20 text-white placeholder:text-white/40 [color-scheme:dark]"
                         />
                       </Field>
@@ -243,7 +329,7 @@ export function Contact() {
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.passengers")}</FieldLabel>
-                      <Select value={formData.passengers} onValueChange={(value) => setFormData({ ...formData, passengers: value })}>
+                      <Select value={formData.passengers} onValueChange={(value) => updateField("passengers", value)}>
                         <SelectTrigger className="bg-white/10 border-white/20 text-white">
                           <SelectValue placeholder="1" />
                         </SelectTrigger>
@@ -261,8 +347,8 @@ export function Contact() {
                   <FieldGroup>
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.interest")} *</FieldLabel>
-                      <Select value={formData.interest} onValueChange={(value) => setFormData({ ...formData, interest: value })} required>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <Select value={formData.interest} onValueChange={(value) => updateField("interest", value)}>
+                        <SelectTrigger className={`bg-white/10 border-white/20 text-white ${errors.interest ? "border-red-400" : ""}`}>
                           <SelectValue placeholder={t("contact.form.interest")} />
                         </SelectTrigger>
                         <SelectContent>
@@ -272,6 +358,7 @@ export function Contact() {
                           <SelectItem value="agency">{t("contact.form.interest.agency")}</SelectItem>
                         </SelectContent>
                       </Select>
+                      {errors.interest && <p className="text-red-400 text-xs mt-1">{errors.interest}</p>}
                     </Field>
                   </FieldGroup>
 
@@ -282,21 +369,29 @@ export function Contact() {
                       <Textarea
                         placeholder="Tell us about your travel plans..."
                         value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        onChange={(e) => updateField("message", e.target.value)}
                         rows={3}
                         className="bg-white/10 border-white/20 text-white placeholder:text-white/40 resize-none"
                       />
                     </Field>
                   </FieldGroup>
 
+                  {/* Status Messages */}
                   {submitStatus === "success" && (
-                    <div className="bg-[#6B7D5C]/20 border border-[#6B7D5C]/40 rounded-lg p-3 text-center">
-                      <p className="text-[#6B7D5C] text-sm font-medium">Mensaje enviado correctamente</p>
+                    <div className="bg-[#6B7D5C]/20 border border-[#6B7D5C]/40 rounded-lg p-4 text-center flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-[#6B7D5C]" />
+                      <p className="text-[#6B7D5C] text-sm font-medium">
+                        Consulta enviada a WhatsApp. Te responderemos pronto.
+                      </p>
                     </div>
                   )}
-                  {submitStatus === "error" && (
-                    <div className="bg-red-500/20 border border-red-500/40 rounded-lg p-3 text-center">
-                      <p className="text-red-400 text-sm font-medium">Error al enviar. Intenta de nuevo.</p>
+
+                  {/* Validation errors summary */}
+                  {Object.keys(errors).length > 0 && (
+                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-center">
+                      <p className="text-red-400 text-sm">
+                        Por favor completa los campos requeridos
+                      </p>
                     </div>
                   )}
 
@@ -304,10 +399,13 @@ export function Contact() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6 disabled:opacity-50"
+                    className="w-full bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-bold py-6 disabled:opacity-50 transition-all"
                   >
                     {isSubmitting ? (
-                      <>Enviando...</>
+                      <span className="flex items-center gap-2">
+                        <span className="w-5 h-5 border-2 border-[#0B0B0B]/30 border-t-[#0B0B0B] rounded-full animate-spin" />
+                        Abriendo WhatsApp...
+                      </span>
                     ) : (
                       <>
                         <Send className="w-5 h-5 mr-2" />
@@ -315,6 +413,11 @@ export function Contact() {
                       </>
                     )}
                   </Button>
+                  
+                  {/* Trust indicator */}
+                  <p className="text-center text-white/40 text-xs">
+                    Tu consulta se enviara directamente a WhatsApp para respuesta inmediata
+                  </p>
                 </form>
             </div>
           </div>
