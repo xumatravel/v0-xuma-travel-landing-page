@@ -367,7 +367,7 @@ export function Contact() {
                     <Field>
                       <FieldLabel className="text-white/80">{t("contact.form.message")}</FieldLabel>
                       <Textarea
-                        placeholder="Tell us about your travel plans..."
+                        placeholder={t("contact.form.messagePlaceholder")}
                         value={formData.message}
                         onChange={(e) => updateField("message", e.target.value)}
                         rows={3}
