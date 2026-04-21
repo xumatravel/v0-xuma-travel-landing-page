@@ -30,12 +30,15 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Planifica tu experiencia",
 
     // Hero
-    "hero.headline": "Viajes Premium en Mendoza — Ski, Vino y Experiencias Todo en Uno",
-    "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
+    "hero.headline": "Tu Operador Premium para Las Leñas, Mendoza y Experiencias de Alta Gama",
+    "hero.subheadline": "Transporte, ski, vino y experiencias exclusivas para agencias y viajeros internacionales.",
+    "hero.description": "Más de 30 años operando en Mendoza con servicio privado, atención personalizada y soluciones premium para cada viaje.",
     "hero.trust1": "30+ años de experiencia (empresa familiar)",
-    "hero.trust2": "Proveedor oficial de transporte al Valle de Las Leñas",
-    "hero.cta.primary": "Recibí tu propuesta en minutos",
-    "hero.cta.secondary": "Hablar por WhatsApp",
+    "hero.badge": "Operador Premium Especializado",
+    "hero.cta.ski": "Traslados a Las Leñas",
+    "hero.cta.experience": "Experiencias en Bodegas",
+    "hero.cta.transfer": "Paquetes Premium",
+    "hero.cta.whatsapp": "Cotizá tu viaje personalizado",
 
     // What We Really Do
     "whatWeDo.title": "Lo Que Realmente Hacemos",
@@ -109,11 +112,22 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiencia premium sin fricciones en Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Pasajeros transportados",
+    "trust.passengers": "Pasajeros por temporada",
     "trust.years": "Años de experiencia",
-    "trust.satisfaction": "Satisfacción",
-    "trust.support": "Soporte",
+    "trust.satisfaction": "Satisfacción clientes",
+    "trust.support": "Soporte disponible",
     "trust.supportValue": "24/7",
+    
+    // Trust Points
+    "trust.point1": "Operador especializado en Las Leñas",
+    "trust.point2": "Atención internacional (Brasil, Chile, Europa)",
+    "trust.point3": "Servicio privado y corporativo",
+    "trust.point4": "Operación premium personalizada",
+    
+    // Las Leñas Partner
+    "trust.partnerBadge": "Proveedor Oficial",
+    "trust.partnerTitle": "Operador Premium en Valle de Las Leñas",
+    "trust.partnerDescription": "Más de 30 años como proveedor especializado en transporte y operación turística hacia el centro de ski más importante de Sudamérica.",
 
     // Contact
     "contact.title": "Planifica tu Experiencia en Mendoza",
@@ -209,12 +223,15 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Planeje sua experiência",
 
     // Hero
-    "hero.headline": "Viagens Premium em Mendoza — Ski, Vinho e Experiências Tudo em Um",
-    "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
+    "hero.headline": "Seu Operador Premium para Las Leñas, Mendoza e Experiências de Alta Qualidade",
+    "hero.subheadline": "Transporte, ski, vinho e experiências exclusivas para agências e viajantes internacionais.",
+    "hero.description": "Mais de 30 anos operando em Mendoza com serviço privado, atendimento personalizado e soluções premium para cada viagem.",
     "hero.trust1": "30+ anos de experiência (empresa familiar)",
-    "hero.trust2": "Fornecedor oficial de transporte para o Vale de Las Leñas",
-    "hero.cta.primary": "Receba sua proposta em minutos",
-    "hero.cta.secondary": "Falar no WhatsApp",
+    "hero.badge": "Operador Premium Especializado",
+    "hero.cta.ski": "Traslados para Las Leñas",
+    "hero.cta.experience": "Experiências em Vinícolas",
+    "hero.cta.transfer": "Pacotes Premium",
+    "hero.cta.whatsapp": "Solicite seu orçamento personalizado",
 
     // What We Really Do
     "whatWeDo.title": "O Que Realmente Fazemos",
@@ -288,11 +305,22 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiência premium sem atritos em Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passageiros transportados",
+    "trust.passengers": "Passageiros por temporada",
     "trust.years": "Anos de experiência",
-    "trust.satisfaction": "Satisfação",
-    "trust.support": "Suporte",
+    "trust.satisfaction": "Satisfação dos clientes",
+    "trust.support": "Suporte disponível",
     "trust.supportValue": "24/7",
+    
+    // Trust Points
+    "trust.point1": "Operador especializado em Las Leñas",
+    "trust.point2": "Atendimento internacional (Brasil, Chile, Europa)",
+    "trust.point3": "Serviço privado e corporativo",
+    "trust.point4": "Operação premium personalizada",
+    
+    // Las Leñas Partner
+    "trust.partnerBadge": "Fornecedor Oficial",
+    "trust.partnerTitle": "Operador Premium no Vale de Las Leñas",
+    "trust.partnerDescription": "Mais de 30 anos como fornecedor especializado em transporte e operação turística para o maior centro de ski da América do Sul.",
 
     // Contact
     "contact.title": "Planeje sua Experiência em Mendoza",
@@ -388,12 +416,15 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Plan your experience",
 
     // Hero
-    "hero.headline": "Premium Travel in Mendoza — Ski, Wine & Experiences All in One",
-    "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
+    "hero.headline": "Your Premium Operator for Las Leñas, Mendoza & High-End Experiences",
+    "hero.subheadline": "Transportation, ski, wine, and exclusive experiences for agencies and international travelers.",
+    "hero.description": "Over 30 years operating in Mendoza with private service, personalized attention, and premium solutions for every trip.",
     "hero.trust1": "30+ years of experience (family business)",
-    "hero.trust2": "Official transportation provider to Valle de Las Leñas",
-    "hero.cta.primary": "Get your proposal in minutes",
-    "hero.cta.secondary": "Chat on WhatsApp",
+    "hero.badge": "Specialized Premium Operator",
+    "hero.cta.ski": "Las Leñas Transfers",
+    "hero.cta.experience": "Winery Experiences",
+    "hero.cta.transfer": "Premium Packages",
+    "hero.cta.whatsapp": "Request your custom quote",
 
     // What We Really Do
     "whatWeDo.title": "What We Really Do",
@@ -467,11 +498,22 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Frictionless premium experience in Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passengers transported",
+    "trust.passengers": "Passengers per season",
     "trust.years": "Years of experience",
-    "trust.satisfaction": "Satisfaction",
-    "trust.support": "Support",
+    "trust.satisfaction": "Client satisfaction",
+    "trust.support": "Support available",
     "trust.supportValue": "24/7",
+    
+    // Trust Points
+    "trust.point1": "Specialized Las Leñas operator",
+    "trust.point2": "International service (Brazil, Chile, Europe)",
+    "trust.point3": "Private & corporate service",
+    "trust.point4": "Personalized premium operations",
+    
+    // Las Leñas Partner
+    "trust.partnerBadge": "Official Provider",
+    "trust.partnerTitle": "Premium Operator in Valle de Las Leñas",
+    "trust.partnerDescription": "Over 30 years as a specialized provider in transportation and tourism operations to South America's largest ski resort.",
 
     // Contact
     "contact.title": "Plan Your Mendoza Experience",

@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, ArrowRight, Shield, Award } from "lucide-react"
+import { MessageCircle, ArrowRight, Shield, Award, Mountain, Wine, Car } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
@@ -15,6 +15,10 @@ export function Hero() {
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const scrollToProducts = () => {
+    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -38,12 +42,12 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-4 py-2 mb-8">
             <Award className="w-4 h-4 text-[#C8A96A]" />
             <span className="text-[#C8A96A] text-sm font-medium">
-              {t("hero.trust2")}
+              {t("hero.badge")}
             </span>
           </div>
 
@@ -53,8 +57,13 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed text-pretty">
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-4 leading-relaxed text-pretty">
             {t("hero.subheadline")}
+          </p>
+          
+          {/* Extended description */}
+          <p className="text-base text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+            {t("hero.description")}
           </p>
 
           {/* Trust Points */}
@@ -65,26 +74,44 @@ export function Hero() {
             </div>
           </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Primary CTAs - 3 options */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-6">
             <Button
               onClick={scrollToContact}
               size="lg"
-              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-semibold px-8 py-6 text-lg group"
+              className="bg-[#C8A96A] hover:bg-[#b89a5c] text-[#0B0B0B] font-semibold px-6 py-6 text-base group"
             >
-              {t("hero.cta.primary")}
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Mountain className="w-5 h-5 mr-2" />
+              {t("hero.cta.ski")}
             </Button>
             <Button
-              onClick={handleWhatsApp}
+              onClick={scrollToProducts}
               size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
+              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-semibold px-6 py-6 text-base group"
             >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              {t("hero.cta.secondary")}
+              <Wine className="w-5 h-5 mr-2" />
+              {t("hero.cta.experience")}
+            </Button>
+            <Button
+              onClick={scrollToContact}
+              size="lg"
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-6 text-base group"
+            >
+              <Car className="w-5 h-5 mr-2" />
+              {t("hero.cta.transfer")}
             </Button>
           </div>
+
+          {/* Secondary CTA - WhatsApp */}
+          <Button
+            onClick={handleWhatsApp}
+            size="lg"
+            variant="outline"
+            className="border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 px-8 py-5"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            {t("hero.cta.whatsapp")}
+          </Button>
         </div>
       </div>
 
