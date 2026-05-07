@@ -3,10 +3,10 @@ import { LasLenasHero } from "@/components/las-lenas/hero"
 import { LasLenasTrust } from "@/components/las-lenas/trust"
 import { LasLenasRouteInfo } from "@/components/las-lenas/route-info"
 import { LasLenasServices } from "@/components/las-lenas/services"
-import { LasLenasHowItWorks } from "@/components/las-lenas/how-it-works"
+import { LasLenasQuoteForm } from "@/components/las-lenas/quote-form"
 import { LasLenasWhyUs } from "@/components/las-lenas/why-us"
-import { LasLenasLodging } from "@/components/las-lenas/lodging"
 import { LasLenasTestimonials } from "@/components/las-lenas/testimonials"
+import { LasLenasCTA } from "@/components/las-lenas/cta-section"
 import { LasLenasFAQ } from "@/components/las-lenas/faq"
 import { LasLenasContact } from "@/components/las-lenas/contact"
 import { LasLenasFooter } from "@/components/las-lenas/footer"
@@ -33,12 +33,12 @@ export default function LasLenasPage() {
       <LasLenasHeader />
       <LasLenasHero />
       <LasLenasTrust />
-      <LasLenasRouteInfo />
+      <LasLenasQuoteForm />
       <LasLenasServices />
-      <LasLenasHowItWorks />
+      <LasLenasRouteInfo />
       <LasLenasWhyUs />
-      <LasLenasLodging />
       <LasLenasTestimonials />
+      <LasLenasCTA />
       <LasLenasFAQ />
       <LasLenasContact />
       <LasLenasFooter />

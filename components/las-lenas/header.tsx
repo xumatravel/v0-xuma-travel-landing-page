@@ -12,8 +12,8 @@ export function LasLenasHeader() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
+    { href: "#cotizador", label: "Cotizar" },
     { href: "#servicios", label: "Servicios" },
-    { href: "#como-funciona", label: "Cómo Funciona" },
     { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
     { href: "#testimonios", label: "Testimonios" },
     { href: "#contacto", label: "Contacto" },

@@ -1,54 +1,65 @@
 "use client"
 
 import Image from "next/image"
-import { Shield, Snowflake, Clock, Users, Car, Award } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Shield, Car, Award, Mountain, ArrowDown } from "lucide-react"
 
 export function LasLenasWhyUs() {
-  const reasons = [
+  const differentials = [
     {
-      icon: Car,
-      title: "Vehículos 4x4 Equipados",
-      description:
-        "Todos nuestros vehículos cuentan con tracción 4x4, cadenas, neumáticos de invierno y equipamiento de emergencia.",
+      icon: Award,
+      title: "Transporte Oficial a Las Leñas",
+      description: "Operador autorizado con todos los permisos y habilitaciones al día.",
     },
     {
       icon: Shield,
-      title: "Conductores Expertos",
-      description:
-        "Nuestros conductores conocen cada curva del camino a Las Leñas. Más de 10 años de experiencia en rutas de montaña.",
+      title: "Choferes Profesionales",
+      description: "Conductores expertos con más de 10 años en rutas de montaña.",
     },
     {
-      icon: Snowflake,
-      title: "Experiencia en Nieve",
-      description:
-        "Operamos durante toda la temporada de ski. Conocemos las condiciones del camino y nos adaptamos a ellas.",
+      icon: Car,
+      title: "Vehículos Habilitados",
+      description: "Flota 4x4 con seguros, VTV y equipamiento de seguridad.",
     },
     {
-      icon: Clock,
-      title: "Puntualidad Garantizada",
-      description:
-        "Llegamos a tiempo, siempre. Monitoreamos condiciones climáticas y de ruta para cumplir con los horarios.",
-    },
-    {
-      icon: Users,
-      title: "Servicio Personalizado",
-      description:
-        "Adaptamos el servicio a tus necesidades: paradas, horarios flexibles, equipaje especial para ski.",
-    },
-    {
-      icon: Award,
-      title: "Precio Justo",
-      description:
-        "Precios transparentes sin sorpresas. Incluimos todo: combustible, peajes, seguro y tiempo de espera.",
+      icon: Mountain,
+      title: "Experiencia en Montaña",
+      description: "Conocemos cada curva del camino. Viaja tranquilo.",
     },
   ]
+
+  const scrollToForm = () => {
+    document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <section id="por-que-nosotros" className="py-20 md:py-28 bg-[#F8F6F3]">
       <div className="container mx-auto px-6">
+        {/* About Us Header */}
+        <div className="text-center mb-16">
+          <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
+            Sobre Nosotros
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
+            Operadores en Mendoza, Especialistas en Las Leñas
+          </h2>
+          <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+            Somos un equipo local con años de experiencia en logística de montaña.
+            Conocemos cada kilómetro del camino a Las Leñas y nos especializamos en
+            brindar traslados seguros, puntuales y confortables.
+          </p>
+          
+          {/* Strong phrase */}
+          <div className="inline-block bg-[#0B0B0B] text-white px-8 py-4 rounded-2xl">
+            <p className="text-lg md:text-xl font-medium">
+              &ldquo;Viví Mendoza sin preocuparte por nada. Nosotros coordinamos todo.&rdquo;
+            </p>
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
-          <div className="relative order-2 lg:order-1">
+          <div className="relative">
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/ski-resort.jpg"
@@ -78,35 +89,40 @@ export function LasLenasWhyUs() {
             </div>
           </div>
 
-          {/* Content */}
-          <div className="order-1 lg:order-2">
+          {/* Content - Differentials */}
+          <div>
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              Por Qué Elegirnos
+              Nuestros Diferenciales
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-              La Ruta a Las Leñas Requiere Expertos
-            </h2>
-            <p className="text-[#0B0B0B]/70 text-lg leading-relaxed mb-10">
-              El camino a Las Leñas puede ser desafiante, especialmente en invierno.
-              No arriesgues tu viaje con improvisados. Confía en quienes conocen
-              cada kilómetro de esta ruta.
-            </p>
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-8 text-balance">
+              Por Qué Somos la Mejor Opción
+            </h3>
 
-            <div className="grid sm:grid-cols-2 gap-6">
-              {reasons.map((reason, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-[#6B7D5C]/10 flex items-center justify-center">
-                    <reason.icon className="w-5 h-5 text-[#6B7D5C]" />
+            <div className="grid gap-6 mb-8">
+              {differentials.map((item, index) => (
+                <div key={index} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-[#6B7D5C]/10 flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-[#6B7D5C]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#0B0B0B] mb-1">{reason.title}</h3>
+                    <h4 className="font-semibold text-[#0B0B0B] mb-1">{item.title}</h4>
                     <p className="text-[#0B0B0B]/60 text-sm leading-relaxed">
-                      {reason.description}
+                      {item.description}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
+
+            {/* CTA */}
+            <Button
+              onClick={scrollToForm}
+              size="lg"
+              className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white px-8 py-6 text-lg font-semibold"
+            >
+              Cotizar mi Traslado
+              <ArrowDown className="w-5 h-5 ml-2" />
+            </Button>
           </div>
         </div>
       </div>

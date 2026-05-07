@@ -2,12 +2,16 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageCircle, Phone, Mail, Clock } from "lucide-react"
+import { MessageCircle, Phone, Mail, Clock, ArrowDown } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function LasLenasContact() {
   const handleWhatsApp = () => {
     WHATSAPP_CONFIG.open("Hola! Quiero reservar un transfer a Las Leñas")
+  }
+
+  const scrollToForm = () => {
+    document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -17,7 +21,7 @@ export function LasLenasContact() {
           {/* Header */}
           <div className="text-center mb-12">
             <p className="text-[#C8A96A] font-medium tracking-wider uppercase text-sm mb-3">
-              Reserva Tu Transfer
+              Contacto Directo
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
               ¿Listo para Viajar a Las Leñas?
@@ -28,59 +32,58 @@ export function LasLenasContact() {
             </p>
           </div>
 
-          {/* CTA Card */}
-          <Card className="bg-gradient-to-br from-[#6B7D5C] to-[#5a6b4d] border-0 overflow-hidden">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white px-10 py-7 text-lg font-semibold"
+            >
+              <ArrowDown className="w-5 h-5 mr-2" />
+              Cotizar mi Traslado
+            </Button>
+            <Button
+              onClick={handleWhatsApp}
+              size="lg"
+              className="bg-white text-[#0B0B0B] hover:bg-white/90 px-10 py-7 text-lg font-semibold"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Consultar Disponibilidad
+            </Button>
+          </div>
+
+          {/* Contact Info Card */}
+          <Card className="bg-white/5 border-white/10 overflow-hidden">
             <CardContent className="p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                {/* Left - Contact Info */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white/70 text-sm">WhatsApp</p>
-                      <p className="text-white font-semibold">+54 260 402 3087</p>
-                    </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#6B7D5C]/20 flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-[#6B7D5C]" />
                   </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white/70 text-sm">Email</p>
-                      <p className="text-white font-semibold">info@xuma.com.ar</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white/70 text-sm">Horario de Atención</p>
-                      <p className="text-white font-semibold">Lunes a Domingo, 8:00 - 22:00</p>
-                    </div>
+                  <div>
+                    <p className="text-white/60 text-sm">WhatsApp</p>
+                    <p className="text-white font-semibold">+54 260 402 3087</p>
                   </div>
                 </div>
 
-                {/* Right - CTA */}
-                <div className="text-center md:text-right">
-                  <p className="text-white text-lg mb-4">
-                    La forma más rápida de reservar:
-                  </p>
-                  <Button
-                    onClick={handleWhatsApp}
-                    size="lg"
-                    className="bg-white text-[#6B7D5C] hover:bg-white/90 px-8 py-6 text-lg font-semibold"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Reservar por WhatsApp
-                  </Button>
-                  <p className="text-white/60 text-sm mt-4">
-                    Respuesta en menos de 30 minutos
-                  </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#6B7D5C]/20 flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-[#6B7D5C]" />
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-sm">Email</p>
+                    <p className="text-white font-semibold">info@xuma.com.ar</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#6B7D5C]/20 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-[#6B7D5C]" />
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-sm">Horario</p>
+                    <p className="text-white font-semibold">Lunes a Domingo, 8-22hs</p>
+                  </div>
                 </div>
               </div>
             </CardContent>

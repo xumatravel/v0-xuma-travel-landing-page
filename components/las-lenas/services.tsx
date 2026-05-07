@@ -12,7 +12,7 @@ export function LasLenasServices() {
   }
 
   const scrollToForm = () => {
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" })
   }
 
   const services = [
@@ -147,7 +147,7 @@ export function LasLenasServices() {
                         : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
                     }`}
                   >
-                    Reservar Ahora
+                    Cotizar mi Traslado
                   </Button>
                   <Button
                     onClick={() => handleWhatsApp(service.title)}
@@ -155,7 +155,7 @@ export function LasLenasServices() {
                     className="w-full border-[#0B0B0B]/20"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Consultar disponibilidad
+                    Consultar Disponibilidad
                   </Button>
                 </div>
               </CardContent>

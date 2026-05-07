@@ -12,7 +12,7 @@ export function LasLenasHero() {
   }
 
   const scrollToForm = () => {
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -72,7 +72,7 @@ export function LasLenasHero() {
               size="lg"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white px-10 py-7 text-lg font-semibold transition-all duration-300 rounded-lg group"
             >
-              Reservar traslado
+              Cotizar mi Traslado
               <ArrowDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
             </Button>
             <Button
@@ -81,7 +81,7 @@ export function LasLenasHero() {
               className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-10 py-7 text-lg transition-colors rounded-lg"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              Consultar disponibilidad
+              Consultar Disponibilidad
             </Button>
           </div>
 

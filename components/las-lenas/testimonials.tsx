@@ -7,20 +7,32 @@ export function LasLenasTestimonials() {
   const testimonials = [
     {
       name: "María González",
-      location: "Buenos Aires, Argentina",
+      location: "Argentina",
       text: "Excelente servicio! El conductor conocía perfectamente el camino y nos sentimos muy seguros durante todo el viaje. El vehículo era nuevo y muy cómodo. 100% recomendado.",
       rating: 5,
     },
     {
       name: "João Silva",
-      location: "São Paulo, Brasil",
+      location: "Brasil",
       text: "Primera vez en Las Leñas y el transfer fue perfecto. Nos buscaron en el aeropuerto puntualmente y el viaje fue muy tranquilo. Ya reservé para el regreso!",
       rating: 5,
     },
     {
       name: "Carlos Méndez",
-      location: "Santiago, Chile",
+      location: "Chile",
       text: "Viajamos con toda la familia y el equipo de ski. El vehículo tenía espacio para todo. El precio muy razonable comparado con alquilar auto y manejar en la nieve.",
+      rating: 5,
+    },
+    {
+      name: "Laura Fernández",
+      location: "Uruguay",
+      text: "Coordinamos todo por WhatsApp y fue súper fácil. Llegaron puntuales al hotel y el viaje a Las Leñas fue espectacular. El chofer nos dio tips del centro de ski.",
+      rating: 5,
+    },
+    {
+      name: "Michael Thompson",
+      location: "Estados Unidos",
+      text: "Professional service from start to finish. The driver was punctual and the vehicle was perfect for the mountain road. Will definitely use again next ski season!",
       rating: 5,
     },
   ]
