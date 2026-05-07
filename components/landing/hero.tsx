@@ -14,10 +14,6 @@ export function Hero() {
     WHATSAPP_CONFIG.open()
   }
 
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Parallax Effect */}
@@ -89,14 +85,6 @@ export function Hero() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button
-              onClick={scrollToContact}
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-lg"
-            >
-              Consultar disponibilidad
-            </Button>
           </div>
 
           {/* Secondary CTA */}
