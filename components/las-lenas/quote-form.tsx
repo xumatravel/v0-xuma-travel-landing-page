@@ -37,8 +37,8 @@ interface FormData {
 }
 
 const vehicleLabels: Record<VehicleType, string> = {
-  auto: "Auto",
-  pickup: "Pickup",
+  auto: "Auto (4 pax con poco equipaje)",
+  pickup: "Camioneta (4 pax c/eq deportivo)",
   minibus9: "Minibus 9 pax",
   minibus14: "Minibus 14 pax",
   grupo: "Grupo grande (consultar)"
@@ -223,8 +223,8 @@ WhatsApp: ${formData.whatsapp}`
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="auto">Auto</SelectItem>
-                          <SelectItem value="pickup">Pickup</SelectItem>
+                          <SelectItem value="auto">Auto (4 pax con poco equipaje)</SelectItem>
+                          <SelectItem value="pickup">Camioneta (4 pax c/eq deportivo)</SelectItem>
                           <SelectItem value="minibus9">Minibus 9 pax</SelectItem>
                           <SelectItem value="minibus14">Minibus 14 pax</SelectItem>
                           <SelectItem value="grupo">Grupo grande (consultar)</SelectItem>
