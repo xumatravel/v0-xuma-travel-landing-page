@@ -38,7 +38,7 @@ interface FormData {
 
 const vehicleLabels: Record<VehicleType, string> = {
   auto: "Auto (4 pax con poco equipaje)",
-  pickup: "Camioneta (4 pax c/eq deportivo)",
+  pickup: "Pickup (camioneta, 4 pax c/ski)",
   minibus9: "Minibus 9 pax",
   minibus14: "Minibus 14 pax",
   grupo: "Grupo grande (consultar)"
