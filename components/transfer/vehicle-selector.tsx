@@ -44,6 +44,14 @@ export function VehicleSelector({ selected, onSelect, serviceType }: VehicleSele
       forPrivate: true,
     },
     {
+      id: "grupo-grande",
+      icon: Users,
+      title: "Grupo grande",
+      capacity: "15+ pasajeros",
+      description: "Consultar tarifa",
+      forPrivate: true,
+    },
+    {
       id: "butaca",
       icon: Users,
       title: "Por butaca",
@@ -73,7 +81,7 @@ export function VehicleSelector({ selected, onSelect, serviceType }: VehicleSele
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
           {filteredVehicles.map((vehicle) => (
             <button
               key={vehicle.id}

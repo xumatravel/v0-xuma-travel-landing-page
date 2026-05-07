@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
 import { MessageCircle, Send, AlertCircle, CheckCircle2 } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 import { cn } from "@/lib/utils"
@@ -17,10 +16,11 @@ interface QuoteFormProps {
 }
 
 const vehicleLabels: Record<string, string> = {
-  auto: "Auto (hasta 4 pax)",
-  pickup: "Pickup (hasta 4 pax)",
+  auto: "Auto (hasta 4 pax, poco equipaje)",
+  pickup: "Pickup (hasta 4 pax, ideal equipaje deportivo)",
   "minibus-9": "Minibus 9 pax",
   "minibus-14": "Minibus 14 pax",
+  "grupo-grande": "Grupo grande (consulta)",
   butaca: "Por butaca",
 }
 
@@ -31,8 +31,9 @@ export function QuoteForm({ serviceType, vehicle }: QuoteFormProps) {
     origin: "",
     destination: "las-lenas",
     customDestination: "",
-    date: "",
-    roundTrip: false,
+    departureDate: "",
+    tripType: "ida",
+    returnDate: "",
     currency: "",
     name: "",
     email: "",
@@ -51,20 +52,24 @@ export function QuoteForm({ serviceType, vehicle }: QuoteFormProps) {
     const currencyLabel = formData.currency === "ars" ? "Argentino (ARS)" : "Extranjero (USD)"
 
     let msg = `*Solicitud de Cotización - XUMA TRAVEL*\n\n`
-    msg += `*Tipo de servicio:* ${serviceLabel}\n`
+    msg += `*RESUMEN DEL VIAJE:*\n`
+    msg += `• Tipo de servicio: ${serviceLabel}\n`
     if (serviceType === "privado") {
-      msg += `*Vehículo:* ${vehicleLabel}\n`
+      msg += `• Vehículo: ${vehicleLabel}\n`
     }
-    msg += `*Pasajeros:* ${formData.passengers}\n`
-    msg += `*Origen:* ${originLabel}\n`
-    msg += `*Destino:* ${destinationLabel}\n`
-    msg += `*Fecha:* ${formData.date}\n`
-    msg += `*Ida y vuelta:* ${formData.roundTrip ? "Sí" : "Solo ida"}\n`
-    msg += `*Moneda:* ${currencyLabel}\n\n`
-    msg += `*Datos de contacto:*\n`
-    msg += `Nombre: ${formData.name}\n`
-    msg += `Email: ${formData.email}\n`
-    msg += `WhatsApp: ${formData.whatsapp}\n`
+    msg += `• Pasajeros: ${formData.passengers}\n`
+    msg += `• Origen: ${originLabel}\n`
+    msg += `• Destino: ${destinationLabel}\n`
+    msg += `• Fecha de ida: ${formData.departureDate}\n`
+    if (formData.tripType === "ida-vuelta") {
+      msg += `• Fecha de regreso: ${formData.returnDate}\n`
+    }
+    msg += `• Tipo de viaje: ${formData.tripType === "ida-vuelta" ? "Ida y vuelta" : "Solo ida"}\n`
+    msg += `• Moneda: ${currencyLabel}\n\n`
+    msg += `*DATOS DE CONTACTO:*\n`
+    msg += `• Nombre: ${formData.name}\n`
+    msg += `• Email: ${formData.email}\n`
+    msg += `• WhatsApp: ${formData.whatsapp}\n`
 
     return msg
   }
@@ -160,7 +165,7 @@ export function QuoteForm({ serviceType, vehicle }: QuoteFormProps) {
                         {n} {n === 1 ? "pasajero" : "pasajeros"}
                       </SelectItem>
                     ))}
-                    <SelectItem value="15+">15+ pasajeros</SelectItem>
+                    <SelectItem value="15+">15+ pasajeros (grupo grande)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -211,46 +216,70 @@ export function QuoteForm({ serviceType, vehicle }: QuoteFormProps) {
                 )}
               </div>
 
-              {/* Date */}
+              {/* Trip type */}
               <div className="space-y-2">
-                <Label htmlFor="date" className="text-white/80">
-                  Fecha del viaje *
+                <Label className="text-white/80">Tipo de viaje *</Label>
+                <RadioGroup
+                  value={formData.tripType}
+                  onValueChange={(v) => handleChange("tripType", v)}
+                  className="flex gap-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="ida" id="ida" className="border-white/30 text-[#C8A96A]" />
+                    <Label htmlFor="ida" className="text-white/80 cursor-pointer">Solo ida</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="ida-vuelta" id="ida-vuelta" className="border-white/30 text-[#C8A96A]" />
+                    <Label htmlFor="ida-vuelta" className="text-white/80 cursor-pointer">Ida y vuelta</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* Departure Date */}
+              <div className="space-y-2">
+                <Label htmlFor="departureDate" className="text-white/80">
+                  Fecha de ida *
                 </Label>
                 <Input
                   type="date"
-                  id="date"
-                  value={formData.date}
-                  onChange={(e) => handleChange("date", e.target.value)}
+                  id="departureDate"
+                  value={formData.departureDate}
+                  onChange={(e) => handleChange("departureDate", e.target.value)}
                   required
                   className="bg-white/5 border-white/20 text-white"
                 />
               </div>
-            </div>
 
-            {/* Round trip */}
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="roundTrip"
-                checked={formData.roundTrip}
-                onCheckedChange={(checked) => handleChange("roundTrip", checked as boolean)}
-                className="border-white/30 data-[state=checked]:bg-[#C8A96A] data-[state=checked]:border-[#C8A96A]"
-              />
-              <Label htmlFor="roundTrip" className="text-white/80 cursor-pointer">
-                Necesito ida y vuelta
-              </Label>
+              {/* Return Date - only shown if round trip selected */}
+              {formData.tripType === "ida-vuelta" && (
+                <div className="space-y-2">
+                  <Label htmlFor="returnDate" className="text-white/80">
+                    Fecha de regreso *
+                  </Label>
+                  <Input
+                    type="date"
+                    id="returnDate"
+                    value={formData.returnDate}
+                    onChange={(e) => handleChange("returnDate", e.target.value)}
+                    required
+                    min={formData.departureDate}
+                    className="bg-white/5 border-white/20 text-white"
+                  />
+                </div>
+              )}
             </div>
           </div>
 
           {/* Currency */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4">
-            <h3 className="text-lg font-semibold text-white">Moneda de cotización</h3>
+            <h3 className="text-lg font-semibold text-white">Nacionalidad / Moneda de cotización</h3>
             <RadioGroup
               value={formData.currency}
               onValueChange={(v) => handleChange("currency", v)}
               className="flex flex-col sm:flex-row gap-4"
             >
               <div className={cn(
-                "flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer",
+                "flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer flex-1",
                 formData.currency === "ars" 
                   ? "border-[#C8A96A] bg-[#C8A96A]/10" 
                   : "border-white/10 hover:border-white/30"
@@ -262,7 +291,7 @@ export function QuoteForm({ serviceType, vehicle }: QuoteFormProps) {
                 </Label>
               </div>
               <div className={cn(
-                "flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer",
+                "flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer flex-1",
                 formData.currency === "usd" 
                   ? "border-[#C8A96A] bg-[#C8A96A]/10" 
                   : "border-white/10 hover:border-white/30"
