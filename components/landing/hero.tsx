@@ -48,11 +48,11 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-6">
             <span className="block">Viajes Premium</span>
-            <span className="block">en Mendoza</span>
-            <span className="block text-[#C8A96A]">—</span>
-            <span className="block">Vino y Experiencias</span>
+            <span className="block mb-1">en Mendoza</span>
+            <span className="block text-[#C8A96A] my-1">—</span>
+            <span className="block mt-1">Vino y Experiencias</span>
             <span className="block">Todo en Uno</span>
           </h1>
 
