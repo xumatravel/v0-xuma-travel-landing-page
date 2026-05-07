@@ -5,20 +5,18 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, MessageCircle, X } from "lucide-react"
 import Link from "next/link"
-import { useI18n, LanguageSwitcher } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
-export function Header() {
-  const { t } = useI18n()
+export function LasLenasHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "#products", label: t("nav.packages") },
-    { href: "/las-lenas", label: "Transfers Las Leñas", isPage: true },
-    { href: "#agencies", label: t("nav.agencies") },
-    { href: "#about", label: t("nav.about") },
-    { href: "#contact", label: t("nav.contact") },
+    { href: "#servicios", label: "Servicios" },
+    { href: "#como-funciona", label: "Cómo Funciona" },
+    { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
+    { href: "#testimonios", label: "Testimonios" },
+    { href: "#contacto", label: "Contacto" },
   ]
 
   useEffect(() => {
@@ -31,7 +29,7 @@ export function Header() {
   }, [])
 
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open()
+    WHATSAPP_CONFIG.open("Hola! Me interesa reservar un transfer a Las Leñas")
   }
 
   return (
@@ -64,22 +62,20 @@ export function Header() {
             ))}
           </div>
 
-          {/* Language Switcher & CTA */}
+          {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <LanguageSwitcher />
             <Button
               onClick={handleWhatsApp}
               size="sm"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              {t("nav.whatsapp")}
+              Reservar Ahora
             </Button>
           </div>
 
           {/* Mobile Menu */}
           <div className="flex lg:hidden items-center gap-3">
-            <LanguageSwitcher />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
@@ -126,7 +122,7 @@ export function Header() {
                       className="w-full bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
                     >
                       <MessageCircle className="w-5 h-5 mr-2" />
-                      {t("nav.whatsapp")}
+                      Reservar Ahora
                     </Button>
                   </div>
                 </div>
