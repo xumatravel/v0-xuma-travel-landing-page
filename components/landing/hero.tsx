@@ -48,7 +48,7 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-6">
+          <h1 className="font-serif text-[2.75rem] md:text-[3.5rem] lg:text-[4.25rem] xl:text-[5rem] font-bold text-white leading-none mb-6">
             <span className="block">Viajes Premium</span>
             <span className="block mb-1">en Mendoza</span>
             <span className="block text-[#C8A96A] my-1">—</span>
