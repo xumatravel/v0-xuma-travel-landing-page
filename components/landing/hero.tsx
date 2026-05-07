@@ -74,8 +74,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Primary CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/las-lenas">
               <Button
                 size="lg"
@@ -85,17 +85,15 @@ export function Hero() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
+            <Button
+              onClick={handleWhatsApp}
+              size="lg"
+              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors rounded-lg"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" />
+              {t("hero.cta.secondary")}
+            </Button>
           </div>
-
-          {/* Secondary CTA */}
-          <Button
-            onClick={handleWhatsApp}
-            size="lg"
-            className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors"
-          >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            {t("hero.cta.secondary")}
-          </Button>
         </div>
       </div>
 
