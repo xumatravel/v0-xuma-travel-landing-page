@@ -48,8 +48,12 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 text-balance">
-            {t("hero.headline")}
+          <h1 className="font-serif text-[2.75rem] md:text-[3.5rem] lg:text-[4.25rem] xl:text-[5rem] font-bold text-white leading-none mb-6">
+            <span className="block">Viajes Premium</span>
+            <span className="block mb-1">en Mendoza</span>
+            <span className="block text-[#C8A96A] my-1">—</span>
+            <span className="block mt-1">Vino y Experiencias</span>
+            <span className="block">Todo en Uno</span>
           </h1>
 
           {/* Subheadline */}
@@ -78,8 +82,7 @@ export function Hero() {
             <Button
               onClick={handleWhatsApp}
               size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
+              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               {t("hero.cta.secondary")}
