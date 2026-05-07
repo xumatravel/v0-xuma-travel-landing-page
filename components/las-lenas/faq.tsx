@@ -17,7 +17,7 @@ export function LasLenasFAQ() {
     {
       question: "¿Qué tipo de vehículos utilizan?",
       answer:
-        "Utilizamos vehículos 4x4 de última generación (Toyota Hilux, Ford Ranger, etc.) equipados con cadenas para nieve, neumáticos de invierno, calefacción potente y espacio amplio para equipaje de ski.",
+        "Utilizamos diferentes tipos de vehículos según las necesidades: autos, pickups, vans y minibuses. Todos equipados con cadenas para nieve cuando es necesario, calefacción potente y espacio amplio para equipaje de ski.",
     },
     {
       question: "¿Pueden buscarme en el aeropuerto de Mendoza?",

@@ -25,7 +25,7 @@ export function LasLenasFooter() {
               </span>
             </Link>
             <p className="text-white/60 leading-relaxed max-w-md mb-6">
-              Transfers privados y seguros a Las Leñas. Vehículos 4x4 equipados para montaña y conductores expertos.
+              Transfers privados y seguros a Las Leñas. Vehículos equipados para montaña y conductores expertos.
             </p>
             <div className="flex items-center gap-4 mb-6">
               <a
