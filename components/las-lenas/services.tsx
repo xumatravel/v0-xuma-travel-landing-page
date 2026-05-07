@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, MessageCircle, Star } from "lucide-react"
+import { Check, MessageCircle, Star, Users, Car, Calendar } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function LasLenasServices() {
@@ -11,51 +11,49 @@ export function LasLenasServices() {
     WHATSAPP_CONFIG.open(`Hola! Me interesa el servicio de ${service} a Las Leñas`)
   }
 
+  const scrollToForm = () => {
+    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   const services = [
     {
       title: "Transfer Privado",
-      subtitle: "Mendoza → Las Leñas",
-      price: "USD $280",
+      subtitle: "Mendoza o San Rafael → Las Leñas",
+      price: "Desde USD $180",
       priceNote: "por vehículo (hasta 4 pax)",
       popular: true,
+      icon: Car,
       features: [
-        "Vehículo 4x4 exclusivo",
-        "Pickup en hotel/aeropuerto",
+        "Vehículo 4x4 exclusivo para tu grupo",
+        "Pickup en hotel, aeropuerto o dirección",
+        "Horarios 100% a tu elección",
         "Conductores expertos en montaña",
         "Cadenas y equipamiento incluido",
-        "Espacio para equipaje de ski",
+        "Espacio amplio para equipaje de ski",
         "Paradas en ruta si las necesitas",
       ],
+      capacity: "Hasta 4 pasajeros",
+      vehicleType: "SUV 4x4 / Van",
     },
     {
       title: "Transfer Compartido",
-      subtitle: "Salidas programadas",
+      subtitle: "Solo desde San Rafael",
       price: "USD $95",
       priceNote: "por persona",
       popular: false,
+      icon: Users,
       features: [
         "Vehículo compartido 4x4",
-        "Puntos de encuentro en Mendoza",
+        "Salidas solo Sábados y Lunes",
+        "Puntos de encuentro en San Rafael",
         "Horarios fijos de salida",
-        "Equipamiento de seguridad",
+        "Equipamiento de seguridad incluido",
         "Espacio para equipaje de ski",
-        "Ideal para viajeros solos",
+        "Ideal para viajeros solos o parejas",
       ],
-    },
-    {
-      title: "Transfer + Ski Pass",
-      subtitle: "Paquete completo",
-      price: "USD $420",
-      priceNote: "por persona (mínimo 2 pax)",
-      popular: false,
-      features: [
-        "Transfer privado ida y vuelta",
-        "Ski pass de 1 día incluido",
-        "Tiempo de espera en resort",
-        "Snacks y bebidas en ruta",
-        "Seguro de viaje incluido",
-        "Descuento en alquiler de equipos",
-      ],
+      capacity: "6-8 pasajeros",
+      vehicleType: "Van 4x4",
+      availability: "Sujeto a disponibilidad",
     },
   ]
 
@@ -65,10 +63,10 @@ export function LasLenasServices() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Nuestros Servicios
+            Opciones de servicio
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            Elige el Transfer que Necesitas
+            Elige el Traslado que Necesitas
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
             Todos nuestros servicios incluyen vehículos 4x4 equipados para montaña,
@@ -77,7 +75,7 @@ export function LasLenasServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <Card
               key={index}
@@ -96,10 +94,36 @@ export function LasLenasServices() {
                 </div>
               )}
               <CardHeader className="pb-4">
-                <p className="text-[#6B7D5C] text-sm font-medium mb-1">{service.subtitle}</p>
-                <CardTitle className="font-serif text-2xl text-[#0B0B0B]">
-                  {service.title}
-                </CardTitle>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-[#6B7D5C]/10 rounded-lg flex items-center justify-center">
+                    <service.icon className="w-5 h-5 text-[#6B7D5C]" />
+                  </div>
+                  <div>
+                    <p className="text-[#6B7D5C] text-sm font-medium">{service.subtitle}</p>
+                    <CardTitle className="font-serif text-2xl text-[#0B0B0B]">
+                      {service.title}
+                    </CardTitle>
+                  </div>
+                </div>
+                
+                {/* Capacity & Vehicle Type */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <Badge variant="secondary" className="bg-[#0B0B0B]/5 text-[#0B0B0B]/70">
+                    <Users className="w-3 h-3 mr-1" />
+                    {service.capacity}
+                  </Badge>
+                  <Badge variant="secondary" className="bg-[#0B0B0B]/5 text-[#0B0B0B]/70">
+                    <Car className="w-3 h-3 mr-1" />
+                    {service.vehicleType}
+                  </Badge>
+                  {service.availability && (
+                    <Badge variant="secondary" className="bg-[#C8A96A]/20 text-[#C8A96A]">
+                      <Calendar className="w-3 h-3 mr-1" />
+                      {service.availability}
+                    </Badge>
+                  )}
+                </div>
+
                 <div className="mt-4">
                   <span className="text-3xl font-bold text-[#0B0B0B]">{service.price}</span>
                   <span className="text-[#0B0B0B]/60 text-sm ml-2">{service.priceNote}</span>
@@ -114,17 +138,26 @@ export function LasLenasServices() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  onClick={() => handleWhatsApp(service.title)}
-                  className={`w-full ${
-                    service.popular
-                      ? "bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white"
-                      : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
-                  }`}
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Reservar Ahora
-                </Button>
+                <div className="flex flex-col gap-3">
+                  <Button
+                    onClick={scrollToForm}
+                    className={`w-full ${
+                      service.popular
+                        ? "bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white"
+                        : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
+                    }`}
+                  >
+                    Reservar Ahora
+                  </Button>
+                  <Button
+                    onClick={() => handleWhatsApp(service.title)}
+                    variant="outline"
+                    className="w-full border-[#0B0B0B]/20"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Consultar disponibilidad
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
