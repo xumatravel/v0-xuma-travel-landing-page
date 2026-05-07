@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, ArrowRight, Shield, Award } from "lucide-react"
+import { MessageCircle, ArrowRight, Shield, Award, Car, Users } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
@@ -11,10 +12,6 @@ export function Hero() {
 
   const handleWhatsApp = () => {
     WHATSAPP_CONFIG.open()
-  }
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -62,27 +59,36 @@ export function Hero() {
           </p>
 
           {/* Trust Points */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-10">
             <div className="flex items-center gap-2 text-white/70">
               <Shield className="w-5 h-5 text-[#6B7D5C]" />
               <span className="text-sm">{t("hero.trust1")}</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/70">
+              <Car className="w-5 h-5 text-[#6B7D5C]" />
+              <span className="text-sm">Servicio puerta a puerta</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/70">
+              <Users className="w-5 h-5 text-[#6B7D5C]" />
+              <span className="text-sm">Choferes profesionales</span>
             </div>
           </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              onClick={scrollToContact}
-              size="lg"
-              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-semibold px-8 py-6 text-lg group"
-            >
-              {t("hero.cta.primary")}
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/las-lenas">
+              <Button
+                size="lg"
+                className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white font-semibold px-8 py-6 text-lg transition-all duration-300 group rounded-lg"
+              >
+                Ver traslados a Las Leñas
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
             <Button
               onClick={handleWhatsApp}
               size="lg"
-              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors"
+              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors rounded-lg"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               {t("hero.cta.secondary")}

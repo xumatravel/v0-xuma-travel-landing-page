@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MessageCircle, Shield, Clock, Award } from "lucide-react"
+import { MessageCircle, Shield, Clock, Award, ArrowDown } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function LasLenasHero() {
@@ -11,8 +11,8 @@ export function LasLenasHero() {
     WHATSAPP_CONFIG.open("Hola! Quiero reservar un transfer a Las Leñas")
   }
 
-  const scrollToServices = () => {
-    document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" })
+  const scrollToForm = () => {
+    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -40,58 +40,54 @@ export function LasLenasHero() {
 
           {/* Headline */}
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-6">
-            <span className="block">Transfers Privados</span>
+            <span className="block">Traslados Privados</span>
             <span className="block">a Las Leñas</span>
-            <span className="block text-[#C8A96A] my-2">—</span>
-            <span className="block text-2xl md:text-3xl lg:text-4xl font-normal mt-4">
-              Viaja Seguro, Llega Relajado
-            </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
-            Servicio puerta a puerta desde Mendoza con vehículos 4x4 equipados para montaña
-            y conductores expertos en rutas de alta montaña.
+          <p className="text-white/90 text-xl md:text-2xl leading-relaxed mb-6 max-w-2xl mx-auto font-light">
+            Viajes seguros, directos y con horarios a tu medida desde Mendoza y San Rafael
           </p>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center gap-6 mb-10">
-            <div className="flex items-center gap-2 text-white/90">
+          {/* Trust Indicators - Micro confianza */}
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10">
+            <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Shield className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Vehículos 4x4 Equipados</span>
+              <span className="text-sm">Servicio puerta a puerta</span>
             </div>
-            <div className="flex items-center gap-2 text-white/90">
+            <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Clock className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Servicio Puerta a Puerta</span>
+              <span className="text-sm">Camino de montaña con choferes profesionales</span>
             </div>
-            <div className="flex items-center gap-2 text-white/90">
+            <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Award className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Conductores Expertos</span>
+              <span className="text-sm">Vehículos habilitados</span>
             </div>
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+            <Button
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white px-10 py-7 text-lg font-semibold transition-all duration-300 rounded-lg group"
+            >
+              Reservar traslado
+              <ArrowDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
+            </Button>
             <Button
               onClick={handleWhatsApp}
               size="lg"
-              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white px-8 py-6 text-lg group"
+              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-10 py-7 text-lg transition-colors rounded-lg"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              Reservar por WhatsApp
-            </Button>
-            <Button
-              onClick={scrollToServices}
-              size="lg"
-              className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-8 py-6 text-lg transition-colors"
-            >
-              Ver Servicios y Precios
+              Consultar disponibilidad
             </Button>
           </div>
 
           {/* Price Hint */}
-          <p className="text-white/60 text-sm mt-6">
-            Desde USD $180 por viaje (hasta 4 pasajeros)
+          <p className="text-white/60 text-sm">
+            Desde USD $180 por viaje privado (hasta 4 pasajeros)
           </p>
         </div>
       </div>
