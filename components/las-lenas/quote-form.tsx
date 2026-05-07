@@ -17,7 +17,7 @@ import { WHATSAPP_CONFIG } from "@/lib/config"
 
 type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
-type Origin = "mendoza" | "san-rafael"
+type Origin = "mendoza" | "san-rafael" | "las-lenas"
 type Destination = "las-lenas" | "otro"
 
 interface FormData {
@@ -37,16 +37,17 @@ interface FormData {
 }
 
 const vehicleLabels: Record<VehicleType, string> = {
-  auto: "Auto (hasta 4 pax, poco equipaje)",
-  pickup: "Pickup (equipaje deportivo / ski)",
+  auto: "Auto",
+  pickup: "Pickup",
   minibus9: "Minibus 9 pax",
   minibus14: "Minibus 14 pax",
-  grupo: "Grupo grande (consulta)"
+  grupo: "Grupo grande (consultar)"
 }
 
 const originLabels: Record<Origin, string> = {
   mendoza: "Mendoza",
-  "san-rafael": "San Rafael"
+  "san-rafael": "San Rafael",
+  "las-lenas": "Las Leñas"
 }
 
 export function LasLenasQuoteForm() {
@@ -84,7 +85,7 @@ export function LasLenasQuoteForm() {
   const buildWhatsAppMessage = (): string => {
     const serviceLabel = formData.serviceType === "privado" ? "Privado" : "Compartido"
     const vehicleLabel = vehicleLabels[formData.vehicleType]
-    const originLabel = formData.origin === "mendoza" ? "Mendoza" : "San Rafael"
+    const originLabel = originLabels[formData.origin]
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
     const departureDateLabel = formData.departureDate 
       ? format(formData.departureDate, "dd/MM/yyyy", { locale: es })
@@ -222,11 +223,11 @@ WhatsApp: ${formData.whatsapp}`
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="auto">Auto (hasta 4 pax, poco equipaje)</SelectItem>
-                          <SelectItem value="pickup">Pickup (equipaje deportivo / ski)</SelectItem>
+                          <SelectItem value="auto">Auto</SelectItem>
+                          <SelectItem value="pickup">Pickup</SelectItem>
                           <SelectItem value="minibus9">Minibus 9 pax</SelectItem>
                           <SelectItem value="minibus14">Minibus 14 pax</SelectItem>
-                          <SelectItem value="grupo">Grupo grande (consulta)</SelectItem>
+                          <SelectItem value="grupo">Grupo grande (consultar)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -282,6 +283,7 @@ WhatsApp: ${formData.whatsapp}`
                         <SelectContent>
                           <SelectItem value="mendoza">Mendoza</SelectItem>
                           <SelectItem value="san-rafael">San Rafael</SelectItem>
+                          <SelectItem value="las-lenas">Las Leñas</SelectItem>
                         </SelectContent>
                       </Select>
                       {formData.serviceType === "compartido" && (

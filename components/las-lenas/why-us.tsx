@@ -73,8 +73,8 @@ export function LasLenasWhyUs() {
               <div className="absolute bottom-6 left-6 right-6 bg-[#0B0B0B]/90 backdrop-blur-sm rounded-xl p-6">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <p className="text-2xl font-bold text-[#C8A96A]">+500</p>
-                    <p className="text-white/60 text-xs">Viajes 2024</p>
+                    <p className="text-2xl font-bold text-[#C8A96A]">+350</p>
+                    <p className="text-white/60 text-xs">Viajes/Temporada</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">10+</p>
