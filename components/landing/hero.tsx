@@ -48,8 +48,12 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 text-balance">
-            {t("hero.headline")}
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
+            <span className="block">Viajes Premium</span>
+            <span className="block">en Mendoza</span>
+            <span className="block text-[#C8A96A]">—</span>
+            <span className="block">Vino y Experiencias</span>
+            <span className="block">Todo en Uno</span>
           </h1>
 
           {/* Subheadline */}
