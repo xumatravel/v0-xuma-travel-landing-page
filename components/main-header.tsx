@@ -12,8 +12,8 @@ export function MainHeader() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "#servicios", label: "Servicios" },
-    { href: "#cotizar", label: "Cotizar" },
+    { href: "#servicios", label: "Inicio" },
+    { href: "/alojamiento", label: "Alojamiento", isPage: true },
     { href: "/experiencias", label: "Experiencias", isPage: true },
     { href: "#contacto", label: "Contacto" },
   ]
