@@ -1,13 +1,13 @@
 "use client"
 
-import { Shield, Clock, Car, Users } from "lucide-react"
+import { Shield, Clock, Car, Award } from "lucide-react"
 
 export function LasLenasTrust() {
   const stats = [
     {
       icon: Car,
       value: "+500",
-      label: "Transfers realizados",
+      label: "Transfers en 2024",
     },
     {
       icon: Shield,
@@ -16,13 +16,13 @@ export function LasLenasTrust() {
     },
     {
       icon: Clock,
-      value: "24/7",
-      label: "Servicio disponible",
+      value: "30min",
+      label: "Tiempo de respuesta",
     },
     {
-      icon: Users,
-      value: "98%",
-      label: "Clientes satisfechos",
+      icon: Award,
+      value: "10+",
+      label: "Anos de experiencia",
     },
   ]
 

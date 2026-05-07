@@ -12,7 +12,7 @@ export function LasLenasHero() {
   }
 
   const scrollToForm = () => {
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("cotizar")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -35,13 +35,13 @@ export function LasLenasHero() {
           {/* Badge */}
           <Badge className="bg-[#C8A96A] text-[#0B0B0B] hover:bg-[#C8A96A] text-sm px-4 py-2 font-bold mb-8 inline-flex items-center gap-2">
             <Award className="w-4 h-4" />
-            +500 Transfers a Las Leñas en 2024
+            +500 Transfers a Las Lenas en 2024
           </Badge>
 
           {/* Headline */}
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-6">
             <span className="block">Traslados Privados</span>
-            <span className="block">a Las Leñas</span>
+            <span className="block">a Las Lenas</span>
           </h1>
 
           {/* Subheadline */}
@@ -57,11 +57,11 @@ export function LasLenasHero() {
             </div>
             <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Clock className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Camino de montaña con choferes profesionales</span>
+              <span className="text-sm">Choferes profesionales</span>
             </div>
             <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Award className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Vehículos habilitados</span>
+              <span className="text-sm">Vehiculos habilitados</span>
             </div>
           </div>
 
@@ -72,7 +72,7 @@ export function LasLenasHero() {
               size="lg"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white px-10 py-7 text-lg font-semibold transition-all duration-300 rounded-lg group"
             >
-              Reservar traslado
+              Cotizar mi traslado
               <ArrowDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
             </Button>
             <Button

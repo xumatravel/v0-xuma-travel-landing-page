@@ -6,21 +6,33 @@ import { Card, CardContent } from "@/components/ui/card"
 export function LasLenasTestimonials() {
   const testimonials = [
     {
-      name: "María González",
-      location: "Buenos Aires, Argentina",
-      text: "Excelente servicio! El conductor conocía perfectamente el camino y nos sentimos muy seguros durante todo el viaje. El vehículo era nuevo y muy cómodo. 100% recomendado.",
+      name: "Maria Gonzalez",
+      location: "Argentina",
+      text: "Excelente servicio! El conductor conocia perfectamente el camino y nos sentimos muy seguros durante todo el viaje. El vehiculo era nuevo y muy comodo. 100% recomendado.",
       rating: 5,
     },
     {
-      name: "João Silva",
-      location: "São Paulo, Brasil",
-      text: "Primera vez en Las Leñas y el transfer fue perfecto. Nos buscaron en el aeropuerto puntualmente y el viaje fue muy tranquilo. Ya reservé para el regreso!",
+      name: "Joao Silva",
+      location: "Brasil",
+      text: "Primera vez en Las Lenas y el transfer fue perfecto. Nos buscaron en el aeropuerto puntualmente y el viaje fue muy tranquilo. Ya reserve para el regreso!",
       rating: 5,
     },
     {
-      name: "Carlos Méndez",
-      location: "Santiago, Chile",
-      text: "Viajamos con toda la familia y el equipo de ski. El vehículo tenía espacio para todo. El precio muy razonable comparado con alquilar auto y manejar en la nieve.",
+      name: "Carlos Mendez",
+      location: "Chile",
+      text: "Viajamos con toda la familia y el equipo de ski. El vehiculo tenia espacio para todo. El precio muy razonable comparado con alquilar auto y manejar en la nieve.",
+      rating: 5,
+    },
+    {
+      name: "Emily Thompson",
+      location: "Estados Unidos",
+      text: "We were a bit nervous about the mountain road, but the driver was incredibly professional. Made the journey enjoyable and safe. Highly recommend for international visitors!",
+      rating: 5,
+    },
+    {
+      name: "Lucas Fernandez",
+      location: "Uruguay",
+      text: "Contrate el servicio compartido desde San Rafael y fue impecable. Puntualidad, comodidad y muy buen precio. Sin dudas volveria a elegirlos para la proxima temporada.",
       rating: 5,
     },
   ]
@@ -37,7 +49,7 @@ export function LasLenasTestimonials() {
             Lo Que Dicen Nuestros Pasajeros
           </h2>
           <p className="text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Más de 500 viajeros ya confiaron en nosotros para llegar a Las Leñas.
+            Mas de 500 viajeros ya confiaron en nosotros para llegar a Las Lenas.
             Esto es lo que opinan de su experiencia.
           </p>
         </div>

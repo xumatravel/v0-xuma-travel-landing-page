@@ -12,23 +12,23 @@ export function LasLenasServices() {
   }
 
   const scrollToForm = () => {
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("cotizar")?.scrollIntoView({ behavior: "smooth" })
   }
 
   const services = [
     {
       title: "Transfer Privado",
-      subtitle: "Mendoza o San Rafael → Las Leñas",
+      subtitle: "Mendoza o San Rafael - Las Lenas",
       price: "Desde USD $180",
-      priceNote: "por vehículo (hasta 4 pax)",
+      priceNote: "por vehiculo (hasta 4 pax)",
       popular: true,
       icon: Car,
       features: [
-        "Vehículo 4x4 exclusivo para tu grupo",
-        "Pickup en hotel, aeropuerto o dirección",
-        "Horarios 100% a tu elección",
-        "Conductores expertos en montaña",
-        "Cadenas y equipamiento incluido",
+        "Todos los dias disponible",
+        "Horario 100% a tu eleccion",
+        "Servicio puerta a puerta",
+        "Vehiculo 4x4 exclusivo para tu grupo",
+        "Conductores expertos en montana",
         "Espacio amplio para equipaje de ski",
         "Paradas en ruta si las necesitas",
       ],
@@ -39,14 +39,14 @@ export function LasLenasServices() {
       title: "Transfer Compartido",
       subtitle: "Solo desde San Rafael",
       price: "USD $95",
-      priceNote: "por persona",
+      priceNote: "por butaca",
       popular: false,
       icon: Users,
       features: [
-        "Vehículo compartido 4x4",
-        "Salidas solo Sábados y Lunes",
+        "Solo Sabados y Lunes",
         "Puntos de encuentro en San Rafael",
         "Horarios fijos de salida",
+        "Vehiculo compartido 4x4",
         "Equipamiento de seguridad incluido",
         "Espacio para equipaje de ski",
         "Ideal para viajeros solos o parejas",
@@ -69,7 +69,7 @@ export function LasLenasServices() {
             Elige el Traslado que Necesitas
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Todos nuestros servicios incluyen vehículos 4x4 equipados para montaña,
+            Todos nuestros servicios incluyen vehiculos 4x4 equipados para montana,
             conductores expertos y la tranquilidad de viajar con profesionales.
           </p>
         </div>

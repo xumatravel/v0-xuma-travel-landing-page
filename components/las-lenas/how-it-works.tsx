@@ -7,16 +7,16 @@ export function LasLenasHowItWorks() {
     {
       icon: MessageCircle,
       step: "01",
-      title: "Contactanos",
+      title: "Completa el formulario",
       description:
-        "Escribinos por WhatsApp con la fecha de tu viaje y cantidad de pasajeros. Te respondemos en minutos.",
+        "Ingresa tus datos de viaje en nuestro cotizador. Solo toma 2 minutos y recibis tu cotizacion al instante.",
     },
     {
       icon: Calendar,
       step: "02",
-      title: "Confirmá tu Reserva",
+      title: "Confirma tu Reserva",
       description:
-        "Coordinamos horarios, punto de pickup y detalles del viaje. Pago seguro y confirmación inmediata.",
+        "Coordinamos horarios, punto de pickup y detalles del viaje por WhatsApp. Respuesta en menos de 30 minutos.",
     },
     {
       icon: MapPin,
@@ -28,9 +28,9 @@ export function LasLenasHowItWorks() {
     {
       icon: Mountain,
       step: "04",
-      title: "Llegás a Las Leñas",
+      title: "Llegas a Las Lenas",
       description:
-        "Viaja cómodo y seguro en nuestros vehículos 4x4. En 5 horas estás en la nieve.",
+        "Viaja comodo y seguro en nuestros vehiculos 4x4. En pocas horas estas disfrutando la nieve.",
     },
   ]
 
@@ -43,11 +43,11 @@ export function LasLenasHowItWorks() {
             Proceso Simple
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
-            Cómo Funciona
+            Como Funciona
           </h2>
           <p className="text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Reservar tu transfer es fácil y rápido. En 4 simples pasos
-            estás viajando a Las Leñas.
+            Reservar tu transfer es facil y rapido. En 4 simples pasos
+            estas viajando a Las Lenas.
           </p>
         </div>
 

@@ -12,11 +12,11 @@ export function LasLenasHeader() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
+    { href: "#cotizar", label: "Cotizar" },
     { href: "#servicios", label: "Servicios" },
-    { href: "#como-funciona", label: "Cómo Funciona" },
-    { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
+    { href: "#como-funciona", label: "Como Funciona" },
+    { href: "#por-que-nosotros", label: "Sobre Nosotros" },
     { href: "#testimonios", label: "Testimonios" },
-    { href: "#contacto", label: "Contacto" },
   ]
 
   useEffect(() => {
@@ -29,7 +29,11 @@ export function LasLenasHeader() {
   }, [])
 
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open("Hola! Me interesa reservar un transfer a Las Leñas")
+    WHATSAPP_CONFIG.open("Hola! Me interesa reservar un transfer a Las Lenas")
+  }
+
+  const scrollToForm = () => {
+    document.getElementById("cotizar")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -65,12 +69,11 @@ export function LasLenasHeader() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <Button
-              onClick={handleWhatsApp}
+              onClick={scrollToForm}
               size="sm"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
             >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Reservar Ahora
+              Cotizar Traslado
             </Button>
           </div>
 
@@ -115,14 +118,13 @@ export function LasLenasHeader() {
                   <div className="mt-auto pt-8">
                     <Button
                       onClick={() => {
-                        handleWhatsApp()
+                        scrollToForm()
                         setIsOpen(false)
                       }}
                       size="lg"
                       className="w-full bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
                     >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Reservar Ahora
+                      Cotizar Traslado
                     </Button>
                   </div>
                 </div>

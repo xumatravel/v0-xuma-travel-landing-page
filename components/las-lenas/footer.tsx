@@ -6,11 +6,11 @@ import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function LasLenasFooter() {
   const quickLinks = [
+    { href: "#cotizar", label: "Cotizar" },
     { href: "#servicios", label: "Servicios" },
-    { href: "#como-funciona", label: "Cómo Funciona" },
-    { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
+    { href: "#como-funciona", label: "Como Funciona" },
+    { href: "#por-que-nosotros", label: "Sobre Nosotros" },
     { href: "#testimonios", label: "Testimonios" },
-    { href: "#contacto", label: "Contacto" },
   ]
 
   return (
@@ -25,7 +25,7 @@ export function LasLenasFooter() {
               </span>
             </Link>
             <p className="text-white/60 leading-relaxed max-w-md mb-6">
-              Transfers privados y seguros a Las Leñas. Vehículos 4x4 equipados para montaña y conductores expertos.
+              Transfers privados y seguros a Las Lenas. Vehiculos 4x4 equipados para montana y conductores expertos.
             </p>
             <div className="flex items-center gap-4 mb-6">
               <a

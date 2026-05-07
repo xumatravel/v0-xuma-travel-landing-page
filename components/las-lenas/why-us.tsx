@@ -6,20 +6,26 @@ import { Shield, Snowflake, Clock, Users, Car, Award } from "lucide-react"
 export function LasLenasWhyUs() {
   const reasons = [
     {
-      icon: Car,
-      title: "Vehículos 4x4 Equipados",
+      icon: Award,
+      title: "Transporte Oficial a Las Lenas",
       description:
-        "Todos nuestros vehículos cuentan con tracción 4x4, cadenas, neumáticos de invierno y equipamiento de emergencia.",
+        "Somos operadores en Mendoza especializados en traslados a Las Lenas con experiencia en logistica de montana.",
     },
     {
       icon: Shield,
-      title: "Conductores Expertos",
+      title: "Choferes Profesionales",
       description:
-        "Nuestros conductores conocen cada curva del camino a Las Leñas. Más de 10 años de experiencia en rutas de montaña.",
+        "Nuestros conductores conocen cada curva del camino a Las Lenas. Mas de 10 anos de experiencia en rutas de montana.",
+    },
+    {
+      icon: Car,
+      title: "Vehiculos Habilitados",
+      description:
+        "Todos nuestros vehiculos cuentan con traccion 4x4, cadenas, neumaticos de invierno y equipamiento de emergencia.",
     },
     {
       icon: Snowflake,
-      title: "Experiencia en Nieve",
+      title: "Experiencia en Montana",
       description:
         "Operamos durante toda la temporada de ski. Conocemos las condiciones del camino y nos adaptamos a ellas.",
     },
@@ -27,19 +33,13 @@ export function LasLenasWhyUs() {
       icon: Clock,
       title: "Puntualidad Garantizada",
       description:
-        "Llegamos a tiempo, siempre. Monitoreamos condiciones climáticas y de ruta para cumplir con los horarios.",
+        "Llegamos a tiempo, siempre. Monitoreamos condiciones climaticas y de ruta para cumplir con los horarios.",
     },
     {
       icon: Users,
       title: "Servicio Personalizado",
       description:
         "Adaptamos el servicio a tus necesidades: paradas, horarios flexibles, equipaje especial para ski.",
-    },
-    {
-      icon: Award,
-      title: "Precio Justo",
-      description:
-        "Precios transparentes sin sorpresas. Incluimos todo: combustible, peajes, seguro y tiempo de espera.",
     },
   ]
 
@@ -52,7 +52,7 @@ export function LasLenasWhyUs() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/ski-resort.jpg"
-                alt="Vehículo 4x4 en camino a Las Leñas"
+                alt="Vehiculo 4x4 en camino a Las Lenas"
                 fill
                 className="object-cover"
               />
@@ -67,11 +67,11 @@ export function LasLenasWhyUs() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">10+</p>
-                    <p className="text-white/60 text-xs">Años Exp.</p>
+                    <p className="text-white/60 text-xs">Anos Exp.</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">98%</p>
-                    <p className="text-white/60 text-xs">Satisfacción</p>
+                    <p className="text-white/60 text-xs">Satisfaccion</p>
                   </div>
                 </div>
               </div>
@@ -81,15 +81,15 @@ export function LasLenasWhyUs() {
           {/* Content */}
           <div className="order-1 lg:order-2">
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              Por Qué Elegirnos
+              Sobre Nosotros
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-              La Ruta a Las Leñas Requiere Expertos
+              La Ruta a Las Lenas Requiere Expertos
             </h2>
             <p className="text-[#0B0B0B]/70 text-lg leading-relaxed mb-10">
-              El camino a Las Leñas puede ser desafiante, especialmente en invierno.
-              No arriesgues tu viaje con improvisados. Confía en quienes conocen
-              cada kilómetro de esta ruta.
+              El camino a Las Lenas puede ser desafiante, especialmente en invierno.
+              No arriesgues tu viaje con improvisados. Confia en quienes conocen
+              cada kilometro de esta ruta.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">

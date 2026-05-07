@@ -6,17 +6,17 @@ export function LasLenasRouteInfo() {
   const infoItems = [
     {
       icon: Clock,
-      title: "Duración del viaje",
+      title: "Duracion del viaje",
       details: [
-        { label: "Desde San Rafael", value: "2h30 – 3h" },
-        { label: "Desde Mendoza", value: "4h15 – 5h" },
+        { label: "Desde San Rafael", value: "2h30 - 3h" },
+        { label: "Desde Mendoza", value: "4h15 - 5h" },
       ],
     },
     {
       icon: Mountain,
       title: "Tipo de camino",
       details: [
-        { label: "Ruta de montaña", value: "Asfalto + ripio" },
+        { label: "Ruta de montana", value: "Asfalto + ripio" },
         { label: "Condiciones", value: "Nieve en invierno" },
       ],
     },
@@ -24,8 +24,8 @@ export function LasLenasRouteInfo() {
       icon: Calendar,
       title: "Horarios",
       details: [
-        { label: "Privado", value: "A elección del pasajero" },
-        { label: "Compartido", value: "Sábados y Lunes" },
+        { label: "Privado", value: "A eleccion del pasajero" },
+        { label: "Compartido", value: "Sabados y Lunes" },
       ],
     },
     {
@@ -33,7 +33,7 @@ export function LasLenasRouteInfo() {
       title: "Tipo de servicio",
       details: [
         { label: "Privado", value: "100% exclusivo" },
-        { label: "Compartido", value: "Según disponibilidad" },
+        { label: "Compartido", value: "Segun disponibilidad" },
       ],
     },
   ]
@@ -44,7 +44,7 @@ export function LasLenasRouteInfo() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-[#C8A96A] font-medium tracking-wider uppercase text-sm mb-3">
-            Información del viaje
+            Informacion del viaje
           </p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
             Todo lo que necesitas saber
