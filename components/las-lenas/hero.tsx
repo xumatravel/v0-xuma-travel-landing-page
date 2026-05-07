@@ -85,9 +85,9 @@ export function LasLenasHero() {
             </Button>
           </div>
 
-          {/* Price Hint */}
+          {/* Response time hint */}
           <p className="text-white/60 text-sm">
-            Desde USD $180 por viaje privado (hasta 4 pasajeros)
+            Te respondemos en menos de 30 minutos
           </p>
         </div>
       </div>

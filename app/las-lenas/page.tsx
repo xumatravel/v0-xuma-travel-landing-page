@@ -16,7 +16,7 @@ import { BackToHomeButton } from "@/components/las-lenas/back-to-home"
 
 export const metadata: Metadata = {
   title: 'Traslados a Las Leñas | XUMA TRAVEL - Transfers desde Mendoza y San Rafael',
-  description: 'Traslados privados y compartidos a Las Leñas desde Mendoza y San Rafael. Vehículos 4x4 equipados para montaña, conductores expertos y servicio puerta a puerta. Reserva tu transfer ahora.',
+  description: 'Traslados privados y compartidos a Las Leñas desde Mendoza y San Rafael. Vehículos equipados para montaña, conductores expertos y servicio puerta a puerta. Reserva tu transfer ahora.',
   keywords: 'traslados Las Leñas, transfers Las Leñas, transporte Las Leñas, shuttle Las Leñas Mendoza, traslado ski Las Leñas, transfers privados montaña, San Rafael Las Leñas',
   openGraph: {
     title: 'Traslados a Las Leñas | XUMA TRAVEL',

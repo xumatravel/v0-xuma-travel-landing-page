@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, MessageCircle, Star, Users, Car, Calendar } from "lucide-react"
+import { Check, MessageCircle, Star, Users, Car, Calendar, MapPin, ArrowRight } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
 export function LasLenasServices() {
@@ -15,16 +15,20 @@ export function LasLenasServices() {
     document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const services = [
+  const serviceTypes = [
     {
       title: "Transfer Privado",
-      subtitle: "Mendoza o San Rafael → Las Leñas",
-      price: "Desde USD $180",
-      priceNote: "por vehículo (hasta 4 pax)",
-      popular: true,
       icon: Car,
+      popular: true,
+      routes: [
+        { from: "Mendoza", to: "Las Leñas", duration: "~5 horas" },
+        { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
+        { from: "Aeropuerto MDZ", to: "Las Leñas", duration: "~5 horas" },
+      ],
+      availability: "Todos los días",
+      scheduleNote: "Horario a tu elección",
       features: [
-        "Vehículo 4x4 exclusivo para tu grupo",
+        "Vehículo exclusivo para tu grupo",
         "Pickup en hotel, aeropuerto o dirección",
         "Horarios 100% a tu elección",
         "Conductores expertos en montaña",
@@ -32,28 +36,62 @@ export function LasLenasServices() {
         "Espacio amplio para equipaje de ski",
         "Paradas en ruta si las necesitas",
       ],
-      capacity: "Hasta 4 pasajeros",
-      vehicleType: "SUV 4x4 / Van",
     },
     {
       title: "Transfer Compartido",
-      subtitle: "Solo desde San Rafael",
-      price: "USD $95",
-      priceNote: "por persona",
-      popular: false,
       icon: Users,
+      popular: false,
+      routes: [
+        { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
+      ],
+      availability: "Sábados y Lunes",
+      scheduleNote: "Horarios fijos de salida",
       features: [
-        "Vehículo compartido 4x4",
-        "Salidas solo Sábados y Lunes",
+        "Servicio por butaca",
         "Puntos de encuentro en San Rafael",
-        "Horarios fijos de salida",
         "Equipamiento de seguridad incluido",
         "Espacio para equipaje de ski",
         "Ideal para viajeros solos o parejas",
+        "Sujeto a disponibilidad",
       ],
-      capacity: "6-8 pasajeros",
-      vehicleType: "Van 4x4",
-      availability: "Sujeto a disponibilidad",
+    },
+  ]
+
+  const vehicleTypes = [
+    {
+      name: "Auto",
+      capacity: "Hasta 4 pasajeros",
+      luggage: "Poco equipaje",
+      icon: "🚗",
+      description: "Ideal para parejas o grupos pequeños con equipaje liviano",
+    },
+    {
+      name: "Pickup",
+      capacity: "Hasta 4 pasajeros",
+      luggage: "Equipaje deportivo / ski",
+      icon: "🛻",
+      description: "Perfecto para llevar esquíes, tablas y equipaje de montaña",
+    },
+    {
+      name: "Van / Minibus 9",
+      capacity: "Hasta 9 pasajeros",
+      luggage: "Equipaje mediano",
+      icon: "🚐",
+      description: "Para grupos medianos con espacio para todo el equipaje",
+    },
+    {
+      name: "Minibus 14",
+      capacity: "Hasta 14 pasajeros",
+      luggage: "Equipaje grande",
+      icon: "🚌",
+      description: "Para grupos grandes, familias o viajes corporativos",
+    },
+    {
+      name: "Grupo Grande",
+      capacity: "15+ pasajeros",
+      luggage: "A convenir",
+      icon: "🚍",
+      description: "Coordinamos múltiples vehículos para grupos grandes",
     },
   ]
 
@@ -63,20 +101,20 @@ export function LasLenasServices() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Opciones de servicio
+            Opciones de Servicio
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
             Elige el Traslado que Necesitas
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Todos nuestros servicios incluyen vehículos 4x4 equipados para montaña,
-            conductores expertos y la tranquilidad de viajar con profesionales.
+            Ofrecemos distintos tipos de servicios y vehículos para adaptarnos a tus necesidades.
+            Conductores expertos y la tranquilidad de viajar con profesionales.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {services.map((service, index) => (
+        {/* Service Types Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+          {serviceTypes.map((service, index) => (
             <Card
               key={index}
               className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl ${
@@ -94,46 +132,47 @@ export function LasLenasServices() {
                 </div>
               )}
               <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-[#6B7D5C]/10 rounded-lg flex items-center justify-center">
-                    <service.icon className="w-5 h-5 text-[#6B7D5C]" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-[#6B7D5C]/10 rounded-xl flex items-center justify-center">
+                    <service.icon className="w-6 h-6 text-[#6B7D5C]" />
                   </div>
                   <div>
-                    <p className="text-[#6B7D5C] text-sm font-medium">{service.subtitle}</p>
                     <CardTitle className="font-serif text-2xl text-[#0B0B0B]">
                       {service.title}
                     </CardTitle>
                   </div>
                 </div>
                 
-                {/* Capacity & Vehicle Type */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  <Badge variant="secondary" className="bg-[#0B0B0B]/5 text-[#0B0B0B]/70">
-                    <Users className="w-3 h-3 mr-1" />
-                    {service.capacity}
+                {/* Availability & Schedule */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <Badge variant="secondary" className="bg-[#6B7D5C]/10 text-[#6B7D5C]">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {service.availability}
                   </Badge>
                   <Badge variant="secondary" className="bg-[#0B0B0B]/5 text-[#0B0B0B]/70">
-                    <Car className="w-3 h-3 mr-1" />
-                    {service.vehicleType}
+                    {service.scheduleNote}
                   </Badge>
-                  {service.availability && (
-                    <Badge variant="secondary" className="bg-[#C8A96A]/20 text-[#C8A96A]">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      {service.availability}
-                    </Badge>
-                  )}
                 </div>
 
-                <div className="mt-4">
-                  <span className="text-3xl font-bold text-[#0B0B0B]">{service.price}</span>
-                  <span className="text-[#0B0B0B]/60 text-sm ml-2">{service.priceNote}</span>
+                {/* Routes */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm font-medium text-[#0B0B0B]/80">Rutas disponibles:</p>
+                  {service.routes.map((route, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-sm text-[#0B0B0B]/70 bg-[#0B0B0B]/5 rounded-lg px-3 py-2">
+                      <MapPin className="w-3 h-3 text-[#6B7D5C]" />
+                      <span>{route.from}</span>
+                      <ArrowRight className="w-3 h-3" />
+                      <span>{route.to}</span>
+                      <span className="ml-auto text-[#0B0B0B]/50 text-xs">{route.duration}</span>
+                    </div>
+                  ))}
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-[#6B7D5C] shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-[#6B7D5C] shrink-0 mt-0.5" />
                       <span className="text-[#0B0B0B]/70 text-sm">{feature}</span>
                     </li>
                   ))}
@@ -163,10 +202,50 @@ export function LasLenasServices() {
           ))}
         </div>
 
-        {/* Note */}
-        <p className="text-center text-[#0B0B0B]/60 text-sm mt-10">
-          Todos los precios son referenciales. Consulta por grupos grandes o servicios personalizados.
-        </p>
+        {/* Vehicle Types Section */}
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-4">
+              Tipos de Vehículos
+            </h3>
+            <p className="text-[#0B0B0B]/70 text-base max-w-xl mx-auto">
+              Contamos con diferentes tipos de vehículos para adaptarnos a tu grupo y equipaje.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {vehicleTypes.map((vehicle, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-5 border border-[#0B0B0B]/10 hover:border-[#6B7D5C]/50 hover:shadow-md transition-all"
+              >
+                <div className="text-3xl mb-3">{vehicle.icon}</div>
+                <h4 className="font-semibold text-[#0B0B0B] mb-1">{vehicle.name}</h4>
+                <div className="space-y-1 mb-3">
+                  <p className="text-xs text-[#6B7D5C] font-medium">{vehicle.capacity}</p>
+                  <p className="text-xs text-[#0B0B0B]/60">{vehicle.luggage}</p>
+                </div>
+                <p className="text-xs text-[#0B0B0B]/50 leading-relaxed">
+                  {vehicle.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Note */}
+        <div className="text-center mt-12">
+          <p className="text-[#0B0B0B]/60 text-sm mb-4">
+            Consulta por grupos grandes o servicios personalizados
+          </p>
+          <Button
+            onClick={scrollToForm}
+            variant="outline"
+            className="border-[#6B7D5C] text-[#6B7D5C] hover:bg-[#6B7D5C] hover:text-white"
+          >
+            Solicitar Cotización Personalizada
+          </Button>
+        </div>
       </div>
     </section>
   )

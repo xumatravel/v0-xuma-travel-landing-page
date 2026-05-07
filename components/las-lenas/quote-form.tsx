@@ -19,7 +19,6 @@ type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
 type Origin = "mendoza" | "san-rafael"
 type Destination = "las-lenas" | "otro"
-type Currency = "ARS" | "USD"
 
 interface FormData {
   serviceType: ServiceType
@@ -32,7 +31,6 @@ interface FormData {
   departureDate: Date | undefined
   returnDate: Date | undefined
   roundTrip: boolean
-  currency: Currency
   fullName: string
   email: string
   whatsapp: string
@@ -63,7 +61,6 @@ export function LasLenasQuoteForm() {
     departureDate: undefined,
     returnDate: undefined,
     roundTrip: false,
-    currency: "USD",
     fullName: "",
     email: "",
     whatsapp: ""
@@ -95,7 +92,6 @@ export function LasLenasQuoteForm() {
     const returnDateLabel = formData.roundTrip && formData.returnDate
       ? format(formData.returnDate, "dd/MM/yyyy", { locale: es })
       : "No aplica"
-    const currencyLabel = formData.currency === "ARS" ? "ARS" : "USD"
 
     return `Hola, quiero solicitar una cotización de traslado a Las Leñas:
 
@@ -106,7 +102,6 @@ export function LasLenasQuoteForm() {
 • Destino: ${destinationLabel}
 • Fecha de ida: ${departureDateLabel}
 • Fecha de regreso: ${returnDateLabel}
-• Moneda: ${currencyLabel}
 
 Mi nombre es: ${formData.fullName}
 Email: ${formData.email}
@@ -419,51 +414,11 @@ WhatsApp: ${formData.whatsapp}`
                   </div>
                 </div>
 
-                {/* Section 5: Currency */}
+                {/* Section 5: Contact Info */}
                 <div className="p-6 md:p-8 border-b border-[#0B0B0B]/10">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       5
-                    </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Moneda de Cotización</h3>
-                  </div>
-                  
-                  <RadioGroup
-                    value={formData.currency}
-                    onValueChange={(value: Currency) => updateForm("currency", value)}
-                    className="flex gap-4"
-                  >
-                    <Label
-                      htmlFor="usd"
-                      className={`flex items-center gap-3 px-6 py-4 rounded-xl border-2 cursor-pointer transition-all ${
-                        formData.currency === "USD"
-                          ? "border-[#6B7D5C] bg-[#6B7D5C]/5"
-                          : "border-[#0B0B0B]/10 hover:border-[#6B7D5C]/50"
-                      }`}
-                    >
-                      <RadioGroupItem value="USD" id="usd" />
-                      <span className="font-semibold text-[#0B0B0B]">USD (Dólares)</span>
-                    </Label>
-                    
-                    <Label
-                      htmlFor="ars"
-                      className={`flex items-center gap-3 px-6 py-4 rounded-xl border-2 cursor-pointer transition-all ${
-                        formData.currency === "ARS"
-                          ? "border-[#6B7D5C] bg-[#6B7D5C]/5"
-                          : "border-[#0B0B0B]/10 hover:border-[#6B7D5C]/50"
-                      }`}
-                    >
-                      <RadioGroupItem value="ARS" id="ars" />
-                      <span className="font-semibold text-[#0B0B0B]">ARS (Pesos)</span>
-                    </Label>
-                  </RadioGroup>
-                </div>
-
-                {/* Section 6: Contact Info */}
-                <div className="p-6 md:p-8 border-b border-[#0B0B0B]/10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
-                      6
                     </div>
                     <h3 className="font-semibold text-[#0B0B0B] text-lg">Datos de Contacto</h3>
                   </div>

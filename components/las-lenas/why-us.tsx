@@ -19,7 +19,7 @@ export function LasLenasWhyUs() {
     {
       icon: Car,
       title: "Vehículos Habilitados",
-      description: "Flota 4x4 con seguros, VTV y equipamiento de seguridad.",
+      description: "Flota completa con seguros, VTV y equipamiento de seguridad.",
     },
     {
       icon: Mountain,
@@ -63,7 +63,7 @@ export function LasLenasWhyUs() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/ski-resort.jpg"
-                alt="Vehículo 4x4 en camino a Las Leñas"
+                alt="Vehículo en camino a Las Leñas"
                 fill
                 className="object-cover"
               />

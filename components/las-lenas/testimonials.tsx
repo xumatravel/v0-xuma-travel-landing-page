@@ -20,7 +20,7 @@ export function LasLenasTestimonials() {
     {
       name: "Carlos Méndez",
       location: "Chile",
-      text: "Viajamos con toda la familia y el equipo de ski. El vehículo tenía espacio para todo. El precio muy razonable comparado con alquilar auto y manejar en la nieve.",
+      text: "Viajamos con toda la familia y el equipo de ski. El vehículo tenía espacio para todo. Mucho mejor que alquilar auto y manejar en la nieve.",
       rating: 5,
     },
     {

@@ -30,7 +30,7 @@ export function LasLenasHowItWorks() {
       step: "04",
       title: "Llegás a Las Leñas",
       description:
-        "Viaja cómodo y seguro en nuestros vehículos 4x4. En 5 horas estás en la nieve.",
+        "Viaja cómodo y seguro en nuestros vehículos. En 5 horas estás en la nieve.",
     },
   ]
 
