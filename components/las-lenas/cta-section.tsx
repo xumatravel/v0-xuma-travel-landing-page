@@ -3,10 +3,13 @@
 import { Button } from "@/components/ui/button"
 import { MessageCircle, ArrowDown, Clock, CheckCircle } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasCTA() {
+  const { t } = useI18n()
+
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open("Hola! Quiero reservar un transfer a Las Leñas")
+    WHATSAPP_CONFIG.open(t("lasLenasPage.header.whatsappMsg"))
   }
 
   const scrollToForm = () => {
@@ -18,10 +21,10 @@ export function LasLenasCTA() {
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 text-balance">
-            ¿Listo para Reservar tu Traslado?
+            {t("lasLenasPage.cta.title")}
           </h2>
           <p className="text-white/80 text-lg mb-8">
-            Completa el formulario y recibe tu cotización por WhatsApp en minutos.
+            {t("lasLenasPage.cta.subtitle")}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -31,7 +34,7 @@ export function LasLenasCTA() {
               className="bg-white text-[#6B7D5C] hover:bg-white/90 px-10 py-7 text-lg font-semibold"
             >
               <ArrowDown className="w-5 h-5 mr-2" />
-              Cotizar mi Traslado
+              {t("lasLenasPage.cta.quote")}
             </Button>
             <Button
               onClick={handleWhatsApp}
@@ -40,18 +43,18 @@ export function LasLenasCTA() {
               className="border-white text-white hover:bg-white/10 px-10 py-7 text-lg font-semibold"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              Consultar Disponibilidad
+              {t("lasLenasPage.cta.check")}
             </Button>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/70 text-sm">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              <span>Respuesta en menos de 30 min</span>
+              <span>{t("lasLenasPage.cta.response")}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
-              <span>Sin compromiso</span>
+              <span>{t("lasLenasPage.cta.noCommitment")}</span>
             </div>
           </div>
         </div>

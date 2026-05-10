@@ -12,8 +12,9 @@ import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { MessageCircle, CalendarIcon, Users, Car, MapPin, ArrowRight, Check, Clock, Shield } from "lucide-react"
 import { format } from "date-fns"
-import { es } from "date-fns/locale"
+import { es, ptBR, enUS } from "date-fns/locale"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n, type Locale } from "@/lib/i18n"
 
 type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
@@ -36,21 +37,18 @@ interface FormData {
   whatsapp: string
 }
 
-const vehicleLabels: Record<VehicleType, string> = {
-  auto: "Auto (4 pax con poco equipaje)",
-  pickup: "Pickup (camioneta, 4 pax c/ski)",
-  minibus9: "Minibus 9 pax",
-  minibus14: "Minibus 14 pax",
-  grupo: "Grupo grande (consultar)"
-}
-
-const originLabels: Record<Origin, string> = {
-  mendoza: "Mendoza",
-  "san-rafael": "San Rafael",
-  "las-lenas": "Las Leñas"
+const getDateLocale = (locale: Locale) => {
+  switch (locale) {
+    case "pt": return ptBR
+    case "en": return enUS
+    default: return es
+  }
 }
 
 export function LasLenasQuoteForm() {
+  const { t, locale } = useI18n()
+  const dateLocale = getDateLocale(locale)
+
   const [formData, setFormData] = useState<FormData>({
     serviceType: "privado",
     vehicleType: "auto",
@@ -69,6 +67,20 @@ export function LasLenasQuoteForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  const vehicleLabels: Record<VehicleType, string> = {
+    auto: t("lasLenasPage.form.vehicle.auto"),
+    pickup: t("lasLenasPage.form.vehicle.pickup"),
+    minibus9: t("lasLenasPage.form.vehicle.minibus9"),
+    minibus14: t("lasLenasPage.form.vehicle.minibus14"),
+    grupo: t("lasLenasPage.form.vehicle.group")
+  }
+
+  const originLabels: Record<Origin, string> = {
+    mendoza: "Mendoza",
+    "san-rafael": "San Rafael",
+    "las-lenas": "Las Leñas"
+  }
+
   const updateForm = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setFormData(prev => {
       const newData = { ...prev, [key]: value }
@@ -83,28 +95,30 @@ export function LasLenasQuoteForm() {
   }
 
   const buildWhatsAppMessage = (): string => {
-    const serviceLabel = formData.serviceType === "privado" ? "Privado" : "Compartido"
+    const serviceLabel = formData.serviceType === "privado" 
+      ? t("lasLenasPage.form.private") 
+      : t("lasLenasPage.form.shared")
     const vehicleLabel = vehicleLabels[formData.vehicleType]
     const originLabel = originLabels[formData.origin]
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
     const departureDateLabel = formData.departureDate 
-      ? format(formData.departureDate, "dd/MM/yyyy", { locale: es })
-      : "No especificada"
+      ? format(formData.departureDate, "dd/MM/yyyy", { locale: dateLocale })
+      : t("lasLenasPage.whatsapp.notSpecified")
     const returnDateLabel = formData.roundTrip && formData.returnDate
-      ? format(formData.returnDate, "dd/MM/yyyy", { locale: es })
-      : "No aplica"
+      ? format(formData.returnDate, "dd/MM/yyyy", { locale: dateLocale })
+      : t("lasLenasPage.whatsapp.notApplicable")
 
-    return `Hola, quiero solicitar una cotización de traslado a Las Leñas:
+    return `${t("lasLenasPage.whatsapp.greeting")}
 
-• Tipo de servicio: ${serviceLabel}
-• Vehículo: ${vehicleLabel}
-• Cantidad de pasajeros: ${formData.passengers}
-• Origen: ${originLabel}
-• Destino: ${destinationLabel}
-• Fecha de ida: ${departureDateLabel}
-• Fecha de regreso: ${returnDateLabel}
+• ${t("lasLenasPage.whatsapp.serviceType")}: ${serviceLabel}
+• ${t("lasLenasPage.whatsapp.vehicle")}: ${vehicleLabel}
+• ${t("lasLenasPage.whatsapp.passengersCount")}: ${formData.passengers}
+• ${t("lasLenasPage.whatsapp.origin")}: ${originLabel}
+• ${t("lasLenasPage.whatsapp.destination")}: ${destinationLabel}
+• ${t("lasLenasPage.whatsapp.departureDate")}: ${departureDateLabel}
+• ${t("lasLenasPage.whatsapp.returnDate")}: ${returnDateLabel}
 
-Mi nombre es: ${formData.fullName}
+${t("lasLenasPage.whatsapp.myName")}: ${formData.fullName}
 Email: ${formData.email}
 WhatsApp: ${formData.whatsapp}`
   }
@@ -136,13 +150,13 @@ WhatsApp: ${formData.whatsapp}`
           {/* Header */}
           <div className="text-center mb-10">
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              Cotizador de Traslados
+              {t("lasLenasPage.form.badge")}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-4 text-balance">
-              Cotiza tu Traslado en Minutos
+              {t("lasLenasPage.form.title")}
             </h2>
             <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-xl mx-auto">
-              Completa el formulario y te enviaremos la cotización por WhatsApp al instante.
+              {t("lasLenasPage.form.subtitle")}
             </p>
           </div>
 
@@ -156,7 +170,7 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       1
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Tipo de Servicio</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step1")}</h3>
                   </div>
                   
                   <RadioGroup
@@ -174,9 +188,9 @@ WhatsApp: ${formData.whatsapp}`
                     >
                       <RadioGroupItem value="privado" id="privado" className="mt-1" />
                       <div className="flex-1">
-                        <span className="font-semibold text-[#0B0B0B] block">Privado</span>
+                        <span className="font-semibold text-[#0B0B0B] block">{t("lasLenasPage.form.private")}</span>
                         <span className="text-[#0B0B0B]/60 text-sm">
-                          Todos los días, horario a elección, puerta a puerta
+                          {t("lasLenasPage.form.privateDesc")}
                         </span>
                       </div>
                     </Label>
@@ -191,9 +205,9 @@ WhatsApp: ${formData.whatsapp}`
                     >
                       <RadioGroupItem value="compartido" id="compartido" className="mt-1" />
                       <div className="flex-1">
-                        <span className="font-semibold text-[#0B0B0B] block">Compartido</span>
+                        <span className="font-semibold text-[#0B0B0B] block">{t("lasLenasPage.form.shared")}</span>
                         <span className="text-[#0B0B0B]/60 text-sm">
-                          Solo San Rafael, sábados y lunes, por butaca
+                          {t("lasLenasPage.form.sharedDesc")}
                         </span>
                       </div>
                     </Label>
@@ -206,14 +220,14 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       2
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Vehículo y Pasajeros</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step2")}</h3>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="vehicle" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Car className="w-4 h-4" />
-                        Tipo de vehículo
+                        {t("lasLenasPage.form.vehicleType")}
                       </Label>
                       <Select
                         value={formData.vehicleType}
@@ -223,11 +237,11 @@ WhatsApp: ${formData.whatsapp}`
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="auto">Auto (4 pax con poco equipaje)</SelectItem>
-                          <SelectItem value="pickup">Camioneta (4 pax c/eq deportivo)</SelectItem>
-                          <SelectItem value="minibus9">Minibus 9 pax</SelectItem>
-                          <SelectItem value="minibus14">Minibus 14 pax</SelectItem>
-                          <SelectItem value="grupo">Grupo grande (consultar)</SelectItem>
+                          <SelectItem value="auto">{t("lasLenasPage.form.vehicle.auto")}</SelectItem>
+                          <SelectItem value="pickup">{t("lasLenasPage.form.vehicle.pickup")}</SelectItem>
+                          <SelectItem value="minibus9">{t("lasLenasPage.form.vehicle.minibus9")}</SelectItem>
+                          <SelectItem value="minibus14">{t("lasLenasPage.form.vehicle.minibus14")}</SelectItem>
+                          <SelectItem value="grupo">{t("lasLenasPage.form.vehicle.group")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -235,7 +249,7 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="space-y-2">
                       <Label htmlFor="passengers" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Users className="w-4 h-4" />
-                        Cantidad de pasajeros
+                        {t("lasLenasPage.form.passengers")}
                       </Label>
                       <Select
                         value={formData.passengers}
@@ -247,10 +261,10 @@ WhatsApp: ${formData.whatsapp}`
                         <SelectContent>
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(num => (
                             <SelectItem key={num} value={String(num)}>
-                              {num} {num === 1 ? "pasajero" : "pasajeros"}
+                              {num} {num === 1 ? t("lasLenasPage.form.passenger") : t("lasLenasPage.form.passengersPlural")}
                             </SelectItem>
                           ))}
-                          <SelectItem value="15+">15+ pasajeros</SelectItem>
+                          <SelectItem value="15+">15+ {t("lasLenasPage.form.passengersPlural")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -263,14 +277,14 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       3
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Origen y Destino</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step3")}</h3>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="origin" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
-                        Origen
+                        {t("lasLenasPage.form.origin")}
                       </Label>
                       <Select
                         value={formData.origin}
@@ -288,7 +302,7 @@ WhatsApp: ${formData.whatsapp}`
                       </Select>
                       {formData.serviceType === "compartido" && (
                         <p className="text-xs text-[#C8A96A]">
-                          Servicio compartido solo disponible desde San Rafael
+                          {t("lasLenasPage.form.sharedNote")}
                         </p>
                       )}
                     </div>
@@ -296,7 +310,7 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="space-y-2">
                       <Label htmlFor="destination" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
-                        Destino
+                        {t("lasLenasPage.form.destination")}
                       </Label>
                       <Select
                         value={formData.destination}
@@ -307,12 +321,12 @@ WhatsApp: ${formData.whatsapp}`
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="las-lenas">Las Leñas</SelectItem>
-                          <SelectItem value="otro">Otro (especificar)</SelectItem>
+                          <SelectItem value="otro">{t("lasLenasPage.form.otherDestination")}</SelectItem>
                         </SelectContent>
                       </Select>
                       {formData.destination === "otro" && (
                         <Input
-                          placeholder="Especifica el destino..."
+                          placeholder={t("lasLenasPage.form.specifyDestination")}
                           value={formData.destinationManual}
                           onChange={(e) => updateForm("destinationManual", e.target.value)}
                           className="h-12 mt-2"
@@ -328,7 +342,7 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       4
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Fechas de Viaje</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step4")}</h3>
                   </div>
                   
                   {/* Round trip toggle */}
@@ -336,8 +350,8 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="flex items-center gap-3">
                       <ArrowRight className="w-5 h-5 text-[#6B7D5C]" />
                       <div>
-                        <span className="font-medium text-[#0B0B0B]">Ida y vuelta</span>
-                        <p className="text-sm text-[#0B0B0B]/60">Activa esta opción si necesitas regreso</p>
+                        <span className="font-medium text-[#0B0B0B]">{t("lasLenasPage.form.roundTrip")}</span>
+                        <p className="text-sm text-[#0B0B0B]/60">{t("lasLenasPage.form.roundTripDesc")}</p>
                       </div>
                     </div>
                     <Switch
@@ -350,7 +364,7 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="space-y-2">
                       <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <CalendarIcon className="w-4 h-4" />
-                        Fecha de ida *
+                        {t("lasLenasPage.form.departureDate")} *
                       </Label>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -362,8 +376,8 @@ WhatsApp: ${formData.whatsapp}`
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
                             {formData.departureDate
-                              ? format(formData.departureDate, "PPP", { locale: es })
-                              : "Selecciona fecha"}
+                              ? format(formData.departureDate, "PPP", { locale: dateLocale })
+                              : t("lasLenasPage.form.selectDate")}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
@@ -382,7 +396,7 @@ WhatsApp: ${formData.whatsapp}`
                       <div className="space-y-2">
                         <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                           <CalendarIcon className="w-4 h-4" />
-                          Fecha de regreso *
+                          {t("lasLenasPage.form.returnDate")} *
                         </Label>
                         <Popover>
                           <PopoverTrigger asChild>
@@ -394,8 +408,8 @@ WhatsApp: ${formData.whatsapp}`
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {formData.returnDate
-                                ? format(formData.returnDate, "PPP", { locale: es })
-                                : "Selecciona fecha"}
+                                ? format(formData.returnDate, "PPP", { locale: dateLocale })
+                                : t("lasLenasPage.form.selectDate")}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
@@ -422,17 +436,17 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       5
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">Datos de Contacto</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step5")}</h3>
                   </div>
                   
                   <div className="grid gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="fullName" className="text-[#0B0B0B]/80">
-                        Nombre completo *
+                        {t("lasLenasPage.form.fullName")} *
                       </Label>
                       <Input
                         id="fullName"
-                        placeholder="Tu nombre completo"
+                        placeholder={t("lasLenasPage.form.fullNamePlaceholder")}
                         value={formData.fullName}
                         onChange={(e) => updateForm("fullName", e.target.value)}
                         className="h-12"
@@ -443,12 +457,12 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-[#0B0B0B]/80">
-                          Email *
+                          {t("lasLenasPage.form.email")} *
                         </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="tu@email.com"
+                          placeholder={t("lasLenasPage.form.emailPlaceholder")}
                           value={formData.email}
                           onChange={(e) => updateForm("email", e.target.value)}
                           className="h-12"
@@ -458,12 +472,12 @@ WhatsApp: ${formData.whatsapp}`
                       
                       <div className="space-y-2">
                         <Label htmlFor="whatsapp" className="text-[#0B0B0B]/80">
-                          WhatsApp *
+                          {t("lasLenasPage.form.whatsapp")} *
                         </Label>
                         <Input
                           id="whatsapp"
                           type="tel"
-                          placeholder="+54 9 11 1234-5678"
+                          placeholder={t("lasLenasPage.form.whatsappPlaceholder")}
                           value={formData.whatsapp}
                           onChange={(e) => updateForm("whatsapp", e.target.value)}
                           className="h-12"
@@ -482,11 +496,11 @@ WhatsApp: ${formData.whatsapp}`
                     className="w-full h-14 bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white text-lg font-semibold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      <>Abriendo WhatsApp...</>
+                      <>{t("lasLenasPage.form.submitting")}</>
                     ) : (
                       <>
                         <MessageCircle className="w-5 h-5 mr-2" />
-                        Enviar Cotización por WhatsApp
+                        {t("lasLenasPage.form.submit")}
                       </>
                     )}
                   </Button>
@@ -495,11 +509,11 @@ WhatsApp: ${formData.whatsapp}`
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 text-sm text-[#0B0B0B]/60">
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-[#6B7D5C]" />
-                      <span>Te respondemos en menos de 30 minutos</span>
+                      <span>{t("lasLenasPage.form.responseTime")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-[#6B7D5C]" />
-                      <span>Coordinación rápida por WhatsApp</span>
+                      <span>{t("lasLenasPage.form.quickCoordination")}</span>
                     </div>
                   </div>
                 </div>
@@ -511,15 +525,15 @@ WhatsApp: ${formData.whatsapp}`
           <div className="flex flex-wrap justify-center gap-6 mt-8">
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">Sin compromiso</span>
+              <span className="text-sm">{t("lasLenasPage.form.noCommitment")}</span>
             </div>
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">Respuesta inmediata</span>
+              <span className="text-sm">{t("lasLenasPage.form.immediateResponse")}</span>
             </div>
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">Cotización sin costo</span>
+              <span className="text-sm">{t("lasLenasPage.form.freeQuote")}</span>
             </div>
           </div>
         </div>

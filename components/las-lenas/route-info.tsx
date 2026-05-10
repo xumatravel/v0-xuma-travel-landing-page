@@ -1,39 +1,42 @@
 "use client"
 
 import { Clock, Mountain, Calendar, Car } from "lucide-react"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasRouteInfo() {
+  const { t } = useI18n()
+
   const infoItems = [
     {
       icon: Clock,
-      title: "Duración del viaje",
+      title: t("lasLenasPage.route.duration"),
       details: [
-        { label: "Desde San Rafael", value: "2h30 – 3h" },
-        { label: "Desde Mendoza", value: "4h15 – 5h" },
+        { label: t("lasLenasPage.route.fromSanRafael"), value: "2h30 – 3h" },
+        { label: t("lasLenasPage.route.fromMendoza"), value: "4h15 – 5h" },
       ],
     },
     {
       icon: Mountain,
-      title: "Tipo de camino",
+      title: t("lasLenasPage.route.roadType"),
       details: [
-        { label: "Ruta de montaña", value: "Asfalto + ripio" },
-        { label: "Condiciones", value: "Nieve en invierno" },
+        { label: t("lasLenasPage.route.mountainRoad"), value: t("lasLenasPage.route.asphaltGravel") },
+        { label: t("lasLenasPage.route.conditions"), value: t("lasLenasPage.route.snowWinter") },
       ],
     },
     {
       icon: Calendar,
-      title: "Horarios",
+      title: t("lasLenasPage.route.schedules"),
       details: [
-        { label: "Privado", value: "A elección del pasajero" },
-        { label: "Compartido", value: "Sábados y Lunes" },
+        { label: t("lasLenasPage.route.private"), value: t("lasLenasPage.route.passengerChoice") },
+        { label: t("lasLenasPage.route.shared"), value: t("lasLenasPage.route.satMon") },
       ],
     },
     {
       icon: Car,
-      title: "Tipo de servicio",
+      title: t("lasLenasPage.route.serviceType"),
       details: [
-        { label: "Privado", value: "100% exclusivo" },
-        { label: "Compartido", value: "Según disponibilidad" },
+        { label: t("lasLenasPage.route.private"), value: t("lasLenasPage.route.exclusive") },
+        { label: t("lasLenasPage.route.shared"), value: t("lasLenasPage.route.byAvailability") },
       ],
     },
   ]
@@ -44,10 +47,10 @@ export function LasLenasRouteInfo() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-[#C8A96A] font-medium tracking-wider uppercase text-sm mb-3">
-            Información del viaje
+            {t("lasLenasPage.route.badge")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
-            Todo lo que necesitas saber
+            {t("lasLenasPage.route.title")}
           </h2>
         </div>
 

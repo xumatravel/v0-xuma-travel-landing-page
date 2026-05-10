@@ -5,10 +5,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Check, MessageCircle, Star, Users, Car, Calendar, MapPin, ArrowRight } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasServices() {
+  const { t, tArray } = useI18n()
+
   const handleWhatsApp = (service: string) => {
-    WHATSAPP_CONFIG.open(`Hola! Me interesa el servicio de ${service} a Las Leñas`)
+    WHATSAPP_CONFIG.open(`${t("lasLenasPage.header.whatsappMsg")} - ${service}`)
   }
 
   const scrollToForm = () => {
@@ -17,7 +20,7 @@ export function LasLenasServices() {
 
   const serviceTypes = [
     {
-      title: "Transfer Privado",
+      title: t("lasLenasPage.services.private.title"),
       icon: Car,
       popular: true,
       routes: [
@@ -25,73 +28,53 @@ export function LasLenasServices() {
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
         { from: "Aeropuerto MDZ", to: "Las Leñas", duration: "~5 horas" },
       ],
-      availability: "Todos los días",
-      scheduleNote: "Horario a tu elección",
-      features: [
-        "Vehículo exclusivo para tu grupo",
-        "Pickup en hotel, aeropuerto o dirección",
-        "Horarios 100% a tu elección",
-        "Conductores expertos en montaña",
-        "Cadenas y equipamiento incluido",
-        "Espacio amplio para equipaje de ski",
-        "Paradas en ruta si las necesitas",
-      ],
+      availability: t("lasLenasPage.services.private.availability"),
+      scheduleNote: t("lasLenasPage.services.private.schedule"),
+      features: tArray("lasLenasPage.services.private.features"),
     },
     {
-      title: "Transfer Compartido",
+      title: t("lasLenasPage.services.shared.title"),
       icon: Users,
       popular: false,
       routes: [
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
       ],
-      availability: "Sábados y Lunes",
-      scheduleNote: "Horarios fijos de salida",
-      features: [
-        "Servicio por butaca",
-        "Puntos de encuentro en San Rafael",
-        "Equipamiento de seguridad incluido",
-        "Espacio para equipaje de ski",
-        "Ideal para viajeros solos o parejas",
-        "Sujeto a disponibilidad",
-      ],
+      availability: t("lasLenasPage.services.shared.availability"),
+      scheduleNote: t("lasLenasPage.services.shared.schedule"),
+      features: tArray("lasLenasPage.services.shared.features"),
     },
   ]
 
   const vehicleTypes = [
     {
-      name: "Auto",
-      capacity: "Hasta 4 pasajeros",
-      luggage: "Poco equipaje",
+      name: t("lasLenasPage.form.vehicle.auto").split(" (")[0],
+      capacity: "4 pax",
+      luggage: t("lasLenasPage.form.vehicle.auto").includes("poco") ? "Poco equipaje" : "Little luggage",
       icon: "🚗",
-      description: "Ideal para parejas o grupos pequeños con equipaje liviano",
     },
     {
-      name: "Pickup",
-      capacity: "Hasta 4 pasajeros",
-      luggage: "Equipaje deportivo / ski",
+      name: t("lasLenasPage.form.vehicle.pickup").split(" (")[0],
+      capacity: "4 pax",
+      luggage: "Ski equipment",
       icon: "🛻",
-      description: "Perfecto para llevar esquíes, tablas y equipaje de montaña",
     },
     {
       name: "Van / Minibus 9",
-      capacity: "Hasta 9 pasajeros",
-      luggage: "Equipaje mediano",
+      capacity: "9 pax",
+      luggage: "Medium",
       icon: "🚐",
-      description: "Para grupos medianos con espacio para todo el equipaje",
     },
     {
       name: "Minibus 14",
-      capacity: "Hasta 14 pasajeros",
-      luggage: "Equipaje grande",
+      capacity: "14 pax",
+      luggage: "Large",
       icon: "🚌",
-      description: "Para grupos grandes, familias o viajes corporativos",
     },
     {
-      name: "Grupo Grande",
-      capacity: "15+ pasajeros",
-      luggage: "A convenir",
+      name: t("lasLenasPage.form.vehicle.group").split(" (")[0],
+      capacity: "15+ pax",
+      luggage: "Custom",
       icon: "🚍",
-      description: "Coordinamos múltiples vehículos para grupos grandes",
     },
   ]
 
@@ -101,14 +84,13 @@ export function LasLenasServices() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Opciones de Servicio
+            {t("lasLenasPage.services.badge")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            Elige el Traslado que Necesitas
+            {t("lasLenasPage.services.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Ofrecemos distintos tipos de servicios y vehículos para adaptarnos a tus necesidades.
-            Conductores expertos y la tranquilidad de viajar con profesionales.
+            {t("lasLenasPage.services.subtitle")}
           </p>
         </div>
 
@@ -127,7 +109,7 @@ export function LasLenasServices() {
                 <div className="absolute top-0 right-0">
                   <Badge className="bg-[#6B7D5C] text-white rounded-none rounded-bl-lg px-4 py-1">
                     <Star className="w-3 h-3 mr-1 fill-current" />
-                    Más Popular
+                    {t("lasLenasPage.services.mostPopular")}
                   </Badge>
                 </div>
               )}
@@ -156,7 +138,7 @@ export function LasLenasServices() {
 
                 {/* Routes */}
                 <div className="space-y-2 mb-4">
-                  <p className="text-sm font-medium text-[#0B0B0B]/80">Rutas disponibles:</p>
+                  <p className="text-sm font-medium text-[#0B0B0B]/80">{t("lasLenasPage.services.private.routes")}</p>
                   {service.routes.map((route, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm text-[#0B0B0B]/70 bg-[#0B0B0B]/5 rounded-lg px-3 py-2">
                       <MapPin className="w-3 h-3 text-[#6B7D5C]" />
@@ -186,7 +168,7 @@ export function LasLenasServices() {
                         : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
                     }`}
                   >
-                    Cotizar mi Traslado
+                    {t("lasLenasPage.services.quote")}
                   </Button>
                   <Button
                     onClick={() => handleWhatsApp(service.title)}
@@ -194,7 +176,7 @@ export function LasLenasServices() {
                     className="w-full border-[#0B0B0B]/20"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Consultar Disponibilidad
+                    {t("lasLenasPage.services.checkAvailability")}
                   </Button>
                 </div>
               </CardContent>
@@ -206,10 +188,10 @@ export function LasLenasServices() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-4">
-              Tipos de Vehículos
+              {t("lasLenasPage.services.vehicleTypes")}
             </h3>
             <p className="text-[#0B0B0B]/70 text-base max-w-xl mx-auto">
-              Contamos con diferentes tipos de vehículos para adaptarnos a tu grupo y equipaje.
+              {t("lasLenasPage.services.vehicleTypesDesc")}
             </p>
           </div>
 
@@ -225,9 +207,6 @@ export function LasLenasServices() {
                   <p className="text-xs text-[#6B7D5C] font-medium">{vehicle.capacity}</p>
                   <p className="text-xs text-[#0B0B0B]/60">{vehicle.luggage}</p>
                 </div>
-                <p className="text-xs text-[#0B0B0B]/50 leading-relaxed">
-                  {vehicle.description}
-                </p>
               </div>
             ))}
           </div>
@@ -236,14 +215,14 @@ export function LasLenasServices() {
         {/* CTA Note */}
         <div className="text-center mt-12">
           <p className="text-[#0B0B0B]/60 text-sm mb-4">
-            Consulta por grupos grandes o servicios personalizados
+            {t("lasLenasPage.services.customNote")}
           </p>
           <Button
             onClick={scrollToForm}
             variant="outline"
             className="border-[#6B7D5C] text-[#6B7D5C] hover:bg-[#6B7D5C] hover:text-white"
           >
-            Solicitar Cotización Personalizada
+            {t("lasLenasPage.services.customQuote")}
           </Button>
         </div>
       </div>
