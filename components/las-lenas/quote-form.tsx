@@ -95,24 +95,26 @@ export function LasLenasQuoteForm() {
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
     const departureDateLabel = formData.departureDate 
       ? format(formData.departureDate, "dd/MM/yyyy", { locale: dateLocale })
-      : "No especificada"
+      : t("ll.quote.msg.notSpecified")
     const returnDateLabel = formData.roundTrip && formData.returnDate
       ? format(formData.returnDate, "dd/MM/yyyy", { locale: dateLocale })
-      : "No aplica"
+      : t("ll.quote.msg.notApplicable")
 
-    return `Hola, quiero solicitar una cotización de traslado a Las Leñas:
+    return `${t("ll.quote.msg.greeting")}
 
-• Tipo de servicio: ${serviceLabel}
-• Vehículo: ${vehicleLabel}
-• Cantidad de pasajeros: ${formData.passengers}
-• Origen: ${originLabel}
-• Destino: ${destinationLabel}
-• Fecha de ida: ${departureDateLabel}
-• Fecha de regreso: ${returnDateLabel}
+• ${t("ll.quote.msg.serviceType")}: ${serviceLabel}
+• ${t("ll.quote.msg.vehicle")}: ${vehicleLabel}
+• ${t("ll.quote.msg.passengers")}: ${formData.passengers}
+• ${t("ll.quote.msg.origin")}: ${originLabel}
+• ${t("ll.quote.msg.destination")}: ${destinationLabel}
+• ${t("ll.quote.msg.departureDate")}: ${departureDateLabel}
+• ${t("ll.quote.msg.returnDate")}: ${returnDateLabel}
 
-Mi nombre es: ${formData.fullName}
+${t("ll.quote.msg.myName")}: ${formData.fullName}
 Email: ${formData.email}
-WhatsApp: ${formData.whatsapp}`
+WhatsApp: ${formData.whatsapp}
+
+${t("ll.quote.msg.language")}`
   }
 
   const handleSubmit = (e: React.FormEvent) => {
