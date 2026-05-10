@@ -2,8 +2,11 @@
 
 import { Star, Quote } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasTestimonials() {
+  const { t } = useI18n()
+
   const testimonials = [
     {
       name: "María González",
@@ -31,7 +34,7 @@ export function LasLenasTestimonials() {
     },
     {
       name: "Michael Thompson",
-      location: "Estados Unidos",
+      location: "United States",
       text: "Professional service from start to finish. The driver was punctual and the vehicle was perfect for the mountain road. Will definitely use again next ski season!",
       rating: 5,
     },
@@ -43,14 +46,13 @@ export function LasLenasTestimonials() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#C8A96A] font-medium tracking-wider uppercase text-sm mb-3">
-            Testimonios
+            {t("ll.testimonials.label")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
-            Lo Que Dicen Nuestros Pasajeros
+            {t("ll.testimonials.title")}
           </h2>
           <p className="text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Más de 500 viajeros ya confiaron en nosotros para llegar a Las Leñas.
-            Esto es lo que opinan de su experiencia.
+            {t("ll.testimonials.subtitle")}
           </p>
         </div>
 

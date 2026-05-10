@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { MessageCircle, Shield, Clock, Award, ArrowDown } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasHero() {
+  const { t } = useI18n()
+
   const handleWhatsApp = () => {
     WHATSAPP_CONFIG.open("Hola! Quiero reservar un transfer a Las Leñas")
   }
@@ -35,33 +38,33 @@ export function LasLenasHero() {
           {/* Badge */}
           <Badge className="bg-[#C8A96A] text-[#0B0B0B] hover:bg-[#C8A96A] text-sm px-4 py-2 font-bold mb-8 inline-flex items-center gap-2">
             <Award className="w-4 h-4" />
-            +500 Transfers a Las Leñas en 2024
+            {t("ll.hero.badge")}
           </Badge>
 
           {/* Headline */}
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-6">
-            <span className="block">Traslados Privados</span>
-            <span className="block">a Las Leñas</span>
+            <span className="block">{t("ll.hero.title1")}</span>
+            <span className="block">{t("ll.hero.title2")}</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-white/90 text-xl md:text-2xl leading-relaxed mb-6 max-w-2xl mx-auto font-light">
-            Viajes seguros, directos y con horarios a tu medida desde Mendoza y San Rafael
+            {t("ll.hero.subtitle")}
           </p>
 
           {/* Trust Indicators - Micro confianza */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10">
             <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Shield className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Servicio puerta a puerta</span>
+              <span className="text-sm">{t("ll.hero.trust1")}</span>
             </div>
             <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Clock className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Camino de montaña con choferes profesionales</span>
+              <span className="text-sm">{t("ll.hero.trust2")}</span>
             </div>
             <div className="flex items-center gap-2 text-white/90 bg-white/10 px-4 py-2 rounded-full">
               <Award className="w-5 h-5 text-[#6B7D5C]" />
-              <span className="text-sm">Vehículos habilitados</span>
+              <span className="text-sm">{t("ll.hero.trust3")}</span>
             </div>
           </div>
 
@@ -72,7 +75,7 @@ export function LasLenasHero() {
               size="lg"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white px-10 py-7 text-lg font-semibold transition-all duration-300 rounded-lg group"
             >
-              Cotizar mi Traslado
+              {t("ll.hero.cta1")}
               <ArrowDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
             </Button>
             <Button
@@ -81,13 +84,13 @@ export function LasLenasHero() {
               className="bg-gray-500 text-white hover:bg-white hover:text-gray-800 px-10 py-7 text-lg transition-colors rounded-lg"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              Consultar Disponibilidad
+              {t("ll.hero.cta2")}
             </Button>
           </div>
 
           {/* Response time hint */}
           <p className="text-white/60 text-sm">
-            Te respondemos en menos de 30 minutos
+            {t("ll.hero.response")}
           </p>
         </div>
       </div>

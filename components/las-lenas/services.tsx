@@ -5,8 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Check, MessageCircle, Star, Users, Car, Calendar, MapPin, ArrowRight } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasServices() {
+  const { t, tArray } = useI18n()
+
   const handleWhatsApp = (service: string) => {
     WHATSAPP_CONFIG.open(`Hola! Me interesa el servicio de ${service} a Las Leñas`)
   }
@@ -17,7 +20,7 @@ export function LasLenasServices() {
 
   const serviceTypes = [
     {
-      title: "Transfer Privado",
+      title: t("ll.services.private"),
       icon: Car,
       popular: true,
       routes: [
@@ -25,73 +28,58 @@ export function LasLenasServices() {
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
         { from: "Aeropuerto MDZ", to: "Las Leñas", duration: "~5 horas" },
       ],
-      availability: "Todos los días",
-      scheduleNote: "Horario a tu elección",
-      features: [
-        "Vehículo exclusivo para tu grupo",
-        "Pickup en hotel, aeropuerto o dirección",
-        "Horarios 100% a tu elección",
-        "Conductores expertos en montaña",
-        "Cadenas y equipamiento incluido",
-        "Espacio amplio para equipaje de ski",
-        "Paradas en ruta si las necesitas",
-      ],
+      availability: t("ll.services.allDays"),
+      scheduleNote: t("ll.services.yourSchedule"),
+      features: tArray("ll.services.private.features"),
     },
     {
-      title: "Transfer Compartido",
+      title: t("ll.services.shared"),
       icon: Users,
       popular: false,
       routes: [
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
       ],
-      availability: "Sábados y Lunes",
-      scheduleNote: "Horarios fijos de salida",
-      features: [
-        "Servicio por butaca",
-        "Puntos de encuentro en San Rafael",
-        "Equipamiento de seguridad incluido",
-        "Espacio para equipaje de ski",
-        "Ideal para viajeros solos o parejas",
-        "Sujeto a disponibilidad",
-      ],
+      availability: t("ll.services.satMon"),
+      scheduleNote: t("ll.services.fixedSchedule"),
+      features: tArray("ll.services.shared.features"),
     },
   ]
 
   const vehicleTypes = [
     {
-      name: "Auto",
-      capacity: "Hasta 4 pasajeros",
-      luggage: "Poco equipaje",
+      name: t("ll.services.car"),
+      capacity: t("ll.services.carCapacity"),
+      luggage: t("ll.services.carLuggage"),
       icon: "🚗",
-      description: "Ideal para parejas o grupos pequeños con equipaje liviano",
+      description: t("ll.services.carDesc"),
     },
     {
-      name: "Pickup",
-      capacity: "Hasta 4 pasajeros",
-      luggage: "Equipaje deportivo / ski",
+      name: t("ll.services.pickup"),
+      capacity: t("ll.services.pickupCapacity"),
+      luggage: t("ll.services.pickupLuggage"),
       icon: "🛻",
-      description: "Perfecto para llevar esquíes, tablas y equipaje de montaña",
+      description: t("ll.services.pickupDesc"),
     },
     {
-      name: "Van / Minibus 9",
-      capacity: "Hasta 9 pasajeros",
-      luggage: "Equipaje mediano",
+      name: t("ll.services.van"),
+      capacity: t("ll.services.vanCapacity"),
+      luggage: t("ll.services.vanLuggage"),
       icon: "🚐",
-      description: "Para grupos medianos con espacio para todo el equipaje",
+      description: t("ll.services.vanDesc"),
     },
     {
-      name: "Minibus 14",
-      capacity: "Hasta 14 pasajeros",
-      luggage: "Equipaje grande",
+      name: t("ll.services.minibus"),
+      capacity: t("ll.services.minibusCapacity"),
+      luggage: t("ll.services.minibusLuggage"),
       icon: "🚌",
-      description: "Para grupos grandes, familias o viajes corporativos",
+      description: t("ll.services.minibusDesc"),
     },
     {
-      name: "Grupo Grande",
-      capacity: "15+ pasajeros",
-      luggage: "A convenir",
+      name: t("ll.services.group"),
+      capacity: t("ll.services.groupCapacity"),
+      luggage: t("ll.services.groupLuggage"),
       icon: "🚍",
-      description: "Coordinamos múltiples vehículos para grupos grandes",
+      description: t("ll.services.groupDesc"),
     },
   ]
 
@@ -101,14 +89,13 @@ export function LasLenasServices() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Opciones de Servicio
+            {t("ll.services.label")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            Elige el Traslado que Necesitas
+            {t("ll.services.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Ofrecemos distintos tipos de servicios y vehículos para adaptarnos a tus necesidades.
-            Conductores expertos y la tranquilidad de viajar con profesionales.
+            {t("ll.services.subtitle")}
           </p>
         </div>
 
@@ -127,7 +114,7 @@ export function LasLenasServices() {
                 <div className="absolute top-0 right-0">
                   <Badge className="bg-[#6B7D5C] text-white rounded-none rounded-bl-lg px-4 py-1">
                     <Star className="w-3 h-3 mr-1 fill-current" />
-                    Más Popular
+                    {t("ll.services.popular")}
                   </Badge>
                 </div>
               )}
@@ -156,7 +143,7 @@ export function LasLenasServices() {
 
                 {/* Routes */}
                 <div className="space-y-2 mb-4">
-                  <p className="text-sm font-medium text-[#0B0B0B]/80">Rutas disponibles:</p>
+                  <p className="text-sm font-medium text-[#0B0B0B]/80">{t("ll.services.availableRoutes")}</p>
                   {service.routes.map((route, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm text-[#0B0B0B]/70 bg-[#0B0B0B]/5 rounded-lg px-3 py-2">
                       <MapPin className="w-3 h-3 text-[#6B7D5C]" />
@@ -186,7 +173,7 @@ export function LasLenasServices() {
                         : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
                     }`}
                   >
-                    Cotizar mi Traslado
+                    {t("ll.services.quoteBtn")}
                   </Button>
                   <Button
                     onClick={() => handleWhatsApp(service.title)}
@@ -194,7 +181,7 @@ export function LasLenasServices() {
                     className="w-full border-[#0B0B0B]/20"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Consultar Disponibilidad
+                    {t("ll.services.checkAvail")}
                   </Button>
                 </div>
               </CardContent>
@@ -206,10 +193,10 @@ export function LasLenasServices() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-4">
-              Tipos de Vehículos
+              {t("ll.services.vehicleTypes")}
             </h3>
             <p className="text-[#0B0B0B]/70 text-base max-w-xl mx-auto">
-              Contamos con diferentes tipos de vehículos para adaptarnos a tu grupo y equipaje.
+              {t("ll.services.vehicleTypesSubtitle")}
             </p>
           </div>
 
@@ -236,14 +223,14 @@ export function LasLenasServices() {
         {/* CTA Note */}
         <div className="text-center mt-12">
           <p className="text-[#0B0B0B]/60 text-sm mb-4">
-            Consulta por grupos grandes o servicios personalizados
+            {t("ll.services.customQuote")}
           </p>
           <Button
             onClick={scrollToForm}
             variant="outline"
             className="border-[#6B7D5C] text-[#6B7D5C] hover:bg-[#6B7D5C] hover:text-white"
           >
-            Solicitar Cotización Personalizada
+            {t("ll.services.customQuoteBtn")}
           </Button>
         </div>
       </div>
