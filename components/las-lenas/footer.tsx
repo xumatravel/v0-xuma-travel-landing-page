@@ -3,14 +3,17 @@
 import Link from "next/link"
 import { MessageCircle, Mail, MapPin, Instagram, ArrowLeft } from "lucide-react"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasFooter() {
+  const { t } = useI18n()
+
   const quickLinks = [
-    { href: "#servicios", label: "Servicios" },
-    { href: "#como-funciona", label: "Cómo Funciona" },
-    { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
-    { href: "#testimonios", label: "Testimonios" },
-    { href: "#contacto", label: "Contacto" },
+    { href: "#servicios", label: t("ll.footer.services") },
+    { href: "#como-funciona", label: t("ll.footer.howItWorks") },
+    { href: "#por-que-nosotros", label: t("ll.footer.whyUs") },
+    { href: "#testimonios", label: t("ll.footer.testimonials") },
+    { href: "#contacto", label: t("ll.nav.contact") },
   ]
 
   return (
@@ -25,7 +28,7 @@ export function LasLenasFooter() {
               </span>
             </Link>
             <p className="text-white/60 leading-relaxed max-w-md mb-6">
-              Transfers privados y seguros a Las Leñas. Vehículos equipados para montaña y conductores expertos.
+              {t("ll.footer.description")}
             </p>
             <div className="flex items-center gap-4 mb-6">
               <a
@@ -52,13 +55,13 @@ export function LasLenasFooter() {
               className="inline-flex items-center gap-2 text-[#C8A96A] hover:text-white transition-colors text-sm"
             >
               <ArrowLeft className="w-4 h-4" />
-              Volver a XUMA Travel
+              {t("ll.footer.backHome")}
             </Link>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-serif font-semibold text-white mb-4">Enlaces</h3>
+            <h3 className="font-serif font-semibold text-white mb-4">{t("ll.footer.links")}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -75,7 +78,7 @@ export function LasLenasFooter() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-serif font-semibold text-white mb-4">Contacto</h3>
+            <h3 className="font-serif font-semibold text-white mb-4">{t("ll.footer.contact")}</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -108,7 +111,7 @@ export function LasLenasFooter() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} XUMA TRAVEL. Todos los derechos reservados.
+            © {new Date().getFullYear()} XUMA TRAVEL. {t("ll.footer.rights")}
           </p>
         </div>
       </div>

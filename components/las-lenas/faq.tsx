@@ -6,50 +6,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useI18n } from "@/lib/i18n"
+
+interface FAQItem {
+  question: string
+  answer: string
+}
 
 export function LasLenasFAQ() {
-  const faqs = [
-    {
-      question: "¿Cuánto dura el viaje de Mendoza a Las Leñas?",
-      answer:
-        "El viaje dura aproximadamente 5 horas dependiendo de las condiciones climáticas y del camino. La distancia es de unos 450 km y el último tramo es de montaña, lo que requiere precaución especialmente en invierno.",
-    },
-    {
-      question: "¿Qué tipo de vehículos utilizan?",
-      answer:
-        "Utilizamos diferentes tipos de vehículos según las necesidades: autos, pickups, vans y minibuses. Todos equipados con cadenas para nieve cuando es necesario, calefacción potente y espacio amplio para equipaje de ski.",
-    },
-    {
-      question: "¿Pueden buscarme en el aeropuerto de Mendoza?",
-      answer:
-        "Sí, ofrecemos servicio de pickup tanto en el aeropuerto como en cualquier hotel de Mendoza ciudad. Coordinamos el horario según tu vuelo con margen para retrasos.",
-    },
-    {
-      question: "¿Qué pasa si hay mal tiempo o se cierra el camino?",
-      answer:
-        "Monitoreamos constantemente las condiciones climáticas y viales. Si el camino está cerrado, reprogramamos el viaje sin costo adicional. Tu seguridad es nuestra prioridad.",
-    },
-    {
-      question: "¿Cuánto equipaje puedo llevar?",
-      answer:
-        "Nuestros vehículos tienen amplio espacio para equipaje de ski (esquíes, tablas de snowboard, botas, etc.) además de valijas. Si tienes equipaje especial, avísanos al reservar.",
-    },
-    {
-      question: "¿Cómo es el pago?",
-      answer:
-        "Aceptamos transferencia bancaria, efectivo (pesos argentinos o dólares) y tarjetas de crédito. Se requiere una seña del 30% para confirmar la reserva.",
-    },
-    {
-      question: "¿Ofrecen servicio de ida y vuelta?",
-      answer:
-        "Sí, ofrecemos transfer de ida, de vuelta, o ambos. Al reservar ida y vuelta juntos obtienes un 10% de descuento sobre el total.",
-    },
-    {
-      question: "¿Puedo hacer paradas en el camino?",
-      answer:
-        "Por supuesto. Podemos hacer paradas para fotos, baño o comida durante el trayecto. Solo coordínalo con tu conductor.",
-    },
-  ]
+  const { t, tObject } = useI18n()
+
+  const faqs = tObject<FAQItem[]>("ll.faq.items")
 
   return (
     <section className="py-20 md:py-28 bg-[#F8F6F3]">
@@ -57,14 +24,13 @@ export function LasLenasFAQ() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Preguntas Frecuentes
+            {t("ll.faq.label")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            ¿Tienes Dudas?
+            {t("ll.faq.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            Aquí respondemos las preguntas más comunes sobre nuestro servicio
-            de transfers a Las Leñas.
+            {t("ll.faq.subtitle")}
           </p>
         </div>
 

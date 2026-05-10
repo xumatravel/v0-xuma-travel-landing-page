@@ -6,17 +6,19 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, MessageCircle, X } from "lucide-react"
 import Link from "next/link"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n, LanguageSwitcher } from "@/lib/i18n"
 
 export function LasLenasHeader() {
+  const { t } = useI18n()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "#cotizador", label: "Cotizar" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#por-que-nosotros", label: "Por Qué Nosotros" },
-    { href: "#testimonios", label: "Testimonios" },
-    { href: "#contacto", label: "Contacto" },
+    { href: "#cotizador", label: t("ll.nav.quote") },
+    { href: "#servicios", label: t("ll.nav.services") },
+    { href: "#por-que-nosotros", label: t("ll.nav.whyUs") },
+    { href: "#testimonios", label: t("ll.nav.testimonials") },
+    { href: "#contacto", label: t("ll.nav.contact") },
   ]
 
   useEffect(() => {
@@ -62,20 +64,22 @@ export function LasLenasHeader() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* Language Switcher & CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <Button
               onClick={handleWhatsApp}
               size="sm"
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Reservar Ahora
+              {t("ll.nav.bookNow")}
             </Button>
           </div>
 
           {/* Mobile Menu */}
           <div className="flex lg:hidden items-center gap-3">
+            <LanguageSwitcher />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
@@ -122,7 +126,7 @@ export function LasLenasHeader() {
                       className="w-full bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
                     >
                       <MessageCircle className="w-5 h-5 mr-2" />
-                      Reservar Ahora
+                      {t("ll.nav.bookNow")}
                     </Button>
                   </div>
                 </div>

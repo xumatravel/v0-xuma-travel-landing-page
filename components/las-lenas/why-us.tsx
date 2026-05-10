@@ -3,28 +3,31 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Shield, Car, Award, Mountain, ArrowDown } from "lucide-react"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasWhyUs() {
+  const { t } = useI18n()
+
   const differentials = [
     {
       icon: Award,
-      title: "Transporte Oficial a Las Leñas",
-      description: "Operador autorizado con todos los permisos y habilitaciones al día.",
+      title: t("ll.whyUs.diff1.title"),
+      description: t("ll.whyUs.diff1.desc"),
     },
     {
       icon: Shield,
-      title: "Choferes Profesionales",
-      description: "Conductores expertos con más de 10 años en rutas de montaña.",
+      title: t("ll.whyUs.diff2.title"),
+      description: t("ll.whyUs.diff2.desc"),
     },
     {
       icon: Car,
-      title: "Vehículos Habilitados",
-      description: "Flota completa con seguros, VTV y equipamiento de seguridad.",
+      title: t("ll.whyUs.diff3.title"),
+      description: t("ll.whyUs.diff3.desc"),
     },
     {
       icon: Mountain,
-      title: "Experiencia en Montaña",
-      description: "Conocemos cada curva del camino. Viaja tranquilo.",
+      title: t("ll.whyUs.diff4.title"),
+      description: t("ll.whyUs.diff4.desc"),
     },
   ]
 
@@ -38,21 +41,19 @@ export function LasLenasWhyUs() {
         {/* About Us Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            Sobre Nosotros
+            {t("ll.whyUs.label")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            Operadores en Mendoza, Especialistas en Las Leñas
+            {t("ll.whyUs.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-            Somos un equipo local con años de experiencia en logística de montaña.
-            Conocemos cada kilómetro del camino a Las Leñas y nos especializamos en
-            brindar traslados seguros, puntuales y confortables.
+            {t("ll.whyUs.subtitle")}
           </p>
           
           {/* Strong phrase */}
           <div className="inline-block bg-[#0B0B0B] text-white px-8 py-4 rounded-2xl">
             <p className="text-lg md:text-xl font-medium">
-              &ldquo;Viví Mendoza sin preocuparte por nada. Nosotros coordinamos todo.&rdquo;
+              &ldquo;{t("ll.whyUs.quote")}&rdquo;
             </p>
           </div>
         </div>
@@ -74,15 +75,15 @@ export function LasLenasWhyUs() {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">+350</p>
-                    <p className="text-white/60 text-xs">Viajes/Temporada</p>
+                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.trips")}</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">10+</p>
-                    <p className="text-white/60 text-xs">Años Exp.</p>
+                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.exp")}</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">98%</p>
-                    <p className="text-white/60 text-xs">Satisfacción</p>
+                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.satisfaction")}</p>
                   </div>
                 </div>
               </div>
@@ -92,10 +93,10 @@ export function LasLenasWhyUs() {
           {/* Content - Differentials */}
           <div>
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              Nuestros Diferenciales
+              {t("ll.whyUs.diffLabel")}
             </p>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-8 text-balance">
-              Por Qué Somos la Mejor Opción
+              {t("ll.whyUs.diffTitle")}
             </h3>
 
             <div className="grid gap-6 mb-8">
@@ -120,7 +121,7 @@ export function LasLenasWhyUs() {
               size="lg"
               className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white px-8 py-6 text-lg font-semibold"
             >
-              Cotizar mi Traslado
+              {t("ll.hero.cta1")}
               <ArrowDown className="w-5 h-5 ml-2" />
             </Button>
           </div>

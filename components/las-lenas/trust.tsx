@@ -1,28 +1,31 @@
 "use client"
 
 import { Shield, Clock, Car, Users } from "lucide-react"
+import { useI18n } from "@/lib/i18n"
 
 export function LasLenasTrust() {
+  const { t } = useI18n()
+
   const stats = [
     {
       icon: Car,
       value: "+500",
-      label: "Transfers realizados",
+      label: t("ll.trust.transfers"),
     },
     {
       icon: Shield,
       value: "100%",
-      label: "Llegadas seguras",
+      label: t("ll.trust.safe"),
     },
     {
       icon: Clock,
       value: "24/7",
-      label: "Servicio disponible",
+      label: t("ll.trust.service"),
     },
     {
       icon: Users,
       value: "98%",
-      label: "Clientes satisfechos",
+      label: t("ll.trust.satisfied"),
     },
   ]
 
