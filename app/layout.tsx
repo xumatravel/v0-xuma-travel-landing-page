@@ -1,8 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { Providers } from '@/components/providers'
 import './globals.css'
+
+// Google Ads & Google Tag Configuration
+const GOOGLE_ADS_ID = 'AW-18149304102'
+const GOOGLE_TAG_ID = 'GT-57899HWW'
 
 const montserrat = Montserrat({ 
   subsets: ["latin"],
@@ -59,6 +64,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
+      <head>
+        {/* Google Tag (gtag.js) - Google Ads & Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            // Google Tag Configuration
+            gtag('config', '${GOOGLE_TAG_ID}');
+            
+            // Google Ads Configuration
+            gtag('config', '${GOOGLE_ADS_ID}');
+
+            // ============================================
+            // CONVERSIONES DE GOOGLE ADS
+            // ============================================
+            // Para agregar una conversión, usa el siguiente código en el evento correspondiente:
+            //
+            // gtag('event', 'conversion', {
+            //   'send_to': '${GOOGLE_ADS_ID}/CONVERSION_LABEL',
+            //   'value': 1.0,
+            //   'currency': 'ARS'
+            // });
+            //
+            // Ejemplo para conversión de formulario de cotización:
+            // gtag('event', 'conversion', {
+            //   'send_to': '${GOOGLE_ADS_ID}/formulario_cotizacion',
+            // });
+            // ============================================
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased">
         <Providers>
           {children}
