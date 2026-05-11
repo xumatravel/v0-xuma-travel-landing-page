@@ -9,6 +9,7 @@ import { WHATSAPP_CONFIG } from "@/lib/config"
 import { useI18n, LanguageSwitcher } from "@/lib/i18n"
 
 export function LasLenasHeader() {
+  const { t } = useI18n()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const { t } = useI18n()

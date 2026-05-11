@@ -120,7 +120,9 @@ export function LasLenasQuoteForm() {
 
 ${t("lasLenasPage.whatsapp.myName")}: ${formData.fullName}
 Email: ${formData.email}
-WhatsApp: ${formData.whatsapp}`
+WhatsApp: ${formData.whatsapp}
+
+${t("ll.quote.msg.language")}`
   }
 
   const handleSubmit = (e: React.FormEvent) => {
