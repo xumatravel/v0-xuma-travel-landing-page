@@ -15,7 +15,7 @@ export function Header() {
 
   const navLinks = [
     { href: "#products", label: t("nav.packages") },
-    { href: "/las-lenas", label: "Transfers Las Leñas", isPage: true },
+    { href: "/traslados-las-lenas", label: "Transfers Las Leñas", isPage: true },
     { href: "#agencies", label: t("nav.agencies") },
     { href: "#about", label: t("nav.about") },
     { href: "#contact", label: t("nav.contact") },

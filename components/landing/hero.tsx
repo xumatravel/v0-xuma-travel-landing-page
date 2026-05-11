@@ -76,7 +76,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/las-lenas">
+            <Link href="/traslados-las-lenas">
               <Button
                 size="lg"
                 className="bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white font-semibold px-8 py-6 text-lg transition-all duration-300 group rounded-lg"
