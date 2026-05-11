@@ -12,7 +12,6 @@ export function LasLenasHeader() {
   const { t } = useI18n()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const { t } = useI18n()
 
   const navLinks = [
     { href: "#cotizador", label: t("lasLenasPage.header.quote") },
