@@ -11,23 +11,23 @@ export function LasLenasWhyUs() {
   const differentials = [
     {
       icon: Award,
-      title: t("ll.whyUs.diff1.title"),
-      description: t("ll.whyUs.diff1.desc"),
+      title: t("lasLenasPage.whyUs.diff1.title"),
+      description: t("lasLenasPage.whyUs.diff1.desc"),
     },
     {
       icon: Shield,
-      title: t("ll.whyUs.diff2.title"),
-      description: t("ll.whyUs.diff2.desc"),
+      title: t("lasLenasPage.whyUs.diff2.title"),
+      description: t("lasLenasPage.whyUs.diff2.desc"),
     },
     {
       icon: Car,
-      title: t("ll.whyUs.diff3.title"),
-      description: t("ll.whyUs.diff3.desc"),
+      title: t("lasLenasPage.whyUs.diff3.title"),
+      description: t("lasLenasPage.whyUs.diff3.desc"),
     },
     {
       icon: Mountain,
-      title: t("ll.whyUs.diff4.title"),
-      description: t("ll.whyUs.diff4.desc"),
+      title: t("lasLenasPage.whyUs.diff4.title"),
+      description: t("lasLenasPage.whyUs.diff4.desc"),
     },
   ]
 
@@ -41,19 +41,19 @@ export function LasLenasWhyUs() {
         {/* About Us Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            {t("ll.whyUs.label")}
+            {t("lasLenasPage.whyUs.badge")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            {t("ll.whyUs.title")}
+            {t("lasLenasPage.whyUs.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-            {t("ll.whyUs.subtitle")}
+            {t("lasLenasPage.whyUs.description")}
           </p>
           
           {/* Strong phrase */}
           <div className="inline-block bg-[#0B0B0B] text-white px-8 py-4 rounded-2xl">
             <p className="text-lg md:text-xl font-medium">
-              &ldquo;{t("ll.whyUs.quote")}&rdquo;
+              &ldquo;{t("lasLenasPage.whyUs.quote")}&rdquo;
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ export function LasLenasWhyUs() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/ski-resort.jpg"
-                alt="Vehículo en camino a Las Leñas"
+                alt="Las Leñas"
                 fill
                 className="object-cover"
               />
@@ -75,15 +75,15 @@ export function LasLenasWhyUs() {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">+350</p>
-                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.trips")}</p>
+                    <p className="text-white/60 text-xs">{t("lasLenasPage.whyUs.stats.trips")}</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">10+</p>
-                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.exp")}</p>
+                    <p className="text-white/60 text-xs">{t("lasLenasPage.whyUs.stats.exp")}</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#C8A96A]">98%</p>
-                    <p className="text-white/60 text-xs">{t("ll.whyUs.stats.satisfaction")}</p>
+                    <p className="text-white/60 text-xs">{t("lasLenasPage.whyUs.stats.satisfaction")}</p>
                   </div>
                 </div>
               </div>
@@ -93,10 +93,10 @@ export function LasLenasWhyUs() {
           {/* Content - Differentials */}
           <div>
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              {t("ll.whyUs.diffLabel")}
+              {t("lasLenasPage.whyUs.differentials")}
             </p>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-8 text-balance">
-              {t("ll.whyUs.diffTitle")}
+              {t("lasLenasPage.whyUs.differentialsTitle")}
             </h3>
 
             <div className="grid gap-6 mb-8">
@@ -121,7 +121,7 @@ export function LasLenasWhyUs() {
               size="lg"
               className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white px-8 py-6 text-lg font-semibold"
             >
-              {t("ll.hero.cta1")}
+              {t("lasLenasPage.hero.cta1")}
               <ArrowDown className="w-5 h-5 ml-2" />
             </Button>
           </div>

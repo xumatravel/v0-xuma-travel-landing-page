@@ -14,11 +14,11 @@ export function LasLenasHeader() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "#cotizador", label: t("ll.nav.quote") },
-    { href: "#servicios", label: t("ll.nav.services") },
-    { href: "#por-que-nosotros", label: t("ll.nav.whyUs") },
-    { href: "#testimonios", label: t("ll.nav.testimonials") },
-    { href: "#contacto", label: t("ll.nav.contact") },
+    { href: "#cotizador", label: t("lasLenasPage.header.quote") },
+    { href: "#servicios", label: t("lasLenasPage.header.services") },
+    { href: "#por-que-nosotros", label: t("lasLenasPage.header.whyUs") },
+    { href: "#testimonios", label: t("lasLenasPage.header.testimonials") },
+    { href: "#contacto", label: t("lasLenasPage.header.contact") },
   ]
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function LasLenasHeader() {
   }, [])
 
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open("Hola! Me interesa reservar un transfer a Las Leñas")
+    WHATSAPP_CONFIG.open(t("lasLenasPage.header.whatsappMsg"))
   }
 
   return (
@@ -64,7 +64,7 @@ export function LasLenasHeader() {
             ))}
           </div>
 
-          {/* Language Switcher & CTA */}
+          {/* CTA and Language Switcher */}
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
             <Button
@@ -73,7 +73,7 @@ export function LasLenasHeader() {
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              {t("ll.nav.bookNow")}
+              {t("lasLenasPage.header.bookNow")}
             </Button>
           </div>
 
@@ -126,7 +126,7 @@ export function LasLenasHeader() {
                       className="w-full bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
                     >
                       <MessageCircle className="w-5 h-5 mr-2" />
-                      {t("ll.nav.bookNow")}
+                      {t("lasLenasPage.header.bookNow")}
                     </Button>
                   </div>
                 </div>

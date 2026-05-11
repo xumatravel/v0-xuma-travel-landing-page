@@ -10,22 +10,22 @@ export function LasLenasTrust() {
     {
       icon: Car,
       value: "+500",
-      label: t("ll.trust.transfers"),
+      label: t("lasLenasPage.trust.transfers"),
     },
     {
       icon: Shield,
       value: "100%",
-      label: t("ll.trust.safe"),
+      label: t("lasLenasPage.trust.safe"),
     },
     {
       icon: Clock,
       value: "24/7",
-      label: t("ll.trust.service"),
+      label: t("lasLenasPage.trust.service"),
     },
     {
       icon: Users,
       value: "98%",
-      label: t("ll.trust.satisfied"),
+      label: t("lasLenasPage.trust.satisfaction"),
     },
   ]
 

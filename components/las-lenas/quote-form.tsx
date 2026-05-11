@@ -14,7 +14,7 @@ import { MessageCircle, CalendarIcon, Users, Car, MapPin, ArrowRight, Check, Clo
 import { format } from "date-fns"
 import { es, ptBR, enUS } from "date-fns/locale"
 import { WHATSAPP_CONFIG } from "@/lib/config"
-import { useI18n } from "@/lib/i18n"
+import { useI18n, type Locale } from "@/lib/i18n"
 
 type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
@@ -37,25 +37,17 @@ interface FormData {
   whatsapp: string
 }
 
+const getDateLocale = (locale: Locale) => {
+  switch (locale) {
+    case "pt": return ptBR
+    case "en": return enUS
+    default: return es
+  }
+}
+
 export function LasLenasQuoteForm() {
   const { t, locale } = useI18n()
-
-  const dateLocales = { es, pt: ptBR, en: enUS }
-  const dateLocale = dateLocales[locale] || es
-
-  const vehicleLabels: Record<VehicleType, string> = {
-    auto: t("ll.quote.vehicle.car"),
-    pickup: t("ll.quote.vehicle.pickup"),
-    minibus9: t("ll.quote.vehicle.minibus9"),
-    minibus14: t("ll.quote.vehicle.minibus14"),
-    grupo: t("ll.quote.vehicle.group")
-  }
-
-  const originLabels: Record<Origin, string> = {
-    mendoza: "Mendoza",
-    "san-rafael": "San Rafael",
-    "las-lenas": "Las Leñas"
-  }
+  const dateLocale = getDateLocale(locale)
 
   const [formData, setFormData] = useState<FormData>({
     serviceType: "privado",
@@ -75,6 +67,20 @@ export function LasLenasQuoteForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  const vehicleLabels: Record<VehicleType, string> = {
+    auto: t("lasLenasPage.form.vehicle.auto"),
+    pickup: t("lasLenasPage.form.vehicle.pickup"),
+    minibus9: t("lasLenasPage.form.vehicle.minibus9"),
+    minibus14: t("lasLenasPage.form.vehicle.minibus14"),
+    grupo: t("lasLenasPage.form.vehicle.group")
+  }
+
+  const originLabels: Record<Origin, string> = {
+    mendoza: "Mendoza",
+    "san-rafael": "San Rafael",
+    "las-lenas": "Las Leñas"
+  }
+
   const updateForm = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setFormData(prev => {
       const newData = { ...prev, [key]: value }
@@ -89,28 +95,30 @@ export function LasLenasQuoteForm() {
   }
 
   const buildWhatsAppMessage = (): string => {
-    const serviceLabel = formData.serviceType === "privado" ? t("ll.quote.private") : t("ll.quote.shared")
+    const serviceLabel = formData.serviceType === "privado" 
+      ? t("lasLenasPage.form.private") 
+      : t("lasLenasPage.form.shared")
     const vehicleLabel = vehicleLabels[formData.vehicleType]
     const originLabel = originLabels[formData.origin]
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
     const departureDateLabel = formData.departureDate 
       ? format(formData.departureDate, "dd/MM/yyyy", { locale: dateLocale })
-      : t("ll.quote.msg.notSpecified")
+      : t("lasLenasPage.whatsapp.notSpecified")
     const returnDateLabel = formData.roundTrip && formData.returnDate
       ? format(formData.returnDate, "dd/MM/yyyy", { locale: dateLocale })
-      : t("ll.quote.msg.notApplicable")
+      : t("lasLenasPage.whatsapp.notApplicable")
 
-    return `${t("ll.quote.msg.greeting")}
+    return `${t("lasLenasPage.whatsapp.greeting")}
 
-• ${t("ll.quote.msg.serviceType")}: ${serviceLabel}
-• ${t("ll.quote.msg.vehicle")}: ${vehicleLabel}
-• ${t("ll.quote.msg.passengers")}: ${formData.passengers}
-• ${t("ll.quote.msg.origin")}: ${originLabel}
-• ${t("ll.quote.msg.destination")}: ${destinationLabel}
-• ${t("ll.quote.msg.departureDate")}: ${departureDateLabel}
-• ${t("ll.quote.msg.returnDate")}: ${returnDateLabel}
+• ${t("lasLenasPage.whatsapp.serviceType")}: ${serviceLabel}
+• ${t("lasLenasPage.whatsapp.vehicle")}: ${vehicleLabel}
+• ${t("lasLenasPage.whatsapp.passengersCount")}: ${formData.passengers}
+• ${t("lasLenasPage.whatsapp.origin")}: ${originLabel}
+• ${t("lasLenasPage.whatsapp.destination")}: ${destinationLabel}
+• ${t("lasLenasPage.whatsapp.departureDate")}: ${departureDateLabel}
+• ${t("lasLenasPage.whatsapp.returnDate")}: ${returnDateLabel}
 
-${t("ll.quote.msg.myName")}: ${formData.fullName}
+${t("lasLenasPage.whatsapp.myName")}: ${formData.fullName}
 Email: ${formData.email}
 WhatsApp: ${formData.whatsapp}
 
@@ -144,13 +152,13 @@ ${t("ll.quote.msg.language")}`
           {/* Header */}
           <div className="text-center mb-10">
             <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-              {t("ll.quote.label")}
+              {t("lasLenasPage.form.badge")}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-4 text-balance">
-              {t("ll.quote.title")}
+              {t("lasLenasPage.form.title")}
             </h2>
             <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-xl mx-auto">
-              {t("ll.quote.subtitle")}
+              {t("lasLenasPage.form.subtitle")}
             </p>
           </div>
 
@@ -164,7 +172,7 @@ ${t("ll.quote.msg.language")}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       1
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("ll.quote.step1")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step1")}</h3>
                   </div>
                   
                   <RadioGroup
@@ -182,9 +190,9 @@ ${t("ll.quote.msg.language")}`
                     >
                       <RadioGroupItem value="privado" id="privado" className="mt-1" />
                       <div className="flex-1">
-                        <span className="font-semibold text-[#0B0B0B] block">{t("ll.quote.private")}</span>
+                        <span className="font-semibold text-[#0B0B0B] block">{t("lasLenasPage.form.private")}</span>
                         <span className="text-[#0B0B0B]/60 text-sm">
-                          {t("ll.quote.privateDesc")}
+                          {t("lasLenasPage.form.privateDesc")}
                         </span>
                       </div>
                     </Label>
@@ -199,9 +207,9 @@ ${t("ll.quote.msg.language")}`
                     >
                       <RadioGroupItem value="compartido" id="compartido" className="mt-1" />
                       <div className="flex-1">
-                        <span className="font-semibold text-[#0B0B0B] block">{t("ll.quote.shared")}</span>
+                        <span className="font-semibold text-[#0B0B0B] block">{t("lasLenasPage.form.shared")}</span>
                         <span className="text-[#0B0B0B]/60 text-sm">
-                          {t("ll.quote.sharedDesc")}
+                          {t("lasLenasPage.form.sharedDesc")}
                         </span>
                       </div>
                     </Label>
@@ -214,14 +222,14 @@ ${t("ll.quote.msg.language")}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       2
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("ll.quote.step2")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step2")}</h3>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="vehicle" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Car className="w-4 h-4" />
-                        {t("ll.quote.vehicleType")}
+                        {t("lasLenasPage.form.vehicleType")}
                       </Label>
                       <Select
                         value={formData.vehicleType}
@@ -231,11 +239,11 @@ ${t("ll.quote.msg.language")}`
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="auto">{t("ll.quote.vehicle.car")}</SelectItem>
-                          <SelectItem value="pickup">{t("ll.quote.vehicle.pickup")}</SelectItem>
-                          <SelectItem value="minibus9">{t("ll.quote.vehicle.minibus9")}</SelectItem>
-                          <SelectItem value="minibus14">{t("ll.quote.vehicle.minibus14")}</SelectItem>
-                          <SelectItem value="grupo">{t("ll.quote.vehicle.group")}</SelectItem>
+                          <SelectItem value="auto">{t("lasLenasPage.form.vehicle.auto")}</SelectItem>
+                          <SelectItem value="pickup">{t("lasLenasPage.form.vehicle.pickup")}</SelectItem>
+                          <SelectItem value="minibus9">{t("lasLenasPage.form.vehicle.minibus9")}</SelectItem>
+                          <SelectItem value="minibus14">{t("lasLenasPage.form.vehicle.minibus14")}</SelectItem>
+                          <SelectItem value="grupo">{t("lasLenasPage.form.vehicle.group")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -243,7 +251,7 @@ ${t("ll.quote.msg.language")}`
                     <div className="space-y-2">
                       <Label htmlFor="passengers" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Users className="w-4 h-4" />
-                        {t("ll.quote.passengers")}
+                        {t("lasLenasPage.form.passengers")}
                       </Label>
                       <Select
                         value={formData.passengers}
@@ -255,10 +263,10 @@ ${t("ll.quote.msg.language")}`
                         <SelectContent>
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(num => (
                             <SelectItem key={num} value={String(num)}>
-                              {num} {num === 1 ? t("ll.quote.passenger") : t("ll.quote.passengersPlural")}
+                              {num} {num === 1 ? t("lasLenasPage.form.passenger") : t("lasLenasPage.form.passengersPlural")}
                             </SelectItem>
                           ))}
-                          <SelectItem value="15+">15+ {t("ll.quote.passengersPlural")}</SelectItem>
+                          <SelectItem value="15+">15+ {t("lasLenasPage.form.passengersPlural")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -271,14 +279,14 @@ ${t("ll.quote.msg.language")}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       3
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("ll.quote.step3")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step3")}</h3>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="origin" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
-                        {t("ll.quote.origin")}
+                        {t("lasLenasPage.form.origin")}
                       </Label>
                       <Select
                         value={formData.origin}
@@ -296,7 +304,7 @@ ${t("ll.quote.msg.language")}`
                       </Select>
                       {formData.serviceType === "compartido" && (
                         <p className="text-xs text-[#C8A96A]">
-                          {t("ll.quote.sharedOnlySR")}
+                          {t("lasLenasPage.form.sharedNote")}
                         </p>
                       )}
                     </div>
@@ -304,7 +312,7 @@ ${t("ll.quote.msg.language")}`
                     <div className="space-y-2">
                       <Label htmlFor="destination" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
-                        {t("ll.quote.destination")}
+                        {t("lasLenasPage.form.destination")}
                       </Label>
                       <Select
                         value={formData.destination}
@@ -315,12 +323,12 @@ ${t("ll.quote.msg.language")}`
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="las-lenas">Las Leñas</SelectItem>
-                          <SelectItem value="otro">{t("ll.quote.other")}</SelectItem>
+                          <SelectItem value="otro">{t("lasLenasPage.form.otherDestination")}</SelectItem>
                         </SelectContent>
                       </Select>
                       {formData.destination === "otro" && (
                         <Input
-                          placeholder={t("ll.quote.specifyDest")}
+                          placeholder={t("lasLenasPage.form.specifyDestination")}
                           value={formData.destinationManual}
                           onChange={(e) => updateForm("destinationManual", e.target.value)}
                           className="h-12 mt-2"
@@ -336,7 +344,7 @@ ${t("ll.quote.msg.language")}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       4
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("ll.quote.step4")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step4")}</h3>
                   </div>
                   
                   {/* Round trip toggle */}
@@ -344,8 +352,8 @@ ${t("ll.quote.msg.language")}`
                     <div className="flex items-center gap-3">
                       <ArrowRight className="w-5 h-5 text-[#6B7D5C]" />
                       <div>
-                        <span className="font-medium text-[#0B0B0B]">{t("ll.quote.roundTrip")}</span>
-                        <p className="text-sm text-[#0B0B0B]/60">{t("ll.quote.roundTripDesc")}</p>
+                        <span className="font-medium text-[#0B0B0B]">{t("lasLenasPage.form.roundTrip")}</span>
+                        <p className="text-sm text-[#0B0B0B]/60">{t("lasLenasPage.form.roundTripDesc")}</p>
                       </div>
                     </div>
                     <Switch
@@ -358,7 +366,7 @@ ${t("ll.quote.msg.language")}`
                     <div className="space-y-2">
                       <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <CalendarIcon className="w-4 h-4" />
-                        {t("ll.quote.departureDate")}
+                        {t("lasLenasPage.form.departureDate")} *
                       </Label>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -371,7 +379,7 @@ ${t("ll.quote.msg.language")}`
                             <CalendarIcon className="mr-2 h-4 w-4" />
                             {formData.departureDate
                               ? format(formData.departureDate, "PPP", { locale: dateLocale })
-                              : t("ll.quote.selectDate")}
+                              : t("lasLenasPage.form.selectDate")}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
@@ -390,7 +398,7 @@ ${t("ll.quote.msg.language")}`
                       <div className="space-y-2">
                         <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                           <CalendarIcon className="w-4 h-4" />
-                          {t("ll.quote.returnDate")}
+                          {t("lasLenasPage.form.returnDate")} *
                         </Label>
                         <Popover>
                           <PopoverTrigger asChild>
@@ -403,7 +411,7 @@ ${t("ll.quote.msg.language")}`
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {formData.returnDate
                                 ? format(formData.returnDate, "PPP", { locale: dateLocale })
-                                : t("ll.quote.selectDate")}
+                                : t("lasLenasPage.form.selectDate")}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
@@ -430,17 +438,17 @@ ${t("ll.quote.msg.language")}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       5
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("ll.quote.step5")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step5")}</h3>
                   </div>
                   
                   <div className="grid gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="fullName" className="text-[#0B0B0B]/80">
-                        {t("ll.quote.fullName")}
+                        {t("lasLenasPage.form.fullName")} *
                       </Label>
                       <Input
                         id="fullName"
-                        placeholder={t("ll.quote.fullNamePlaceholder")}
+                        placeholder={t("lasLenasPage.form.fullNamePlaceholder")}
                         value={formData.fullName}
                         onChange={(e) => updateForm("fullName", e.target.value)}
                         className="h-12"
@@ -451,12 +459,12 @@ ${t("ll.quote.msg.language")}`
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-[#0B0B0B]/80">
-                          {t("ll.quote.email")}
+                          {t("lasLenasPage.form.email")} *
                         </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder={t("ll.quote.emailPlaceholder")}
+                          placeholder={t("lasLenasPage.form.emailPlaceholder")}
                           value={formData.email}
                           onChange={(e) => updateForm("email", e.target.value)}
                           className="h-12"
@@ -466,12 +474,12 @@ ${t("ll.quote.msg.language")}`
                       
                       <div className="space-y-2">
                         <Label htmlFor="whatsapp" className="text-[#0B0B0B]/80">
-                          {t("ll.quote.whatsapp")}
+                          {t("lasLenasPage.form.whatsapp")} *
                         </Label>
                         <Input
                           id="whatsapp"
                           type="tel"
-                          placeholder={t("ll.quote.whatsappPlaceholder")}
+                          placeholder={t("lasLenasPage.form.whatsappPlaceholder")}
                           value={formData.whatsapp}
                           onChange={(e) => updateForm("whatsapp", e.target.value)}
                           className="h-12"
@@ -490,11 +498,11 @@ ${t("ll.quote.msg.language")}`
                     className="w-full h-14 bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white text-lg font-semibold transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      <>{t("ll.quote.sending")}</>
+                      <>{t("lasLenasPage.form.submitting")}</>
                     ) : (
                       <>
                         <MessageCircle className="w-5 h-5 mr-2" />
-                        {t("ll.quote.submit")}
+                        {t("lasLenasPage.form.submit")}
                       </>
                     )}
                   </Button>
@@ -503,11 +511,11 @@ ${t("ll.quote.msg.language")}`
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 text-sm text-[#0B0B0B]/60">
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-[#6B7D5C]" />
-                      <span>{t("ll.quote.benefits.instant")}</span>
+                      <span>{t("lasLenasPage.form.responseTime")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-[#6B7D5C]" />
-                      <span>{t("ll.quote.benefits.noCommit")}</span>
+                      <span>{t("lasLenasPage.form.quickCoordination")}</span>
                     </div>
                   </div>
                 </div>
@@ -519,15 +527,15 @@ ${t("ll.quote.msg.language")}`
           <div className="flex flex-wrap justify-center gap-6 mt-8">
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("ll.quote.benefits.noCommit")}</span>
+              <span className="text-sm">{t("lasLenasPage.form.noCommitment")}</span>
             </div>
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("ll.quote.benefits.instant")}</span>
+              <span className="text-sm">{t("lasLenasPage.form.immediateResponse")}</span>
             </div>
             <div className="flex items-center gap-2 text-[#0B0B0B]/60">
               <Check className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("ll.quote.benefits.bestPrice")}</span>
+              <span className="text-sm">{t("lasLenasPage.form.freeQuote")}</span>
             </div>
           </div>
         </div>

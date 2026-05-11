@@ -11,7 +11,7 @@ export function LasLenasServices() {
   const { t, tArray } = useI18n()
 
   const handleWhatsApp = (service: string) => {
-    WHATSAPP_CONFIG.open(`Hola! Me interesa el servicio de ${service} a Las Leñas`)
+    WHATSAPP_CONFIG.open(`${t("lasLenasPage.header.whatsappMsg")} - ${service}`)
   }
 
   const scrollToForm = () => {
@@ -20,7 +20,7 @@ export function LasLenasServices() {
 
   const serviceTypes = [
     {
-      title: t("ll.services.private"),
+      title: t("lasLenasPage.services.private.title"),
       icon: Car,
       popular: true,
       routes: [
@@ -28,58 +28,53 @@ export function LasLenasServices() {
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
         { from: "Aeropuerto MDZ", to: "Las Leñas", duration: "~5 horas" },
       ],
-      availability: t("ll.services.allDays"),
-      scheduleNote: t("ll.services.yourSchedule"),
-      features: tArray("ll.services.private.features"),
+      availability: t("lasLenasPage.services.private.availability"),
+      scheduleNote: t("lasLenasPage.services.private.schedule"),
+      features: tArray("lasLenasPage.services.private.features"),
     },
     {
-      title: t("ll.services.shared"),
+      title: t("lasLenasPage.services.shared.title"),
       icon: Users,
       popular: false,
       routes: [
         { from: "San Rafael", to: "Las Leñas", duration: "~3 horas" },
       ],
-      availability: t("ll.services.satMon"),
-      scheduleNote: t("ll.services.fixedSchedule"),
-      features: tArray("ll.services.shared.features"),
+      availability: t("lasLenasPage.services.shared.availability"),
+      scheduleNote: t("lasLenasPage.services.shared.schedule"),
+      features: tArray("lasLenasPage.services.shared.features"),
     },
   ]
 
   const vehicleTypes = [
     {
-      name: t("ll.services.car"),
-      capacity: t("ll.services.carCapacity"),
-      luggage: t("ll.services.carLuggage"),
+      name: t("lasLenasPage.form.vehicle.auto").split(" (")[0],
+      capacity: "4 pax",
+      luggage: t("lasLenasPage.form.vehicle.auto").includes("poco") ? "Poco equipaje" : "Little luggage",
       icon: "🚗",
-      description: t("ll.services.carDesc"),
     },
     {
-      name: t("ll.services.pickup"),
-      capacity: t("ll.services.pickupCapacity"),
-      luggage: t("ll.services.pickupLuggage"),
+      name: t("lasLenasPage.form.vehicle.pickup").split(" (")[0],
+      capacity: "4 pax",
+      luggage: "Ski equipment",
       icon: "🛻",
-      description: t("ll.services.pickupDesc"),
     },
     {
-      name: t("ll.services.van"),
-      capacity: t("ll.services.vanCapacity"),
-      luggage: t("ll.services.vanLuggage"),
+      name: "Van / Minibus 9",
+      capacity: "9 pax",
+      luggage: "Medium",
       icon: "🚐",
-      description: t("ll.services.vanDesc"),
     },
     {
-      name: t("ll.services.minibus"),
-      capacity: t("ll.services.minibusCapacity"),
-      luggage: t("ll.services.minibusLuggage"),
+      name: "Minibus 14",
+      capacity: "14 pax",
+      luggage: "Large",
       icon: "🚌",
-      description: t("ll.services.minibusDesc"),
     },
     {
-      name: t("ll.services.group"),
-      capacity: t("ll.services.groupCapacity"),
-      luggage: t("ll.services.groupLuggage"),
+      name: t("lasLenasPage.form.vehicle.group").split(" (")[0],
+      capacity: "15+ pax",
+      luggage: "Custom",
       icon: "🚍",
-      description: t("ll.services.groupDesc"),
     },
   ]
 
@@ -89,13 +84,13 @@ export function LasLenasServices() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">
-            {t("ll.services.label")}
+            {t("lasLenasPage.services.badge")}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-6 text-balance">
-            {t("ll.services.title")}
+            {t("lasLenasPage.services.title")}
           </h2>
           <p className="text-[#0B0B0B]/70 text-lg leading-relaxed max-w-2xl mx-auto">
-            {t("ll.services.subtitle")}
+            {t("lasLenasPage.services.subtitle")}
           </p>
         </div>
 
@@ -114,7 +109,7 @@ export function LasLenasServices() {
                 <div className="absolute top-0 right-0">
                   <Badge className="bg-[#6B7D5C] text-white rounded-none rounded-bl-lg px-4 py-1">
                     <Star className="w-3 h-3 mr-1 fill-current" />
-                    {t("ll.services.popular")}
+                    {t("lasLenasPage.services.mostPopular")}
                   </Badge>
                 </div>
               )}
@@ -143,7 +138,7 @@ export function LasLenasServices() {
 
                 {/* Routes */}
                 <div className="space-y-2 mb-4">
-                  <p className="text-sm font-medium text-[#0B0B0B]/80">{t("ll.services.availableRoutes")}</p>
+                  <p className="text-sm font-medium text-[#0B0B0B]/80">{t("lasLenasPage.services.private.routes")}</p>
                   {service.routes.map((route, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm text-[#0B0B0B]/70 bg-[#0B0B0B]/5 rounded-lg px-3 py-2">
                       <MapPin className="w-3 h-3 text-[#6B7D5C]" />
@@ -173,7 +168,7 @@ export function LasLenasServices() {
                         : "bg-[#0B0B0B] hover:bg-[#0B0B0B]/90 text-white"
                     }`}
                   >
-                    {t("ll.services.quoteBtn")}
+                    {t("lasLenasPage.services.quote")}
                   </Button>
                   <Button
                     onClick={() => handleWhatsApp(service.title)}
@@ -181,7 +176,7 @@ export function LasLenasServices() {
                     className="w-full border-[#0B0B0B]/20"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    {t("ll.services.checkAvail")}
+                    {t("lasLenasPage.services.checkAvailability")}
                   </Button>
                 </div>
               </CardContent>
@@ -193,10 +188,10 @@ export function LasLenasServices() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0B0B0B] mb-4">
-              {t("ll.services.vehicleTypes")}
+              {t("lasLenasPage.services.vehicleTypes")}
             </h3>
             <p className="text-[#0B0B0B]/70 text-base max-w-xl mx-auto">
-              {t("ll.services.vehicleTypesSubtitle")}
+              {t("lasLenasPage.services.vehicleTypesDesc")}
             </p>
           </div>
 
@@ -212,9 +207,6 @@ export function LasLenasServices() {
                   <p className="text-xs text-[#6B7D5C] font-medium">{vehicle.capacity}</p>
                   <p className="text-xs text-[#0B0B0B]/60">{vehicle.luggage}</p>
                 </div>
-                <p className="text-xs text-[#0B0B0B]/50 leading-relaxed">
-                  {vehicle.description}
-                </p>
               </div>
             ))}
           </div>
@@ -223,14 +215,14 @@ export function LasLenasServices() {
         {/* CTA Note */}
         <div className="text-center mt-12">
           <p className="text-[#0B0B0B]/60 text-sm mb-4">
-            {t("ll.services.customQuote")}
+            {t("lasLenasPage.services.customNote")}
           </p>
           <Button
             onClick={scrollToForm}
             variant="outline"
             className="border-[#6B7D5C] text-[#6B7D5C] hover:bg-[#6B7D5C] hover:text-white"
           >
-            {t("ll.services.customQuoteBtn")}
+            {t("lasLenasPage.services.customQuote")}
           </Button>
         </div>
       </div>

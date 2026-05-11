@@ -9,7 +9,7 @@ export function LasLenasCTA() {
   const { t } = useI18n()
 
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open("Hola! Quiero reservar un transfer a Las Leñas")
+    WHATSAPP_CONFIG.open(t("lasLenasPage.header.whatsappMsg"))
   }
 
   const scrollToForm = () => {
@@ -21,10 +21,10 @@ export function LasLenasCTA() {
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 text-balance">
-            {t("ll.cta.title")}
+            {t("lasLenasPage.cta.title")}
           </h2>
           <p className="text-white/80 text-lg mb-8">
-            {t("ll.cta.subtitle")}
+            {t("lasLenasPage.cta.subtitle")}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -34,7 +34,7 @@ export function LasLenasCTA() {
               className="bg-white text-[#6B7D5C] hover:bg-white/90 px-10 py-7 text-lg font-semibold"
             >
               <ArrowDown className="w-5 h-5 mr-2" />
-              {t("ll.cta.quoteBtn")}
+              {t("lasLenasPage.cta.quote")}
             </Button>
             <Button
               onClick={handleWhatsApp}
@@ -43,18 +43,18 @@ export function LasLenasCTA() {
               className="border-white text-white hover:bg-white/10 px-10 py-7 text-lg font-semibold"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              {t("ll.cta.checkAvail")}
+              {t("lasLenasPage.cta.check")}
             </Button>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/70 text-sm">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              <span>{t("ll.cta.response")}</span>
+              <span>{t("lasLenasPage.cta.response")}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
-              <span>{t("ll.cta.noCommit")}</span>
+              <span>{t("lasLenasPage.cta.noCommitment")}</span>
             </div>
           </div>
         </div>
