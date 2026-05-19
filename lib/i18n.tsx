@@ -22,6 +22,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Navigation
     "nav.packages": "Paquetes",
     "nav.packagesLasLenas": "Paquetes Las Leñas",
+    "nav.packagesShort": "Paquetes",
+    "nav.transfersShort": "Transfers",
     "nav.services": "Servicios",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agencias",
@@ -595,6 +597,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Navigation
     "nav.packages": "Pacotes",
     "nav.packagesLasLenas": "Pacotes Las Leñas",
+    "nav.packagesShort": "Pacotes",
+    "nav.transfersShort": "Transfers",
     "nav.services": "Serviços",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agências",
@@ -1168,6 +1172,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Navigation
     "nav.packages": "Packages",
     "nav.packagesLasLenas": "Las Leñas Packages",
+    "nav.packagesShort": "Packages",
+    "nav.transfersShort": "Transfers",
     "nav.services": "Services",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agencies",

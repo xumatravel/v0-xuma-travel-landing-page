@@ -14,8 +14,8 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "/paquetes-las-lenas", label: t("nav.packagesLasLenas"), isPage: true },
-    { href: "/traslados-las-lenas", label: "Transfers Las Leñas", isPage: true },
+    { href: "/paquetes-las-lenas", label: t("nav.packagesShort"), isPage: true },
+    { href: "/traslados-las-lenas", label: t("nav.transfersShort"), isPage: true },
     { href: "#agencies", label: t("nav.agencies") },
     { href: "#about", label: t("nav.about") },
     { href: "#contact", label: t("nav.contact") },
@@ -43,21 +43,21 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-6">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex-shrink-0">
             <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">
               XUMA<span className="text-[#C8A96A]">.</span>TRAVEL
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200"
+                className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -65,7 +65,7 @@ export function Header() {
           </div>
 
           {/* Language Switcher & CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <LanguageSwitcher />
             <Button
               onClick={handleWhatsApp}
