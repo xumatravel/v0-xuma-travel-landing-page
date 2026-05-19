@@ -1199,7 +1199,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "nav.planExperience": "Plan your experience",
 
     // Hero
-    "hero.headline": "Premium Travel in Mendoza — Ski, Wine & Experiences All in One",
+    "hero.headline": "Premium Travel in Mendoza — Ski, Wine and Experiences All in One",
     "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
     "hero.trust1": "40+ years of experience (family business, 2nd generation)",
     "hero.trust2": "Official transportation provider to Valle de Las Leñas",
