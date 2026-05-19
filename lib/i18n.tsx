@@ -395,12 +395,17 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hola! Me interesa reservar un transfer a Las Leñas",
 
     // New Hero translations
-    "hero.title.line1": "Ski & Transfers Premium",
-    "hero.title.line2": "en Las Leñas",
+    "hero.title.line1": "Ski y Experiencias Premium",
+    "hero.title.line2": "en Mendoza",
+    "hero.subheadline": "Especialistas en ski, montaña y experiencias premium para vivir Mendoza y Las Leñas sin preocuparte por nada.",
     "hero.trustDoorToDoor": "Servicio puerta a puerta",
     "hero.trustSki": "Expertos en ski",
     "hero.cta.transfer": "Cotizar Traslado",
     "hero.cta.skiPackage": "Cotizar Paquete Ski",
+    "hero.highlights.ski": "Especialistas en Ski",
+    "hero.highlights.transfers": "Transfers Premium",
+    "hero.highlights.experiences": "Experiencias en Mendoza",
+    "hero.highlights.official": "Operador Oficial Las Leñas",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Temporada de Ski",
@@ -978,12 +983,17 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Olá! Tenho interesse em reservar um transfer para Las Leñas",
 
     // New Hero translations
-    "hero.title.line1": "Ski & Transfers Premium",
-    "hero.title.line2": "em Las Leñas",
+    "hero.title.line1": "Ski e Experiências Premium",
+    "hero.title.line2": "em Mendoza",
+    "hero.subheadline": "Especialistas em ski, montanha e experiências premium para viver Mendoza e Las Leñas sem preocupações.",
     "hero.trustDoorToDoor": "Serviço porta a porta",
     "hero.trustSki": "Especialistas em ski",
     "hero.cta.transfer": "Cotação Transfer",
     "hero.cta.skiPackage": "Cotação Pacote Ski",
+    "hero.highlights.ski": "Especialistas em Ski",
+    "hero.highlights.transfers": "Transfers Premium",
+    "hero.highlights.experiences": "Experiências em Mendoza",
+    "hero.highlights.official": "Operador Oficial Las Leñas",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Temporada de Ski",
@@ -1561,12 +1571,17 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hi! I'm interested in booking a transfer to Las Leñas",
 
     // New Hero translations
-    "hero.title.line1": "Premium Ski & Transfers",
-    "hero.title.line2": "in Las Leñas",
+    "hero.title.line1": "Premium Ski & Experiences",
+    "hero.title.line2": "in Mendoza",
+    "hero.subheadline": "Ski, mountain, and premium experience specialists. Live Mendoza and Las Leñas worry-free.",
     "hero.trustDoorToDoor": "Door-to-door service",
     "hero.trustSki": "Ski experts",
     "hero.cta.transfer": "Get Transfer Quote",
     "hero.cta.skiPackage": "Get Ski Package Quote",
+    "hero.highlights.ski": "Ski Specialists",
+    "hero.highlights.transfers": "Premium Transfers",
+    "hero.highlights.experiences": "Mendoza Experiences",
+    "hero.highlights.official": "Official Las Leñas Operator",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Ski Season",
