@@ -28,11 +28,13 @@ interface FormData {
   totalPassengers: number
   passengerAges: string[]
   wantSkiPass: boolean
+  wantSkiEquipment: boolean
   needTransfer: boolean
   needCharter: boolean
   originCity: string
   fullName: string
   whatsapp: string
+  observations: string
 }
 
 const getDateLocale = (locale: Locale) => {
@@ -56,11 +58,13 @@ export function PaquetesQuoteForm() {
     totalPassengers: 2,
     passengerAges: ["", ""],
     wantSkiPass: true,
+    wantSkiEquipment: false,
     needTransfer: true,
     needCharter: false,
     originCity: "",
     fullName: "",
-    whatsapp: ""
+    whatsapp: "",
+    observations: ""
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -127,10 +131,11 @@ export function PaquetesQuoteForm() {
     const checkOutLabel = formData.checkOut ? format(formData.checkOut, "dd/MM/yyyy", { locale: dateLocale }) : "-"
     const agesLabel = formData.passengerAges.filter(a => a.trim() !== "").join(", ") || "-"
     const skiPassLabel = formData.wantSkiPass ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
+    const skiEquipmentLabel = formData.wantSkiEquipment ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
     const transferLabel = formData.needTransfer ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
     const charterLabel = formData.needCharter ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
 
-    return `*${t("paquetesPage.whatsapp.greeting")}*
+    let message = `*${t("paquetesPage.whatsapp.greeting")}*
 
 ${t("paquetesPage.whatsapp.type")}: ${tripLabel}
 ${t("paquetesPage.whatsapp.lodging")}: ${lodgingLabel}
@@ -140,11 +145,18 @@ ${t("paquetesPage.whatsapp.checkOut")}: ${checkOutLabel}
 ${t("paquetesPage.whatsapp.passengers")}: ${formData.totalPassengers}
 ${t("paquetesPage.whatsapp.ages")}: ${agesLabel}
 ${t("paquetesPage.whatsapp.withPasses")}: ${skiPassLabel}
+${t("paquetesPage.whatsapp.skiEquipment")}: ${skiEquipmentLabel}
 ${t("paquetesPage.whatsapp.transfers")}: ${transferLabel}
 ${t("paquetesPage.whatsapp.charter")}: ${charterLabel}
 ${t("paquetesPage.whatsapp.originCity")}: ${formData.originCity}
 ${t("paquetesPage.whatsapp.name")}: ${formData.fullName}
 WhatsApp: ${formData.whatsapp}`
+
+    if (formData.observations.trim()) {
+      message += `\n${t("paquetesPage.whatsapp.observations")}: ${formData.observations}`
+    }
+
+    return message
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -391,7 +403,7 @@ WhatsApp: ${formData.whatsapp}`
                     {formData.totalPassengers > 0 && (
                       <div className="space-y-3">
                         <Label className="text-[#0B0B0B]/80">
-                          {t("paquetesPage.form.passengerAges")}
+                          {t("paquetesPage.form.passengerAges")} <span className="text-[#0B0B0B]/50 text-sm font-normal">({t("paquetesPage.form.agesAtTravel")})</span>
                         </Label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                           {formData.passengerAges.map((age, index) => (
@@ -423,10 +435,11 @@ WhatsApp: ${formData.whatsapp}`
                     <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
                       5
                     </div>
-                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("paquetesPage.form.step5")}</h3>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("paquetesPage.form.step5Title")}</h3>
                   </div>
                   
-                  <div className="grid md:grid-cols-3 gap-4">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Ski Pass */}
                     <div className="space-y-2">
                       <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Snowflake className="w-4 h-4" />
@@ -461,7 +474,44 @@ WhatsApp: ${formData.whatsapp}`
                         </Label>
                       </RadioGroup>
                     </div>
+
+                    {/* Ski Equipment Rental */}
+                    <div className="space-y-2">
+                      <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
+                        <Snowflake className="w-4 h-4" />
+                        {t("paquetesPage.form.skiEquipment")}
+                      </Label>
+                      <RadioGroup
+                        value={formData.wantSkiEquipment ? "yes" : "no"}
+                        onValueChange={(value) => updateForm("wantSkiEquipment", value === "yes")}
+                        className="flex gap-4"
+                      >
+                        <Label
+                          htmlFor="equipment-yes"
+                          className={`flex items-center gap-2 px-4 py-3 rounded-lg border-2 cursor-pointer transition-all ${
+                            formData.wantSkiEquipment
+                              ? "border-[#6B7D5C] bg-[#6B7D5C]/5"
+                              : "border-[#0B0B0B]/10"
+                          }`}
+                        >
+                          <RadioGroupItem value="yes" id="equipment-yes" />
+                          <span>{t("paquetesPage.form.yes")}</span>
+                        </Label>
+                        <Label
+                          htmlFor="equipment-no"
+                          className={`flex items-center gap-2 px-4 py-3 rounded-lg border-2 cursor-pointer transition-all ${
+                            !formData.wantSkiEquipment
+                              ? "border-[#6B7D5C] bg-[#6B7D5C]/5"
+                              : "border-[#0B0B0B]/10"
+                          }`}
+                        >
+                          <RadioGroupItem value="no" id="equipment-no" />
+                          <span>{t("paquetesPage.form.no")}</span>
+                        </Label>
+                      </RadioGroup>
+                    </div>
                     
+                    {/* Transfer */}
                     <div className="space-y-2">
                       <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <MapPin className="w-4 h-4" />
@@ -497,6 +547,7 @@ WhatsApp: ${formData.whatsapp}`
                       </RadioGroup>
                     </div>
                     
+                    {/* Charter */}
                     <div className="space-y-2">
                       <Label className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Bus className="w-4 h-4" />
@@ -582,6 +633,30 @@ WhatsApp: ${formData.whatsapp}`
                         className="h-12"
                       />
                     </div>
+                  </div>
+                </div>
+
+                {/* Section 7: Observations */}
+                <div className="p-6 md:p-8 border-b border-[#0B0B0B]/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
+                      7
+                    </div>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("paquetesPage.form.step7")}</h3>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="observations" className="text-[#0B0B0B]/80">
+                      {t("paquetesPage.form.observationsLabel")}
+                    </Label>
+                    <textarea
+                      id="observations"
+                      placeholder={t("paquetesPage.form.observationsPlaceholder")}
+                      value={formData.observations}
+                      onChange={(e) => updateForm("observations", e.target.value)}
+                      className="w-full min-h-[120px] px-4 py-3 rounded-lg border border-input bg-background text-sm resize-y focus:outline-none focus:ring-2 focus:ring-[#6B7D5C] focus:ring-offset-2"
+                      rows={4}
+                    />
                   </div>
                 </div>
 

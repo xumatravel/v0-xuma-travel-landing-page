@@ -514,6 +514,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.form.passengerAges": "Edad de cada pasajero",
     "paquetesPage.form.passengerNumber": "Pasajero",
     "paquetesPage.form.agePlaceholder": "Edad",
+    "paquetesPage.form.agesAtTravel": "a la hora del viaje",
+    "paquetesPage.form.step5Title": "Pases, Transfers y Experiencias de Nieve",
+    "paquetesPage.form.skiEquipment": "Alquiler de equipos de ski",
+    "paquetesPage.form.step7": "Observaciones",
+    "paquetesPage.form.observationsLabel": "Observaciones o comentarios adicionales",
+    "paquetesPage.form.observationsPlaceholder": "Escribe aquí cualquier detalle adicional sobre tu viaje...",
 
     // WhatsApp Message
     "paquetesPage.whatsapp.greeting": "NUEVA CONSULTA PAQUETE SKI",
@@ -527,6 +533,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.whatsapp.withPasses": "Con pases",
     "paquetesPage.whatsapp.transfers": "Traslados",
     "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.skiEquipment": "Alquiler equipos",
+    "paquetesPage.whatsapp.observations": "Observaciones",
     "paquetesPage.whatsapp.originCity": "Ciudad origen",
     "paquetesPage.whatsapp.name": "Nombre",
 
@@ -1075,6 +1083,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.form.passengerAges": "Idade de cada passageiro",
     "paquetesPage.form.passengerNumber": "Passageiro",
     "paquetesPage.form.agePlaceholder": "Idade",
+    "paquetesPage.form.agesAtTravel": "na hora da viagem",
+    "paquetesPage.form.step5Title": "Passes, Transfers e Experiencias de Neve",
+    "paquetesPage.form.skiEquipment": "Aluguel de equipamentos de ski",
+    "paquetesPage.form.step7": "Observacoes",
+    "paquetesPage.form.observationsLabel": "Observacoes ou comentarios adicionais",
+    "paquetesPage.form.observationsPlaceholder": "Escreva aqui qualquer detalhe adicional sobre sua viagem...",
 
     // WhatsApp Message
     "paquetesPage.whatsapp.greeting": "NOVA CONSULTA PACOTE SKI",
@@ -1088,6 +1102,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.whatsapp.withPasses": "Com passes",
     "paquetesPage.whatsapp.transfers": "Transfers",
     "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.skiEquipment": "Aluguel equipamentos",
+    "paquetesPage.whatsapp.observations": "Observacoes",
     "paquetesPage.whatsapp.originCity": "Cidade origem",
     "paquetesPage.whatsapp.name": "Nome",
 
@@ -1636,6 +1652,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.form.passengerAges": "Age of each passenger",
     "paquetesPage.form.passengerNumber": "Passenger",
     "paquetesPage.form.agePlaceholder": "Age",
+    "paquetesPage.form.agesAtTravel": "at the time of travel",
+    "paquetesPage.form.step5Title": "Passes, Transfers & Snow Experiences",
+    "paquetesPage.form.skiEquipment": "Ski equipment rental",
+    "paquetesPage.form.step7": "Observations",
+    "paquetesPage.form.observationsLabel": "Additional observations or comments",
+    "paquetesPage.form.observationsPlaceholder": "Write here any additional details about your trip...",
 
     // WhatsApp Message
     "paquetesPage.whatsapp.greeting": "NEW SKI PACKAGE INQUIRY",
@@ -1649,6 +1671,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.whatsapp.withPasses": "With passes",
     "paquetesPage.whatsapp.transfers": "Transfers",
     "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.skiEquipment": "Equipment rental",
+    "paquetesPage.whatsapp.observations": "Observations",
     "paquetesPage.whatsapp.originCity": "Origin city",
     "paquetesPage.whatsapp.name": "Name",
 
