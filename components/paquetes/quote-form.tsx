@@ -25,10 +25,8 @@ interface FormData {
   hotel: HotelName
   checkIn: Date | undefined
   checkOut: Date | undefined
-  totalPassengers: string
-  adults: string
-  children: string
-  infants: string
+  totalPassengers: number
+  passengerAges: string[]
   wantSkiPass: boolean
   needTransfer: boolean
   needCharter: boolean
@@ -55,10 +53,8 @@ export function PaquetesQuoteForm() {
     hotel: "piscis",
     checkIn: undefined,
     checkOut: undefined,
-    totalPassengers: "2",
-    adults: "2",
-    children: "0",
-    infants: "0",
+    totalPassengers: 2,
+    passengerAges: ["", ""],
     wantSkiPass: true,
     needTransfer: true,
     needCharter: false,
@@ -89,8 +85,38 @@ export function PaquetesQuoteForm() {
     virgo: t("paquetesPage.hotels.virgo.name"),
   }
 
+  const hotelPriceLabels: Record<HotelName, string> = {
+    virgo: t("paquetesPage.form.priceHigh"),
+    piscis: t("paquetesPage.form.priceMediumHigh"),
+    aries: t("paquetesPage.form.priceMedium"),
+    acuario: t("paquetesPage.form.priceMedium"),
+    scorpio: t("paquetesPage.form.priceMediumLow"),
+  }
+
+  const familyHotels: HotelName[] = ["piscis", "aries", "virgo"]
+
   const updateForm = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setFormData(prev => ({ ...prev, [key]: value }))
+  }
+
+  const updatePassengerCount = (count: number) => {
+    const newAges = [...formData.passengerAges]
+    if (count > newAges.length) {
+      // Add empty ages for new passengers
+      while (newAges.length < count) {
+        newAges.push("")
+      }
+    } else {
+      // Remove excess ages
+      newAges.splice(count)
+    }
+    setFormData(prev => ({ ...prev, totalPassengers: count, passengerAges: newAges }))
+  }
+
+  const updatePassengerAge = (index: number, age: string) => {
+    const newAges = [...formData.passengerAges]
+    newAges[index] = age
+    setFormData(prev => ({ ...prev, passengerAges: newAges }))
   }
 
   const buildWhatsAppMessage = (): string => {
@@ -99,7 +125,7 @@ export function PaquetesQuoteForm() {
     const hotelLabel = formData.lodgingType === "hotel" ? hotelLabels[formData.hotel] : "-"
     const checkInLabel = formData.checkIn ? format(formData.checkIn, "dd/MM/yyyy", { locale: dateLocale }) : "-"
     const checkOutLabel = formData.checkOut ? format(formData.checkOut, "dd/MM/yyyy", { locale: dateLocale }) : "-"
-    const agesLabel = `${formData.adults} ${t("paquetesPage.form.adults")}, ${formData.children} ${t("paquetesPage.form.children")}, ${formData.infants} ${t("paquetesPage.form.infants")}`
+    const agesLabel = formData.passengerAges.filter(a => a.trim() !== "").join(", ") || "-"
     const skiPassLabel = formData.wantSkiPass ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
     const transferLabel = formData.needTransfer ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
     const charterLabel = formData.needCharter ? t("paquetesPage.form.yes") : t("paquetesPage.form.no")
@@ -232,13 +258,19 @@ WhatsApp: ${formData.whatsapp}`
                           <SelectTrigger id="hotel" className="h-12 bg-white">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
-                            {(["piscis", "aries", "acuario", "scorpio", "virgo"] as HotelName[]).map((hotel) => (
-                              <SelectItem key={hotel} value={hotel}>
+                        <SelectContent>
+                          {(["virgo", "piscis", "aries", "acuario", "scorpio"] as HotelName[]).map((hotel) => (
+                            <SelectItem key={hotel} value={hotel}>
+                              <span className="flex items-center gap-2">
                                 {hotelLabels[hotel]}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
+                                <span className="text-xs text-[#0B0B0B]/50">
+                                  ({hotelPriceLabels[hotel]})
+                                  {familyHotels.includes(hotel) && ` - ${t("paquetesPage.form.familyHotel")}`}
+                                </span>
+                              </span>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
                         </Select>
                       </div>
                     )}
@@ -331,92 +363,57 @@ WhatsApp: ${formData.whatsapp}`
                     <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("paquetesPage.form.step4")}</h3>
                   </div>
                   
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="space-y-6">
+                    {/* Total Passengers */}
                     <div className="space-y-2">
                       <Label htmlFor="totalPassengers" className="text-[#0B0B0B]/80 flex items-center gap-2">
                         <Users className="w-4 h-4" />
-                        Total
+                        {t("paquetesPage.form.totalPassengers")}
                       </Label>
                       <Select
-                        value={formData.totalPassengers}
-                        onValueChange={(value) => updateForm("totalPassengers", value)}
+                        value={String(formData.totalPassengers)}
+                        onValueChange={(value) => updatePassengerCount(parseInt(value))}
                       >
-                        <SelectTrigger id="totalPassengers" className="h-12 bg-white">
+                        <SelectTrigger id="totalPassengers" className="h-12 bg-white max-w-[200px]">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
                             <SelectItem key={num} value={String(num)}>
-                              {num}
-                            </SelectItem>
-                          ))}
-                          <SelectItem value="10+">10+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="adults" className="text-[#0B0B0B]/80">
-                        {t("paquetesPage.form.adults")}
-                      </Label>
-                      <Select
-                        value={formData.adults}
-                        onValueChange={(value) => updateForm("adults", value)}
-                      >
-                        <SelectTrigger id="adults" className="h-12 bg-white">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                            <SelectItem key={num} value={String(num)}>
-                              {num}
+                              {num} {num === 1 ? t("paquetesPage.form.passenger") : t("paquetesPage.form.passengersPlural")}
                             </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="children" className="text-[#0B0B0B]/80">
-                        {t("paquetesPage.form.children")}
-                      </Label>
-                      <Select
-                        value={formData.children}
-                        onValueChange={(value) => updateForm("children", value)}
-                      >
-                        <SelectTrigger id="children" className="h-12 bg-white">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[0, 1, 2, 3, 4, 5, 6].map(num => (
-                            <SelectItem key={num} value={String(num)}>
-                              {num}
-                            </SelectItem>
+
+                    {/* Passenger Ages */}
+                    {formData.totalPassengers > 0 && (
+                      <div className="space-y-3">
+                        <Label className="text-[#0B0B0B]/80">
+                          {t("paquetesPage.form.passengerAges")}
+                        </Label>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                          {formData.passengerAges.map((age, index) => (
+                            <div key={index} className="space-y-1">
+                              <Label htmlFor={`age-${index}`} className="text-xs text-[#0B0B0B]/60">
+                                {t("paquetesPage.form.passengerNumber")} {index + 1}
+                              </Label>
+                              <Input
+                                id={`age-${index}`}
+                                type="number"
+                                min="0"
+                                max="120"
+                                placeholder={t("paquetesPage.form.agePlaceholder")}
+                                value={age}
+                                onChange={(e) => updatePassengerAge(index, e.target.value)}
+                                className="h-10 bg-white"
+                              />
+                            </div>
                           ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="infants" className="text-[#0B0B0B]/80">
-                        {t("paquetesPage.form.infants")}
-                      </Label>
-                      <Select
-                        value={formData.infants}
-                        onValueChange={(value) => updateForm("infants", value)}
-                      >
-                        <SelectTrigger id="infants" className="h-12 bg-white">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[0, 1, 2, 3, 4].map(num => (
-                            <SelectItem key={num} value={String(num)}>
-                              {num}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
