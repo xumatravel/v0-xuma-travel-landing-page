@@ -14,7 +14,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "#products", label: t("nav.packages") },
+    { href: "/paquetes-las-lenas", label: t("nav.packagesLasLenas"), isPage: true },
     { href: "/traslados-las-lenas", label: "Transfers Las Leñas", isPage: true },
     { href: "#agencies", label: t("nav.agencies") },
     { href: "#about", label: t("nav.about") },

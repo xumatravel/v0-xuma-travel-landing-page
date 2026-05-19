@@ -21,6 +21,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
   es: {
     // Navigation
     "nav.packages": "Paquetes",
+    "nav.packagesLasLenas": "Paquetes Las Leñas",
     "nav.services": "Servicios",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agencias",
@@ -50,9 +51,11 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.subtitle": "Tres formas de vivir Mendoza con estándar premium",
     
     "products.ski.title": "Paquetes de Ski",
+    "products.ski.titleFull": "Paquetes de Ski en Las Leñas",
     "products.ski.subtitle": "PRODUCTO PRINCIPAL",
     "products.ski.description": "Transporte + hotel + ski pass. La experiencia completa en Las Leñas.",
     "products.ski.features": ["Transfers premium", "Hospedaje seleccionado", "Ski pass incluido", "Coordinación total"],
+    "products.ski.cta": "Ver Paquetes de Ski",
     
     "products.experience.title": "Experiencia Mendoza",
     "products.experience.subtitle": "2-4 DÍAS",
@@ -63,6 +66,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.transfers.subtitle": "TU PUERTA DE ENTRADA",
     "products.transfers.description": "Tu puerta de entrada a una experiencia completa en Mendoza.",
     "products.transfers.features": ["Vehículos premium", "Conductores bilingües", "Puntualidad garantizada", "Servicio puerta a puerta"],
+    "products.transfers.cta": "Ver Transfers",
 
     "products.note": "Los transfers son tu punto de entrada, no el destino final.",
 
@@ -590,6 +594,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
   pt: {
     // Navigation
     "nav.packages": "Pacotes",
+    "nav.packagesLasLenas": "Pacotes Las Leñas",
     "nav.services": "Serviços",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agências",
@@ -619,9 +624,11 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.subtitle": "Três formas de viver Mendoza com padrão premium",
     
     "products.ski.title": "Pacotes de Ski",
+    "products.ski.titleFull": "Pacotes de Ski em Las Leñas",
     "products.ski.subtitle": "PRODUTO PRINCIPAL",
     "products.ski.description": "Transporte + hotel + ski pass. A experiência completa em Las Leñas.",
     "products.ski.features": ["Transfers premium", "Hospedagem selecionada", "Ski pass incluído", "Coordenação total"],
+    "products.ski.cta": "Ver Pacotes de Ski",
     
     "products.experience.title": "Experiência Mendoza",
     "products.experience.subtitle": "2-4 DIAS",
@@ -632,6 +639,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.transfers.subtitle": "SUA PORTA DE ENTRADA",
     "products.transfers.description": "Sua porta de entrada para uma experiência completa em Mendoza.",
     "products.transfers.features": ["Veículos premium", "Motoristas bilíngues", "Pontualidade garantida", "Serviço porta a porta"],
+    "products.transfers.cta": "Ver Transfers",
 
     "products.note": "Os transfers são seu ponto de entrada, não o destino final.",
 
@@ -1159,6 +1167,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
   en: {
     // Navigation
     "nav.packages": "Packages",
+    "nav.packagesLasLenas": "Las Leñas Packages",
     "nav.services": "Services",
     "nav.lasLenas": "Las Leñas",
     "nav.agencies": "Agencies",
@@ -1188,9 +1197,11 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.subtitle": "Three ways to experience Mendoza with premium standards",
     
     "products.ski.title": "Ski Packages",
+    "products.ski.titleFull": "Ski Packages in Las Leñas",
     "products.ski.subtitle": "MAIN PRODUCT",
     "products.ski.description": "Transport + hotel + ski pass. The complete Las Leñas experience.",
     "products.ski.features": ["Premium transfers", "Selected lodging", "Ski pass included", "Full coordination"],
+    "products.ski.cta": "View Ski Packages",
     
     "products.experience.title": "Mendoza Experience",
     "products.experience.subtitle": "2-4 DAYS",
@@ -1201,6 +1212,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "products.transfers.subtitle": "YOUR GATEWAY",
     "products.transfers.description": "Your gateway to a complete Mendoza experience.",
     "products.transfers.features": ["Premium vehicles", "Bilingual drivers", "Guaranteed punctuality", "Door-to-door service"],
+    "products.transfers.cta": "View Transfers",
 
     "products.note": "Transfers are your entry point, not the final destination.",
 

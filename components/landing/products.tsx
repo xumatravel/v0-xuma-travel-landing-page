@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
 import { Snowflake, Wine, Car, CheckCircle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,13 +12,15 @@ export function Products() {
   const products = [
     {
       icon: Snowflake,
-      title: t("products.ski.title"),
+      title: t("products.ski.titleFull"),
       subtitle: t("products.ski.subtitle"),
       description: t("products.ski.description"),
       features: tArray("products.ski.features"),
       accent: "#6B7D5C",
       featured: true,
       image: "/ski-resort.jpg",
+      href: "/paquetes-las-lenas",
+      ctaLabel: t("products.ski.cta"),
     },
     {
       icon: Wine,
@@ -28,6 +31,8 @@ export function Products() {
       accent: "#5A1E2A",
       featured: false,
       image: "/vineyard.jpg",
+      href: null,
+      ctaLabel: t("hero.cta.secondary"),
     },
     {
       icon: Car,
@@ -38,6 +43,8 @@ export function Products() {
       accent: "#C8A96A",
       featured: false,
       image: "/mountain-road.jpg",
+      href: "/traslados-las-lenas",
+      ctaLabel: t("products.transfers.cta"),
     },
   ]
 
@@ -130,13 +137,24 @@ export function Products() {
                   ))}
                 </ul>
 
-                <Button
-                  onClick={scrollToContact}
-                  className="w-full group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
-                >
-                  {t("hero.cta.secondary")}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                {product.href ? (
+                  <Link href={product.href}>
+                    <Button
+                      className="w-full group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
+                    >
+                      {product.ctaLabel}
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button
+                    onClick={scrollToContact}
+                    className="w-full group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
+                  >
+                    {product.ctaLabel}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                )}
               </div>
             </div>
           ))}
