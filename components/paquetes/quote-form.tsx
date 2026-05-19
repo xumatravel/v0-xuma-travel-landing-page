@@ -75,6 +75,12 @@ export function PaquetesQuoteForm() {
     extraweek: t("paquetesPage.types.extraweek.title"),
   }
 
+  const tripTypeSubtitles: Record<TripType, string> = {
+    skiweek: `${t("paquetesPage.types.skiweek.duration")} | ${t("paquetesPage.types.skiweek.schedule")}`,
+    miniweek: `${t("paquetesPage.types.miniweek.duration")} | ${t("paquetesPage.types.miniweek.schedule")}`,
+    extraweek: `${t("paquetesPage.types.extraweek.duration")} | ${t("paquetesPage.types.extraweek.schedule")}`,
+  }
+
   const hotelLabels: Record<HotelName, string> = {
     piscis: t("paquetesPage.hotels.piscis.name"),
     aries: t("paquetesPage.hotels.aries.name"),
@@ -165,13 +171,13 @@ WhatsApp: ${formData.whatsapp}`
                   <RadioGroup
                     value={formData.tripType}
                     onValueChange={(value: TripType) => updateForm("tripType", value)}
-                    className="grid grid-cols-3 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                   >
                     {(["skiweek", "miniweek", "extraweek"] as TripType[]).map((type) => (
                       <Label
                         key={type}
                         htmlFor={type}
-                        className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 cursor-pointer transition-all text-center ${
+                        className={`flex flex-col items-center gap-1 p-4 rounded-xl border-2 cursor-pointer transition-all text-center ${
                           formData.tripType === type
                             ? "border-[#6B7D5C] bg-[#6B7D5C]/5"
                             : "border-[#0B0B0B]/10 hover:border-[#6B7D5C]/50"
@@ -179,6 +185,7 @@ WhatsApp: ${formData.whatsapp}`
                       >
                         <RadioGroupItem value={type} id={type} className="sr-only" />
                         <span className="font-semibold text-[#0B0B0B]">{tripTypeLabels[type]}</span>
+                        <span className="text-xs text-[#0B0B0B]/60">{tripTypeSubtitles[type]}</span>
                       </Label>
                     ))}
                   </RadioGroup>
