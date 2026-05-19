@@ -1,10 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Award, Mountain, Users, ThumbsUp, ArrowRight } from "lucide-react"
+import { Award, Mountain, ThumbsUp, ArrowRight, Car } from "lucide-react"
 
 export function LasLenas() {
   const { t } = useI18n()
@@ -64,14 +65,26 @@ export function LasLenas() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={scrollToProducts}
-                size="lg"
-                className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white group"
-              >
-                {t("lasLenas.cta")}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/paquetes-las-lenas">
+                <Button
+                  size="lg"
+                  className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white group"
+                >
+                  {t("lasLenas.cta")}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/traslados-las-lenas">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#0B0B0B]/20 text-[#0B0B0B] hover:bg-[#0B0B0B]/5 group"
+                >
+                  <Car className="w-5 h-5 mr-2" />
+                  {t("lasLenas.ctaTransfers")}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
 
