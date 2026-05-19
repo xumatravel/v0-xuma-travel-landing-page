@@ -35,7 +35,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Viajes Premium en Mendoza — Ski, Vino y Experiencias Todo en Uno",
     "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
-    "hero.trust1": "30+ años de experiencia (empresa familiar)",
+    "hero.trust1": "40+ años de experiencia (empresa familiar, 2da generación)",
     "hero.trust2": "Proveedor oficial de transporte al Valle de Las Leñas",
     "hero.cta.primary": "Recibí tu propuesta en minutos",
     "hero.cta.secondary": "Hablar por WhatsApp",
@@ -75,11 +75,11 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Las Leñas Section
     "lasLenas.title": "Las Leñas: Nuestro Expertise",
     "lasLenas.subtitle": "Proveedor Oficial de Transporte",
-    "lasLenas.description": "Con más de 30 años de experiencia, somos el socio de transporte más confiable para el Valle de Las Leñas. Nuestra trayectoria nos convierte en expertos en las condiciones de la ruta y las necesidades de los viajeros.",
+    "lasLenas.description": "Con más de 40 años de experiencia, somos el socio de transporte más confiable para el Valle de Las Leñas. Empresa familiar de segunda generación, expertos en las condiciones de la ruta y las necesidades de los viajeros.",
     "lasLenas.badge": "Proveedor Oficial",
     "lasLenas.cta": "Descubre nuestros paquetes de ski",
     "lasLenas.stats.trips": "Miles de viajes",
-    "lasLenas.stats.experience": "30+ años",
+    "lasLenas.stats.experience": "40+ años",
     "lasLenas.stats.satisfaction": "99% satisfacción",
 
     // Upsell Section
@@ -115,8 +115,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiencia premium sin fricciones en Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Pasajeros transportados",
-    "trust.years": "Años de experiencia",
+    "trust.passengers": "Pasajeros por temporada",
+    "trust.years": "Años de experiencia (empresa familiar)",
     "trust.satisfaction": "Satisfacción",
     "trust.support": "Soporte",
     "trust.supportValue": "24/7",
@@ -145,7 +145,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "Lo Que Dicen Nuestros Clientes",
-    "testimonials.subtitle": "+5000 pasajeros por temporada",
+    "testimonials.subtitle": "+1000 pasajeros por temporada",
     "testimonials.items": [
       {
         "text": "Excelente servicio. Nos coordinaron todo el viaje a Las Leñas sin ningún problema. 100% recomendado.",
@@ -166,7 +166,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // About
     "about.title": "Sobre XUMA TRAVEL",
-    "about.description": "Somos una empresa familiar con más de 30 años coordinando viajes premium en Mendoza. Nuestra misión es simple: hacer que cada viaje sea impecable, desde el primer contacto hasta el regreso a casa.",
+    "about.description": "Somos una empresa familiar con más de 40 años coordinando viajes premium en Mendoza. Segunda generación al servicio del turismo. Nuestra misión es simple: hacer que cada viaje sea impecable, desde el primer contacto hasta el regreso a casa.",
     "about.values.title": "Nuestros Valores",
     "about.values.items": ["Excelencia en servicio", "Atención personalizada", "Compromiso con la seguridad", "Pasión por Mendoza"],
 
@@ -610,7 +610,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Viagens Premium em Mendoza — Ski, Vinho e Experiências Tudo em Um",
     "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
-    "hero.trust1": "30+ anos de experiência (empresa familiar)",
+    "hero.trust1": "40+ anos de experiência (empresa familiar, 2ª geração)",
     "hero.trust2": "Fornecedor oficial de transporte para o Vale de Las Leñas",
     "hero.cta.primary": "Receba sua proposta em minutos",
     "hero.cta.secondary": "Falar no WhatsApp",
@@ -690,8 +690,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiência premium sem atritos em Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passageiros transportados",
-    "trust.years": "Anos de experiência",
+    "trust.passengers": "Passageiros por temporada",
+    "trust.years": "Anos de experiência (empresa familiar)",
     "trust.satisfaction": "Satisfação",
     "trust.support": "Suporte",
     "trust.supportValue": "24/7",
@@ -720,7 +720,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "O Que Nossos Clientes Dizem",
-    "testimonials.subtitle": "+5000 passageiros por temporada",
+    "testimonials.subtitle": "+1000 passageiros por temporada",
     "testimonials.items": [
       {
         "text": "Serviço excelente. Coordenaram toda nossa viagem a Las Leñas sem nenhum problema. 100% recomendado.",
@@ -842,7 +842,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.freeQuote": "Cotação gratuita",
 
     // WhatsApp Message
-    "lasLenasPage.whatsapp.greeting": "Olá, quero solicitar uma cotação de transfer para Las Leñas:",
+    "lasLenasPage.whatsapp.greeting": "Olá, quero solicitar uma cotação de transfer para Las Le��as:",
     "lasLenasPage.whatsapp.serviceType": "Tipo de serviço",
     "lasLenasPage.whatsapp.vehicle": "Veículo",
     "lasLenasPage.whatsapp.passengersCount": "Quantidade de passageiros",
@@ -1185,7 +1185,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Premium Travel in Mendoza — Ski, Wine & Experiences All in One",
     "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
-    "hero.trust1": "30+ years of experience (family business)",
+    "hero.trust1": "40+ years of experience (family business, 2nd generation)",
     "hero.trust2": "Official transportation provider to Valle de Las Leñas",
     "hero.cta.primary": "Get your proposal in minutes",
     "hero.cta.secondary": "Chat on WhatsApp",
@@ -1265,8 +1265,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Frictionless premium experience in Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passengers transported",
-    "trust.years": "Years of experience",
+    "trust.passengers": "Passengers per season",
+    "trust.years": "Years of experience (family business)",
     "trust.satisfaction": "Satisfaction",
     "trust.support": "Support",
     "trust.supportValue": "24/7",
@@ -1295,7 +1295,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "What Our Clients Say",
-    "testimonials.subtitle": "+5000 passengers per season",
+    "testimonials.subtitle": "+1000 passengers per season",
     "testimonials.items": [
       {
         "text": "Excellent service. They coordinated our entire trip to Las Leñas without any issues. 100% recommended.",

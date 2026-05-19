@@ -57,8 +57,8 @@ export function Trust() {
   const { t } = useI18n()
 
   const stats = [
-    { value: 5000, suffix: "+", label: t("trust.passengers") },
-    { value: 30, suffix: "+", label: t("trust.years") },
+    { value: 1000, suffix: "+", label: t("trust.passengers") },
+    { value: 40, suffix: "+", label: t("trust.years") },
     { value: 99, suffix: "%", label: t("trust.satisfaction") },
     { value: 24, suffix: "/7", label: t("trust.support") },
   ]
