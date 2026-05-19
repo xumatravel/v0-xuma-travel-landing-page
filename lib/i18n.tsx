@@ -34,7 +34,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Hero
     "hero.headline": "Viajes Premium en Mendoza — Ski, Vino y Experiencias Todo en Uno",
-    "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
+    "hero.subheadline": "Operador especializado en traslados privados, nieve y experiencias en Mendoza para clientes nacionales e internacionales.",
     "hero.trust1": "40+ años de experiencia (empresa familiar, 2da generación)",
     "hero.trust2": "Proveedor oficial de transporte al Valle de Las Leñas",
     "hero.cta.primary": "Recibí tu propuesta en minutos",
@@ -617,7 +617,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Hero
     "hero.headline": "Viagens Premium em Mendoza — Ski, Vinho e Experiências Tudo em Um",
-    "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
+    "hero.subheadline": "Operador especializado em transfers privados, neve e experiências em Mendoza para clientes nacionais e internacionais.",
     "hero.trust1": "40+ anos de experiência (empresa familiar, 2ª geração)",
     "hero.trust2": "Fornecedor oficial de transporte para o Vale de Las Leñas",
     "hero.cta.primary": "Receba sua proposta em minutos",
@@ -1200,7 +1200,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Hero
     "hero.headline": "Premium Travel in Mendoza — Ski, Wine and Experiences All in One",
-    "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
+    "hero.subheadline": "Operator specialized in private transfers, snow and experiences in Mendoza for national and international clients.",
     "hero.trust1": "40+ years of experience (family business, 2nd generation)",
     "hero.trust2": "Official transportation provider to Valle de Las Leñas",
     "hero.cta.primary": "Get your proposal in minutes",
