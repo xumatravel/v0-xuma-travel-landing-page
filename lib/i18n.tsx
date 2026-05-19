@@ -35,7 +35,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Viajes Premium en Mendoza — Ski, Vino y Experiencias Todo en Uno",
     "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
-    "hero.trust1": "30+ años de experiencia (empresa familiar)",
+    "hero.trust1": "40+ años de experiencia (empresa familiar, 2da generación)",
     "hero.trust2": "Proveedor oficial de transporte al Valle de Las Leñas",
     "hero.cta.primary": "Recibí tu propuesta en minutos",
     "hero.cta.secondary": "Hablar por WhatsApp",
@@ -75,11 +75,12 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Las Leñas Section
     "lasLenas.title": "Las Leñas: Nuestro Expertise",
     "lasLenas.subtitle": "Proveedor Oficial de Transporte",
-    "lasLenas.description": "Con más de 30 años de experiencia, somos el socio de transporte más confiable para el Valle de Las Leñas. Nuestra trayectoria nos convierte en expertos en las condiciones de la ruta y las necesidades de los viajeros.",
+    "lasLenas.description": "Con más de 40 años de experiencia, somos el socio de transporte más confiable para el Valle de Las Leñas. Empresa familiar de segunda generación, expertos en las condiciones de la ruta y las necesidades de los viajeros.",
     "lasLenas.badge": "Proveedor Oficial",
     "lasLenas.cta": "Descubre nuestros paquetes de ski",
+    "lasLenas.ctaTransfers": "Descubre nuestros traslados",
     "lasLenas.stats.trips": "Miles de viajes",
-    "lasLenas.stats.experience": "30+ años",
+    "lasLenas.stats.experience": "40+ años",
     "lasLenas.stats.satisfaction": "99% satisfacción",
 
     // Upsell Section
@@ -92,6 +93,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Paquete Completo",
     "upsell.step3.description": "Viaje sin fricciones",
     "upsell.cta": "Mejora tu experiencia",
+    "upsell.viewMore": "Ver más",
 
     // B2B Section
     "b2b.title": "Para Agencias de Viaje",
@@ -115,8 +117,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiencia premium sin fricciones en Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Pasajeros transportados",
-    "trust.years": "Años de experiencia",
+    "trust.passengers": "Pasajeros por temporada",
+    "trust.years": "Años de experiencia (empresa familiar)",
     "trust.satisfaction": "Satisfacción",
     "trust.support": "Soporte",
     "trust.supportValue": "24/7",
@@ -145,7 +147,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "Lo Que Dicen Nuestros Clientes",
-    "testimonials.subtitle": "+5000 pasajeros por temporada",
+    "testimonials.subtitle": "+1000 pasajeros por temporada",
     "testimonials.items": [
       {
         "text": "Excelente servicio. Nos coordinaron todo el viaje a Las Leñas sin ningún problema. 100% recomendado.",
@@ -166,7 +168,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // About
     "about.title": "Sobre XUMA TRAVEL",
-    "about.description": "Somos una empresa familiar con más de 30 años coordinando viajes premium en Mendoza. Nuestra misión es simple: hacer que cada viaje sea impecable, desde el primer contacto hasta el regreso a casa.",
+    "about.description": "Somos una empresa familiar con más de 40 años coordinando viajes premium en Mendoza. Segunda generación al servicio del turismo. Nuestra misión es simple: hacer que cada viaje sea impecable, desde el primer contacto hasta el regreso a casa.",
     "about.values.title": "Nuestros Valores",
     "about.values.items": ["Excelencia en servicio", "Atención personalizada", "Compromiso con la seguridad", "Pasión por Mendoza"],
 
@@ -245,6 +247,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.sharedNote": "Servicio compartido solo disponible desde San Rafael",
     "lasLenasPage.form.otherDestination": "Otro (especificar)",
     "lasLenasPage.form.specifyDestination": "Especifica el destino...",
+    "lasLenasPage.form.otherOrigin": "Otro (especificar)",
+    "lasLenasPage.form.specifyOrigin": "Especifica el origen...",
     "lasLenasPage.form.step4": "Fechas de Viaje",
     "lasLenasPage.form.roundTrip": "Ida y vuelta",
     "lasLenasPage.form.roundTripDesc": "Activa esta opción si necesitas regreso",
@@ -258,6 +262,9 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.emailPlaceholder": "tu@email.com",
     "lasLenasPage.form.whatsapp": "WhatsApp",
     "lasLenasPage.form.whatsappPlaceholder": "+54 9 11 1234-5678",
+    "lasLenasPage.form.step6": "Observaciones (opcional)",
+    "lasLenasPage.form.observationsLabel": "Comentarios adicionales",
+    "lasLenasPage.form.observationsPlaceholder": "Información adicional sobre tu viaje, requerimientos especiales, etc.",
     "lasLenasPage.form.submit": "Enviar Cotización por WhatsApp",
     "lasLenasPage.form.submitting": "Abriendo WhatsApp...",
     "lasLenasPage.form.responseTime": "Te respondemos en menos de 30 minutos",
@@ -278,6 +285,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "No especificada",
     "lasLenasPage.whatsapp.notApplicable": "No aplica",
     "lasLenasPage.whatsapp.myName": "Mi nombre es",
+    "lasLenasPage.whatsapp.observations": "Observaciones",
     "ll.quote.msg.language": "Prefiero comunicarme en Español",
 
     // Services
@@ -432,13 +440,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
     "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 noches",
-    "paquetesPage.types.miniweek.schedule": "Lunes a sábado",
-    "paquetesPage.types.miniweek.desc": "Perfecto escapada larga",
+    "paquetesPage.types.miniweek.duration": "2 noches",
+    "paquetesPage.types.miniweek.schedule": "Sábado a lunes",
+    "paquetesPage.types.miniweek.desc": "Ideal fin de semana",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 noches",
-    "paquetesPage.types.extraweek.schedule": "Sábado a lunes",
-    "paquetesPage.types.extraweek.desc": "Ideal fin de semana",
+    "paquetesPage.types.extraweek.duration": "5 noches",
+    "paquetesPage.types.extraweek.schedule": "Lunes a sábado",
+    "paquetesPage.types.extraweek.desc": "Perfecto escapada larga",
     "paquetesPage.types.passNote": "Los pases de ski incluyen 1 día extra respecto a las noches. Ej: 5 noches = 6 días de pase.",
 
     // Hotels
@@ -551,7 +559,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "¿Qué es un Skiweek, Miniweek y Extraweek?",
-        "answer": "Skiweek es un paquete de 7 noches (sábado a sábado), Miniweek de 5 noches (lunes a sábado), y Extraweek de 2 noches (sábado a lunes). Cada uno está pensado para diferentes necesidades de tiempo."
+        "answer": "Skiweek es un paquete de 7 noches (sábado a sábado), Miniweek de 2 noches (sábado a lunes), y Extraweek de 5 noches (lunes a sábado). Cada uno está pensado para diferentes necesidades de tiempo."
       },
       {
         "question": "¿Los pases de ski están incluidos?",
@@ -610,7 +618,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Viagens Premium em Mendoza — Ski, Vinho e Experiências Tudo em Um",
     "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
-    "hero.trust1": "30+ anos de experiência (empresa familiar)",
+    "hero.trust1": "40+ anos de experiência (empresa familiar, 2ª geração)",
     "hero.trust2": "Fornecedor oficial de transporte para o Vale de Las Leñas",
     "hero.cta.primary": "Receba sua proposta em minutos",
     "hero.cta.secondary": "Falar no WhatsApp",
@@ -653,6 +661,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenas.description": "Com mais de 30 anos de experiência, somos o parceiro de transporte mais confiável para o Vale de Las Leñas. Nossa trajetória nos torna especialistas nas condições da estrada e nas necessidades dos viajantes.",
     "lasLenas.badge": "Fornecedor Oficial",
     "lasLenas.cta": "Descubra nossos pacotes de ski",
+    "lasLenas.ctaTransfers": "Descubra nossos transfers",
     "lasLenas.stats.trips": "Milhares de viagens",
     "lasLenas.stats.experience": "30+ anos",
     "lasLenas.stats.satisfaction": "99% satisfação",
@@ -667,6 +676,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Pacote Completo",
     "upsell.step3.description": "Viagem sem atritos",
     "upsell.cta": "Melhore sua experiência",
+    "upsell.viewMore": "Ver mais",
 
     // B2B Section
     "b2b.title": "Para Agências de Viagem",
@@ -690,8 +700,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Experiência premium sem atritos em Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passageiros transportados",
-    "trust.years": "Anos de experiência",
+    "trust.passengers": "Passageiros por temporada",
+    "trust.years": "Anos de experiência (empresa familiar)",
     "trust.satisfaction": "Satisfação",
     "trust.support": "Suporte",
     "trust.supportValue": "24/7",
@@ -720,7 +730,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "O Que Nossos Clientes Dizem",
-    "testimonials.subtitle": "+5000 passageiros por temporada",
+    "testimonials.subtitle": "+1000 passageiros por temporada",
     "testimonials.items": [
       {
         "text": "Serviço excelente. Coordenaram toda nossa viagem a Las Leñas sem nenhum problema. 100% recomendado.",
@@ -820,6 +830,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.sharedNote": "Serviço compartilhado apenas disponível de San Rafael",
     "lasLenasPage.form.otherDestination": "Outro (especificar)",
     "lasLenasPage.form.specifyDestination": "Especifique o destino...",
+    "lasLenasPage.form.otherOrigin": "Outro (especificar)",
+    "lasLenasPage.form.specifyOrigin": "Especifique a origem...",
     "lasLenasPage.form.step4": "Datas da Viagem",
     "lasLenasPage.form.roundTrip": "Ida e volta",
     "lasLenasPage.form.roundTripDesc": "Ative esta opção se precisar de retorno",
@@ -833,6 +845,9 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.emailPlaceholder": "seu@email.com",
     "lasLenasPage.form.whatsapp": "WhatsApp",
     "lasLenasPage.form.whatsappPlaceholder": "+55 11 91234-5678",
+    "lasLenasPage.form.step6": "Observações (opcional)",
+    "lasLenasPage.form.observationsLabel": "Comentários adicionais",
+    "lasLenasPage.form.observationsPlaceholder": "Informações adicionais sobre sua viagem, requisitos especiais, etc.",
     "lasLenasPage.form.submit": "Enviar Cotação por WhatsApp",
     "lasLenasPage.form.submitting": "Abrindo WhatsApp...",
     "lasLenasPage.form.responseTime": "Respondemos em menos de 30 minutos",
@@ -842,7 +857,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.freeQuote": "Cotação gratuita",
 
     // WhatsApp Message
-    "lasLenasPage.whatsapp.greeting": "Olá, quero solicitar uma cotação de transfer para Las Leñas:",
+    "lasLenasPage.whatsapp.greeting": "Olá, quero solicitar uma cotação de transfer para Las Le��as:",
     "lasLenasPage.whatsapp.serviceType": "Tipo de serviço",
     "lasLenasPage.whatsapp.vehicle": "Veículo",
     "lasLenasPage.whatsapp.passengersCount": "Quantidade de passageiros",
@@ -853,6 +868,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "Não especificada",
     "lasLenasPage.whatsapp.notApplicable": "Não se aplica",
     "lasLenasPage.whatsapp.myName": "Meu nome é",
+    "lasLenasPage.whatsapp.observations": "Observações",
     "ll.quote.msg.language": "Prefiro me comunicar em Português",
   
     // Services
@@ -1007,13 +1023,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
     "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 noites",
-    "paquetesPage.types.miniweek.schedule": "Segunda a sábado",
-    "paquetesPage.types.miniweek.desc": "Perfeito para escapada longa",
+    "paquetesPage.types.miniweek.duration": "2 noites",
+    "paquetesPage.types.miniweek.schedule": "Sábado a segunda",
+    "paquetesPage.types.miniweek.desc": "Ideal fim de semana",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 noites",
-    "paquetesPage.types.extraweek.schedule": "Sábado a segunda",
-    "paquetesPage.types.extraweek.desc": "Ideal fim de semana",
+    "paquetesPage.types.extraweek.duration": "5 noites",
+    "paquetesPage.types.extraweek.schedule": "Segunda a sábado",
+    "paquetesPage.types.extraweek.desc": "Perfeito para escapada longa",
     "paquetesPage.types.passNote": "Os passes de ski incluem 1 dia extra em relação às noites. Ex: 5 noites = 6 dias de passe.",
 
     // Hotels
@@ -1126,7 +1142,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "O que é um Skiweek, Miniweek e Extraweek?",
-        "answer": "Skiweek é um pacote de 7 noites (sábado a sábado), Miniweek de 5 noites (segunda a sábado), e Extraweek de 2 noites (sábado a segunda). Cada um é pensado para diferentes necessidades de tempo."
+        "answer": "Skiweek é um pacote de 7 noites (sábado a sábado), Miniweek de 2 noites (sábado a segunda), e Extraweek de 5 noites (segunda a sábado). Cada um é pensado para diferentes necessidades de tempo."
       },
       {
         "question": "Os passes de ski estão incluídos?",
@@ -1185,7 +1201,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     // Hero
     "hero.headline": "Premium Travel in Mendoza — Ski, Wine & Experiences All in One",
     "hero.subheadline": "Official transportation to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
-    "hero.trust1": "30+ years of experience (family business)",
+    "hero.trust1": "40+ years of experience (family business, 2nd generation)",
     "hero.trust2": "Official transportation provider to Valle de Las Leñas",
     "hero.cta.primary": "Get your proposal in minutes",
     "hero.cta.secondary": "Chat on WhatsApp",
@@ -1228,6 +1244,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenas.description": "With over 30 years of experience, we are the most trusted transportation partner for Valle de Las Leñas. Our track record makes us experts in road conditions and traveler needs.",
     "lasLenas.badge": "Official Provider",
     "lasLenas.cta": "Discover our ski packages",
+    "lasLenas.ctaTransfers": "Discover our transfers",
     "lasLenas.stats.trips": "Thousands of trips",
     "lasLenas.stats.experience": "30+ years",
     "lasLenas.stats.satisfaction": "99% satisfaction",
@@ -1242,6 +1259,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Full Package",
     "upsell.step3.description": "Frictionless travel",
     "upsell.cta": "Upgrade your experience",
+    "upsell.viewMore": "View more",
 
     // B2B Section
     "b2b.title": "For Travel Agencies",
@@ -1265,8 +1283,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "brand.result": "Frictionless premium experience in Mendoza",
 
     // Trust Stats
-    "trust.passengers": "Passengers transported",
-    "trust.years": "Years of experience",
+    "trust.passengers": "Passengers per season",
+    "trust.years": "Years of experience (family business)",
     "trust.satisfaction": "Satisfaction",
     "trust.support": "Support",
     "trust.supportValue": "24/7",
@@ -1295,7 +1313,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // Testimonials
     "testimonials.title": "What Our Clients Say",
-    "testimonials.subtitle": "+5000 passengers per season",
+    "testimonials.subtitle": "+1000 passengers per season",
     "testimonials.items": [
       {
         "text": "Excellent service. They coordinated our entire trip to Las Leñas without any issues. 100% recommended.",
@@ -1395,6 +1413,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.sharedNote": "Shared service only available from San Rafael",
     "lasLenasPage.form.otherDestination": "Other (specify)",
     "lasLenasPage.form.specifyDestination": "Specify destination...",
+    "lasLenasPage.form.otherOrigin": "Other (specify)",
+    "lasLenasPage.form.specifyOrigin": "Specify origin...",
     "lasLenasPage.form.step4": "Travel Dates",
     "lasLenasPage.form.roundTrip": "Round trip",
     "lasLenasPage.form.roundTripDesc": "Enable this option if you need return",
@@ -1408,6 +1428,9 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.form.emailPlaceholder": "your@email.com",
     "lasLenasPage.form.whatsapp": "WhatsApp",
     "lasLenasPage.form.whatsappPlaceholder": "+1 555 123-4567",
+    "lasLenasPage.form.step6": "Observations (optional)",
+    "lasLenasPage.form.observationsLabel": "Additional comments",
+    "lasLenasPage.form.observationsPlaceholder": "Additional information about your trip, special requirements, etc.",
     "lasLenasPage.form.submit": "Send Quote via WhatsApp",
     "lasLenasPage.form.submitting": "Opening WhatsApp...",
     "lasLenasPage.form.responseTime": "We respond in less than 30 minutes",
@@ -1428,6 +1451,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "Not specified",
     "lasLenasPage.whatsapp.notApplicable": "Not applicable",
     "lasLenasPage.whatsapp.myName": "My name is",
+    "lasLenasPage.whatsapp.observations": "Observations",
     "ll.quote.msg.language": "I prefer to communicate in English",
   
     // Services
@@ -1582,13 +1606,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Saturday to Saturday",
     "paquetesPage.types.skiweek.desc": "Ideal for a full week of ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 nights",
-    "paquetesPage.types.miniweek.schedule": "Monday to Saturday",
-    "paquetesPage.types.miniweek.desc": "Perfect for a long getaway",
+    "paquetesPage.types.miniweek.duration": "2 nights",
+    "paquetesPage.types.miniweek.schedule": "Saturday to Monday",
+    "paquetesPage.types.miniweek.desc": "Ideal weekend trip",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 nights",
-    "paquetesPage.types.extraweek.schedule": "Saturday to Monday",
-    "paquetesPage.types.extraweek.desc": "Ideal weekend trip",
+    "paquetesPage.types.extraweek.duration": "5 nights",
+    "paquetesPage.types.extraweek.schedule": "Monday to Saturday",
+    "paquetesPage.types.extraweek.desc": "Perfect for a long getaway",
     "paquetesPage.types.passNote": "Ski passes include 1 extra day compared to nights. E.g.: 5 nights = 6 days pass.",
 
     // Hotels
@@ -1701,7 +1725,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "What is a Skiweek, Miniweek and Extraweek?",
-        "answer": "Skiweek is a 7-night package (Saturday to Saturday), Miniweek is 5 nights (Monday to Saturday), and Extraweek is 2 nights (Saturday to Monday). Each is designed for different time needs."
+        "answer": "Skiweek is a 7-night package (Saturday to Saturday), Miniweek is 2 nights (Saturday to Monday), and Extraweek is 5 nights (Monday to Saturday). Each is designed for different time needs."
       },
       {
         "question": "Are ski passes included?",

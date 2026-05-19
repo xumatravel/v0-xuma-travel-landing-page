@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { Plane, Wine, Package, ArrowRight, ChevronRight } from "lucide-react"
@@ -15,6 +16,7 @@ export function Upsell() {
       description: t("upsell.step1.description"),
       color: "#C8A96A",
       image: "/mountain-road.jpg",
+      href: "/traslados-las-lenas",
     },
     {
       icon: Wine,
@@ -22,6 +24,7 @@ export function Upsell() {
       description: t("upsell.step2.description"),
       color: "#5A1E2A",
       image: "/vineyard.jpg",
+      href: null,
     },
     {
       icon: Package,
@@ -29,6 +32,7 @@ export function Upsell() {
       description: t("upsell.step3.description"),
       color: "#6B7D5C",
       image: "/ski-resort.jpg",
+      href: "/paquetes-las-lenas",
     },
   ]
 
@@ -62,9 +66,9 @@ export function Upsell() {
 
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-stretch justify-center gap-6 md:gap-4 mb-12">
-            {steps.map((step, index) => (
-              <div key={index} className="flex items-center flex-1">
-                <div className="relative flex-1 rounded-2xl overflow-hidden group">
+            {steps.map((step, index) => {
+              const cardContent = (
+                <div className={`relative flex-1 rounded-2xl overflow-hidden group ${step.href ? 'cursor-pointer' : ''}`}>
                   {/* Background image */}
                   <div className="absolute inset-0">
                     <Image
@@ -86,13 +90,30 @@ export function Upsell() {
                     </div>
                     <h3 className="text-white font-bold text-lg mb-2">{step.title}</h3>
                     <p className="text-white/50 text-sm">{step.description}</p>
+                    {step.href && (
+                      <span className="mt-3 text-xs text-white/40 group-hover:text-white/70 transition-colors flex items-center gap-1">
+                        {t("upsell.viewMore")} <ArrowRight className="w-3 h-3" />
+                      </span>
+                    )}
                   </div>
                 </div>
-                {index < steps.length - 1 && (
-                  <ChevronRight className="w-8 h-8 text-white/20 mx-2 hidden md:block flex-shrink-0" />
-                )}
-              </div>
-            ))}
+              )
+
+              return (
+                <div key={index} className="flex items-center flex-1">
+                  {step.href ? (
+                    <Link href={step.href} className="flex-1">
+                      {cardContent}
+                    </Link>
+                  ) : (
+                    cardContent
+                  )}
+                  {index < steps.length - 1 && (
+                    <ChevronRight className="w-8 h-8 text-white/20 mx-2 hidden md:block flex-shrink-0" />
+                  )}
+                </div>
+              )
+            })}
           </div>
 
           <div className="text-center">
