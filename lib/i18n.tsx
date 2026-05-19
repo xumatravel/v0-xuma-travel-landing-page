@@ -92,6 +92,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Paquete Completo",
     "upsell.step3.description": "Viaje sin fricciones",
     "upsell.cta": "Mejora tu experiencia",
+    "upsell.viewMore": "Ver más",
 
     // B2B Section
     "b2b.title": "Para Agencias de Viaje",
@@ -667,6 +668,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Pacote Completo",
     "upsell.step3.description": "Viagem sem atritos",
     "upsell.cta": "Melhore sua experiência",
+    "upsell.viewMore": "Ver mais",
 
     // B2B Section
     "b2b.title": "Para Agências de Viagem",
@@ -1242,6 +1244,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "upsell.step3.title": "Full Package",
     "upsell.step3.description": "Frictionless travel",
     "upsell.cta": "Upgrade your experience",
+    "upsell.viewMore": "View more",
 
     // B2B Section
     "b2b.title": "For Travel Agencies",
