@@ -440,13 +440,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
     "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 noches",
-    "paquetesPage.types.miniweek.schedule": "Lunes a sábado",
-    "paquetesPage.types.miniweek.desc": "Perfecto escapada larga",
+    "paquetesPage.types.miniweek.duration": "2 noches",
+    "paquetesPage.types.miniweek.schedule": "Sábado a lunes",
+    "paquetesPage.types.miniweek.desc": "Ideal fin de semana",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 noches",
-    "paquetesPage.types.extraweek.schedule": "Sábado a lunes",
-    "paquetesPage.types.extraweek.desc": "Ideal fin de semana",
+    "paquetesPage.types.extraweek.duration": "5 noches",
+    "paquetesPage.types.extraweek.schedule": "Lunes a sábado",
+    "paquetesPage.types.extraweek.desc": "Perfecto escapada larga",
     "paquetesPage.types.passNote": "Los pases de ski incluyen 1 día extra respecto a las noches. Ej: 5 noches = 6 días de pase.",
 
     // Hotels
@@ -559,7 +559,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "¿Qué es un Skiweek, Miniweek y Extraweek?",
-        "answer": "Skiweek es un paquete de 7 noches (sábado a sábado), Miniweek de 5 noches (lunes a sábado), y Extraweek de 2 noches (sábado a lunes). Cada uno está pensado para diferentes necesidades de tiempo."
+        "answer": "Skiweek es un paquete de 7 noches (sábado a sábado), Miniweek de 2 noches (sábado a lunes), y Extraweek de 5 noches (lunes a sábado). Cada uno está pensado para diferentes necesidades de tiempo."
       },
       {
         "question": "¿Los pases de ski están incluidos?",
@@ -1023,13 +1023,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
     "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 noites",
-    "paquetesPage.types.miniweek.schedule": "Segunda a sábado",
-    "paquetesPage.types.miniweek.desc": "Perfeito para escapada longa",
+    "paquetesPage.types.miniweek.duration": "2 noites",
+    "paquetesPage.types.miniweek.schedule": "Sábado a segunda",
+    "paquetesPage.types.miniweek.desc": "Ideal fim de semana",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 noites",
-    "paquetesPage.types.extraweek.schedule": "Sábado a segunda",
-    "paquetesPage.types.extraweek.desc": "Ideal fim de semana",
+    "paquetesPage.types.extraweek.duration": "5 noites",
+    "paquetesPage.types.extraweek.schedule": "Segunda a sábado",
+    "paquetesPage.types.extraweek.desc": "Perfeito para escapada longa",
     "paquetesPage.types.passNote": "Os passes de ski incluem 1 dia extra em relação às noites. Ex: 5 noites = 6 dias de passe.",
 
     // Hotels
@@ -1142,7 +1142,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "O que é um Skiweek, Miniweek e Extraweek?",
-        "answer": "Skiweek é um pacote de 7 noites (sábado a sábado), Miniweek de 5 noites (segunda a sábado), e Extraweek de 2 noites (sábado a segunda). Cada um é pensado para diferentes necessidades de tempo."
+        "answer": "Skiweek é um pacote de 7 noites (sábado a sábado), Miniweek de 2 noites (sábado a segunda), e Extraweek de 5 noites (segunda a sábado). Cada um é pensado para diferentes necessidades de tempo."
       },
       {
         "question": "Os passes de ski estão incluídos?",
@@ -1606,13 +1606,13 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.types.skiweek.schedule": "Saturday to Saturday",
     "paquetesPage.types.skiweek.desc": "Ideal for a full week of ski",
     "paquetesPage.types.miniweek.title": "Miniweek",
-    "paquetesPage.types.miniweek.duration": "5 nights",
-    "paquetesPage.types.miniweek.schedule": "Monday to Saturday",
-    "paquetesPage.types.miniweek.desc": "Perfect for a long getaway",
+    "paquetesPage.types.miniweek.duration": "2 nights",
+    "paquetesPage.types.miniweek.schedule": "Saturday to Monday",
+    "paquetesPage.types.miniweek.desc": "Ideal weekend trip",
     "paquetesPage.types.extraweek.title": "Extraweek",
-    "paquetesPage.types.extraweek.duration": "2 nights",
-    "paquetesPage.types.extraweek.schedule": "Saturday to Monday",
-    "paquetesPage.types.extraweek.desc": "Ideal weekend trip",
+    "paquetesPage.types.extraweek.duration": "5 nights",
+    "paquetesPage.types.extraweek.schedule": "Monday to Saturday",
+    "paquetesPage.types.extraweek.desc": "Perfect for a long getaway",
     "paquetesPage.types.passNote": "Ski passes include 1 extra day compared to nights. E.g.: 5 nights = 6 days pass.",
 
     // Hotels
@@ -1725,7 +1725,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "paquetesPage.faq.items": [
       {
         "question": "What is a Skiweek, Miniweek and Extraweek?",
-        "answer": "Skiweek is a 7-night package (Saturday to Saturday), Miniweek is 5 nights (Monday to Saturday), and Extraweek is 2 nights (Saturday to Monday). Each is designed for different time needs."
+        "answer": "Skiweek is a 7-night package (Saturday to Saturday), Miniweek is 2 nights (Saturday to Monday), and Extraweek is 5 nights (Monday to Saturday). Each is designed for different time needs."
       },
       {
         "question": "Are ski passes included?",
