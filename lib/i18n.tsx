@@ -395,10 +395,10 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hola! Me interesa reservar un transfer a Las Leñas",
 
     // New Hero translations
+    "hero.editorial": "Experiencias Premium • Ski • Montaña • Mendoza",
     "hero.title.line1": "Ski y Experiencias Premium",
     "hero.title.line2": "en Mendoza",
-    "hero.subheadline": "Especialistas en ski, montaña y experiencias premium en Mendoza y Las Leñas.",
-    "hero.tagline": "Las Leñas · Transfers Premium · Experiencias en Mendoza",
+    "hero.subheadline": "Especialistas en ski, montaña, vino y experiencias premium en Mendoza y Las Leñas.",
     "hero.trustDoorToDoor": "Servicio puerta a puerta",
     "hero.trustSki": "Expertos en ski",
     "hero.cta.transfer": "Cotizar Traslado",
@@ -980,10 +980,10 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Olá! Tenho interesse em reservar um transfer para Las Leñas",
 
     // New Hero translations
+    "hero.editorial": "Experiências Premium • Ski • Montanha • Mendoza",
     "hero.title.line1": "Ski e Experiências Premium",
     "hero.title.line2": "em Mendoza",
-    "hero.subheadline": "Especialistas em ski, montanha e experiências premium em Mendoza e Las Leñas.",
-    "hero.tagline": "Las Leñas · Transfers Premium · Experiências em Mendoza",
+    "hero.subheadline": "Especialistas em ski, montanha, vinho e experiências premium em Mendoza e Las Leñas.",
     "hero.trustDoorToDoor": "Serviço porta a porta",
     "hero.trustSki": "Especialistas em ski",
     "hero.cta.transfer": "Cotação Transfer",
@@ -1565,10 +1565,10 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hi! I'm interested in booking a transfer to Las Leñas",
 
     // New Hero translations
+    "hero.editorial": "Premium Experiences • Ski • Mountain • Mendoza",
     "hero.title.line1": "Premium Ski & Experiences",
     "hero.title.line2": "in Mendoza",
-    "hero.subheadline": "Ski, mountain, and premium experience specialists in Mendoza and Las Leñas.",
-    "hero.tagline": "Las Leñas · Premium Transfers · Mendoza Experiences",
+    "hero.subheadline": "Ski, mountain, wine, and premium experience specialists in Mendoza and Las Leñas.",
     "hero.trustDoorToDoor": "Door-to-door service",
     "hero.trustSki": "Ski experts",
     "hero.cta.transfer": "Get Transfer Quote",

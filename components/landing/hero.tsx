@@ -28,31 +28,37 @@ export function Hero() {
             loading="eager"
           />
         </div>
-        {/* Enhanced cinematic gradient overlay - deeper, more editorial */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/25 via-50% to-[#0B0B0B]/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/30 via-transparent to-[#0B0B0B]/30" />
+        {/* Enhanced cinematic gradient overlay - slightly deeper for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/85 via-[#0B0B0B]/30 via-55% to-[#0B0B0B]/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/35 via-transparent to-[#0B0B0B]/35" />
       </div>
 
-      {/* Content - More vertical breathing room */}
-      <div className="relative z-10 container mx-auto px-6">
+      {/* Content - Shifted up slightly with more bottom breathing room */}
+      <div className="relative z-10 container mx-auto px-6 -mt-8">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Headline - Reduced size, more elegant spacing */}
-          <h1 className="font-serif text-[2rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-white leading-[1.2] mb-5 tracking-tight">
+          
+          {/* Editorial mini line - luxury boutique style */}
+          <p className="text-[10px] sm:text-xs text-white/60 font-light tracking-[0.35em] uppercase mb-8">
+            {t("hero.editorial")}
+          </p>
+
+          {/* Headline - Slightly larger with better line height */}
+          <h1 className="font-serif text-[2.25rem] md:text-[2.75rem] lg:text-[3.5rem] font-bold text-white leading-[1.15] mb-6 tracking-tight">
             <span className="block">{t("hero.title.line1")}</span>
-            <span className="block text-[#C8A96A] mt-2">{t("hero.title.line2")}</span>
+            <span className="block text-[#C8A96A] mt-1">{t("hero.title.line2")}</span>
           </h1>
 
-          {/* Subheadline - Shorter, more premium */}
-          <p className="text-base md:text-lg text-white/80 max-w-xl mx-auto mb-10 leading-relaxed font-light tracking-wide">
+          {/* Subheadline - More visible, elegant, better reading width */}
+          <p className="text-base md:text-lg text-white/85 max-w-lg mx-auto mb-14 leading-relaxed font-light tracking-wide">
             {t("hero.subheadline")}
           </p>
 
-          {/* CTAs - More breathing room */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">
+          {/* CTAs - Clean minimal premium, slightly more gap */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-24">
             <Link href="/traslados-las-lenas">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium px-7 py-5 text-base transition-all duration-300 group rounded-md"
+                className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium px-8 py-5 text-base transition-all duration-300 group rounded-md"
               >
                 {t("hero.cta.transfer")}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -61,7 +67,7 @@ export function Hero() {
             <Link href="/paquetes-las-lenas">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-[#C8A96A] hover:bg-[#b89a5f] text-[#0B0B0B] font-medium px-7 py-5 text-base transition-all duration-300 group rounded-md"
+                className="w-full sm:w-auto bg-[#C8A96A] hover:bg-[#b89a5f] text-[#0B0B0B] font-medium px-8 py-5 text-base transition-all duration-300 group rounded-md"
               >
                 <Snowflake className="w-4 h-4 mr-2" />
                 {t("hero.cta.skiPackage")}
@@ -71,17 +77,12 @@ export function Hero() {
               onClick={handleWhatsApp}
               size="lg"
               variant="ghost"
-              className="w-full sm:w-auto text-white/90 hover:text-white hover:bg-white/10 border border-white/20 px-7 py-5 text-base transition-all duration-300 rounded-md"
+              className="w-full sm:w-auto text-white/90 hover:text-white hover:bg-white/10 border border-white/20 px-8 py-5 text-base transition-all duration-300 rounded-md"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               {t("hero.cta.secondary")}
             </Button>
           </div>
-
-          {/* Minimal text line - No box, no glass, just elegant typography */}
-          <p className="text-sm text-white/50 font-light tracking-widest uppercase">
-            {t("hero.tagline")}
-          </p>
         </div>
       </div>
 
