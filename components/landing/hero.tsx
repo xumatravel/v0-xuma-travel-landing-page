@@ -58,7 +58,7 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed whitespace-normal lg:whitespace-nowrap">
+          <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed text-center">
             {t("hero.subheadline")}
           </p>
 
