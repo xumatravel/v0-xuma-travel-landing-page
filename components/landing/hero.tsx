@@ -51,23 +51,45 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-6 leading-relaxed text-pretty">
+          <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed whitespace-normal lg:whitespace-nowrap">
             {t("hero.subheadline")}
           </p>
 
-          {/* Trust Points - Compact */}
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5 mb-8">
-            <div className="flex items-center gap-2 text-white/70">
-              <Shield className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("hero.trust1")}</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/70">
-              <Car className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("hero.trustDoorToDoor")}</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/70">
-              <Snowflake className="w-4 h-4 text-[#6B7D5C]" />
-              <span className="text-sm">{t("hero.trustSki")}</span>
+          {/* Premium Horizontal Pill Bar */}
+          <div className="w-full max-w-4xl mx-auto mb-8">
+            <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 lg:gap-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 md:px-8 py-3">
+              {/* Item 1 */}
+              <div className="flex items-center gap-2 px-3 md:px-5 py-1">
+                <Snowflake className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <span className="text-white/90 text-xs md:text-sm font-medium whitespace-nowrap">Especialistas en Ski</span>
+              </div>
+              
+              {/* Separator */}
+              <div className="hidden lg:block w-px h-4 bg-white/20" />
+              
+              {/* Item 2 */}
+              <div className="flex items-center gap-2 px-3 md:px-5 py-1">
+                <Car className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <span className="text-white/90 text-xs md:text-sm font-medium whitespace-nowrap">Transfers Premium</span>
+              </div>
+              
+              {/* Separator */}
+              <div className="hidden lg:block w-px h-4 bg-white/20" />
+              
+              {/* Item 3 */}
+              <div className="flex items-center gap-2 px-3 md:px-5 py-1">
+                <Award className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <span className="text-white/90 text-xs md:text-sm font-medium whitespace-nowrap">Experiencias en Mendoza</span>
+              </div>
+              
+              {/* Separator */}
+              <div className="hidden lg:block w-px h-4 bg-white/20" />
+              
+              {/* Item 4 */}
+              <div className="flex items-center gap-2 px-3 md:px-5 py-1">
+                <Shield className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <span className="text-white/90 text-xs md:text-sm font-medium whitespace-nowrap">Operador Oficial Las Lenas</span>
+              </div>
             </div>
           </div>
 
