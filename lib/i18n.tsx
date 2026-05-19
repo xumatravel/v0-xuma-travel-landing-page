@@ -272,6 +272,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "No especificada",
     "lasLenasPage.whatsapp.notApplicable": "No aplica",
     "lasLenasPage.whatsapp.myName": "Mi nombre es",
+    "ll.quote.msg.language": "Prefiero comunicarme en Español",
 
     // Services
     "lasLenasPage.services.badge": "Opciones de Servicio",
@@ -378,6 +379,194 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.contact": "Contacto",
     "lasLenasPage.header.bookNow": "Reservar Ahora",
     "lasLenasPage.header.whatsappMsg": "Hola! Me interesa reservar un transfer a Las Leñas",
+
+    // New Hero translations
+    "hero.title.line1": "Ski & Transfers Premium",
+    "hero.title.line2": "en Las Leñas",
+    "hero.trustDoorToDoor": "Servicio puerta a puerta",
+    "hero.trustSki": "Expertos en ski",
+    "hero.cta.transfer": "Cotizar Traslado",
+    "hero.cta.skiPackage": "Cotizar Paquete Ski",
+
+    // Ski Packages Section (Home)
+    "skiPackages.badge": "Temporada de Ski",
+    "skiPackages.title": "Paquetes Ski en Las Leñas",
+    "skiPackages.subtitle": "Hoteles, departamentos, pases y transfers coordinados en un solo lugar.",
+    "skiPackages.hotels.title": "Hoteles en Las Leñas",
+    "skiPackages.hotels.features": ["Skiweek / Miniweek / Extraweek", "Media pensión incluida", "Pases de ski opcionales", "Ubicación privilegiada"],
+    "skiPackages.hotels.cta": "Cotizar Hotel",
+    "skiPackages.apartments.title": "Departamentos",
+    "skiPackages.apartments.features": ["Equipados con ropa blanca", "Ideal para grupos y familias", "Desayuno incluido", "Cocina completa"],
+    "skiPackages.apartments.cta": "Cotizar Departamento",
+    "skiPackages.info.skiPass": "Pases de ski opcionales",
+    "skiPackages.info.transfers": "Transfers coordinados",
+    "skiPackages.info.halfBoard": "Media pensión disponible",
+
+    // Paquetes Las Lenas Page
+    "paquetesPage.meta.title": "Paquetes Ski & Hotelería en Las Leñas | XUMA TRAVEL",
+    "paquetesPage.meta.description": "Paquetes de ski completos en Las Leñas. Hoteles, departamentos, pases y transfers coordinados. Skiweek, Miniweek y Extraweek. Cotiza ahora.",
+    
+    // Paquetes Hero
+    "paquetesPage.badge": "Temporada Ski 2025",
+    "paquetesPage.hero.title": "Paquetes Ski & Hotelería en Las Leñas",
+    "paquetesPage.hero.subtitle": "Coordinamos tu viaje completo: hotel, pases, transfers y experiencias de nieve.",
+    "paquetesPage.hero.trust1": "Hoteles oficiales",
+    "paquetesPage.hero.trust2": "Pases de ski",
+    "paquetesPage.hero.trust3": "Transfers incluidos",
+    "paquetesPage.hero.cta1": "Cotizar Paquete",
+    "paquetesPage.hero.cta2": "Consultar por WhatsApp",
+    "paquetesPage.hero.response": "Te respondemos en minutos",
+
+    // Package Types
+    "paquetesPage.types.badge": "Tipos de Paquetes",
+    "paquetesPage.types.title": "Elige tu Experiencia de Ski",
+    "paquetesPage.types.subtitle": "Diferentes opciones para que disfrutes Las Leñas a tu manera.",
+    "paquetesPage.types.skiweek.title": "Skiweek",
+    "paquetesPage.types.skiweek.duration": "7 noches",
+    "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
+    "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
+    "paquetesPage.types.miniweek.title": "Miniweek",
+    "paquetesPage.types.miniweek.duration": "5 noches",
+    "paquetesPage.types.miniweek.schedule": "Lunes a sábado",
+    "paquetesPage.types.miniweek.desc": "Perfecto escapada larga",
+    "paquetesPage.types.extraweek.title": "Extraweek",
+    "paquetesPage.types.extraweek.duration": "2 noches",
+    "paquetesPage.types.extraweek.schedule": "Sábado a lunes",
+    "paquetesPage.types.extraweek.desc": "Ideal fin de semana",
+    "paquetesPage.types.passNote": "Los pases de ski incluyen 1 día extra respecto a las noches. Ej: 5 noches = 6 días de pase.",
+
+    // Hotels
+    "paquetesPage.hotels.badge": "Alojamiento",
+    "paquetesPage.hotels.title": "Hoteles en Las Leñas",
+    "paquetesPage.hotels.subtitle": "Todos los hoteles oficiales del centro de ski con media pensión incluida.",
+    "paquetesPage.hotels.piscis.name": "Hotel Piscis",
+    "paquetesPage.hotels.piscis.category": "Media/Alta",
+    "paquetesPage.hotels.piscis.desc": "Familiar, excelente ubicación, muy elegido por familias",
+    "paquetesPage.hotels.aries.name": "Hotel Aries",
+    "paquetesPage.hotels.aries.category": "Media",
+    "paquetesPage.hotels.aries.desc": "Familiar, cómodo y práctico",
+    "paquetesPage.hotels.acuario.name": "Hotel Acuario",
+    "paquetesPage.hotels.acuario.category": "Media",
+    "paquetesPage.hotels.acuario.desc": "Excelente relación precio/calidad",
+    "paquetesPage.hotels.scorpio.name": "Hotel Scorpio",
+    "paquetesPage.hotels.scorpio.category": "Económico",
+    "paquetesPage.hotels.scorpio.desc": "Opción económica, desayuno incluido (sin cena)",
+    "paquetesPage.hotels.virgo.name": "Hotel Virgo",
+    "paquetesPage.hotels.virgo.category": "Alta",
+    "paquetesPage.hotels.virgo.desc": "Opciones premium y de alta categoría",
+    "paquetesPage.hotels.halfBoard": "Media pensión incluida",
+    "paquetesPage.hotels.breakfastOnly": "Solo desayuno",
+    "paquetesPage.hotels.cta": "Cotizar Hotel",
+
+    // Apartments
+    "paquetesPage.apartments.badge": "Alojamiento Alternativo",
+    "paquetesPage.apartments.title": "Departamentos en Las Leñas",
+    "paquetesPage.apartments.subtitle": "Ideal para familias y grupos que buscan más espacio y comodidad.",
+    "paquetesPage.apartments.features": ["Ropa blanca incluida", "Totalmente equipados", "Cocina completa", "Desayuno incluido", "Ideal familias y grupos"],
+    "paquetesPage.apartments.cta": "Cotizar Departamento",
+
+    // Charter Bus
+    "paquetesPage.charter.badge": "Transporte Grupal",
+    "paquetesPage.charter.title": "Charter Bus desde Buenos Aires",
+    "paquetesPage.charter.subtitle": "Servicio de charter coordinado con las semanas oficiales de Las Leñas.",
+    "paquetesPage.charter.features": ["Disponible solo desde Buenos Aires", "Coordinado con semanas oficiales", "Ideal pasajeros sin auto", "Servicio grupal económico"],
+    "paquetesPage.charter.cta": "Consultar Disponibilidad",
+
+    // Quote Form
+    "paquetesPage.form.badge": "Cotizador de Paquetes",
+    "paquetesPage.form.title": "Cotiza tu Paquete Ski",
+    "paquetesPage.form.subtitle": "Completa el formulario y te enviamos la cotización por WhatsApp.",
+    "paquetesPage.form.step1": "Tipo de Viaje",
+    "paquetesPage.form.tripType": "Selecciona tipo",
+    "paquetesPage.form.step2": "Alojamiento",
+    "paquetesPage.form.lodgingType": "Tipo de alojamiento",
+    "paquetesPage.form.hotel": "Hotel",
+    "paquetesPage.form.apartment": "Departamento",
+    "paquetesPage.form.selectHotel": "Selecciona hotel",
+    "paquetesPage.form.step3": "Fechas",
+    "paquetesPage.form.checkIn": "Check-in",
+    "paquetesPage.form.checkOut": "Check-out",
+    "paquetesPage.form.step4": "Pasajeros",
+    "paquetesPage.form.totalPassengers": "Cantidad de pasajeros",
+    "paquetesPage.form.adults": "Adultos",
+    "paquetesPage.form.children": "Menores",
+    "paquetesPage.form.infants": "Infantes",
+    "paquetesPage.form.step5": "Servicios Adicionales",
+    "paquetesPage.form.skiPass": "¿Desean pases de ski?",
+    "paquetesPage.form.needTransfer": "¿Necesitan traslado?",
+    "paquetesPage.form.needCharter": "¿Necesitan charter bus?",
+    "paquetesPage.form.yes": "Sí",
+    "paquetesPage.form.no": "No",
+    "paquetesPage.form.step6": "Datos de Contacto",
+    "paquetesPage.form.originCity": "Ciudad de origen",
+    "paquetesPage.form.originCityPlaceholder": "Ej: Buenos Aires, Córdoba...",
+    "paquetesPage.form.fullName": "Nombre completo",
+    "paquetesPage.form.whatsapp": "WhatsApp",
+    "paquetesPage.form.submit": "Enviar Cotización por WhatsApp",
+    "paquetesPage.form.submitting": "Abriendo WhatsApp...",
+
+    // WhatsApp Message
+    "paquetesPage.whatsapp.greeting": "NUEVA CONSULTA PAQUETE SKI",
+    "paquetesPage.whatsapp.type": "Tipo",
+    "paquetesPage.whatsapp.lodging": "Alojamiento",
+    "paquetesPage.whatsapp.hotel": "Hotel",
+    "paquetesPage.whatsapp.checkIn": "Check-in",
+    "paquetesPage.whatsapp.checkOut": "Check-out",
+    "paquetesPage.whatsapp.passengers": "Pasajeros",
+    "paquetesPage.whatsapp.ages": "Edades",
+    "paquetesPage.whatsapp.withPasses": "Con pases",
+    "paquetesPage.whatsapp.transfers": "Traslados",
+    "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.originCity": "Ciudad origen",
+    "paquetesPage.whatsapp.name": "Nombre",
+
+    // FAQ
+    "paquetesPage.faq.badge": "Preguntas Frecuentes",
+    "paquetesPage.faq.title": "¿Tienes Dudas?",
+    "paquetesPage.faq.subtitle": "Aquí respondemos las preguntas más comunes sobre nuestros paquetes de ski.",
+    "paquetesPage.faq.items": [
+      {
+        "question": "¿Qué es un Skiweek, Miniweek y Extraweek?",
+        "answer": "Skiweek es un paquete de 7 noches (sábado a sábado), Miniweek de 5 noches (lunes a sábado), y Extraweek de 2 noches (sábado a lunes). Cada uno está pensado para diferentes necesidades de tiempo."
+      },
+      {
+        "question": "¿Los pases de ski están incluidos?",
+        "answer": "Los pases de ski se cotizan por separado y son opcionales. Incluyen 1 día extra respecto a las noches de alojamiento. Por ejemplo: 5 noches = 6 días de pase."
+      },
+      {
+        "question": "¿Qué incluye la media pensión?",
+        "answer": "La media pensión incluye desayuno y cena en todos los hoteles, excepto Hotel Scorpio que solo incluye desayuno."
+      },
+      {
+        "question": "¿Pueden coordinar el traslado?",
+        "answer": "Sí, coordinamos traslados privados desde Mendoza y San Rafael, y también charter bus desde Buenos Aires durante las semanas oficiales."
+      },
+      {
+        "question": "¿Cuál hotel me recomiendan?",
+        "answer": "Depende de tu presupuesto y preferencias. Hotel Piscis es muy elegido por familias, Acuario tiene excelente relación precio/calidad, y Scorpio es la opción más económica."
+      }
+    ],
+
+    // CTA Section
+    "paquetesPage.cta.title": "¿Listo para tu Aventura en Las Leñas?",
+    "paquetesPage.cta.subtitle": "Cotiza tu paquete completo y vive la mejor experiencia de ski.",
+    "paquetesPage.cta.quote": "Cotizar Paquete",
+    "paquetesPage.cta.whatsapp": "Consultar por WhatsApp",
+
+    // Contact
+    "paquetesPage.contact.badge": "Contacto Directo",
+    "paquetesPage.contact.title": "¿Listo para tu Viaje de Ski?",
+    "paquetesPage.contact.subtitle": "Contactanos por WhatsApp y armamos tu paquete personalizado.",
+
+    // Footer
+    "paquetesPage.footer.description": "Paquetes de ski completos en Las Leñas. Hoteles, departamentos, pases y transfers.",
+
+    // Header
+    "paquetesPage.header.quote": "Cotizar",
+    "paquetesPage.header.packages": "Paquetes",
+    "paquetesPage.header.hotels": "Hoteles",
+    "paquetesPage.header.faq": "FAQ",
+    "paquetesPage.header.whatsappMsg": "Hola! Me interesa cotizar un paquete de ski en Las Leñas",
   },
 
   pt: {
@@ -634,7 +823,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "Não especificada",
     "lasLenasPage.whatsapp.notApplicable": "Não se aplica",
     "lasLenasPage.whatsapp.myName": "Meu nome é",
-
+    "ll.quote.msg.language": "Prefiro me comunicar em Português",
+  
     // Services
     "lasLenasPage.services.badge": "Opções de Serviço",
     "lasLenasPage.services.title": "Escolha o Transfer que Você Precisa",
@@ -740,6 +930,194 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.contact": "Contato",
     "lasLenasPage.header.bookNow": "Reservar Agora",
     "lasLenasPage.header.whatsappMsg": "Olá! Tenho interesse em reservar um transfer para Las Leñas",
+
+    // New Hero translations
+    "hero.title.line1": "Ski & Transfers Premium",
+    "hero.title.line2": "em Las Leñas",
+    "hero.trustDoorToDoor": "Serviço porta a porta",
+    "hero.trustSki": "Especialistas em ski",
+    "hero.cta.transfer": "Cotação Transfer",
+    "hero.cta.skiPackage": "Cotação Pacote Ski",
+
+    // Ski Packages Section (Home)
+    "skiPackages.badge": "Temporada de Ski",
+    "skiPackages.title": "Pacotes Ski em Las Leñas",
+    "skiPackages.subtitle": "Hotéis, apartamentos, passes e transfers coordenados em um só lugar.",
+    "skiPackages.hotels.title": "Hotéis em Las Leñas",
+    "skiPackages.hotels.features": ["Skiweek / Miniweek / Extraweek", "Meia pensão incluída", "Passes de ski opcionais", "Localização privilegiada"],
+    "skiPackages.hotels.cta": "Cotação Hotel",
+    "skiPackages.apartments.title": "Apartamentos",
+    "skiPackages.apartments.features": ["Equipados com roupa de cama", "Ideal para grupos e famílias", "Café da manhã incluído", "Cozinha completa"],
+    "skiPackages.apartments.cta": "Cotação Apartamento",
+    "skiPackages.info.skiPass": "Passes de ski opcionais",
+    "skiPackages.info.transfers": "Transfers coordenados",
+    "skiPackages.info.halfBoard": "Meia pensão disponível",
+
+    // Paquetes Las Lenas Page
+    "paquetesPage.meta.title": "Pacotes Ski & Hotelaria em Las Leñas | XUMA TRAVEL",
+    "paquetesPage.meta.description": "Pacotes de ski completos em Las Leñas. Hotéis, apartamentos, passes e transfers coordenados. Skiweek, Miniweek e Extraweek. Solicite cotação.",
+    
+    // Paquetes Hero
+    "paquetesPage.badge": "Temporada Ski 2025",
+    "paquetesPage.hero.title": "Pacotes Ski & Hotelaria em Las Leñas",
+    "paquetesPage.hero.subtitle": "Coordenamos sua viagem completa: hotel, passes, transfers e experiências de neve.",
+    "paquetesPage.hero.trust1": "Hotéis oficiais",
+    "paquetesPage.hero.trust2": "Passes de ski",
+    "paquetesPage.hero.trust3": "Transfers incluídos",
+    "paquetesPage.hero.cta1": "Cotação Pacote",
+    "paquetesPage.hero.cta2": "Consultar no WhatsApp",
+    "paquetesPage.hero.response": "Respondemos em minutos",
+
+    // Package Types
+    "paquetesPage.types.badge": "Tipos de Pacotes",
+    "paquetesPage.types.title": "Escolha sua Experiência de Ski",
+    "paquetesPage.types.subtitle": "Diferentes opções para você aproveitar Las Leñas do seu jeito.",
+    "paquetesPage.types.skiweek.title": "Skiweek",
+    "paquetesPage.types.skiweek.duration": "7 noites",
+    "paquetesPage.types.skiweek.schedule": "Sábado a sábado",
+    "paquetesPage.types.skiweek.desc": "Ideal semana completa de ski",
+    "paquetesPage.types.miniweek.title": "Miniweek",
+    "paquetesPage.types.miniweek.duration": "5 noites",
+    "paquetesPage.types.miniweek.schedule": "Segunda a sábado",
+    "paquetesPage.types.miniweek.desc": "Perfeito para escapada longa",
+    "paquetesPage.types.extraweek.title": "Extraweek",
+    "paquetesPage.types.extraweek.duration": "2 noites",
+    "paquetesPage.types.extraweek.schedule": "Sábado a segunda",
+    "paquetesPage.types.extraweek.desc": "Ideal fim de semana",
+    "paquetesPage.types.passNote": "Os passes de ski incluem 1 dia extra em relação às noites. Ex: 5 noites = 6 dias de passe.",
+
+    // Hotels
+    "paquetesPage.hotels.badge": "Hospedagem",
+    "paquetesPage.hotels.title": "Hotéis em Las Leñas",
+    "paquetesPage.hotels.subtitle": "Todos os hotéis oficiais do centro de ski com meia pensão incluída.",
+    "paquetesPage.hotels.piscis.name": "Hotel Piscis",
+    "paquetesPage.hotels.piscis.category": "Média/Alta",
+    "paquetesPage.hotels.piscis.desc": "Familiar, excelente localização, muito escolhido por famílias",
+    "paquetesPage.hotels.aries.name": "Hotel Aries",
+    "paquetesPage.hotels.aries.category": "Média",
+    "paquetesPage.hotels.aries.desc": "Familiar, confortável e prático",
+    "paquetesPage.hotels.acuario.name": "Hotel Acuario",
+    "paquetesPage.hotels.acuario.category": "Média",
+    "paquetesPage.hotels.acuario.desc": "Excelente custo-benefício",
+    "paquetesPage.hotels.scorpio.name": "Hotel Scorpio",
+    "paquetesPage.hotels.scorpio.category": "Econômico",
+    "paquetesPage.hotels.scorpio.desc": "Opção econômica, café da manhã incluído (sem jantar)",
+    "paquetesPage.hotels.virgo.name": "Hotel Virgo",
+    "paquetesPage.hotels.virgo.category": "Alta",
+    "paquetesPage.hotels.virgo.desc": "Opções premium e de alta categoria",
+    "paquetesPage.hotels.halfBoard": "Meia pensão incluída",
+    "paquetesPage.hotels.breakfastOnly": "Apenas café da manhã",
+    "paquetesPage.hotels.cta": "Cotação Hotel",
+
+    // Apartments
+    "paquetesPage.apartments.badge": "Hospedagem Alternativa",
+    "paquetesPage.apartments.title": "Apartamentos em Las Leñas",
+    "paquetesPage.apartments.subtitle": "Ideal para famílias e grupos que buscam mais espaço e conforto.",
+    "paquetesPage.apartments.features": ["Roupa de cama incluída", "Totalmente equipados", "Cozinha completa", "Café da manhã incluído", "Ideal famílias e grupos"],
+    "paquetesPage.apartments.cta": "Cotação Apartamento",
+
+    // Charter Bus
+    "paquetesPage.charter.badge": "Transporte em Grupo",
+    "paquetesPage.charter.title": "Charter Bus desde Buenos Aires",
+    "paquetesPage.charter.subtitle": "Serviço de charter coordenado com as semanas oficiais de Las Leñas.",
+    "paquetesPage.charter.features": ["Disponível apenas de Buenos Aires", "Coordenado com semanas oficiais", "Ideal passageiros sem carro", "Serviço em grupo econômico"],
+    "paquetesPage.charter.cta": "Consultar Disponibilidade",
+
+    // Quote Form
+    "paquetesPage.form.badge": "Cotador de Pacotes",
+    "paquetesPage.form.title": "Cotação do seu Pacote Ski",
+    "paquetesPage.form.subtitle": "Preencha o formulário e enviamos a cotação por WhatsApp.",
+    "paquetesPage.form.step1": "Tipo de Viagem",
+    "paquetesPage.form.tripType": "Selecione tipo",
+    "paquetesPage.form.step2": "Hospedagem",
+    "paquetesPage.form.lodgingType": "Tipo de hospedagem",
+    "paquetesPage.form.hotel": "Hotel",
+    "paquetesPage.form.apartment": "Apartamento",
+    "paquetesPage.form.selectHotel": "Selecione hotel",
+    "paquetesPage.form.step3": "Datas",
+    "paquetesPage.form.checkIn": "Check-in",
+    "paquetesPage.form.checkOut": "Check-out",
+    "paquetesPage.form.step4": "Passageiros",
+    "paquetesPage.form.totalPassengers": "Quantidade de passageiros",
+    "paquetesPage.form.adults": "Adultos",
+    "paquetesPage.form.children": "Crianças",
+    "paquetesPage.form.infants": "Bebês",
+    "paquetesPage.form.step5": "Serviços Adicionais",
+    "paquetesPage.form.skiPass": "Desejam passes de ski?",
+    "paquetesPage.form.needTransfer": "Precisam de transfer?",
+    "paquetesPage.form.needCharter": "Precisam de charter bus?",
+    "paquetesPage.form.yes": "Sim",
+    "paquetesPage.form.no": "Não",
+    "paquetesPage.form.step6": "Dados de Contato",
+    "paquetesPage.form.originCity": "Cidade de origem",
+    "paquetesPage.form.originCityPlaceholder": "Ex: São Paulo, Rio...",
+    "paquetesPage.form.fullName": "Nome completo",
+    "paquetesPage.form.whatsapp": "WhatsApp",
+    "paquetesPage.form.submit": "Enviar Cotação por WhatsApp",
+    "paquetesPage.form.submitting": "Abrindo WhatsApp...",
+
+    // WhatsApp Message
+    "paquetesPage.whatsapp.greeting": "NOVA CONSULTA PACOTE SKI",
+    "paquetesPage.whatsapp.type": "Tipo",
+    "paquetesPage.whatsapp.lodging": "Hospedagem",
+    "paquetesPage.whatsapp.hotel": "Hotel",
+    "paquetesPage.whatsapp.checkIn": "Check-in",
+    "paquetesPage.whatsapp.checkOut": "Check-out",
+    "paquetesPage.whatsapp.passengers": "Passageiros",
+    "paquetesPage.whatsapp.ages": "Idades",
+    "paquetesPage.whatsapp.withPasses": "Com passes",
+    "paquetesPage.whatsapp.transfers": "Transfers",
+    "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.originCity": "Cidade origem",
+    "paquetesPage.whatsapp.name": "Nome",
+
+    // FAQ
+    "paquetesPage.faq.badge": "Perguntas Frequentes",
+    "paquetesPage.faq.title": "Tem Dúvidas?",
+    "paquetesPage.faq.subtitle": "Aqui respondemos as perguntas mais comuns sobre nossos pacotes de ski.",
+    "paquetesPage.faq.items": [
+      {
+        "question": "O que é um Skiweek, Miniweek e Extraweek?",
+        "answer": "Skiweek é um pacote de 7 noites (sábado a sábado), Miniweek de 5 noites (segunda a sábado), e Extraweek de 2 noites (sábado a segunda). Cada um é pensado para diferentes necessidades de tempo."
+      },
+      {
+        "question": "Os passes de ski estão incluídos?",
+        "answer": "Os passes de ski são cotados separadamente e são opcionais. Incluem 1 dia extra em relação às noites de hospedagem. Por exemplo: 5 noites = 6 dias de passe."
+      },
+      {
+        "question": "O que inclui a meia pensão?",
+        "answer": "A meia pensão inclui café da manhã e jantar em todos os hotéis, exceto Hotel Scorpio que inclui apenas café da manhã."
+      },
+      {
+        "question": "Podem coordenar o transfer?",
+        "answer": "Sim, coordenamos transfers privados desde Mendoza e San Rafael, e também charter bus desde Buenos Aires durante as semanas oficiais."
+      },
+      {
+        "question": "Qual hotel vocês recomendam?",
+        "answer": "Depende do seu orçamento e preferências. Hotel Piscis é muito escolhido por famílias, Acuario tem excelente custo-benefício, e Scorpio é a opção mais econômica."
+      }
+    ],
+
+    // CTA Section
+    "paquetesPage.cta.title": "Pronto para sua Aventura em Las Leñas?",
+    "paquetesPage.cta.subtitle": "Solicite cotação do seu pacote completo e viva a melhor experiência de ski.",
+    "paquetesPage.cta.quote": "Cotação Pacote",
+    "paquetesPage.cta.whatsapp": "Consultar no WhatsApp",
+
+    // Contact
+    "paquetesPage.contact.badge": "Contato Direto",
+    "paquetesPage.contact.title": "Pronto para sua Viagem de Ski?",
+    "paquetesPage.contact.subtitle": "Entre em contato pelo WhatsApp e montamos seu pacote personalizado.",
+
+    // Footer
+    "paquetesPage.footer.description": "Pacotes de ski completos em Las Leñas. Hotéis, apartamentos, passes e transfers.",
+
+    // Header
+    "paquetesPage.header.quote": "Cotação",
+    "paquetesPage.header.packages": "Pacotes",
+    "paquetesPage.header.hotels": "Hotéis",
+    "paquetesPage.header.faq": "FAQ",
+    "paquetesPage.header.whatsappMsg": "Olá! Tenho interesse em cotar um pacote de ski em Las Leñas",
   },
 
   en: {
@@ -996,7 +1374,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.whatsapp.notSpecified": "Not specified",
     "lasLenasPage.whatsapp.notApplicable": "Not applicable",
     "lasLenasPage.whatsapp.myName": "My name is",
-
+    "ll.quote.msg.language": "I prefer to communicate in English",
+  
     // Services
     "lasLenasPage.services.badge": "Service Options",
     "lasLenasPage.services.title": "Choose the Transfer You Need",
@@ -1102,6 +1481,194 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.contact": "Contact",
     "lasLenasPage.header.bookNow": "Book Now",
     "lasLenasPage.header.whatsappMsg": "Hi! I'm interested in booking a transfer to Las Leñas",
+
+    // New Hero translations
+    "hero.title.line1": "Premium Ski & Transfers",
+    "hero.title.line2": "in Las Leñas",
+    "hero.trustDoorToDoor": "Door-to-door service",
+    "hero.trustSki": "Ski experts",
+    "hero.cta.transfer": "Get Transfer Quote",
+    "hero.cta.skiPackage": "Get Ski Package Quote",
+
+    // Ski Packages Section (Home)
+    "skiPackages.badge": "Ski Season",
+    "skiPackages.title": "Ski Packages in Las Leñas",
+    "skiPackages.subtitle": "Hotels, apartments, passes and transfers coordinated in one place.",
+    "skiPackages.hotels.title": "Hotels in Las Leñas",
+    "skiPackages.hotels.features": ["Skiweek / Miniweek / Extraweek", "Half board included", "Optional ski passes", "Prime location"],
+    "skiPackages.hotels.cta": "Quote Hotel",
+    "skiPackages.apartments.title": "Apartments",
+    "skiPackages.apartments.features": ["Fully equipped with linens", "Ideal for groups and families", "Breakfast included", "Full kitchen"],
+    "skiPackages.apartments.cta": "Quote Apartment",
+    "skiPackages.info.skiPass": "Optional ski passes",
+    "skiPackages.info.transfers": "Coordinated transfers",
+    "skiPackages.info.halfBoard": "Half board available",
+
+    // Paquetes Las Lenas Page
+    "paquetesPage.meta.title": "Ski Packages & Hotels in Las Leñas | XUMA TRAVEL",
+    "paquetesPage.meta.description": "Complete ski packages in Las Leñas. Hotels, apartments, passes and transfers coordinated. Skiweek, Miniweek and Extraweek. Get a quote now.",
+    
+    // Paquetes Hero
+    "paquetesPage.badge": "Ski Season 2025",
+    "paquetesPage.hero.title": "Ski Packages & Hotels in Las Leñas",
+    "paquetesPage.hero.subtitle": "We coordinate your complete trip: hotel, passes, transfers and snow experiences.",
+    "paquetesPage.hero.trust1": "Official hotels",
+    "paquetesPage.hero.trust2": "Ski passes",
+    "paquetesPage.hero.trust3": "Transfers included",
+    "paquetesPage.hero.cta1": "Get Package Quote",
+    "paquetesPage.hero.cta2": "Ask on WhatsApp",
+    "paquetesPage.hero.response": "We respond in minutes",
+
+    // Package Types
+    "paquetesPage.types.badge": "Package Types",
+    "paquetesPage.types.title": "Choose Your Ski Experience",
+    "paquetesPage.types.subtitle": "Different options for you to enjoy Las Leñas your way.",
+    "paquetesPage.types.skiweek.title": "Skiweek",
+    "paquetesPage.types.skiweek.duration": "7 nights",
+    "paquetesPage.types.skiweek.schedule": "Saturday to Saturday",
+    "paquetesPage.types.skiweek.desc": "Ideal for a full week of ski",
+    "paquetesPage.types.miniweek.title": "Miniweek",
+    "paquetesPage.types.miniweek.duration": "5 nights",
+    "paquetesPage.types.miniweek.schedule": "Monday to Saturday",
+    "paquetesPage.types.miniweek.desc": "Perfect for a long getaway",
+    "paquetesPage.types.extraweek.title": "Extraweek",
+    "paquetesPage.types.extraweek.duration": "2 nights",
+    "paquetesPage.types.extraweek.schedule": "Saturday to Monday",
+    "paquetesPage.types.extraweek.desc": "Ideal weekend trip",
+    "paquetesPage.types.passNote": "Ski passes include 1 extra day compared to nights. E.g.: 5 nights = 6 days pass.",
+
+    // Hotels
+    "paquetesPage.hotels.badge": "Accommodation",
+    "paquetesPage.hotels.title": "Hotels in Las Leñas",
+    "paquetesPage.hotels.subtitle": "All official ski resort hotels with half board included.",
+    "paquetesPage.hotels.piscis.name": "Hotel Piscis",
+    "paquetesPage.hotels.piscis.category": "Mid/High",
+    "paquetesPage.hotels.piscis.desc": "Family-friendly, excellent location, very popular with families",
+    "paquetesPage.hotels.aries.name": "Hotel Aries",
+    "paquetesPage.hotels.aries.category": "Mid",
+    "paquetesPage.hotels.aries.desc": "Family-friendly, comfortable and practical",
+    "paquetesPage.hotels.acuario.name": "Hotel Acuario",
+    "paquetesPage.hotels.acuario.category": "Mid",
+    "paquetesPage.hotels.acuario.desc": "Excellent value for money",
+    "paquetesPage.hotels.scorpio.name": "Hotel Scorpio",
+    "paquetesPage.hotels.scorpio.category": "Budget",
+    "paquetesPage.hotels.scorpio.desc": "Budget option, breakfast included (no dinner)",
+    "paquetesPage.hotels.virgo.name": "Hotel Virgo",
+    "paquetesPage.hotels.virgo.category": "High",
+    "paquetesPage.hotels.virgo.desc": "Premium and high-end options",
+    "paquetesPage.hotels.halfBoard": "Half board included",
+    "paquetesPage.hotels.breakfastOnly": "Breakfast only",
+    "paquetesPage.hotels.cta": "Quote Hotel",
+
+    // Apartments
+    "paquetesPage.apartments.badge": "Alternative Accommodation",
+    "paquetesPage.apartments.title": "Apartments in Las Leñas",
+    "paquetesPage.apartments.subtitle": "Ideal for families and groups looking for more space and comfort.",
+    "paquetesPage.apartments.features": ["Linens included", "Fully equipped", "Full kitchen", "Breakfast included", "Ideal for families and groups"],
+    "paquetesPage.apartments.cta": "Quote Apartment",
+
+    // Charter Bus
+    "paquetesPage.charter.badge": "Group Transportation",
+    "paquetesPage.charter.title": "Charter Bus from Buenos Aires",
+    "paquetesPage.charter.subtitle": "Charter service coordinated with official Las Leñas weeks.",
+    "paquetesPage.charter.features": ["Available only from Buenos Aires", "Coordinated with official weeks", "Ideal for passengers without car", "Affordable group service"],
+    "paquetesPage.charter.cta": "Check Availability",
+
+    // Quote Form
+    "paquetesPage.form.badge": "Package Quote",
+    "paquetesPage.form.title": "Get Your Ski Package Quote",
+    "paquetesPage.form.subtitle": "Fill out the form and we'll send you the quote via WhatsApp.",
+    "paquetesPage.form.step1": "Trip Type",
+    "paquetesPage.form.tripType": "Select type",
+    "paquetesPage.form.step2": "Accommodation",
+    "paquetesPage.form.lodgingType": "Accommodation type",
+    "paquetesPage.form.hotel": "Hotel",
+    "paquetesPage.form.apartment": "Apartment",
+    "paquetesPage.form.selectHotel": "Select hotel",
+    "paquetesPage.form.step3": "Dates",
+    "paquetesPage.form.checkIn": "Check-in",
+    "paquetesPage.form.checkOut": "Check-out",
+    "paquetesPage.form.step4": "Passengers",
+    "paquetesPage.form.totalPassengers": "Number of passengers",
+    "paquetesPage.form.adults": "Adults",
+    "paquetesPage.form.children": "Children",
+    "paquetesPage.form.infants": "Infants",
+    "paquetesPage.form.step5": "Additional Services",
+    "paquetesPage.form.skiPass": "Do you need ski passes?",
+    "paquetesPage.form.needTransfer": "Do you need transfers?",
+    "paquetesPage.form.needCharter": "Do you need charter bus?",
+    "paquetesPage.form.yes": "Yes",
+    "paquetesPage.form.no": "No",
+    "paquetesPage.form.step6": "Contact Information",
+    "paquetesPage.form.originCity": "City of origin",
+    "paquetesPage.form.originCityPlaceholder": "E.g.: New York, Miami...",
+    "paquetesPage.form.fullName": "Full name",
+    "paquetesPage.form.whatsapp": "WhatsApp",
+    "paquetesPage.form.submit": "Send Quote via WhatsApp",
+    "paquetesPage.form.submitting": "Opening WhatsApp...",
+
+    // WhatsApp Message
+    "paquetesPage.whatsapp.greeting": "NEW SKI PACKAGE INQUIRY",
+    "paquetesPage.whatsapp.type": "Type",
+    "paquetesPage.whatsapp.lodging": "Accommodation",
+    "paquetesPage.whatsapp.hotel": "Hotel",
+    "paquetesPage.whatsapp.checkIn": "Check-in",
+    "paquetesPage.whatsapp.checkOut": "Check-out",
+    "paquetesPage.whatsapp.passengers": "Passengers",
+    "paquetesPage.whatsapp.ages": "Ages",
+    "paquetesPage.whatsapp.withPasses": "With passes",
+    "paquetesPage.whatsapp.transfers": "Transfers",
+    "paquetesPage.whatsapp.charter": "Charter Bus",
+    "paquetesPage.whatsapp.originCity": "Origin city",
+    "paquetesPage.whatsapp.name": "Name",
+
+    // FAQ
+    "paquetesPage.faq.badge": "Frequently Asked Questions",
+    "paquetesPage.faq.title": "Have Questions?",
+    "paquetesPage.faq.subtitle": "Here we answer the most common questions about our ski packages.",
+    "paquetesPage.faq.items": [
+      {
+        "question": "What is a Skiweek, Miniweek and Extraweek?",
+        "answer": "Skiweek is a 7-night package (Saturday to Saturday), Miniweek is 5 nights (Monday to Saturday), and Extraweek is 2 nights (Saturday to Monday). Each is designed for different time needs."
+      },
+      {
+        "question": "Are ski passes included?",
+        "answer": "Ski passes are quoted separately and are optional. They include 1 extra day compared to accommodation nights. For example: 5 nights = 6 days pass."
+      },
+      {
+        "question": "What does half board include?",
+        "answer": "Half board includes breakfast and dinner at all hotels, except Hotel Scorpio which only includes breakfast."
+      },
+      {
+        "question": "Can you coordinate the transfer?",
+        "answer": "Yes, we coordinate private transfers from Mendoza and San Rafael, and also charter bus from Buenos Aires during official weeks."
+      },
+      {
+        "question": "Which hotel do you recommend?",
+        "answer": "It depends on your budget and preferences. Hotel Piscis is very popular with families, Acuario has excellent value, and Scorpio is the most budget-friendly option."
+      }
+    ],
+
+    // CTA Section
+    "paquetesPage.cta.title": "Ready for Your Las Leñas Adventure?",
+    "paquetesPage.cta.subtitle": "Get your complete package quote and live the best ski experience.",
+    "paquetesPage.cta.quote": "Get Package Quote",
+    "paquetesPage.cta.whatsapp": "Ask on WhatsApp",
+
+    // Contact
+    "paquetesPage.contact.badge": "Direct Contact",
+    "paquetesPage.contact.title": "Ready for Your Ski Trip?",
+    "paquetesPage.contact.subtitle": "Contact us via WhatsApp and we'll build your personalized package.",
+
+    // Footer
+    "paquetesPage.footer.description": "Complete ski packages in Las Leñas. Hotels, apartments, passes and transfers.",
+
+    // Header
+    "paquetesPage.header.quote": "Quote",
+    "paquetesPage.header.packages": "Packages",
+    "paquetesPage.header.hotels": "Hotels",
+    "paquetesPage.header.faq": "FAQ",
+    "paquetesPage.header.whatsappMsg": "Hi! I'm interested in getting a quote for a ski package in Las Leñas",
   },
 }
 
