@@ -41,10 +41,10 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-40 pb-16">
+      <div className="relative z-10 container mx-auto px-6 pt-28 pb-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-5 py-2.5 mb-10">
+          <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-5 py-2.5 mb-6">
             <Award className="w-4 h-4 text-[#C8A96A]" />
             <span className="text-[#C8A96A] text-sm font-medium">
               {t("hero.trust2")}
@@ -52,20 +52,20 @@ export function Hero() {
           </div>
 
           {/* Headline - Shorter and more impactful */}
-          <h1 className="font-serif text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-bold text-white leading-[1.15] mb-6">
+          <h1 className="font-serif text-[2.5rem] md:text-[3rem] lg:text-[4rem] font-bold text-white leading-[1.1] mb-5">
             <span className="block">{t("hero.title.line1")}</span>
-            <span className="block text-[#C8A96A] mt-2">{t("hero.title.line2")}</span>
+            <span className="block text-[#C8A96A] mt-1">{t("hero.title.line2")}</span>
           </h1>
 
           {/* Subheadline */}
-          <div className="flex justify-center w-full mb-12">
+          <div className="flex justify-center w-full mb-10">
             <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed text-center lg:whitespace-nowrap">
               {t("hero.subheadline")}
             </p>
           </div>
 
           {/* Premium Horizontal Pill Bar */}
-          <div className="w-full max-w-4xl mx-auto mb-12">
+          <div className="w-full max-w-4xl mx-auto mb-10">
             <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 lg:gap-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 md:px-8 py-3">
               {/* Item 1 */}
               <div className="flex items-center gap-2 px-3 md:px-5 py-1">
