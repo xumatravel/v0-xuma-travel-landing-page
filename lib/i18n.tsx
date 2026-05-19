@@ -396,8 +396,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // New Hero translations
     "hero.title.line1": "Ski y Experiencias Premium",
-    "hero.title.line2": "en Mendoza",
-    "hero.subheadline": "Especialistas en ski, montaña, vino y experiencias premium en Mendoza y Las Leñas.",
+    "hero.title.line2": "en Mendoza y Las Leñas",
+    "hero.subheadline": "Transporte oficial a Las Leñas. Integramos logística y experiencias para agencias y viajeros internacionales.",
     "hero.trustDoorToDoor": "Servicio puerta a puerta",
     "hero.trustSki": "Expertos en ski",
     "hero.cta.transfer": "Cotizar Traslado",
@@ -980,8 +980,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // New Hero translations
     "hero.title.line1": "Ski e Experiências Premium",
-    "hero.title.line2": "em Mendoza",
-    "hero.subheadline": "Especialistas em ski, montanha, vinho e experiências premium em Mendoza e Las Leñas.",
+    "hero.title.line2": "em Mendoza e Las Leñas",
+    "hero.subheadline": "Transporte oficial para Las Leñas. Integramos logística e experiências para agências e viajantes internacionais.",
     "hero.trustDoorToDoor": "Serviço porta a porta",
     "hero.trustSki": "Especialistas em ski",
     "hero.cta.transfer": "Cotação Transfer",
@@ -1564,8 +1564,8 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
 
     // New Hero translations
     "hero.title.line1": "Premium Ski & Experiences",
-    "hero.title.line2": "in Mendoza",
-    "hero.subheadline": "Ski, mountain, wine, and premium experience specialists in Mendoza and Las Leñas.",
+    "hero.title.line2": "in Mendoza & Las Leñas",
+    "hero.subheadline": "Official transport to Las Leñas. We integrate logistics and experiences for agencies and international travelers.",
     "hero.trustDoorToDoor": "Door-to-door service",
     "hero.trustSki": "Ski experts",
     "hero.cta.transfer": "Get Transfer Quote",
