@@ -45,8 +45,8 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] font-bold text-white leading-tight mb-5">
-            <span className="block">{t("hero.title.line1")}</span>
+          <h1 className="font-serif text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold text-white leading-[1.1] mb-5">
+            <span className="block whitespace-nowrap">{t("hero.title.line1")}</span>
             <span className="block text-[#C8A96A]">{t("hero.title.line2")}</span>
           </h1>
 
