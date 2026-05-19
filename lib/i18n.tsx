@@ -395,7 +395,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hola! Me interesa reservar un transfer a Las Leñas",
 
     // New Hero translations
-    "hero.title.line1": "Ski & Transfers Premium",
+    "hero.title.line1": "Ski y Transfers Premium",
     "hero.title.line2": "en Las Leñas",
     "hero.trustDoorToDoor": "Servicio puerta a puerta",
     "hero.trustSki": "Expertos en ski",
@@ -1561,7 +1561,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "lasLenasPage.header.whatsappMsg": "Hi! I'm interested in booking a transfer to Las Leñas",
 
     // New Hero translations
-    "hero.title.line1": "Premium Ski & Transfers",
+    "hero.title.line1": "Ski & Transfers Premium",
     "hero.title.line2": "in Las Leñas",
     "hero.trustDoorToDoor": "Door-to-door service",
     "hero.trustSki": "Ski experts",
