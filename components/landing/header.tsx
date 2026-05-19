@@ -14,11 +14,11 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "/paquetes-las-lenas", label: t("nav.packagesShort"), isPage: true },
-    { href: "/traslados-las-lenas", label: t("nav.transfersShort"), isPage: true },
-    { href: "#agencies", label: t("nav.agencies") },
-    { href: "#about", label: t("nav.about") },
-    { href: "#contact", label: t("nav.contact") },
+    { href: "/paquetes-las-lenas", label: "Paquetes", sublabel: "Las Leñas", isPage: true, twoLine: true },
+    { href: "/traslados-las-lenas", label: "Transfers", sublabel: "Las Leñas", isPage: true, twoLine: true },
+    { href: "#agencies", label: t("nav.agencies"), isPage: false, twoLine: false },
+    { href: "#about", label: t("nav.about"), isPage: false, twoLine: false },
+    { href: "#contact", label: t("nav.contact"), isPage: false, twoLine: false },
   ]
 
   useEffect(() => {
@@ -57,9 +57,18 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                className={`text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 ${
+                  link.twoLine ? "text-center leading-tight" : ""
+                }`}
               >
-                {link.label}
+                {link.twoLine ? (
+                  <span className="flex flex-col items-center">
+                    <span>{link.label}</span>
+                    <span className="text-xs text-white/60">{link.sublabel}</span>
+                  </span>
+                ) : (
+                  link.label
+                )}
               </Link>
             ))}
           </div>
@@ -111,7 +120,7 @@ export function Header() {
                         onClick={() => setIsOpen(false)}
                         className="text-white/80 hover:text-white text-lg font-medium py-2 transition-colors duration-200"
                       >
-                        {link.label}
+                        {link.twoLine ? `${link.label} ${link.sublabel}` : link.label}
                       </Link>
                     ))}
                   </nav>
