@@ -22,7 +22,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[95vh] flex items-end justify-center overflow-hidden pb-20">
+    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-24">
       {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 scale-110 animate-slow-zoom">
@@ -41,10 +41,10 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-32 pb-12">
+      <div className="relative z-10 container mx-auto px-6 pt-40 pb-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-5 py-2.5 mb-10">
             <Award className="w-4 h-4 text-[#C8A96A]" />
             <span className="text-[#C8A96A] text-sm font-medium">
               {t("hero.trust2")}
@@ -52,20 +52,20 @@ export function Hero() {
           </div>
 
           {/* Headline - Shorter and more impactful */}
-          <h1 className="font-serif text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] font-bold text-white leading-tight mb-4">
+          <h1 className="font-serif text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-bold text-white leading-[1.15] mb-6">
             <span className="block">{t("hero.title.line1")}</span>
-            <span className="block text-[#C8A96A]">{t("hero.title.line2")}</span>
+            <span className="block text-[#C8A96A] mt-2">{t("hero.title.line2")}</span>
           </h1>
 
           {/* Subheadline */}
-          <div className="flex justify-center w-full mb-8">
+          <div className="flex justify-center w-full mb-12">
             <p className="text-base md:text-lg lg:text-xl text-white/80 leading-relaxed text-center lg:whitespace-nowrap">
               {t("hero.subheadline")}
             </p>
           </div>
 
           {/* Premium Horizontal Pill Bar */}
-          <div className="w-full max-w-4xl mx-auto mb-8">
+          <div className="w-full max-w-4xl mx-auto mb-12">
             <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 lg:gap-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 md:px-8 py-3">
               {/* Item 1 */}
               <div className="flex items-center gap-2 px-3 md:px-5 py-1">
@@ -103,11 +103,11 @@ export function Hero() {
           </div>
 
           {/* CTAs - 3 buttons visible immediately */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mt-4">
             <Link href="/traslados-las-lenas">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white font-semibold px-6 py-5 text-base transition-all duration-300 group rounded-lg"
+                className="w-full sm:w-auto bg-[#6B7D5C] hover:bg-[#5a6b4d] hover:scale-105 hover:shadow-lg text-white font-semibold px-8 py-6 text-base transition-all duration-300 group rounded-lg"
               >
                 {t("hero.cta.transfer")}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -116,7 +116,7 @@ export function Hero() {
             <Link href="/paquetes-las-lenas">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-[#C8A96A] hover:bg-[#b89a5f] hover:scale-105 hover:shadow-lg text-[#0B0B0B] font-semibold px-6 py-5 text-base transition-all duration-300 group rounded-lg"
+                className="w-full sm:w-auto bg-[#C8A96A] hover:bg-[#b89a5f] hover:scale-105 hover:shadow-lg text-[#0B0B0B] font-semibold px-8 py-6 text-base transition-all duration-300 group rounded-lg"
               >
                 <Snowflake className="w-4 h-4 mr-2" />
                 {t("hero.cta.skiPackage")}
@@ -125,7 +125,7 @@ export function Hero() {
             <Button
               onClick={handleWhatsApp}
               size="lg"
-              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-gray-800 border border-white/20 px-6 py-5 text-base transition-colors rounded-lg"
+              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-gray-800 border border-white/20 px-8 py-6 text-base transition-colors rounded-lg"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               {t("hero.cta.secondary")}

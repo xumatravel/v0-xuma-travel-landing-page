@@ -38,8 +38,8 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0B0B0B]/95 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-5"
+          ? "bg-[#0B0B0B]/95 backdrop-blur-md shadow-lg py-4"
+          : "bg-transparent py-8"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -57,7 +57,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 ${
+                className={`text-white/80 hover:text-white text-sm lg:text-base font-medium transition-colors duration-200 ${
                   link.twoLine ? "text-center leading-tight" : ""
                 }`}
               >
@@ -78,8 +78,8 @@ export function Header() {
             <LanguageSwitcher />
             <Button
               onClick={handleWhatsApp}
-              size="sm"
-              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
+              size="default"
+              className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium px-5 py-2.5"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               {t("nav.whatsapp")}
