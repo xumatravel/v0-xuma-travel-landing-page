@@ -59,14 +59,14 @@ export function PaquetesContact() {
                 <Mail className="w-6 h-6 text-[#C8A96A]" />
               </div>
               <h3 className="font-semibold text-[#0B0B0B] mb-2">{t("lasLenasPage.contact.email")}</h3>
-              <p className="text-[#0B0B0B]/70 text-sm mb-4">{COMPANY_CONFIG.email}</p>
+              <p className="text-[#0B0B0B]/70 text-sm mb-4">{COMPANY_CONFIG.emailReservas}</p>
               <Button 
                 asChild
                 size="sm"
                 variant="outline"
                 className="border-[#0B0B0B]/20"
               >
-                <a href={`mailto:${COMPANY_CONFIG.email}`}>
+                <a href={`mailto:${COMPANY_CONFIG.emailReservas}`}>
                   <Mail className="w-4 h-4 mr-2" />
                   Email
                 </a>

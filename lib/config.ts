@@ -56,6 +56,7 @@ export const WHATSAPP_CONFIG = {
 export const COMPANY_CONFIG = {
   name: "XUMA TRAVEL",
   email: "info@xuma.com.ar",
+  emailReservas: "reservas@xuma.com.ar",
   website: "xumatravel.com",
   
   // Redes sociales

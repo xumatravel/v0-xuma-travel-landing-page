@@ -95,11 +95,11 @@ export function PaquetesFooter() {
               </li>
               <li>
                 <a
-                  href={`mailto:${COMPANY_CONFIG.email}`}
+                  href={`mailto:${COMPANY_CONFIG.emailReservas}`}
                   className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>{COMPANY_CONFIG.email}</span>
+                  <span>{COMPANY_CONFIG.emailReservas}</span>
                 </a>
               </li>
             </ul>
