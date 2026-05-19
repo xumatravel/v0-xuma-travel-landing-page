@@ -18,7 +18,7 @@ import { useI18n, type Locale } from "@/lib/i18n"
 
 type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
-type Origin = "mendoza" | "san-rafael" | "las-lenas"
+type Origin = "mendoza" | "san-rafael" | "las-lenas" | "otro"
 type Destination = "las-lenas" | "otro"
 
 interface FormData {
@@ -35,6 +35,7 @@ interface FormData {
   fullName: string
   email: string
   whatsapp: string
+  observations: string
 }
 
 const getDateLocale = (locale: Locale) => {
@@ -62,7 +63,8 @@ export function LasLenasQuoteForm() {
     roundTrip: false,
     fullName: "",
     email: "",
-    whatsapp: ""
+    whatsapp: "",
+    observations: ""
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -78,7 +80,8 @@ export function LasLenasQuoteForm() {
   const originLabels: Record<Origin, string> = {
     mendoza: "Mendoza",
     "san-rafael": "San Rafael",
-    "las-lenas": "Las Leñas"
+    "las-lenas": "Las Leñas",
+    "otro": t("lasLenasPage.form.otherOrigin")
   }
 
   const updateForm = <K extends keyof FormData>(key: K, value: FormData[K]) => {
@@ -99,7 +102,7 @@ export function LasLenasQuoteForm() {
       ? t("lasLenasPage.form.private") 
       : t("lasLenasPage.form.shared")
     const vehicleLabel = vehicleLabels[formData.vehicleType]
-    const originLabel = originLabels[formData.origin]
+    const originLabel = formData.origin === "otro" ? formData.originManual : originLabels[formData.origin]
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
     const departureDateLabel = formData.departureDate 
       ? format(formData.departureDate, "dd/MM/yyyy", { locale: dateLocale })
@@ -108,7 +111,7 @@ export function LasLenasQuoteForm() {
       ? format(formData.returnDate, "dd/MM/yyyy", { locale: dateLocale })
       : t("lasLenasPage.whatsapp.notApplicable")
 
-    return `${t("lasLenasPage.whatsapp.greeting")}
+    let message = `${t("lasLenasPage.whatsapp.greeting")}
 
 • ${t("lasLenasPage.whatsapp.serviceType")}: ${serviceLabel}
 • ${t("lasLenasPage.whatsapp.vehicle")}: ${vehicleLabel}
@@ -120,9 +123,15 @@ export function LasLenasQuoteForm() {
 
 ${t("lasLenasPage.whatsapp.myName")}: ${formData.fullName}
 Email: ${formData.email}
-WhatsApp: ${formData.whatsapp}
+WhatsApp: ${formData.whatsapp}`
 
-${t("ll.quote.msg.language")}`
+    if (formData.observations.trim()) {
+      message += `\n\n${t("lasLenasPage.whatsapp.observations")}: ${formData.observations}`
+    }
+
+    message += `\n\n${t("ll.quote.msg.language")}`
+
+    return message
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -142,6 +151,7 @@ ${t("ll.quote.msg.language")}`
     formData.whatsapp.trim() !== "" &&
     formData.departureDate !== undefined &&
     formData.passengers !== "" &&
+    (formData.origin !== "otro" || formData.originManual.trim() !== "") &&
     (formData.destination === "las-lenas" || formData.destinationManual.trim() !== "") &&
     (!formData.roundTrip || formData.returnDate !== undefined)
 
@@ -300,8 +310,17 @@ ${t("ll.quote.msg.language")}`
                           <SelectItem value="mendoza">Mendoza</SelectItem>
                           <SelectItem value="san-rafael">San Rafael</SelectItem>
                           <SelectItem value="las-lenas">Las Leñas</SelectItem>
+                          <SelectItem value="otro">{t("lasLenasPage.form.otherOrigin")}</SelectItem>
                         </SelectContent>
                       </Select>
+                      {formData.origin === "otro" && (
+                        <Input
+                          placeholder={t("lasLenasPage.form.specifyOrigin")}
+                          value={formData.originManual}
+                          onChange={(e) => updateForm("originManual", e.target.value)}
+                          className="h-12 mt-2"
+                        />
+                      )}
                       {formData.serviceType === "compartido" && (
                         <p className="text-xs text-[#C8A96A]">
                           {t("lasLenasPage.form.sharedNote")}
@@ -487,6 +506,30 @@ ${t("ll.quote.msg.language")}`
                         />
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Section 6: Observations */}
+                <div className="p-6 md:p-8 border-b border-[#0B0B0B]/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 rounded-full bg-[#6B7D5C] text-white flex items-center justify-center text-sm font-bold">
+                      6
+                    </div>
+                    <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step6")}</h3>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="observations" className="text-[#0B0B0B]/80">
+                      {t("lasLenasPage.form.observationsLabel")}
+                    </Label>
+                    <textarea
+                      id="observations"
+                      placeholder={t("lasLenasPage.form.observationsPlaceholder")}
+                      value={formData.observations}
+                      onChange={(e) => updateForm("observations", e.target.value)}
+                      className="w-full min-h-[100px] px-4 py-3 rounded-lg border border-input bg-background text-sm resize-y focus:outline-none focus:ring-2 focus:ring-[#6B7D5C] focus:ring-offset-2"
+                      rows={3}
+                    />
                   </div>
                 </div>
 
