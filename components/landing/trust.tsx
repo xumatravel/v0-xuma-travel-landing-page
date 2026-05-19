@@ -64,7 +64,7 @@ export function Trust() {
   ]
 
   return (
-    <section className="py-16 md:py-20 bg-[#F8F6F3]">
+    <section id="next-section" className="py-16 md:py-20 bg-[#F8F6F3]">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
