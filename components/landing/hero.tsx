@@ -14,6 +14,13 @@ export function Hero() {
     WHATSAPP_CONFIG.open()
   }
 
+  const handleScrollToNext = () => {
+    const nextSection = document.getElementById("next-section")
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Parallax Effect */}
@@ -125,12 +132,16 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-pulse" />
+      {/* Scroll indicator - Interactive */}
+      <button
+        onClick={handleScrollToNext}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-full transition-all duration-300 hover:scale-110 hover:animate-none"
+        aria-label="Scroll to next section"
+      >
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2 transition-all duration-300 group-hover:border-white/60 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-pulse transition-all duration-300 group-hover:bg-white/80 group-hover:animate-none group-hover:translate-y-1" />
         </div>
-      </div>
+      </button>
     </section>
   )
 }
