@@ -22,7 +22,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[95vh] flex items-end justify-center overflow-hidden pb-20">
       {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 scale-110 animate-slow-zoom">
@@ -35,13 +35,13 @@ export function Hero() {
             loading="eager"
           />
         </div>
-        {/* Cinematic gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/40 to-[#0B0B0B]/90" />
+        {/* Cinematic gradient overlay - more subtle bottom fade */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/30 to-[#0B0B0B]/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/50 via-transparent to-[#0B0B0B]/50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-20 pb-12">
+      <div className="relative z-10 container mx-auto px-6 pt-32 pb-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#C8A96A]/20 border border-[#C8A96A]/40 rounded-full px-4 py-2 mb-6">
