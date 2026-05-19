@@ -3,6 +3,7 @@ import { Hero } from "@/components/landing/hero"
 import { Trust } from "@/components/landing/trust"
 import { WhatWeDo } from "@/components/landing/what-we-do"
 import { Products } from "@/components/landing/products"
+import { SkiPackages } from "@/components/landing/ski-packages"
 import { LasLenas } from "@/components/landing/las-lenas"
 import { Upsell } from "@/components/landing/upsell"
 import { Agencies } from "@/components/landing/agencies"
@@ -22,6 +23,7 @@ export default function Home() {
       <Trust />
       <WhatWeDo />
       <Products />
+      <SkiPackages />
       <LasLenas />
       <Upsell />
       <Agencies />

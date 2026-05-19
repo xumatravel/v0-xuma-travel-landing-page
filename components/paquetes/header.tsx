@@ -5,20 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, MessageCircle, X } from "lucide-react"
 import Link from "next/link"
-import { useI18n, LanguageSwitcher } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { useI18n, LanguageSwitcher } from "@/lib/i18n"
 
-export function Header() {
+export function PaquetesHeader() {
   const { t } = useI18n()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: "/paquetes-las-lenas", label: "Paquetes", sublabel: "Las Leñas", isPage: true, twoLine: true },
-    { href: "/traslados-las-lenas", label: "Transfers", sublabel: "Las Leñas", isPage: true, twoLine: true },
-    { href: "#agencies", label: t("nav.agencies"), isPage: false, twoLine: false },
-    { href: "#about", label: t("nav.about"), isPage: false, twoLine: false },
-    { href: "#contact", label: t("nav.contact"), isPage: false, twoLine: false },
+    { href: "#cotizador", label: t("paquetesPage.header.quote") },
+    { href: "#paquetes", label: t("paquetesPage.header.packages") },
+    { href: "#hoteles", label: t("paquetesPage.header.hotels") },
+    { href: "#faq", label: t("paquetesPage.header.faq") },
   ]
 
   useEffect(() => {
@@ -31,7 +30,7 @@ export function Header() {
   }, [])
 
   const handleWhatsApp = () => {
-    WHATSAPP_CONFIG.open()
+    WHATSAPP_CONFIG.open(t("paquetesPage.header.whatsappMsg"))
   }
 
   return (
@@ -43,38 +42,29 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-6">
-        <nav className="flex items-center justify-between gap-4">
+        <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2">
             <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">
               XUMA<span className="text-[#C8A96A]">.</span>TRAVEL
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 ${
-                  link.twoLine ? "text-center leading-tight" : ""
-                }`}
+                className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200"
               >
-                {link.twoLine ? (
-                  <span className="flex flex-col items-center">
-                    <span>{link.label}</span>
-                    <span className="text-xs text-white/60">{link.sublabel}</span>
-                  </span>
-                ) : (
-                  link.label
-                )}
+                {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Language Switcher & CTA */}
-          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          {/* CTA and Language Switcher */}
+          <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
             <Button
               onClick={handleWhatsApp}
@@ -82,7 +72,7 @@ export function Header() {
               className="bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              {t("nav.whatsapp")}
+              {t("paquetesPage.hero.cta1")}
             </Button>
           </div>
 
@@ -120,7 +110,7 @@ export function Header() {
                         onClick={() => setIsOpen(false)}
                         className="text-white/80 hover:text-white text-lg font-medium py-2 transition-colors duration-200"
                       >
-                        {link.twoLine ? `${link.label} ${link.sublabel}` : link.label}
+                        {link.label}
                       </Link>
                     ))}
                   </nav>
@@ -135,7 +125,7 @@ export function Header() {
                       className="w-full bg-[#6B7D5C] hover:bg-[#5a6b4d] text-white font-medium"
                     >
                       <MessageCircle className="w-5 h-5 mr-2" />
-                      {t("nav.whatsapp")}
+                      {t("paquetesPage.hero.cta1")}
                     </Button>
                   </div>
                 </div>
