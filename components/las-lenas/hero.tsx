@@ -37,7 +37,13 @@ export function LasLenasHero() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <Badge className="bg-[#C8A96A] text-[#0B0B0B] hover:bg-[#C8A96A] text-sm px-4 py-2 font-bold mb-8 inline-flex items-center gap-2">
-            <Award className="w-4 h-4" />
+            <Image
+              src="/las-lenas-logo.png"
+              alt="Las Leñas"
+              width={20}
+              height={20}
+              className="opacity-60 brightness-0 invert sepia saturate-[0.3]"
+            />
             {t("lasLenasPage.badge")}
           </Badge>
 

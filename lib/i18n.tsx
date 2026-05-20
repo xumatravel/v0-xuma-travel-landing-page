@@ -205,7 +205,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "footer.rights": "Todos los derechos reservados.",
 
     // Las Lenas Page
-    "lasLenasPage.badge": "+500 Transfers a Las Leñas en 2024",
+    "lasLenasPage.badge": "Transporte Oficial de Las Leñas",
     "lasLenasPage.hero.title1": "Traslados Privados",
     "lasLenasPage.hero.title2": "a Las Leñas",
     "lasLenasPage.hero.subtitle": "Viajes seguros, directos y con horarios a tu medida desde Mendoza y San Rafael",
@@ -793,7 +793,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "footer.rights": "Todos os direitos reservados.",
 
     // Las Lenas Page
-    "lasLenasPage.badge": "+500 Transfers para Las Leñas em 2024",
+    "lasLenasPage.badge": "Transporte Oficial de Las Leñas",
     "lasLenasPage.hero.title1": "Transfers Privados",
     "lasLenasPage.hero.title2": "para Las Leñas",
     "lasLenasPage.hero.subtitle": "Viagens seguras, diretas e com horários à sua escolha de Mendoza e San Rafael",
@@ -1381,7 +1381,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "footer.rights": "All rights reserved.",
 
     // Las Lenas Page
-    "lasLenasPage.badge": "+500 Transfers to Las Leñas in 2024",
+    "lasLenasPage.badge": "Official Las Leñas Transport",
     "lasLenasPage.hero.title1": "Private Transfers",
     "lasLenasPage.hero.title2": "to Las Leñas",
     "lasLenasPage.hero.subtitle": "Safe, direct trips with schedules tailored to you from Mendoza and San Rafael",
