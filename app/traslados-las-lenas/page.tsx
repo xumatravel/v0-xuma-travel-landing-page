@@ -33,12 +33,12 @@ export default function LasLenasPage() {
       <LasLenasHeader />
       <LasLenasHero />
       <LasLenasTrust />
-      <LasLenasQuoteForm />
       <LasLenasServices />
       <LasLenasRouteInfo />
       <LasLenasWhyUs />
-      <LasLenasTestimonials />
+      <LasLenasQuoteForm />
       <LasLenasCTA />
+      <LasLenasTestimonials />
       <LasLenasFAQ />
       <LasLenasContact />
       <LasLenasFooter />
