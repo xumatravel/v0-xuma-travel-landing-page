@@ -6,7 +6,6 @@ import { LasLenasServices } from "@/components/las-lenas/services"
 import { LasLenasQuoteForm } from "@/components/las-lenas/quote-form"
 import { LasLenasWhyUs } from "@/components/las-lenas/why-us"
 import { LasLenasTestimonials } from "@/components/las-lenas/testimonials"
-import { LasLenasCTA } from "@/components/las-lenas/cta-section"
 import { LasLenasFAQ } from "@/components/las-lenas/faq"
 import { LasLenasContact } from "@/components/las-lenas/contact"
 import { LasLenasFooter } from "@/components/las-lenas/footer"
@@ -33,12 +32,11 @@ export default function LasLenasPage() {
       <LasLenasHeader />
       <LasLenasHero />
       <LasLenasTrust />
-      <LasLenasQuoteForm />
       <LasLenasServices />
       <LasLenasRouteInfo />
       <LasLenasWhyUs />
+      <LasLenasQuoteForm />
       <LasLenasTestimonials />
-      <LasLenasCTA />
       <LasLenasFAQ />
       <LasLenasContact />
       <LasLenasFooter />
