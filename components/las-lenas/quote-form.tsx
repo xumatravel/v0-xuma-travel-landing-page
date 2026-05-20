@@ -20,6 +20,7 @@ type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
 type Origin = "mendoza" | "san-rafael" | "las-lenas" | "otro"
 type Destination = "las-lenas" | "otro"
+type Accommodation = "PICSIS" | "VIRGO" | "ARIES" | "ESCORPIO" | "ACUARIO" | "OTRO" | "N/D" | ""
 
 interface FormData {
   serviceType: ServiceType
@@ -29,6 +30,8 @@ interface FormData {
   originManual: string
   destination: Destination
   destinationManual: string
+  accommodation: Accommodation
+  accommodationManual: string
   departureDate: Date | undefined
   returnDate: Date | undefined
   roundTrip: boolean
@@ -58,6 +61,8 @@ export function LasLenasQuoteForm() {
     originManual: "",
     destination: "las-lenas",
     destinationManual: "",
+    accommodation: "",
+    accommodationManual: "",
     departureDate: undefined,
     returnDate: undefined,
     roundTrip: false,
@@ -104,6 +109,9 @@ export function LasLenasQuoteForm() {
     const vehicleLabel = vehicleLabels[formData.vehicleType]
     const originLabel = formData.origin === "otro" ? formData.originManual : originLabels[formData.origin]
     const destinationLabel = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
+    const accommodationLabel = formData.destination === "las-lenas" && formData.accommodation
+      ? (formData.accommodation === "OTRO" ? formData.accommodationManual : formData.accommodation)
+      : ""
     const departureDateLabel = formData.departureDate 
       ? format(formData.departureDate, "dd/MM/yyyy", { locale: dateLocale })
       : t("lasLenasPage.whatsapp.notSpecified")
@@ -117,7 +125,7 @@ export function LasLenasQuoteForm() {
 • ${t("lasLenasPage.whatsapp.vehicle")}: ${vehicleLabel}
 • ${t("lasLenasPage.whatsapp.passengersCount")}: ${formData.passengers}
 • ${t("lasLenasPage.whatsapp.origin")}: ${originLabel}
-• ${t("lasLenasPage.whatsapp.destination")}: ${destinationLabel}
+• ${t("lasLenasPage.whatsapp.destination")}: ${destinationLabel}${accommodationLabel ? `\n• ${t("lasLenasPage.whatsapp.accommodation")}: ${accommodationLabel}` : ""}
 • ${t("lasLenasPage.whatsapp.departureDate")}: ${departureDateLabel}
 • ${t("lasLenasPage.whatsapp.returnDate")}: ${returnDateLabel}
 
@@ -335,7 +343,14 @@ WhatsApp: ${formData.whatsapp}`
                       </Label>
                       <Select
                         value={formData.destination}
-                        onValueChange={(value: Destination) => updateForm("destination", value)}
+                        onValueChange={(value: Destination) => {
+                          updateForm("destination", value)
+                          // Reset accommodation when destination changes
+                          if (value !== "las-lenas") {
+                            updateForm("accommodation", "")
+                            updateForm("accommodationManual", "")
+                          }
+                        }}
                       >
                         <SelectTrigger id="destination" className="h-12 bg-white">
                           <SelectValue />
@@ -352,6 +367,45 @@ WhatsApp: ${formData.whatsapp}`
                           onChange={(e) => updateForm("destinationManual", e.target.value)}
                           className="h-12 mt-2"
                         />
+                      )}
+                      
+                      {/* Accommodation field - only shown when destination is Las Leñas */}
+                      {formData.destination === "las-lenas" && (
+                        <div className="space-y-2 mt-3">
+                          <Label htmlFor="accommodation" className="text-[#0B0B0B]/80 text-sm">
+                            {t("lasLenasPage.form.accommodation")}
+                          </Label>
+                          <Select
+                            value={formData.accommodation}
+                            onValueChange={(value: Accommodation) => {
+                              updateForm("accommodation", value)
+                              if (value !== "OTRO") {
+                                updateForm("accommodationManual", "")
+                              }
+                            }}
+                          >
+                            <SelectTrigger id="accommodation" className="h-12 bg-white">
+                              <SelectValue placeholder={t("lasLenasPage.form.selectAccommodation")} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="PICSIS">PICSIS</SelectItem>
+                              <SelectItem value="VIRGO">VIRGO</SelectItem>
+                              <SelectItem value="ARIES">ARIES</SelectItem>
+                              <SelectItem value="ESCORPIO">ESCORPIO</SelectItem>
+                              <SelectItem value="ACUARIO">ACUARIO</SelectItem>
+                              <SelectItem value="OTRO">{t("lasLenasPage.form.otherAccommodation")}</SelectItem>
+                              <SelectItem value="N/D">N/D</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          {formData.accommodation === "OTRO" && (
+                            <Input
+                              placeholder={t("lasLenasPage.form.specifyAccommodation")}
+                              value={formData.accommodationManual}
+                              onChange={(e) => updateForm("accommodationManual", e.target.value)}
+                              className="h-12 mt-2"
+                            />
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>
