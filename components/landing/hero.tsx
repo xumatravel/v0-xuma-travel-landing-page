@@ -52,9 +52,9 @@ export function Hero() {
           </div>
 
           {/* Headline - Shorter and more impactful */}
-          <h1 className="font-serif text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] font-bold text-white leading-tight mb-4">
+          <h1 className="font-serif text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] font-bold text-[#6B7D5C] leading-tight mb-4">
             <span className="block">{t("hero.title.line1")}</span>
-            <span className="block text-[#C8A96A]">{t("hero.title.line2")}</span>
+            <span className="block">{t("hero.title.line2")}</span>
           </h1>
 
           {/* Subheadline */}
