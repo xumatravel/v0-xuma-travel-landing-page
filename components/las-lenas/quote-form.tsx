@@ -148,7 +148,28 @@ WhatsApp: ${formData.whatsapp}`
     
     const message = buildWhatsAppMessage()
     WHATSAPP_CONFIG.open(message)
-    
+
+    // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
+    const origen = formData.origin === "otro" ? formData.originManual : originLabels[formData.origin]
+    const destino = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        formulario: "traslados",
+        language: locale,
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.whatsapp,
+        arrivalDate: formData.departureDate ? format(formData.departureDate, "yyyy-MM-dd") : "",
+        departureDate: formData.roundTrip && formData.returnDate ? format(formData.returnDate, "yyyy-MM-dd") : null,
+        passengers: formData.passengers,
+        interest: "transfer",
+        interestLabel: `Traslado ${formData.serviceType} ${vehicleLabels[formData.vehicleType]}: ${origen} → ${destino}${formData.roundTrip ? " (ida y vuelta)" : ""}`,
+        message,
+      }),
+    }).catch(() => {})
+
     // Reset submitting state after a short delay
     setTimeout(() => setIsSubmitting(false), 1000)
   }
