@@ -69,7 +69,7 @@ function validateForm(formData: FormData): ValidationErrors {
 // COMPONENTE PRINCIPAL
 // ============================================================================
 export function Contact() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -133,9 +133,9 @@ export function Contact() {
       const message = buildMessage(formData)
       WHATSAPP_CONFIG.open(message)
       
-      // 2. BACKUP: Enviar email en segundo plano (no bloquea)
-      if (INTEGRATIONS_CONFIG.email.enabled) {
-        const leadData = prepareLeadData(formData)
+      // 2. BACKUP: registrar en XUMA OS y enviar email en segundo plano (no bloquea)
+      {
+        const leadData = { ...prepareLeadData(formData), formulario: "contacto", language: locale }
         fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

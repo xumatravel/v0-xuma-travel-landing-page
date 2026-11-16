@@ -1,16 +1,22 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
+import { guardarConsultaEnXumaOS } from '@/lib/xuma-os'
 
 export async function POST(request: Request) {
   try {
+    const body = await request.json()
+    const { name, email, phone, country, arrivalDate, departureDate, passengers, interest, message } = body
+
+    // 1. Registrar la consulta en XUMA OS (no bloquea el mail si falla)
+    const guardada = await guardarConsultaEnXumaOS({ ...body, formulario: body.formulario || 'contacto' })
+
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not configured')
+      if (guardada) return NextResponse.json({ success: true, email: false })
       return NextResponse.json({ error: 'Email service is not configured' }, { status: 500 })
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY)
-    const body = await request.json()
-    const { name, email, phone, country, arrivalDate, departureDate, passengers, interest, message } = body
 
     const interestMap: Record<string, string> = {
       ski: "Ski en Las Leñas",

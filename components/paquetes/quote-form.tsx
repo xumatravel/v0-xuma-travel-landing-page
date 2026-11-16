@@ -165,7 +165,25 @@ WhatsApp: ${formData.whatsapp}`
     
     const message = buildWhatsAppMessage()
     WHATSAPP_CONFIG.open(message)
-    
+
+    // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        formulario: "paquetes",
+        language: locale,
+        name: formData.fullName,
+        phone: formData.whatsapp,
+        arrivalDate: formData.checkIn ? format(formData.checkIn, "yyyy-MM-dd") : "",
+        departureDate: formData.checkOut ? format(formData.checkOut, "yyyy-MM-dd") : null,
+        passengers: formData.totalPassengers,
+        interest: "ski",
+        interestLabel: `Paquete Las Leñas: ${tripTypeLabels[formData.tripType]}`,
+        message,
+      }),
+    }).catch(() => {})
+
     setTimeout(() => setIsSubmitting(false), 1000)
   }
 
