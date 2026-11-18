@@ -31,7 +31,7 @@ export function Products() {
       accent: "#5A1E2A",
       featured: false,
       image: "/vineyard.jpg",
-      href: null,
+      href: "/mendoza",
       ctaLabel: t("hero.cta.secondary"),
     },
     {
