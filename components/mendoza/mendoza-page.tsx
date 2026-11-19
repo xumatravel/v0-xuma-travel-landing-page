@@ -67,6 +67,7 @@ const T = {
       { q: "¿Hacen viajes fuera de Mendoza capital?", a: "Sí: Valle de Uco, Potrerillos, alta montaña, San Rafael, Malargüe y Las Leñas, entre otros destinos." },
     ],
     lasLenas: "¿Vas a Las Leñas? Mirá nuestros traslados a la nieve →",
+    cross: "¿Vas al sur? Excursiones en San Rafael y Malargüe →",
   },
   pt: {
     wa: "Olá! Quero consultar sobre um transfer em Mendoza",
@@ -107,6 +108,7 @@ const T = {
       { q: "Fazem viagens fora de Mendoza capital?", a: "Sim: Valle de Uco, Potrerillos, alta montanha, San Rafael, Malargüe e Las Leñas, entre outros destinos." },
     ],
     lasLenas: "Vai para Las Leñas? Veja nossos transfers para a neve →",
+    cross: "Vai para o sul? Passeios em San Rafael e Malargüe →",
   },
   en: {
     wa: "Hi! I'd like to ask about a transfer in Mendoza",
@@ -147,6 +149,7 @@ const T = {
       { q: "Do you go outside Mendoza city?", a: "Yes: Uco Valley, Potrerillos, high mountains, San Rafael, Malargüe and Las Leñas, among others." },
     ],
     lasLenas: "Going to Las Leñas? See our snow transfers →",
+    cross: "Heading south? Excursions in San Rafael & Malargüe →",
   },
 }
 
@@ -491,6 +494,10 @@ function FAQ() {
           </p>
           <Link href="/traslados-las-lenas" className="text-[#6B7D5C] font-medium hover:underline">
             {tr.lasLenas}
+          </Link>
+          <br />
+          <Link href="/san-rafael-malargue" className="inline-block mt-3 text-[#5A1E2A] font-medium hover:underline">
+            {tr.cross}
           </Link>
         </div>
       </div>
