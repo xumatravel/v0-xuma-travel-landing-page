@@ -76,6 +76,14 @@ export function LasLenasQuoteForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [conocio, setConocio] = useState("")
+  // Datos extra para cotizar (19/11/2026): horario/vuelo de llegada y equipaje de ski
+  const [horario, setHorario] = useState("")
+  const [equipo, setEquipo] = useState("0")
+  const XL = {
+    es: { horario: "Horario o vuelo de llegada", horarioPh: "Ej: vuelo AR 1234 llega 14:30 / salimos 8:00", equipo: "Equipaje", equipoOpts: ["Normal", "Con equipo de ski / snowboard", "Mucho equipaje"] },
+    pt: { horario: "Horário ou voo de chegada", horarioPh: "Ex: voo G3 1234 chega 14:30 / saímos 8:00", equipo: "Bagagem", equipoOpts: ["Normal", "Com equipamento de ski / snowboard", "Muita bagagem"] },
+    en: { horario: "Arrival time or flight", horarioPh: "E.g. flight AA 1234 lands 14:30 / leaving 8:00", equipo: "Luggage", equipoOpts: ["Regular", "With ski / snowboard gear", "Lots of luggage"] },
+  }[(["es", "pt", "en"].includes(locale) ? locale : "es") as "es" | "pt" | "en"]
 
   const vehicleLabels: Record<VehicleType, string> = {
     auto: t("lasLenasPage.form.vehicle.auto"),
@@ -135,6 +143,9 @@ export function LasLenasQuoteForm() {
 ${t("lasLenasPage.whatsapp.myName")}: ${formData.fullName}
 Email: ${formData.email}
 WhatsApp: ${formData.whatsapp}`
+
+    if (horario.trim()) message += `\n${XL.horario}: ${horario}`
+    if (equipo !== "0") message += `\n${XL.equipo}: ${XL.equipoOpts[+equipo]}`
 
     if (formData.observations.trim()) {
       message += `\n\n${t("lasLenasPage.whatsapp.observations")}: ${formData.observations}`
@@ -598,6 +609,29 @@ WhatsApp: ${formData.whatsapp}`
                     <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step6")}</h3>
                   </div>
                   
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="horario" className="text-[#0B0B0B]/80">{XL.horario}</Label>
+                      <input
+                        id="horario"
+                        placeholder={XL.horarioPh}
+                        value={horario}
+                        onChange={(e) => setHorario(e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-[#6B7D5C]"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="equipo" className="text-[#0B0B0B]/80">{XL.equipo}</Label>
+                      <select
+                        id="equipo"
+                        value={equipo}
+                        onChange={(e) => setEquipo(e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-[#6B7D5C]"
+                      >
+                        {XL.equipoOpts.map((o, i) => <option key={o} value={i}>{o}</option>)}
+                      </select>
+                    </div>
+                  </div>
                   <div className="mb-4">
                     <ComoNosConociste value={conocio} onChange={setConocio} />
                   </div>

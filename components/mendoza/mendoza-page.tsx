@@ -23,9 +23,8 @@ import { Footer } from "@/components/landing/footer"
 import { WhatsAppButton } from "@/components/landing/whatsapp-button"
 import { BackToHomeButton } from "@/components/las-lenas/back-to-home"
 import { WHATSAPP_CONFIG } from "@/lib/config"
-import { trackLead } from "@/lib/track"
 import { useI18n, LanguageSwitcher } from "@/lib/i18n"
-import { ComoNosConociste } from "@/components/como-nos-conociste"
+import { Cotizador, type Kind, type Servicio } from "@/components/cotizador"
 
 type L = "es" | "pt" | "en"
 
@@ -335,147 +334,31 @@ function Gallery() {
   )
 }
 
-function QuoteForm({ service, setService }: { service: number; setService: (i: number) => void }) {
-  const { tr, locale } = useT()
-  const [f, setF] = useState({
-    fecha: "",
-    hora: "",
-    desde: "",
-    hacia: "",
-    pasajeros: "2",
-    nombre: "",
-    whatsapp: "",
-    email: "",
-    comentarios: "",
-  })
-  const [sent, setSent] = useState(false)
-  const [conocio, setConocio] = useState("")
-  const up =
-    (k: keyof typeof f) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-      setF((p) => ({ ...p, [k]: e.target.value }))
+const KINDS: Kind[] = [undefined, "evento", "aeropuerto", "ejecutivo", undefined, "grupo", "otro"]
 
-  const valid = Boolean(f.nombre.trim() && f.whatsapp.trim() && f.fecha && f.desde.trim())
+function QuoteForm({ service }: { service: number }) {
+  const { tr } = useT()
   const fl = tr.form
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const servicio = fl.options[service]
-    const servicioEs = T.es.form.options[service]
-    const fechaTxt = f.fecha ? f.fecha.split("-").reverse().join("/") : "-"
-    let msg = `*${fl.msgTitle}*\n\n`
-    msg += `*${fl.lService}:* ${servicio}\n`
-    msg += `*${fl.lDate}:* ${fechaTxt}\n`
-    msg += `*${fl.lTime}:* ${f.hora || "-"}\n`
-    msg += `*${fl.lFrom}:* ${f.desde || "-"}\n`
-    msg += `*${fl.lTo}:* ${f.hacia || "-"}\n`
-    msg += `*${fl.lPax}:* ${f.pasajeros || "-"}\n`
-    msg += `*${fl.lName}:* ${f.nombre}\n`
-    msg += `*WhatsApp:* ${f.whatsapp}\n`
-    if (f.email.trim()) msg += `*${fl.lEmail}:* ${f.email}\n`
-    if (f.comentarios.trim()) msg += `*${fl.lComments}:* ${f.comentarios}\n`
-
-    WHATSAPP_CONFIG.open(msg)
-
-    // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
-    trackLead("mendoza")
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        formulario: "mendoza",
-        language: locale,
-        comoNosConocio: conocio,
-        name: f.nombre,
-        phone: f.whatsapp,
-        email: f.email,
-        arrivalDate: f.fecha,
-        passengers: f.pasajeros,
-        interest: `Mendoza: ${servicioEs}`,
-        interestLabel: `Mendoza: ${servicioEs}`,
-        message: msg,
-      }),
-    }).catch(() => {})
-    setSent(true)
-  }
-
-  const input =
-    "w-full rounded-lg border border-[#0B0B0B]/15 bg-white px-4 py-3 text-[#0B0B0B] focus:outline-none focus:ring-2 focus:ring-[#6B7D5C]"
-  const label = "block text-sm font-medium text-[#0B0B0B] mb-2"
-
+  const servicios: Servicio[] = T.es.form.options.map((es, i) => ({
+    es,
+    pt: T.pt.form.options[i],
+    en: T.en.form.options[i],
+    kind: KINDS[i],
+  }))
   return (
-    <section id="cotizar" className="py-20 md:py-28 bg-[#F8F6F3]">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-[#6B7D5C] font-medium tracking-wider uppercase text-sm mb-3">{fl.kicker}</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#0B0B0B] mb-4">{fl.title}</h2>
-            <p className="text-[#0B0B0B]/70 text-lg">{fl.sub}</p>
-          </div>
-          <form onSubmit={submit} className="bg-white rounded-2xl shadow-xl p-6 md:p-10 grid md:grid-cols-2 gap-6">
-            <div className="md:col-span-2">
-              <label htmlFor="servicio" className={label}>{fl.service}</label>
-              <select id="servicio" value={service} onChange={(e) => setService(Number(e.target.value))} className={input}>
-                {fl.options.map((o, i) => (
-                  <option key={o} value={i}>{o}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className={label}>{fl.date}</label>
-              <input type="date" required value={f.fecha} onChange={up("fecha")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.time}</label>
-              <input type="time" value={f.hora} onChange={up("hora")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.from}</label>
-              <input placeholder={fl.fromPh} required value={f.desde} onChange={up("desde")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.to}</label>
-              <input placeholder={fl.toPh} value={f.hacia} onChange={up("hacia")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.pax}</label>
-              <input type="number" min={1} max={60} value={f.pasajeros} onChange={up("pasajeros")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.name}</label>
-              <input required value={f.nombre} onChange={up("nombre")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.wa}</label>
-              <input type="tel" placeholder="+54 9 ..." required value={f.whatsapp} onChange={up("whatsapp")} className={input} />
-            </div>
-            <div>
-              <label className={label}>{fl.email}</label>
-              <input type="email" value={f.email} onChange={up("email")} className={input} />
-            </div>
-            <div className="md:col-span-2">
-              <ComoNosConociste value={conocio} onChange={setConocio} />
-            </div>
-            <div className="md:col-span-2">
-              <label className={label}>{fl.comments}</label>
-              <textarea rows={3} placeholder={fl.commentsPh} value={f.comentarios} onChange={up("comentarios")} className={input} />
-            </div>
-            <div className="md:col-span-2">
-              <Button
-                type="submit"
-                disabled={!valid}
-                size="lg"
-                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-7 text-lg font-semibold rounded-lg disabled:opacity-50"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                {fl.submit}
-              </Button>
-              <p className="text-center text-sm text-[#0B0B0B]/60 mt-3">{sent ? fl.sent : fl.hint}</p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
+    <Cotizador
+      formulario="mendoza"
+      zona="Mendoza"
+      servicios={servicios}
+      selected={service}
+      kicker={fl.kicker}
+      title={fl.title}
+      sub={fl.sub}
+      msgTitle={fl.msgTitle}
+      fromPh={fl.fromPh}
+      toPh={fl.toPh}
+      commentsPh={fl.commentsPh}
+    />
   )
 }
 
@@ -525,7 +408,7 @@ export function MendozaPage() {
       <Hero />
       <Services onPick={pick} />
       <Gallery />
-      <QuoteForm service={service} setService={setService} />
+      <QuoteForm service={service} />
       <FAQ />
       <Footer />
       <WhatsAppButton />

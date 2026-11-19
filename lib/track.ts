@@ -6,6 +6,12 @@
 // Si no está cargada, igual se puede importar el evento generate_lead de Analytics como conversión en Google Ads.
 
 const ADS_ID = "AW-18149304102"
+// Conversión "Consulta web (formulario o WhatsApp)" creada en Google Ads el 19/11/2026
+const ADS_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || "YtDVCIKmobsdEKbOoc5D"
+
+function conversion() {
+  gtag("event", "conversion", { send_to: `${ADS_ID}/${ADS_LABEL}` })
+}
 
 type Gtag = (...args: unknown[]) => void
 
@@ -17,10 +23,10 @@ function gtag(...args: unknown[]) {
 
 export function trackLead(formulario: string) {
   gtag("event", "generate_lead", { form_name: formulario, page_path: window.location.pathname })
-  const label = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL
-  if (label) gtag("event", "conversion", { send_to: `${ADS_ID}/${label}` })
+  conversion()
 }
 
 export function trackWhatsApp() {
   gtag("event", "contact_whatsapp", { page_path: typeof window !== "undefined" ? window.location.pathname : "" })
+  conversion()
 }

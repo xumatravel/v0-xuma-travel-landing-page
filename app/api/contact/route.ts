@@ -10,6 +10,11 @@ export async function POST(request: Request) {
     // 1. Registrar la consulta en XUMA OS (no bloquea el mail si falla)
     const guardada = await guardarConsultaEnXumaOS({ ...body, formulario: body.formulario || 'contacto' })
 
+    // 2. Si quedó guardada en XUMA OS, no mandamos mail (decisión de Tomás, 19/11/2026:
+    //    las consultas viven en XUMA OS y por WhatsApp). El mail queda solo como RESPALDO
+    //    si XUMA OS no pudo guardarla, para no perder ninguna consulta.
+    if (guardada) return NextResponse.json({ success: true, email: false })
+
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not configured')
       if (guardada) return NextResponse.json({ success: true, email: false })
