@@ -407,6 +407,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "hero.cta.transfer": "Cotizar Traslado",
     "hero.cta.skiPackage": "Cotizar Paquete Ski",
     "hero.cta.mendoza": "Traslados en Mendoza",
+    "hero.cta.sur": "San Rafael y Malargüe",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Temporada de Ski",
@@ -996,6 +997,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "hero.cta.transfer": "Cotação Transfer",
     "hero.cta.skiPackage": "Cotação Pacote Ski",
     "hero.cta.mendoza": "Transfers em Mendoza",
+    "hero.cta.sur": "San Rafael e Malargüe",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Temporada de Ski",
@@ -1585,6 +1587,7 @@ const translations: Record<Locale, Record<string, TranslationValue>> = {
     "hero.cta.transfer": "Get Transfer Quote",
     "hero.cta.skiPackage": "Get Ski Package Quote",
     "hero.cta.mendoza": "Mendoza Transfers",
+    "hero.cta.sur": "San Rafael & Malargüe",
 
     // Ski Packages Section (Home)
     "skiPackages.badge": "Ski Season",

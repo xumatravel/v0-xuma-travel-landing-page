@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, ArrowRight, Shield, Award, Car, Snowflake, Wine } from "lucide-react"
+import { MessageCircle, ArrowRight, Shield, Award, Car, Snowflake, Wine, Mountain } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
@@ -127,6 +127,15 @@ export function Hero() {
               >
                 <Wine className="w-4 h-4 mr-2" />
                 {t("hero.cta.mendoza")}
+              </Button>
+            </Link>
+            <Link href="/san-rafael-malargue">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-[#8A5A3C] hover:bg-[#764b31] hover:scale-105 hover:shadow-lg text-white font-semibold px-6 py-5 text-base transition-all duration-300 group rounded-lg"
+              >
+                <Mountain className="w-4 h-4 mr-2" />
+                {t("hero.cta.sur")}
               </Button>
             </Link>
             <Button

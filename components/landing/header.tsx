@@ -17,6 +17,7 @@ export function Header() {
     { href: "/paquetes-las-lenas", label: "Paquetes", sublabel: "Las Leñas", isPage: true, twoLine: true },
     { href: "/traslados-las-lenas", label: "Transfers", sublabel: "Las Leñas", isPage: true, twoLine: true },
     { href: "/mendoza", label: "Mendoza", sublabel: "Traslados", isPage: true, twoLine: true },
+    { href: "/san-rafael-malargue", label: "Sur", sublabel: "San Rafael · Malargüe", isPage: true, twoLine: true },
     { href: "#agencies", label: t("nav.agencies"), isPage: false, twoLine: false },
     { href: "#about", label: t("nav.about"), isPage: false, twoLine: false },
     { href: "#contact", label: t("nav.contact"), isPage: false, twoLine: false },
