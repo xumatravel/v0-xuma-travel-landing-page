@@ -1,7 +1,9 @@
 "use client"
 
 import { useState, useCallback } from "react"
+import { trackLead } from "@/lib/track"
 import { useI18n } from "@/lib/i18n"
+import { ComoNosConociste } from "@/components/como-nos-conociste"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -83,6 +85,7 @@ export function Contact() {
   })
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [conocio, setConocio] = useState("")
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   // Actualizar campo del formulario
@@ -135,7 +138,8 @@ export function Contact() {
       
       // 2. BACKUP: registrar en XUMA OS y enviar email en segundo plano (no bloquea)
       {
-        const leadData = { ...prepareLeadData(formData), formulario: "contacto", language: locale }
+        const leadData = { ...prepareLeadData(formData), formulario: "contacto", language: locale, comoNosConocio: conocio }
+        trackLead("contacto")
         fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -361,6 +365,8 @@ export function Contact() {
                       {errors.interest && <p className="text-red-400 text-xs mt-1">{errors.interest}</p>}
                     </Field>
                   </FieldGroup>
+
+                  <ComoNosConociste value={conocio} onChange={setConocio} dark />
 
                   {/* Row 6: Message */}
                   <FieldGroup>

@@ -23,7 +23,9 @@ import { Footer } from "@/components/landing/footer"
 import { WhatsAppButton } from "@/components/landing/whatsapp-button"
 import { BackToHomeButton } from "@/components/las-lenas/back-to-home"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { trackLead } from "@/lib/track"
 import { useI18n, LanguageSwitcher } from "@/lib/i18n"
+import { ComoNosConociste } from "@/components/como-nos-conociste"
 
 type L = "es" | "pt" | "en"
 
@@ -347,6 +349,7 @@ function QuoteForm({ service, setService }: { service: number; setService: (i: n
     comentarios: "",
   })
   const [sent, setSent] = useState(false)
+  const [conocio, setConocio] = useState("")
   const up =
     (k: keyof typeof f) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -375,12 +378,14 @@ function QuoteForm({ service, setService }: { service: number; setService: (i: n
     WHATSAPP_CONFIG.open(msg)
 
     // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
+    trackLead("mendoza")
     fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         formulario: "mendoza",
         language: locale,
+        comoNosConocio: conocio,
         name: f.nombre,
         phone: f.whatsapp,
         email: f.email,
@@ -447,6 +452,9 @@ function QuoteForm({ service, setService }: { service: number; setService: (i: n
             <div>
               <label className={label}>{fl.email}</label>
               <input type="email" value={f.email} onChange={up("email")} className={input} />
+            </div>
+            <div className="md:col-span-2">
+              <ComoNosConociste value={conocio} onChange={setConocio} />
             </div>
             <div className="md:col-span-2">
               <label className={label}>{fl.comments}</label>

@@ -34,6 +34,7 @@ export interface ConsultaWeb {
   interest?: string
   interestLabel?: string
   message?: string
+  comoNosConocio?: string
 }
 
 /** Guarda la consulta en XUMA OS. Nunca tira error: si falla, lo deja en el log y sigue. */
@@ -61,6 +62,7 @@ export async function guardarConsultaEnXumaOS(c: ConsultaWeb): Promise<boolean> 
         fecha_regreso: fecha(c.departureDate),
         pasajeros: numero(c.passengers),
         mensaje: corto(c.message, 4000),
+        como_nos_conocio: corto(c.comoNosConocio, 120),
       }),
     })
     if (!res.ok) {

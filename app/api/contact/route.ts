@@ -5,7 +5,7 @@ import { guardarConsultaEnXumaOS } from '@/lib/xuma-os'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, country, arrivalDate, departureDate, passengers, interest, message } = body
+    const { name, email, phone, country, arrivalDate, departureDate, passengers, interest, message, comoNosConocio, formulario } = body
 
     // 1. Registrar la consulta en XUMA OS (no bloquea el mail si falla)
     const guardada = await guardarConsultaEnXumaOS({ ...body, formulario: body.formulario || 'contacto' })
@@ -57,6 +57,14 @@ export async function POST(request: Request) {
           <td style="padding: 12px; border: 1px solid #ddd;">${passengers || "-"}</td>
         </tr>
         <tr>
+          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">¿Cómo nos conoció?</td>
+          <td style="padding: 12px; border: 1px solid #ddd;">${comoNosConocio || "-"}</td>
+        </tr>
+        <tr style="background-color: #f8f6f3;">
+          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Formulario</td>
+          <td style="padding: 12px; border: 1px solid #ddd;">${formulario || "contacto"}</td>
+        </tr>
+        <tr>
           <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Interés</td>
           <td style="padding: 12px; border: 1px solid #ddd;">${interestMap[interest] || interest || "-"}</td>
         </tr>
@@ -68,7 +76,7 @@ export async function POST(request: Request) {
         ` : ""}
       </table>
       <p style="margin-top: 20px; color: #666; font-size: 12px;">
-        Este mensaje fue enviado desde el formulario de contacto de xumatravel.com
+        Este mensaje fue enviado desde el formulario de contacto de xuma.com.ar
       </p>
     `
 
