@@ -21,7 +21,16 @@ function gtag(...args: unknown[]) {
   if (typeof g === "function") g(...args)
 }
 
-export function trackLead(formulario: string) {
+export function trackLead(formulario: string, cliente?: { email?: string; telefono?: string }) {
+  // Conversiones avanzadas (activadas en Google Ads el 19/11/2026): Google recibe el mail/teléfono cifrado
+  const email = cliente?.email?.trim().toLowerCase()
+  const tel = cliente?.telefono?.replace(/[^\d+]/g, "")
+  if (email || tel) {
+    gtag("set", "user_data", {
+      ...(email ? { email } : {}),
+      ...(tel ? { phone_number: tel.startsWith("+") ? tel : `+${tel}` } : {}),
+    })
+  }
   gtag("event", "generate_lead", { form_name: formulario, page_path: window.location.pathname })
   conversion()
 }

@@ -248,7 +248,7 @@ export function Cotizador({
     e.preventDefault()
     if (!valid) return
     WHATSAPP_CONFIG.open(build(l))
-    trackLead(formulario)
+    trackLead(formulario, { email: f.email, telefono: f.whatsapp })
     const interes = `${zona}: ${sel.map((i) => servicios[i].es).join(" + ")}`
     fetch("/api/contact", {
       method: "POST",
