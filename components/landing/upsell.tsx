@@ -24,7 +24,7 @@ export function Upsell() {
       description: t("upsell.step2.description"),
       color: "#5A1E2A",
       image: "/vineyard.jpg",
-      href: null,
+      href: "/mendoza",
     },
     {
       icon: Package,

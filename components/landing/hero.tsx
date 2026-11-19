@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, ArrowRight, Shield, Award, Car, Snowflake } from "lucide-react"
+import { MessageCircle, ArrowRight, Shield, Award, Car, Snowflake, Wine } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import { WHATSAPP_CONFIG } from "@/lib/config"
 
@@ -101,7 +101,7 @@ export function Hero() {
           </div>
 
           {/* CTAs - 3 buttons visible immediately */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link href="/traslados-las-lenas">
               <Button
                 size="lg"
@@ -118,6 +118,15 @@ export function Hero() {
               >
                 <Snowflake className="w-4 h-4 mr-2" />
                 {t("hero.cta.skiPackage")}
+              </Button>
+            </Link>
+            <Link href="/mendoza">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-[#5A1E2A] hover:bg-[#4a1822] hover:scale-105 hover:shadow-lg text-white font-semibold px-6 py-5 text-base transition-all duration-300 group rounded-lg"
+              >
+                <Wine className="w-4 h-4 mr-2" />
+                {t("hero.cta.mendoza")}
               </Button>
             </Link>
             <Button
