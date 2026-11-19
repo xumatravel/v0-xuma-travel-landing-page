@@ -14,7 +14,9 @@ import { MessageCircle, CalendarIcon, Users, Car, MapPin, ArrowRight, Check, Clo
 import { format } from "date-fns"
 import { es, ptBR, enUS } from "date-fns/locale"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { trackLead } from "@/lib/track"
 import { useI18n, type Locale } from "@/lib/i18n"
+import { ComoNosConociste } from "@/components/como-nos-conociste"
 
 type ServiceType = "privado" | "compartido"
 type VehicleType = "auto" | "pickup" | "minibus9" | "minibus14" | "grupo"
@@ -73,6 +75,7 @@ export function LasLenasQuoteForm() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [conocio, setConocio] = useState("")
 
   const vehicleLabels: Record<VehicleType, string> = {
     auto: t("lasLenasPage.form.vehicle.auto"),
@@ -152,11 +155,13 @@ WhatsApp: ${formData.whatsapp}`
     // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
     const origen = formData.origin === "otro" ? formData.originManual : originLabels[formData.origin]
     const destino = formData.destination === "las-lenas" ? "Las Leñas" : formData.destinationManual
+    trackLead("traslados")
     fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         formulario: "traslados",
+        comoNosConocio: conocio,
         language: locale,
         name: formData.fullName,
         email: formData.email,
@@ -593,6 +598,9 @@ WhatsApp: ${formData.whatsapp}`
                     <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("lasLenasPage.form.step6")}</h3>
                   </div>
                   
+                  <div className="mb-4">
+                    <ComoNosConociste value={conocio} onChange={setConocio} />
+                  </div>
                   <div className="space-y-2">
                     <Label htmlFor="observations" className="text-[#0B0B0B]/80">
                       {t("lasLenasPage.form.observationsLabel")}

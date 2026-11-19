@@ -22,6 +22,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.xuma.com.ar'),
   title: 'XUMA TRAVEL | Premium Travel & Transfers to Las Leñas - Mendoza, Argentina',
   description: 'Premium receptive operator in Mendoza. We integrate transportation, logistics, and travel experiences for agencies and international travelers. Ski packages, wine tours, and premium transfers.',
   keywords: 'Las Leñas transfers, Mendoza travel, ski packages, wine tours, receptive operator Argentina, travel agency partner, premium transfers',

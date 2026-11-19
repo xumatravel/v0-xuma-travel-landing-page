@@ -12,6 +12,8 @@
  * import { WHATSAPP_CONFIG, COMPANY_CONFIG } from "@/lib/config"
  */
 
+import { trackWhatsApp } from "@/lib/track"
+
 // ============================================================================
 // CONFIGURACION DE WHATSAPP
 // ============================================================================
@@ -34,6 +36,7 @@ export const WHATSAPP_CONFIG = {
   // Abrir WhatsApp con fallback robusto
   open: (message?: string) => {
     const url = WHATSAPP_CONFIG.buildUrl(message)
+    trackWhatsApp()
     
     try {
       const newWindow = window.open(url, "_blank", "noopener,noreferrer")
@@ -57,7 +60,7 @@ export const COMPANY_CONFIG = {
   name: "XUMA TRAVEL",
   email: "info@xuma.com.ar",
   emailReservas: "reservas@xuma.com.ar",
-  website: "xumatravel.com",
+  website: "xuma.com.ar",
   
   // Redes sociales
   social: {

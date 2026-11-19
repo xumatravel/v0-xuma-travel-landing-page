@@ -13,7 +13,9 @@ import { MessageCircle, CalendarIcon, Users, Hotel, MapPin, Snowflake, Bus, Chec
 import { format } from "date-fns"
 import { es, ptBR, enUS } from "date-fns/locale"
 import { WHATSAPP_CONFIG } from "@/lib/config"
+import { trackLead } from "@/lib/track"
 import { useI18n, type Locale } from "@/lib/i18n"
+import { ComoNosConociste } from "@/components/como-nos-conociste"
 
 type TripType = "skiweek" | "miniweek" | "extraweek"
 type LodgingType = "hotel" | "apartment"
@@ -68,6 +70,7 @@ export function PaquetesQuoteForm() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [conocio, setConocio] = useState("")
 
   const tripTypeLabels: Record<TripType, string> = {
     skiweek: t("paquetesPage.types.skiweek.title"),
@@ -167,11 +170,13 @@ WhatsApp: ${formData.whatsapp}`
     WHATSAPP_CONFIG.open(message)
 
     // Registro en XUMA OS + mail a info@ (en segundo plano, no bloquea WhatsApp)
+    trackLead("paquetes")
     fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         formulario: "paquetes",
+        comoNosConocio: conocio,
         language: locale,
         name: formData.fullName,
         phone: formData.whatsapp,
@@ -663,6 +668,9 @@ WhatsApp: ${formData.whatsapp}`
                     <h3 className="font-semibold text-[#0B0B0B] text-lg">{t("paquetesPage.form.step7")}</h3>
                   </div>
                   
+                  <div className="mb-4">
+                    <ComoNosConociste value={conocio} onChange={setConocio} />
+                  </div>
                   <div className="space-y-2">
                     <Label htmlFor="observations" className="text-[#0B0B0B]/80">
                       {t("paquetesPage.form.observationsLabel")}
